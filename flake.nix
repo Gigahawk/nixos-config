@@ -1,41 +1,77 @@
 {
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  description = "System Config";
 
-  outputs = { self, nixpkgs }: {
+  inputs = {
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  let
+    inherit (nixpkgs) lib;
+
+    util = import ./lib {
+      inherit system pkgs home-manager lib; overlays = (pkgs.overlays);
+    };
+
+    inherit (util) user;
+    inherit (util) host;
+
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+      overlays = [];
+    };
+
+    system = "x86_64-linux";
+  in {
+
+    homeManagerConfigurations = {
+      jasper = user.mkHMUser {
+
+      };
+    };
 
     nixosConfigurations = {
-      container = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules =
-          [ ({ pkgs, ... }: {
-              boot.isContainer = true;
-
-              # Let 'nixos-version --json' know about the Git revision
-              # of this flake.
-              system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-
-              # Network configuration.
-              networking.useDHCP = false;
-              networking.firewall.allowedTCPPorts = [ 80 ];
-
-              # Enable a web server.
-              services.httpd = {
-                enable = true;
-                adminAddr = "morty@example.org";
-              };
-            })
-          ];
+      nixosVbox = host.mkHost {
+        name = "nixosVbox";
+        NICs = [ "enp0s3" ];
+        kernelPackage = pkgs.linuxPackages;
+        initrdMods = [ "ata_piix" "ohci_pci" "sd_mod" "sr_mod" ];
+        kernelMods = [];
+        kernelParams = [];
+        systemConfig = {
+          # your abstracted system config
+        };
+        users = [{
+          name = "jasper";
+          groups = [ "wheel" "networkmanager" "video" ];
+          uid = 1000;
+          shell = pkgs.zsh;
+        }];
+        cpuCores = 6;
       };
-
-      arios = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules =
-          [ ({ pkgs, ... }: {
-              # Let 'nixos-version --json' know about the Git revision
-              # of this flake.
-              system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-            })
-          ];
+      arios = host.mkHost {
+        name = "arios";
+        NICs = [ "enp0s31f6" "wlp2s0" ];
+        kernelPackage = pkgs.linuxPackages;
+        initrdMods = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+        kernelMods = [ "wl" ];
+        kernelParams = [];
+        systemConfig = {
+          # your abstracted system config
+        };
+        users = [{
+          name = "jasper";
+          groups = [ "wheel" "networkmanager" "video" ];
+          uid = 1000;
+          shell = pkgs.zsh;
+        }];
+        cpuCores = 4;
       };
     };
   };

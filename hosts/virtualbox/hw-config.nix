@@ -18,6 +18,42 @@
       fsType = "vfat";
     };
 
+  fileSystems."/mnt/parity0" =
+    { device = "/dev/disk/by-label/parity0";
+      fsType = "ext4";
+      options = [
+        "defaults"
+        "errors=remount-ro"
+      ];
+    };
+
+  fileSystems."/mnt/data0" =
+    { device = "/dev/disk/by-label/data0";
+      fsType = "ext4";
+      options = [
+        "defaults"
+        "errors=remount-ro"
+      ];
+    };
+
+  fileSystems."/mnt/data1" =
+    { device = "/dev/disk/by-label/data1";
+      fsType = "ext4";
+      options = [
+        "defaults"
+        "errors=remount-ro"
+      ];
+    };
+
+  fileSystems."/mnt/data2" =
+    { device = "/dev/disk/by-label/data2";
+      fsType = "ext4";
+      options = [
+        "defaults"
+        "errors=remount-ro"
+      ];
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-label/swap"; }
     ];

@@ -17,6 +17,11 @@
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    mergerfs
+    mergerfs-tools
+  ];
+
   networking.firewall.enable = true;
   networking.firewall.allowPing = true;
 

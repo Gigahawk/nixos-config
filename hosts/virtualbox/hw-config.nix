@@ -53,6 +53,17 @@
         "errors=remount-ro"
       ];
     };
+  
+  fileSystems."/mnt/pool" =
+    { device = "/mnt/data*";
+      fsType = "fuse.mergerfs";
+      options = [
+        "defaults"
+        "allow_other"
+        "cache.files=off"
+        "moveonenospc=true"
+      ];
+    };
 
   swapDevices =
     [ { device = "/dev/disk/by-label/swap"; }

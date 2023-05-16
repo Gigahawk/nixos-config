@@ -25,13 +25,14 @@
         inherit system;
         modules = [
           ./configuration.nix
-          ./hw/virtualbox.nix
+          ./hosts/virtualbox/configuration.nix
+          ./hosts/virtualbox/hw-config.nix
           ./users/jasper/user.nix
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.jasper = import ./users/jasper.nix;
-          }
+          #home-manager.nixosModules.home-manager {
+          #  home-manager.useGlobalPkgs = true;
+          #  home-manager.useUserPackages = true;
+          #  home-manager.users.jasper = import ./users/jasper.nix;
+          #}
         ];
       };
     };

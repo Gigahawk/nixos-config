@@ -27,11 +27,11 @@
           ./configuration.nix
           ./hw/virtualbox.nix
           ./users/jasper/user.nix
-          #home-manager.nixosModules.home-manager {
-          #  home-manager.useGlobalPkgs = true;
-          #  home-manager.useUserPackages = true;
-          #  home-manager.users.jasper = import ./users/jasper.nix;
-          #}
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.jasper = import ./users/jasper.nix;
+          }
         ];
       };
     };

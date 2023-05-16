@@ -22,6 +22,27 @@
     mergerfs-tools
   ];
 
+  snapraid = {
+    enable = true;
+    dataDisks = {
+      d0 = "/mnt/data0";
+      d1 = "/mnt/data1";
+      d2 = "/mnt/data2";
+    };
+    parityFiles = [
+      "/mnt/parity0/snapraid0.parity"
+    ];
+    contentFiles = [
+      "/var/snapraid.content"
+      "/mnt/data0/snapraid.content"
+      "/mnt/data1/snapraid.content"
+      "/mnt/data2/snapraid.content"
+    ];
+    exclude = [
+      "/lost+found/"
+    ];
+  };
+
   networking.firewall.enable = true;
   networking.firewall.allowPing = true;
 

@@ -23,7 +23,6 @@
       fsType = "ext4";
       options = [
         "defaults"
-        "nofail"
         "errors=remount-ro"
       ];
     };
@@ -33,7 +32,6 @@
       fsType = "ext4";
       options = [
         "defaults"
-        "nofail"
         "errors=remount-ro"
       ];
     };
@@ -43,7 +41,6 @@
       fsType = "ext4";
       options = [
         "defaults"
-        "nofail"
         "errors=remount-ro"
       ];
     };
@@ -53,7 +50,6 @@
       fsType = "ext4";
       options = [
         "defaults"
-        "nofail"
         "errors=remount-ro"
       ];
     };

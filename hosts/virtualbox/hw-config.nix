@@ -64,6 +64,14 @@
         "moveonenospc=true"
       ];
     };
+  
+  # Set global rw on data drives
+  systemd.tmpfiles.rules = [
+    "d /mnt/data0 0755 root root"
+    "d /mnt/data1 0755 root root"
+    "d /mnt/data2 0755 root root"
+    "d /mnt/pool 0755 root root"
+  ];
 
   swapDevices =
     [ { device = "/dev/disk/by-label/swap"; }

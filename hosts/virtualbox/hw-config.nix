@@ -32,6 +32,10 @@
       fsType = "ext4";
       options = [
         "defaults"
+        "uid=1000"
+        "gid=100"
+        "dmask=777"
+        "fmask=777"
         "errors=remount-ro"
       ];
     };
@@ -41,6 +45,10 @@
       fsType = "ext4";
       options = [
         "defaults"
+        "uid=1000"
+        "gid=100"
+        "dmask=777"
+        "fmask=777"
         "errors=remount-ro"
       ];
     };
@@ -50,6 +58,10 @@
       fsType = "ext4";
       options = [
         "defaults"
+        "uid=1000"
+        "gid=100"
+        "dmask=777"
+        "fmask=777"
         "errors=remount-ro"
       ];
     };
@@ -59,6 +71,10 @@
       fsType = "fuse.mergerfs";
       options = [
         "defaults"
+        "uid=1000"
+        "gid=100"
+        "dmask=777"
+        "fmask=777"
         "allow_other"
         "cache.files=off"
         "moveonenospc=true"

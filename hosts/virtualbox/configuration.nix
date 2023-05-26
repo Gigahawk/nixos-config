@@ -90,6 +90,14 @@
       };
     };
   };
+
+  age.secrets = {
+    alert-gmail = {
+      file = ../../secrets/alert-gmail.age;
+      path = "/etc/alert-gmail";
+    };
+  };
+
 }
 
 

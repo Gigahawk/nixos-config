@@ -27,9 +27,14 @@
     nixosConfigurations = {
       virtualbox = lib.nixosSystem {
         inherit system;
+        specialArgs = {
+          inherit inputs;
+          inherit system;
+        };
         modules = [
           ./configuration.nix
           agenix.nixosModules.default
+          ./modules/agenix-cli.nix
           ./hosts/virtualbox/configuration.nix
           ./hosts/virtualbox/hw-config.nix
           ./users/jasper/user.nix

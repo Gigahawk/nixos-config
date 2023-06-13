@@ -3,7 +3,7 @@
 {
   users.users.jasper = {
     isNormalUser = true;
-    initialPassword = "password";
+    passwordFile = config.age.secrets.jasper.path;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
 }

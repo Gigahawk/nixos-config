@@ -6,6 +6,8 @@ let
   systems = [ virtualbox ];
 in {
   "alert-gmail.age".publicKeys = [ jasper-virtualbox virtualbox ];
+  "jasper-virtualbox.age".publicKeys = [ jasper-virtualbox virtualbox ];
+  "root-virtualbox.age".publicKeys = [ virtualbox ];
 }
 
 

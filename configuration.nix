@@ -22,6 +22,8 @@
     ];
   };
 
+  users.mutableUsers = false;
+
   system.stateVersion = "23.05";
 
 }

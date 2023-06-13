@@ -96,6 +96,9 @@
       file = ../../secrets/alert-gmail.age;
       path = "/etc/alert-gmail";
     };
+    jasper = {
+      file = ../../secrets/jasper-virtualbox.age;
+    };
   };
 
 }

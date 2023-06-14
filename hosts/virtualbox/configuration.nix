@@ -22,7 +22,21 @@
     mergerfs-tools
   ];
 
-  # TODO: setup failover properly/learn how services works/setup emailing
+  systemd.services.snapraid_sync = {
+    serviceConfig.Type = "oneshot";
+    path = [
+      pkgs.msmtp
+      pkgs.snapraid
+    ];
+    script = builtins.readFile ./snapraid_sync.sh;
+  };
+  systemd.timers.snapraid_sync = {
+    wantedBy = [ "timers.target" ];
+    partOf = [ "snapraid_sync.service" ];
+    # TODO: Change this to once a week or something
+    timerConfig.OnCalendar = [ "*-*-* 00:00:00" ];
+  };
+
   snapraid = {
     enable = true;
     dataDisks = {

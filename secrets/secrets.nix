@@ -5,7 +5,7 @@ let
   virtualbox = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFeQvEjbv20hcOaJ4RpzrC5eojf1FGG8fN4h9g8vHU/q";
   systems = [ virtualbox ];
 in {
-  "alert-gmail.age".publicKeys = [ jasper-virtualbox virtualbox ];
+  "alert-outlook.age".publicKeys = [ jasper-virtualbox virtualbox ];
   "jasper-virtualbox.age".publicKeys = [ jasper-virtualbox virtualbox ];
   "root-virtualbox.age".publicKeys = [ virtualbox ];
 }

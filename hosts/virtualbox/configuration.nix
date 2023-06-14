@@ -22,6 +22,7 @@
     mergerfs-tools
   ];
 
+  # TODO: setup failover properly/learn how services works/setup emailing
   snapraid = {
     enable = true;
     dataDisks = {
@@ -91,10 +92,25 @@
     };
   };
 
+  programs.msmtp = {
+    enable = true;
+    accounts.default = {
+      auth = true;
+      tls = true;
+      tls_starttls = true;
+      tls_trust_file = "/etc/ssl/certs/ca-bundle.crt";
+      tls_certcheck = true;
+      host = "smtp.office365.com";
+      port = 587;
+      from = "jaspervirtualbox@outlook.com";
+      user = "jaspervirtualbox@outlook.com";
+      passwordeval = "cat ${config.age.secrets.alert-outlook.path}";
+    };
+  };
+
   age.secrets = {
-    alert-gmail = {
-      file = ../../secrets/alert-gmail.age;
-      path = "/etc/alert-gmail";
+    alert-outlook = {
+      file = ../../secrets/alert-outlook.age;
     };
     jasper = {
       file = ../../secrets/jasper-virtualbox.age;

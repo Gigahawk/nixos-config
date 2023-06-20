@@ -67,10 +67,10 @@
   
   # Set global rw on data drives
   systemd.tmpfiles.rules = [
-    "d /mnt/data0 0755 root root"
-    "d /mnt/data1 0755 root root"
-    "d /mnt/data2 0755 root root"
-    "d /mnt/pool 0755 root root"
+    "d /mnt/data0 0777 root root"
+    "d /mnt/data1 0777 root root"
+    "d /mnt/data2 0777 root root"
+    "d /mnt/pool 0777 root root"
   ];
 
   swapDevices =

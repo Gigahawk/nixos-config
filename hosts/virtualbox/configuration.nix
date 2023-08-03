@@ -145,6 +145,11 @@
     jasper = {
       file = ../../secrets/jasper-virtualbox.age;
     };
+    samba-virtualbox = {
+      file = ../../secrets/samba-virtualbox.age;
+      path = "/home/jasper/samba-test";
+      mode = "777";
+    };
   };
 
 }

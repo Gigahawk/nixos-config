@@ -7,7 +7,7 @@ let
 in {
   "alert-outlook.age".publicKeys = [ jasper-virtualbox virtualbox ];
   "jasper-virtualbox.age".publicKeys = [ jasper-virtualbox virtualbox ];
-  "root-virtualbox.age".publicKeys = [ virtualbox ];
+  "samba-virtualbox.age".publicKeys = [ jasper-virtualbox virtualbox ];
 }
 
 

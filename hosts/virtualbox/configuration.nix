@@ -50,6 +50,9 @@
       d1 = "/mnt/data1";
       d2 = "/mnt/data2";
     };
+    # disable maintenance services, handle using our own service
+    sync.interval = "1970-01-01";
+    scrub.interval = "1970-01-01";
     parityFiles = [
       "/mnt/parity0/snapraid0.parity"
     ];

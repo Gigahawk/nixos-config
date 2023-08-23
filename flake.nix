@@ -16,12 +16,6 @@
   outputs = inputs @ { nixpkgs, home-manager, agenix, ... }:
   let
     system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-      };
-    };
     lib = nixpkgs.lib;
     overlays = { pkgs, config, ... }: {
       config.nixpkgs.overlays = [

@@ -11,9 +11,13 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    arion = {
+      url = "github:hercules-ci/arion";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs @ { nixpkgs, home-manager, agenix, ... }:
+  outputs = inputs @ { nixpkgs, home-manager, agenix, arion, ... }:
   let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
@@ -32,6 +36,7 @@
         };
         modules = [
           overlays
+          arion.nixosModules.arion
           ./configuration.nix
           agenix.nixosModules.default
           ./modules/agenix-cli.nix

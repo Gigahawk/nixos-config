@@ -10,7 +10,7 @@
     git
     wget
     xplr
-    asdfRanger
+    arion
   ];
 
   services.openssh = {

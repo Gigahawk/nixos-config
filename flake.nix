@@ -23,7 +23,6 @@
     lib = nixpkgs.lib;
     overlays = { pkgs, config, ... }: {
       config.nixpkgs.overlays = [
-        (import overlays/inventree.nix)
       ];
     };
   in {

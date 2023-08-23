@@ -23,6 +23,11 @@
       };
     };
     lib = nixpkgs.lib;
+    overlays = { pkgs, config, ... }: {
+      config.nixpkgs.overlays = [
+        (import overlays/inventree.nix)
+      ];
+    };
   in {
     nixosConfigurations = {
       virtualbox = lib.nixosSystem {
@@ -32,6 +37,7 @@
           inherit system;
         };
         modules = [
+          overlays
           ./configuration.nix
           agenix.nixosModules.default
           ./modules/agenix-cli.nix

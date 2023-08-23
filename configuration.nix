@@ -10,6 +10,7 @@
     git
     wget
     xplr
+    asdfRanger
   ];
 
   services.openssh = {

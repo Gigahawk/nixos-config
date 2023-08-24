@@ -3,6 +3,7 @@
   project.name = "inventree";
   services = 
   let
+    nginx_config = pkgs.writeText "nginx.prod.conf" (builtins.readFile ./nginx.prod.conf);
     inventree_version = "0.12.6";
     inventree_web_port = "1337";
     inventree_db_name = "inventree";
@@ -86,7 +87,7 @@
       ports = ["${inventree_web_port}:80"];
       volumes = [
         # TODO: figure out how to include this
-        #"./nginx.prod.conf:/etc/nginx/conf.d/default.conf:ro"
+        "${toString nginx_config}:/etc/nginx/conf.d/default.conf:ro"
         "${toString inventree_data_path}:/var/www"
       ];
       restart = "unless-stopped";

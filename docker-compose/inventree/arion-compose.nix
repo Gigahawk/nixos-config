@@ -4,6 +4,8 @@
   services = 
   let
     nginx_config = pkgs.writeText "nginx.prod.conf" (builtins.readFile ./nginx.prod.conf);
+    backup_script = pkgs.writeScript "backup.sh" (builtins.readFile ./backup.sh);
+    backup_script_container_path = "/home/inventree/backup.sh";
     inventree_version = "0.12.6";
     inventree_web_port = "1337";
     inventree_db_name = "inventree";
@@ -12,6 +14,7 @@
     inventree_db_password = "pgpassword";
     inventree_cache_port = "6379";
     inventree_data_path = /mnt/pool/inventree-data;
+    inventree_backup_path = /mnt/pool/inventree-backup;
     inventree_data_volumes = [
       "${toString inventree_data_path}:/home/inventree/data"
     ];
@@ -58,13 +61,13 @@
       ];
       restart = "unless-stopped";
     };
-    inventree-cache.service = {
-      image = "redis:7.0";
-      depends_on = ["inventree-db"];
-      environment = inventree_environment;
-      expose = [inventree_cache_port];
-      restart = "always";
-    };
+    #inventree-cache.service = {
+    #  image = "redis:7.0";
+    #  depends_on = ["inventree-db"];
+    #  environment = inventree_environment;
+    #  expose = [inventree_cache_port];
+    #  restart = "always";
+    #};
     inventree-server.service = {
       image = "inventree/inventree:${inventree_version}";
       expose = ["8000"];
@@ -86,9 +89,20 @@
       environment = inventree_environment;
       ports = ["${inventree_web_port}:80"];
       volumes = [
-        # TODO: figure out how to include this
         "${toString nginx_config}:/etc/nginx/conf.d/default.conf:ro"
         "${toString inventree_data_path}:/var/www"
+      ];
+      restart = "unless-stopped";
+    };
+    inventree-backup.service = {
+      image = "inventree/inventree:${inventree_version}";
+      command = backup_script_container_path;
+      depends_on = [ "inventree-db" "inventree-server" ];
+      environment = inventree_environment;
+      volumes = [
+        "${toString backup_script}:${backup_script_container_path}"
+        "${toString inventree_data_path}:/home/inventree/data"
+        "${toString inventree_backup_path}:/home/inventree/backup"
       ];
       restart = "unless-stopped";
     };

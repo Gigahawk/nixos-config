@@ -23,4 +23,7 @@ Simulation of a reboot after a complete drive failure (no longer detected etc.)
     - Add `-d <disk name>` to only target the replaced drive
 
 
+#### InvenTree bootstrapping
+
+Clone `git@github.com:Gigahawk/inventree-backup.git` to `/mnt/pool/inventree-backup` for backups to work properly
 

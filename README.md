@@ -25,5 +25,15 @@ Simulation of a reboot after a complete drive failure (no longer detected etc.)
 
 #### InvenTree bootstrapping
 
-Clone `git@github.com:Gigahawk/inventree-backup.git` to `/mnt/pool/inventree-backup` for backups to work properly
-
+1. Clone `git@github.com:Gigahawk/inventree-backup.git` to `/mnt/pool/inventree-backup`
+    - This path is required for the automated backup script to work
+2. Copy `data.json` from the repo to `/mnt/pool/inventree-data`
+3. Copy the files in `media` to `/mnt/pool/inventree-data/media`
+    - Files that can be skipped:
+        - `maintenance_mode*`
+        - `report/`
+        - `label/`
+4. Run `sudo arion run inventree-server invoke import-records -c -f data/data.json`
+    - This should import the entire database, including user accounts
+    - If there are warnings about (image) files missing, make sure step 3 was completed properly
+4. Run `sudo arion run inventree-server invoke update`

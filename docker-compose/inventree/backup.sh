@@ -27,5 +27,5 @@ while true; do
     git add "$(basename $MEDIA_DIR)"
     git commit -m "backup: create backup at ${dt}"
     echo "Backup complete"
-    sleep 60
+    sleep 2h
 done

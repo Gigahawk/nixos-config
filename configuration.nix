@@ -13,6 +13,8 @@
     arion
   ];
 
+  services.automatic-timezoned.enable = true;
+
   services.openssh = {
     enable = true;
     hostKeys = [

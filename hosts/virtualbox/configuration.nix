@@ -40,6 +40,10 @@
 
   systemd.services.snapraid_sync = {
     serviceConfig.Type = "oneshot";
+    serviceConfig.RestartSec = 30;
+    serviceConfig.Restart = "on-failure";
+    startLimitIntervalSec = 300;
+    startLimitBurst = 5;
     path = [
       pkgs.msmtp
       pkgs.snapraid

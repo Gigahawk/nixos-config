@@ -15,9 +15,12 @@
       url = "github:hercules-ci/arion";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+    };
   };
 
-  outputs = inputs @ { nixpkgs, home-manager, agenix, arion, ... }:
+  outputs = inputs @ { nixpkgs, home-manager, agenix, arion, flake-utils, ... }:
   let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
@@ -50,6 +53,18 @@
         ];
       };
     };
-  };
+  } // (
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        devShell = pkgs.mkShell {
+          nativeBuildInputs = [
+            agenix.packages.${system}.agenix
+          ];
+        };
+      }
+    )
+  );
 }
 

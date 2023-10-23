@@ -23,6 +23,8 @@
         type = "ed25519";
       }
     ];
+    settings.PasswordAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
   };
 
   users.mutableUsers = false;

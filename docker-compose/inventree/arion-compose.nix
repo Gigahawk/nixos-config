@@ -96,6 +96,7 @@
     };
     inventree-backup.service = {
       image = "inventree/inventree:${inventree_version}";
+      stop_grace_period = "5s";
       command = backup_script_container_path;
       depends_on = [ "inventree-db" "inventree-server" ];
       environment = inventree_environment;

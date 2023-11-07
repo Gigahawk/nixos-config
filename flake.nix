@@ -12,7 +12,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     arion = {
-      url = "github:hercules-ci/arion";
+      #url = "github:hercules-ci/arion";
+      url = "github:Gigahawk/arion/stop_grace_period";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils = {

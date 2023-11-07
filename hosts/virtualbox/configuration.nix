@@ -180,6 +180,17 @@
     '';
   };
 
+  services.nginx = {
+    enable = true;
+    virtualHosts."virtualbox.neon-chameleon.ts.net" = {
+      locations."/inventree/" = {
+        return = "301 $scheme://$host:1337$request_uri";
+      };
+      # enableACME = true;
+      # forceSSL = true;
+    };
+  };
+
   age.secrets = {
     alert-outlook = {
       file = ../../secrets/alert-outlook.age;

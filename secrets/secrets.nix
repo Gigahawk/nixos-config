@@ -9,6 +9,7 @@ in {
   "alert-outlook.age".publicKeys = users ++ systems;
   "jasper-virtualbox.age".publicKeys = users ++ systems;
   "samba-virtualbox.age".publicKeys = users ++ systems;
+  "tailscale-virtualbox.age".publicKeys = users ++ systems;
 }
 
 

@@ -60,8 +60,12 @@
       in {
         devShell = pkgs.mkShell {
           nativeBuildInputs = [
+            pkgs.vim
             agenix.packages.${system}.agenix
           ];
+          shellHook = ''
+            export EDITOR=vim
+            '';
         };
       }
     )

@@ -31,6 +31,30 @@
     };
   in {
     nixosConfigurations = {
+      # Main server
+      ptolemy = lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs;
+          inherit system;
+        };
+        modules = [
+          overlays
+          arion.nixosModules.arion
+          ./configuration.nix
+          agenix.nixosModules.default
+          ./modules/agenix-cli.nix
+          ./hosts/ptolemy/configuration.nix
+          ./hosts/ptolemy/hw-config.nix
+          ./users/jasper/user.nix
+          #home-manager.nixosModules.home-manager {
+          #  home-manager.useGlobalPkgs = true;
+          #  home-manager.useUserPackages = true;
+          #  home-manager.users.jasper = import ./users/jasper.nix;
+          #}
+        ];
+      };
+      # Test server
       virtualbox = lib.nixosSystem {
         inherit system;
         specialArgs = {

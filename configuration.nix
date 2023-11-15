@@ -11,18 +11,18 @@
     wget
     xplr
     arion
-    tailscale
+    #tailscale
   ];
 
   networking.firewall = {
     enable = true;
     allowPing = true;
-    trustedInterfaces = [ "tailscale0" ];
-    allowedUDPPorts = [ config.services.tailscale.port ];
+    #trustedInterfaces = [ "tailscale0" ];
+    #allowedUDPPorts = [ config.services.tailscale.port ];
     allowedTCPPorts = [ 22 ];
   };
 
-  services.tailscale.enable = true;
+  # services.tailscale.enable = true;
   services.automatic-timezoned.enable = true;
 
   services.openssh = {

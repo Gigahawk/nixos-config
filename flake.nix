@@ -19,9 +19,13 @@
     flake-utils = {
       url = "github:numtide/flake-utils";
     };
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs @ { nixpkgs, home-manager, agenix, arion, flake-utils, ... }:
+  outputs = inputs @ { nixpkgs, home-manager, agenix, arion, flake-utils, nixos-generators, ... }:
   let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
@@ -76,6 +80,15 @@
           #  home-manager.users.jasper = import ./users/jasper.nix;
           #}
         ];
+      };
+    };
+    packages.x86_64-linux = {
+      ptolemy-installer = nixos-generators.nixosGenerate {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/installer/configuration.nix
+        ];
+        format = "install-iso";
       };
     };
   } // (

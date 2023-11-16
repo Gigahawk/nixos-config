@@ -5,6 +5,14 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  nixpkgs.config.allowUnfree = true;
+
+  hardware = {
+    enableAllFirmware = true;
+    # TODO: do we need this?
+    opengl.driSupport32Bit = true;
+  };
+
   environment.systemPackages = with pkgs; [
     vim
     git

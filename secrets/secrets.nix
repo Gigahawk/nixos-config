@@ -8,10 +8,13 @@ let
   systems = [ virtualbox ptolemy ];
 in {
   "alert-outlook.age".publicKeys = users ++ [ virtualbox ];
+
   "jasper-virtualbox.age".publicKeys = users ++ [ virtualbox ];
   "samba-virtualbox.age".publicKeys = users ++ [ virtualbox ];
   "tailscale-virtualbox.age".publicKeys = users ++ [ virtualbox ];
+
   "jasper-ptolemy.age".publicKeys = users ++ [ ptolemy ];
+  "tailscale-ptolemy.age".publicKeys = users ++ [ ptolemy ];
 }
 
 

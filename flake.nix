@@ -100,6 +100,7 @@
           nativeBuildInputs = [
             pkgs.vim
             pkgs.systemd  # Read journalctl logs locally
+            pkgs.mkpasswd  # Generate password hashes
             agenix.packages.${system}.agenix
           ];
           shellHook = ''

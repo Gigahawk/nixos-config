@@ -62,6 +62,7 @@
     dataDisks = {
       d0 = "/mnt/data0";
       d1 = "/mnt/data1";
+      # d2 = "/mnt/data2";
     };
     # disable maintenance services, handle using our own service
     sync.interval = "1970-01-01";
@@ -73,7 +74,7 @@
       "/var/snapraid.content"
       "/mnt/data0/snapraid.content"
       "/mnt/data1/snapraid.content"
-      "/mnt/data2/snapraid.content"
+      # "/mnt/data2/snapraid.content"
     ];
     exclude = [
       "/lost+found/"

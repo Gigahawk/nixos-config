@@ -99,6 +99,7 @@
         devShell = pkgs.mkShell {
           nativeBuildInputs = [
             pkgs.vim
+            pkgs.systemd  # Read journalctl logs locally
             agenix.packages.${system}.agenix
           ];
           shellHook = ''

@@ -1,5 +1,13 @@
 # nixos-config
 
+## Adding a new host
+
+### Creating a new user password
+
+1. Generate a new password using `mkpasswd -m sha-512`
+2. Copy it into an agenix secret
+3. Reference the secret in `users.users.<name>.hashedPasswordFile`
+
 
 ## Hosts
 

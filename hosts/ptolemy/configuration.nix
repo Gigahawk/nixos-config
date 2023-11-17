@@ -206,6 +206,15 @@
     tailscale-key = {
       file = ../../secrets/tailscale-ptolemy.age;
     };
+    xmpp-password = {
+      file = ../../secrets/xmpp-password-ptolemy.age;
+    };
+    xmpp-jid = {
+      file = ../../secrets/xmpp-jid-ptolemy.age;
+    };
+    xmpp-target-jid = {
+      file = ../../secrets/xmpp-target-jid.age;
+    };
   };
 
 }

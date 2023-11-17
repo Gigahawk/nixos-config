@@ -15,6 +15,9 @@ in {
 
   "jasper-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "tailscale-ptolemy.age".publicKeys = users ++ [ ptolemy ];
+  "xmpp-jid-ptolemy.age".publicKeys = users ++ [ ptolemy ];
+  "xmpp-password-ptolemy.age".publicKeys = users ++ [ ptolemy ];
+  "xmpp-target-jid.age".publicKeys = users ++ systems;
 }
 
 

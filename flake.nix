@@ -23,9 +23,21 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    xmpp-bridge = {
+      url = "github:Gigahawk/xmpp-bridge";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs @ { nixpkgs, home-manager, agenix, arion, flake-utils, nixos-generators, ... }:
+  outputs = inputs @ {
+    nixpkgs,
+    home-manager,
+    agenix,
+    arion,
+    flake-utils,
+    nixos-generators,
+    xmpp-bridge,
+    ... }:
   let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
@@ -48,6 +60,7 @@
           ./configuration.nix
           agenix.nixosModules.default
           ./modules/agenix-cli.nix
+          ./modules/xmpp-bridge.nix
           ./hosts/ptolemy/configuration.nix
           ./hosts/ptolemy/hw-config.nix
           ./users/jasper/user.nix

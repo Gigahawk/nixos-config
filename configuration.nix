@@ -15,6 +15,7 @@
 
   environment.systemPackages = with pkgs; [
     vim
+    tree
     git
     wget
     xplr

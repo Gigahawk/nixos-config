@@ -2,7 +2,7 @@
 # your system.  help is available in the configuration.nix(5) man page
 # and in the nixos manual (accessible by running `nixos-help`).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, system, ... }:
 
 {
   imports = [ ];
@@ -45,7 +45,8 @@
     startLimitIntervalSec = 300;
     startLimitBurst = 5;
     path = [
-      pkgs.msmtp
+      inputs.xmpp-bridge.packages.${system}.default
+      (import ../../modules/xmpp-alert.nix { inherit pkgs config; })
       pkgs.snapraid
     ];
     script = builtins.readFile ./snapraid_sync.sh;

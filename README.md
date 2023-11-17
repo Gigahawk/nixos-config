@@ -11,9 +11,16 @@
 
 ## Hosts
 
-### virtualbox
+### Servers (virtualbox, ptolemy)
 
-Virtualbox host to experiment with server setup before committing to real hardware
+- `virtualbox`
+    - Virtualbox host to experiment with server setup before committing to real hardware
+- `ptolemy`
+    - Main server
+
+#### Samba bootstrapping
+
+After a fresh install, add user passwords with `smbpasswd -a <user>`
 
 #### SnapRAID drive replacement procedure
 

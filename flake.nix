@@ -61,6 +61,7 @@
           agenix.nixosModules.default
           ./modules/agenix-cli.nix
           ./modules/xmpp-bridge.nix
+          ./modules/smartd.nix
           ./hosts/ptolemy/configuration.nix
           ./hosts/ptolemy/hw-config.nix
           ./users/jasper/user.nix

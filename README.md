@@ -8,6 +8,12 @@
 2. Copy it into an agenix secret
 3. Reference the secret in `users.users.<name>.hashedPasswordFile`
 
+### Creating a new Syncthing config
+
+1. Generate a new set of keys using `syncthing -generate=<foldername>`
+2. Import the `cert.pem` and `key.pem` files into agenix
+3. Copy the device ID from `config.xml` into the config
+4. Generate a GUI password using `bcrypt-tool hash <password> 10`
 
 ## Hosts
 
@@ -17,6 +23,7 @@
     - Virtualbox host to experiment with server setup before committing to real hardware
 - `ptolemy`
     - Main server
+    - Syncthing device ID: `DVSWOT3-6RE3PRD-OB3IVQI-VELDUFR-EMHZZCR-MPGNVW3-EIHW4LK-REFXVAJ`
 
 #### Samba bootstrapping
 

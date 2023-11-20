@@ -46,6 +46,27 @@
         "type": "github"
       }
     },
+    "bcrypt-tool": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1700475665,
+        "narHash": "sha256-78j0eb00qfqAuBCnUEyiHDOy5xEjRt6hYVD/3finI1Q=",
+        "owner": "Gigahawk",
+        "repo": "bcrypt-tool",
+        "rev": "f815e0c384a5851a7884711b95313c4e2dbd2c78",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Gigahawk",
+        "repo": "bcrypt-tool",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -150,6 +171,24 @@
     "flake-utils_2": {
       "inputs": {
         "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1694529238,
+        "narHash": "sha256-zsNZZGTGnMOf9YpHKJqMSsa0dXbfmxeoJ7xHlrt+xmY=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "ff7b65b44d01cf9ba6a71320833626af21126384",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_3": {
+      "inputs": {
+        "systems": "systems_3"
       },
       "locked": {
         "lastModified": 1694529238,
@@ -370,7 +409,8 @@
       "inputs": {
         "agenix": "agenix",
         "arion": "arion",
-        "flake-utils": "flake-utils",
+        "bcrypt-tool": "bcrypt-tool",
+        "flake-utils": "flake-utils_2",
         "home-manager": "home-manager_2",
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs_2",
@@ -407,9 +447,24 @@
         "type": "github"
       }
     },
+    "systems_3": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "xmpp-bridge": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils_3",
         "nixpkgs": [
           "nixpkgs"
         ]

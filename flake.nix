@@ -27,6 +27,10 @@
       url = "github:Gigahawk/xmpp-bridge";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    bcrypt-tool = {
+      url = "github:Gigahawk/bcrypt-tool";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -37,6 +41,7 @@
     flake-utils,
     nixos-generators,
     xmpp-bridge,
+    bcrypt-tool,
     ... }:
   let
     system = "x86_64-linux";
@@ -115,7 +120,9 @@
             pkgs.vim
             pkgs.systemd  # Read journalctl logs locally
             pkgs.mkpasswd  # Generate password hashes
+            pkgs.syncthing  # Generate syncthing keys
             agenix.packages.${system}.agenix
+            bcrypt-tool.packages.${system}.default
           ];
           shellHook = ''
             export EDITOR=vim

@@ -18,6 +18,8 @@ in {
   "xmpp-jid-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "xmpp-password-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "xmpp-target-jid.age".publicKeys = users ++ systems;
+  "syncthing-cert-ptolemy.age".publicKeys = users ++ [ ptolemy ];
+  "syncthing-key-ptolemy.age".publicKeys = users ++ [ ptolemy ];
 }
 
 

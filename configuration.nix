@@ -21,6 +21,7 @@
     xplr
     arion
     tailscale
+    syncthing
   ];
 
   networking.firewall = {

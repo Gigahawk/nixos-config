@@ -74,6 +74,8 @@
     "d /mnt/pool 0777 root root"
     # TODO: this should probably be owned by a inventree user?
     "d /mnt/pool/inventree-data 0777 root root"
+    # Syncthing dirs
+    #"d /mnt/pool/test-folder 0777 root root"
   ];
 
   swapDevices =

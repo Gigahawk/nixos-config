@@ -21,4 +21,4 @@ if [[ $? -ne 0 ]]; then
     exit 1
 fi
 
-xmpp-alert echo "Sync complete"
+xmpp-alert echo "SYNC COMPLETED SUCCESSFULLY"

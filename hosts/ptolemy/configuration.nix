@@ -33,6 +33,14 @@
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
 
+  # Reset on crash?
+  systemd.watchdog = {
+    device = "/dev/watchdog";
+    runtimeTime = "30s";
+    rebootTime = "10m";
+    kexecTime = "10m";
+  };
+
   environment.systemPackages = with pkgs; [
     mergerfs
     mergerfs-tools

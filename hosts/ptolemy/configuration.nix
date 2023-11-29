@@ -66,117 +66,18 @@
     timerConfig.OnCalendar = [ "*-*-* 00:00:00" ];
   };
 
-  services.syncthing = {
-    enable = true;
-    dataDir = "/home/jasper";
-    openDefaultPorts = true;
-    configDir = "/etc/syncthing";
-    user = "jasper";
-    group = "users";
-    guiAddress = "0.0.0.0:8384";
-    key = config.age.secrets.syncthing-key.path;
-    cert = config.age.secrets.syncthing-cert.path;
-    overrideDevices = true;
-    overrideFolders = true;
-    settings = {
-      devices = {
-        JASPER-PC = {  # Windows
-          id = "F424O47-RWTQQSG-L7TZ7CP-OM77COG-QVB4WZW-XVOA2DU-5CJPTYQ-KKYHHQQ";
-        };
-        jasper-void = {  # Void Linux
-          id = "2M3W4TM-4BJQSNJ-BTUNFTU-PJ4TK7E-B7C37VA-BMOSV7X-UFHVNJE-UDBPQQ7";
-        };
-        ptolemy = {
-          id = "DVSWOT3-6RE3PRD-OB3IVQI-VELDUFR-EMHZZCR-MPGNVW3-EIHW4LK-REFXVAJ";
-        };
-        remarkable = {  # reMarkable
-          id = "Q5JA76T-C53YAWX-G4LI7R2-2BI445S-VPVDTS3-ZUGGV56-YGO6ZXD-LY3JAQI";
-        };
-        zenfone-9 = {  # Android
-          id = "ELDFXOS-ACVLSIP-X53SGCS-MW6OC6X-B6PZVJN-X5ZTT6V-QHEIPLF-AQDTGAP";
-        };
-      };
-      folders = {
-        Music = {
-          id = "Music";
-          path = "/mnt/pool/Music";
-          devices = [
-            "JASPER-PC"
-            "jasper-void"
-            "ptolemy"
-            "zenfone-9"
-          ];
-          versioning = {
-            type = "staggered";
-            params = {
-              cleanInterval = "3600"; # 1 hour in seconds
-              maxAge = "15552000"; # 180 days in seconds
-            };
-          };
-        };
-        Documents = {
-          id = "Documents";
-          path = "/mnt/pool/Documents";
-          devices = [
-            "JASPER-PC"
-            "jasper-void"
-            "ptolemy"
-            "zenfone-9"
-          ];
-          versioning = {
-            type = "staggered";
-            params = {
-              cleanInterval = "3600"; # 1 hour in seconds
-              maxAge = "15552000"; # 180 days in seconds
-            };
-          };
-        };
-        Homework = {
-          id = "Homework";
-          path = "/mnt/pool/Homework";
-          devices = [
-            "JASPER-PC"
-            "jasper-void"
-            "ptolemy"
-          ];
-          versioning = {
-            type = "staggered";
-            params = {
-              cleanInterval = "3600"; # 1 hour in seconds
-              maxAge = "15552000"; # 180 days in seconds
-            };
-          };
-        };
-        remarkable_sync = {
-          type = "recieveonly";
-          id = "remarkable_sync";
-          path = "/mnt/pool/remarkable_sync";
-          devices = [
-            "JASPER-PC"
-            "jasper-void"
-            "ptolemy"
-            "remarkable"
-            "zenfone-9"
-          ];
-          versioning = {
-            type = "staggered";
-            params = {
-              cleanInterval = "3600"; # 1 hour in seconds
-              maxAge = "15552000"; # 180 days in seconds
-            };
-          };
-        };
-      };
-      options = {
-        urAccepted = 3;  # Allow usage reporting
-      };
-      gui = {
-        user = "jasper";
-        # ENSURE YOU USE A BCRYPT ENCRYPTED PASSWORD
-        password = "$2a$10$mPe007buYdatkjXt9w71cu8XBuBACsAHgQ0oLEfacIqUeNOt6Dok6";
-      };
+  syncthingSettings = {
+    guiPassword = "$2a$10$mPe007buYdatkjXt9w71cu8XBuBACsAHgQ0oLEfacIqUeNOt6Dok6";
+    folders = {
+      Music.path = "/mnt/pool/Music";
+      Documents.path = "/mnt/pool/Documents";
+      Homework.path = "/mnt/pool/Homework";
+      remarkable_sync.path = "/mnt/pool/remarkable_sync";
+      pdf2remarkable.path = "/mnt/pool/pdf2remarkable";
     };
   };
+
+
 
   snapraid = {
     enable = true;

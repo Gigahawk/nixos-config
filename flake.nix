@@ -67,6 +67,7 @@
           ./modules/agenix-cli.nix
           ./modules/xmpp-bridge.nix
           ./modules/smartd.nix
+          ./modules/syncthing.nix
           ./hosts/ptolemy/configuration.nix
           ./hosts/ptolemy/hw-config.nix
           ./users/jasper/user.nix
@@ -123,6 +124,7 @@
             pkgs.syncthing  # Generate syncthing keys
             agenix.packages.${system}.agenix
             bcrypt-tool.packages.${system}.default
+            pkgs.nixos-rebuild  # Build test systems locally
           ];
           shellHook = ''
             export EDITOR=vim

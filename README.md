@@ -12,8 +12,14 @@
 
 1. Generate a new set of keys using `syncthing -generate=<foldername>`
 2. Import the `cert.pem` and `key.pem` files into agenix
-3. Copy the device ID from `config.xml` into the config
+3. Copy the device ID from `config.xml` into `modules/syncthing.nix`
+    - Add the device to any folders it should share
 4. Generate a GUI password using `bcrypt-tool hash <password> 10`
+5. Add `modules/syncthing.nix` to the import list for the host
+6. Define all relevant options (paths, etc.) in the host `configuration.nix`
+
+
+
 
 ## Hosts
 
@@ -59,3 +65,76 @@ Simulation of a reboot after a complete drive failure (no longer detected etc.)
     - This should import the entire database, including user accounts
     - If there are warnings about (image) files missing, make sure step 3 was completed properly
 4. Run `sudo arion run inventree-server invoke update`
+
+## Non-NixOS Hosts
+
+### Syncthing
+
+Instead of building the Syncthing config directly, the NixOS module builds a
+shell script that configures Syncthing through the API.
+Unfortunately this means that it is basically impossible to use Nix to
+declaratively manage non-NixOS Syncthing hosts.
+
+Instead, a "mostly" complete config will have to be copied from a NixOS host,
+tweaked, then imported.
+Generally:
+1. Do a fresh setup of Syncthing on the machine
+2. Copy the device ID into `modules/syncthing.nix`, add device to any shared folders
+3. Build the config on a NixOS host.
+    - Use a host that has access to all folders needed by the target host
+4. Copy the config off of the NixOS host
+5. Do any modifications necessary (see below for details)
+    - Modify the `path` attribute of all `folder` tags (the web GUI doesn't let you modify them after creation)
+6. Copy the modified config to the target host (see below for details)
+
+#### Windows
+
+Install [SyncTrazor](https://github.com/canton7/SyncTrayzor#installation)
+
+Folder paths are typical Windows paths (i.e. `C:\Users\Jasper\Documents`)
+
+Syncthing's config folder is usually at `%APPDATA%\..\Local\Syncthing`
+
+##### Common folder paths
+
+- Documents
+    - JASPER-PC: `C:\Users\Jasper\Documents`
+- Homework
+    - JASPER-PC: `D:\Homework`
+- Music
+    - JASPER-PC: `D:\Music`
+- pdf2remarkable
+    - JASPER-PC: `D:\pdf2remarkable`
+- remarkable_sync
+    - JASPER-PC: `D:\remarkable_sync`
+
+#### Android
+
+Install [Syncthing-Fork](https://play.google.com/store/apps/details?id=com.github.catfriend1.syncthingandroid&hl=en&gl=US)
+
+Folder paths are standard Android internal storage paths (i.e. `/storage/emulated/0/DCIM`)
+
+You can import the config by doing the following:
+1. Go to the `Status` tab
+2. Tap the settings gear in the top right corner
+3. Tap `Import and Export`
+4. Tap `Export Configuration`
+    - WARNING: This will export your private key, ensure you delete
+    `<Internal storage>/backup/syncthing` afterwards
+5. Copy your modified `config.xml` to `<Internal storage>/backup/syncthing`,
+   overwriting the existing file
+4. Tap `Import Configuration`
+5. Securely delete all files in `<Internal storage>/backup/syncthing`
+
+##### Common folder paths
+
+- Documents: `/storage/emulated/0/Documents`
+- Music: `/storage/emulated/0/Music`
+- pdf2remarkable: `/storage/emulated/0/pdf2remarkable`
+- remarkable_sync: `/storage/emulated/0/remarkable_sync`
+
+#### reMarkable
+
+> TODO: figure out how installation works from toltec and service stuff
+
+Ensure the `type` attribute of the `remarkable_sync` folder is set to `sendonly`

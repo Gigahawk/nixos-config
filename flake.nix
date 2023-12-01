@@ -68,6 +68,7 @@
           ./modules/xmpp-bridge.nix
           ./modules/smartd.nix
           ./modules/syncthing.nix
+          ./modules/jellyfin.nix
           ./hosts/ptolemy/configuration.nix
           ./hosts/ptolemy/hw-config.nix
           ./users/jasper/user.nix

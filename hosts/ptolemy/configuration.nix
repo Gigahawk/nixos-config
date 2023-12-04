@@ -23,10 +23,6 @@
 
   networking.hostName = "ptolemy";
 
-  services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-
   # This is a server, disable sleep
   systemd.targets.sleep.enable = false;
   systemd.targets.suspend.enable = false;

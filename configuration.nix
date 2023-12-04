@@ -7,6 +7,8 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  boot.crashDump.enable = true;
+
   hardware = {
     enableAllFirmware = true;
     # TODO: do we need this?

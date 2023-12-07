@@ -16,14 +16,14 @@
   };
 
   environment.systemPackages = with pkgs; [
-    vim
-    tree
+    arion
     git
+    syncthing
+    tailscale
+    tree
+    vim
     wget
     xplr
-    arion
-    tailscale
-    syncthing
   ];
 
   networking.firewall = {

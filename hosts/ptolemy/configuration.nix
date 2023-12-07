@@ -50,7 +50,7 @@
     startLimitBurst = 5;
     path = [
       inputs.xmpp-bridge.packages.${system}.default
-      (import ../../modules/xmpp-alert.nix { inherit pkgs config; })
+      (import ../../modules/xmpp-bridge/xmpp-alert.nix { inherit pkgs config; })
       pkgs.snapraid
     ];
     script = builtins.readFile ./snapraid_sync.sh;

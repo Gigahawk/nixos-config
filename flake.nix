@@ -65,7 +65,7 @@
           ./configuration.nix
           agenix.nixosModules.default
           ./modules/agenix-cli.nix
-          ./modules/xmpp-bridge.nix
+          ./modules/xmpp-bridge/module.nix
           ./modules/smartd.nix
           ./modules/syncthing.nix
           ./modules/jellyfin.nix

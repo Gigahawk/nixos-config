@@ -18,6 +18,8 @@
   environment.systemPackages = with pkgs; [
     arion
     git
+    hwinfo
+    lshw
     syncthing
     tailscale
     tree

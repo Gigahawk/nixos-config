@@ -12,14 +12,17 @@ in {
   "jasper-virtualbox.age".publicKeys = users ++ [ virtualbox ];
   "samba-virtualbox.age".publicKeys = users ++ [ virtualbox ];
   "tailscale-virtualbox.age".publicKeys = users ++ [ virtualbox ];
+  "xmpp-jid-virtualbox.age".publicKeys = users ++ [ virtualbox ];
+  "xmpp-password-virtualbox.age".publicKeys = users ++ [ virtualbox ];
 
   "jasper-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "tailscale-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "xmpp-jid-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "xmpp-password-ptolemy.age".publicKeys = users ++ [ ptolemy ];
-  "xmpp-target-jid.age".publicKeys = users ++ systems;
   "syncthing-cert-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "syncthing-key-ptolemy.age".publicKeys = users ++ [ ptolemy ];
+
+  "xmpp-target-jid.age".publicKeys = users ++ systems;
 }
 
 

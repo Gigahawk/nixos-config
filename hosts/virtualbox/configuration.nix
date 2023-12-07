@@ -173,6 +173,15 @@
     tailscale-virtualbox = {
       file = ../../secrets/tailscale-virtualbox.age;
     };
+    xmpp-password = {
+      file = ../../secrets/xmpp-password-virtualbox.age;
+    };
+    xmpp-jid = {
+      file = ../../secrets/xmpp-jid-virtualbox.age;
+    };
+    xmpp-target-jid = {
+      file = ../../secrets/xmpp-target-jid.age;
+    };
   };
 
 }

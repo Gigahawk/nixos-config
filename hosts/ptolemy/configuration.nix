@@ -42,25 +42,17 @@
     mergerfs-tools
   ];
 
-  systemd.services.snapraid_sync = {
-    serviceConfig.Type = "oneshot";
-    serviceConfig.RestartSec = 30;
-    serviceConfig.Restart = "on-failure";
-    startLimitIntervalSec = 300;
-    startLimitBurst = 5;
-    path = [
-      inputs.xmpp-bridge.packages.${system}.default
-      (import ../../modules/xmpp-bridge/xmpp-alert.nix { inherit pkgs config; })
-      pkgs.snapraid
+  snapraidSettings = {
+    dataDisks = {
+      d0 = "/mnt/data0";
+      d1 = "/mnt/data1";
+      # d2 = "/mnt/data2";
+    };
+    parityFiles = [
+      "/mnt/parity0/snapraid0.parity"
     ];
-    script = builtins.readFile ./snapraid_sync.sh;
   };
-  systemd.timers.snapraid_sync = {
-    wantedBy = [ "timers.target" ];
-    partOf = [ "snapraid_sync.service" ];
-    # TODO: Change this to once a week or something
-    timerConfig.OnCalendar = [ "*-*-* 00:00:00" ];
-  };
+
 
   syncthingSettings = {
     guiPassword = "$2a$10$mPe007buYdatkjXt9w71cu8XBuBACsAHgQ0oLEfacIqUeNOt6Dok6";
@@ -72,33 +64,6 @@
       pdf2remarkable.path = "/mnt/pool/pdf2remarkable";
     };
   };
-
-
-
-  snapraid = {
-    enable = true;
-    dataDisks = {
-      d0 = "/mnt/data0";
-      d1 = "/mnt/data1";
-      # d2 = "/mnt/data2";
-    };
-    # disable maintenance services, handle using our own service
-    sync.interval = "1970-01-01";
-    scrub.interval = "1970-01-01";
-    parityFiles = [
-      "/mnt/parity0/snapraid0.parity"
-    ];
-    contentFiles = [
-      "/var/snapraid.content"
-      "/mnt/data0/snapraid.content"
-      "/mnt/data1/snapraid.content"
-      # "/mnt/data2/snapraid.content"
-    ];
-    exclude = [
-      "/lost+found/"
-    ];
-  };
-
 
   services.samba-wsdd.enable = true;
   networking.firewall.allowedTCPPorts = [

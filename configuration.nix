@@ -22,6 +22,7 @@
     hwinfo
     lm_sensors
     lshw
+    smartmontools
     syncthing
     tailscale
     tree

@@ -39,13 +39,13 @@ After a fresh install, add user passwords with `smbpasswd -a <user>`
 
 Simulation of a reboot after a complete drive failure (no longer detected etc.)
 
-1. Disconnect drive from VM
-1. Create a new blank drive and insert it.
-1. Reboot the VM
-1. VM should fail to boot, dropping you to a recovery prompt
+1. Shutdown machine
+1. Replace the bad drive in the machine
+1. Reboot the machine, it should fail to boot, dropping you to a recovery prompt
 1. Type in the root password to get to the shell
-1. Run `lsblk` to figure out which drive is the new one (should have no mountpoint)
+1. Run `lsblk -l -o NAME,SIZE,LABEL,MODEL,SERIAL` to figure out which drive is the new one (should have no label)
 1. Run `mkfs.ext4 -m 0 -L <missing label> /dev/sd<new disk>`
+    - If no replacement drive is available, you may try to reuse the bad drive by reformatting with the `-cc` option to have the new filesystem avoid detected bad blocks
 1. Press `Ctrl+D` to continue booting
 1. Once logged in, run `snapraid -l /tmp/snapraid-fix.log fix`
     - Add `-d <disk name>` to only target the replaced drive

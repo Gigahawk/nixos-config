@@ -18,7 +18,9 @@
   environment.systemPackages = with pkgs; [
     arion
     git
+    hddtemp
     hwinfo
+    lm_sensors
     lshw
     syncthing
     tailscale

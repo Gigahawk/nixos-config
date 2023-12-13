@@ -20,6 +20,7 @@
     git
     hddtemp
     hwinfo
+    jq
     lm_sensors
     lshw
     smartmontools

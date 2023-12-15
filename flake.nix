@@ -24,7 +24,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xmpp-bridge = {
-      url = "github:Gigahawk/xmpp-bridge";
+      url = "github:Gigahawk/xmpp-bridge-py";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     bcrypt-tool = {

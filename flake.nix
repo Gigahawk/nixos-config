@@ -31,6 +31,10 @@
       url = "github:Gigahawk/bcrypt-tool";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    smartp = {
+      url = "github:Gigahawk/smartp";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -67,7 +71,7 @@
           ./modules/agenix-cli.nix
           ./modules/snapraid/module.nix
           ./modules/xmpp-bridge/module.nix
-          ./modules/smartd.nix
+          ./modules/smartp/module.nix
           ./modules/syncthing.nix
           ./modules/jellyfin.nix
           ./hosts/ptolemy/configuration.nix

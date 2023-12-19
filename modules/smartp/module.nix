@@ -1,0 +1,42 @@
+{ config, pkgs, lib, inputs, system, ... }:
+{
+  environment.systemPackages = [
+    inputs.smartp.packages.${system}.default
+  ];
+
+  systemd.services.run_smartp = {
+    serviceConfig.Type = "oneshot";
+    serviceConfig.RestartSec = 30;
+    serviceConfig.Restart = "on-failure";
+    startLimitIntervalSec = 300;
+    startLimitBurst = 5;
+    path = [
+      inputs.xmpp-bridge.packages.${system}.default
+      inputs.smartp.packages.${system}.default
+      (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config; })
+    ];
+    script = builtins.readFile ./run_smartp.sh;
+  };
+  systemd.timers.run_smartp = {
+    wantedBy = [ "timers.target" ];
+    partOf = [ "run_smartp.service" ];
+    # Run every day except for first of the month
+    timerConfig.OnCalendar = [ "*-*-02..31 12:00:00" ];
+  };
+
+  systemd.services.run_smartp_long = {
+    serviceConfig.Type = "oneshot";
+    path = [
+      inputs.xmpp-bridge.packages.${system}.default
+      inputs.smartp.packages.${system}.default
+      (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config; })
+    ];
+    script = builtins.readFile ./run_smartp_long.sh;
+  };
+  systemd.timers.run_smartp_long = {
+    wantedBy = [ "timers.target" ];
+    partOf = [ "run_smartp_long.service" ];
+    # Run every first of the month
+    timerConfig.OnCalendar = [ "*-*-1 12:00:00" ];
+  };
+}

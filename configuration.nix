@@ -42,6 +42,7 @@
 
   services.tailscale.enable = true;
   services.automatic-timezoned.enable = true;
+  services.uptimed.enable = true;
 
   services.openssh = {
     enable = true;

@@ -22,6 +22,13 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "ptolemy";
+  networking.firewall.allowedTCPPorts = [
+    5357 # wsdd (some samba thing)
+    19999 # netdata
+  ];
+  networking.firewall.allowedUDPPorts = [
+    3702 # wsdd (some samba thing)
+  ];
 
   # This is a server, disable sleep
   systemd.targets.sleep.enable = false;
@@ -66,12 +73,6 @@
   };
 
   services.samba-wsdd.enable = true;
-  networking.firewall.allowedTCPPorts = [
-    5357 # wsdd
-  ];
-  networking.firewall.allowedUDPPorts = [
-    3702 # wsdd
-  ];
   services.samba = {
     enable = true;
     openFirewall = true;
@@ -149,6 +150,26 @@
   #    # forceSSL = true;
   #  };
   #};
+
+  services.netdata = {
+    enable = true;
+    config = {
+      global = {
+        # uncomment to reduce memory to 32 MB
+        #"page cache size" = 32;
+
+        # update interval
+        "update every" = 1;
+      };
+      web = {
+        "default port" = 19999;
+      };
+      ml = {
+        # enable machine learning
+        "enabled" = "yes";
+      };
+    };
+  };
 
   age.secrets = {
     #alert-outlook = {

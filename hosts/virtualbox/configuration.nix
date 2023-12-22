@@ -34,6 +34,7 @@
   systemd.targets.hybrid-sleep.enable = false;
 
   environment.systemPackages = with pkgs; [
+    firefox
     mergerfs
     mergerfs-tools
   ];

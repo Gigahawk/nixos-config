@@ -575,11 +575,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1703066098,
-        "narHash": "sha256-B45s2OYuBVifRscL3VBZrZOSw/WUmD5OSG6vtdQz7Lo=",
+        "lastModified": 1703563606,
+        "narHash": "sha256-WdKXD6nbRFijRTBfHBsjQCs9Z8AF7PxwaWgwng8bG6o=",
         "owner": "Gigahawk",
         "repo": "smartp",
-        "rev": "b187d51c2fbf0481f1be6c63121d7347c44fd555",
+        "rev": "60e1d2490893709cea4b93a1bccc3c1d3096e8c8",
         "type": "github"
       },
       "original": {

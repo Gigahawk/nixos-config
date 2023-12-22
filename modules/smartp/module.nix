@@ -11,6 +11,7 @@
     startLimitIntervalSec = 300;
     startLimitBurst = 5;
     path = [
+      pkgs.util-linux
       inputs.xmpp-bridge.packages.${system}.default
       inputs.smartp.packages.${system}.default
       (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config; })
@@ -27,6 +28,7 @@
   systemd.services.run_smartp_long = {
     serviceConfig.Type = "oneshot";
     path = [
+      pkgs.util-linux
       inputs.xmpp-bridge.packages.${system}.default
       inputs.smartp.packages.${system}.default
       (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config; })

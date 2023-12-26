@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, system, ... }:
 
 {
   imports = [ ];
@@ -16,7 +16,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    arion
+    inputs.arion.packages.${system}.default
     btop
     git
     hddtemp

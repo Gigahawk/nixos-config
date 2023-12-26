@@ -8,7 +8,7 @@
     nginx_config = pkgs.writeText "nginx.prod.conf" (builtins.readFile ./nginx.prod.conf);
     backup_script = pkgs.writeScript "backup.sh" (builtins.readFile ./backup.sh);
     backup_script_container_path = "/home/inventree/backup.sh";
-    inventree_version = "0.12.6";
+    inventree_version = "0.13.0";
     inventree_web_port = "1337";
     inventree_db_name = "inventree";
     inventree_db_port = "5432";

@@ -1,7 +1,9 @@
 { pkgs, ... }:
 {
-  project.name = "inventree";
-  services = 
+  # arion generates a network named "inventree" which can't have the same
+  # name as the project name
+  project.name = "inventree-project";
+  services =
   let
     nginx_config = pkgs.writeText "nginx.prod.conf" (builtins.readFile ./nginx.prod.conf);
     backup_script = pkgs.writeScript "backup.sh" (builtins.readFile ./backup.sh);

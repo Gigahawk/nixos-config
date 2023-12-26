@@ -26,6 +26,7 @@
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.xautolock.time = 99999;
 
   # This is a server, disable sleep
   systemd.targets.sleep.enable = false;

@@ -19,6 +19,7 @@
     inputs.arion.packages.${system}.default
     btop
     git
+    gosu
     hddtemp
     hwinfo
     jq

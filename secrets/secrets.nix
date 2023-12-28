@@ -14,6 +14,8 @@ in {
   "tailscale-virtualbox.age".publicKeys = users ++ [ virtualbox ];
   "xmpp-jid-virtualbox.age".publicKeys = users ++ [ virtualbox ];
   "xmpp-password-virtualbox.age".publicKeys = users ++ [ virtualbox ];
+  "inventree-secret-virtualbox.age".publicKeys = users ++ [ virtualbox ];
+  "inventree-jasper-virtualbox.age".publicKeys = users ++ [ virtualbox ];
 
   "jasper-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "tailscale-ptolemy.age".publicKeys = users ++ [ ptolemy ];

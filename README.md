@@ -51,6 +51,11 @@ Simulation of a reboot after a complete drive failure (no longer detected etc.)
     - Add `-d <disk name>` to only target the replaced drive
 
 
+#### InvenTree Setup
+
+1. Generate a new secret key with `inventree-gen-secret`, import into agenix
+1. Map it into the config with permissions ??? and ownership ???
+
 #### InvenTree bootstrapping
 
 1. Clone `git@github.com:Gigahawk/inventree-backup.git` to `/mnt/pool/inventree-backup`

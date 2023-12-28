@@ -34,6 +34,10 @@
       url = "github:Gigahawk/smartp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    inventree = {
+      url = "github:Gigahawk/nixos-inventree";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -45,6 +49,7 @@
     nixos-generators,
     xmpp-bridge,
     bcrypt-tool,
+    inventree,
     ... }:
   let
     system = "x86_64-linux";
@@ -98,6 +103,8 @@
           ./modules/agenix-cli.nix
           ./modules/snapraid/module.nix
           ./modules/xmpp-bridge/module.nix
+          inventree.nixosModule
+          #./modules/inventree/module.nix
           #./modules/immich/immich.nix
           ./hosts/virtualbox/configuration.nix
           ./hosts/virtualbox/hw-config.nix
@@ -133,6 +140,7 @@
             agenix.packages.${system}.agenix
             bcrypt-tool.packages.${system}.default
             pkgs.nixos-rebuild  # Build test systems locally
+            inventree.packages.${system}.inventree-gen-secret  # Generate secret_key.txt
           ];
           shellHook = ''
             export EDITOR=vim

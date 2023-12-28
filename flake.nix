@@ -98,7 +98,7 @@
           ./modules/agenix-cli.nix
           ./modules/snapraid/module.nix
           ./modules/xmpp-bridge/module.nix
-          ./modules/immich/immich.nix
+          #./modules/immich/immich.nix
           ./hosts/virtualbox/configuration.nix
           ./hosts/virtualbox/hw-config.nix
           ./users/jasper/user.nix

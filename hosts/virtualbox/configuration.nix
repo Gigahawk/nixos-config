@@ -7,15 +7,15 @@
 {
   imports = [ ];
 
-  virtualisation.arion = {
-    backend = "docker";
-    projects = 
-    {
-      inventree.settings = {
-        imports = [./../../docker-compose/inventree/arion-compose.nix];
-      };
-    };
-  };
+  #virtualisation.arion = {
+  #  backend = "docker";
+  #  projects = 
+  #  {
+  #    inventree.settings = {
+  #      imports = [./../../docker-compose/inventree/arion-compose.nix];
+  #    };
+  #  };
+  #};
 
   # use the systemd-boot efi boot loader.
   boot.loader.systemd-boot.enable = true;

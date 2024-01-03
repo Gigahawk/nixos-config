@@ -104,7 +104,7 @@
           ./modules/snapraid/module.nix
           ./modules/xmpp-bridge/module.nix
           inventree.nixosModule
-          #./modules/inventree/module.nix
+          ./modules/inventree-backup/module.nix
           #./modules/immich/immich.nix
           ./hosts/virtualbox/configuration.nix
           ./hosts/virtualbox/hw-config.nix

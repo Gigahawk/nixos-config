@@ -793,11 +793,11 @@
         "poetry2nix": "poetry2nix_2"
       },
       "locked": {
-        "lastModified": 1702888517,
-        "narHash": "sha256-n+Qfaosws1kk6D3+C9ZQH076TIriyHHjrzXd5cGS3K0=",
+        "lastModified": 1704275669,
+        "narHash": "sha256-decwMO1gLmJVGUqRdkNC0Ah/XIjQddk8NgpM7M0pf14=",
         "owner": "Gigahawk",
         "repo": "xmpp-bridge-py",
-        "rev": "7dde125ac88c8957e51e6565d32dfd6d9c918192",
+        "rev": "ff72d44dec804323370f7e284fd699aff4d54e79",
         "type": "github"
       },
       "original": {

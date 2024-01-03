@@ -46,6 +46,14 @@
       };
     };
   };
+  services.inventreeBackup = {
+    enable = true;
+    backupPath = "/mnt/pool/inventree-test/git-backup";
+
+    enablePush = true;
+    pushRemote = "Gigahawk/inventree-test-backup";
+    patFile = config.age.secrets.inventree-backup-pat.path;
+  };
 
   # use the systemd-boot efi boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -216,6 +224,11 @@
     };
     inventree-secret = {
       file = ../../secrets/inventree-secret-virtualbox.age;
+      owner = "inventree";
+      group = "inventree";
+    };
+    inventree-backup-pat = {
+      file = ../../secrets/inventree-backup-pat-virtualbox.age;
       owner = "inventree";
       group = "inventree";
     };

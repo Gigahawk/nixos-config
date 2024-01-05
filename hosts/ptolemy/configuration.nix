@@ -21,6 +21,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Emulated systems for building
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+  ];
+
   networking.hostName = "ptolemy";
   networking.firewall.allowedTCPPorts = [
     5357 # wsdd (some samba thing)

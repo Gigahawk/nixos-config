@@ -38,6 +38,10 @@
       url = "github:Gigahawk/nixos-inventree";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-top = {
+      url = "github:Gigahawk/nix-top";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -50,6 +54,7 @@
     xmpp-bridge,
     bcrypt-tool,
     inventree,
+    nix-top,
     ... }:
   let
     system = "x86_64-linux";

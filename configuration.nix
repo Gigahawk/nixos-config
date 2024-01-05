@@ -21,7 +21,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    inputs.arion.packages.${system}.default
     btop
     git
     gosu
@@ -37,6 +36,10 @@
     vim
     wget
     xplr
+
+    # Custom packages
+    inputs.arion.packages.${system}.default
+    inputs.nix-top.packages.${system}.default
   ];
 
   networking.firewall = {

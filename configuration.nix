@@ -29,6 +29,7 @@
     jq
     lm_sensors
     lshw
+    nix-output-monitor
     smartmontools
     syncthing
     tailscale

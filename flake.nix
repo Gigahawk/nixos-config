@@ -138,6 +138,7 @@
       in {
         devShell = pkgs.mkShell {
           nativeBuildInputs = [
+            pkgs.nix-output-monitor # Better nix build output
             pkgs.vim
             pkgs.systemd  # Read journalctl logs locally
             pkgs.mkpasswd  # Generate password hashes

@@ -26,6 +26,13 @@
     "aarch64-linux"
   ];
 
+  nix.settings.system-features = [
+    "nixos-test"
+    "benchmark"
+    "big-parallel"
+    "kvm"
+  ];
+
   networking.hostName = "ptolemy";
   networking.firewall.allowedTCPPorts = [
     5357 # wsdd (some samba thing)

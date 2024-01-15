@@ -57,7 +57,6 @@
     nix-top,
     ... }:
   let
-    system = "x86_64-linux";
     lib = nixpkgs.lib;
     overlays = { pkgs, config, ... }: {
       config.nixpkgs.overlays = [
@@ -66,61 +65,67 @@
   in {
     nixosConfigurations = {
       # Main server
-      ptolemy = lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
+      ptolemy = let
+        system = "x86_64-linux";
+      in
+        lib.nixosSystem {
           inherit system;
+          specialArgs = {
+            inherit inputs;
+            inherit system;
+          };
+          modules = [
+            overlays
+            arion.nixosModules.arion
+            ./configuration.nix
+            agenix.nixosModules.default
+            ./modules/agenix-cli.nix
+            ./modules/snapraid/module.nix
+            ./modules/xmpp-bridge/module.nix
+            ./modules/smartp/module.nix
+            ./modules/syncthing.nix
+            ./modules/jellyfin.nix
+            ./hosts/ptolemy/configuration.nix
+            ./hosts/ptolemy/hw-config.nix
+            ./users/jasper/user.nix
+            #home-manager.nixosModules.home-manager {
+            #  home-manager.useGlobalPkgs = true;
+            #  home-manager.useUserPackages = true;
+            #  home-manager.users.jasper = import ./users/jasper.nix;
+            #}
+          ];
         };
-        modules = [
-          overlays
-          arion.nixosModules.arion
-          ./configuration.nix
-          agenix.nixosModules.default
-          ./modules/agenix-cli.nix
-          ./modules/snapraid/module.nix
-          ./modules/xmpp-bridge/module.nix
-          ./modules/smartp/module.nix
-          ./modules/syncthing.nix
-          ./modules/jellyfin.nix
-          ./hosts/ptolemy/configuration.nix
-          ./hosts/ptolemy/hw-config.nix
-          ./users/jasper/user.nix
-          #home-manager.nixosModules.home-manager {
-          #  home-manager.useGlobalPkgs = true;
-          #  home-manager.useUserPackages = true;
-          #  home-manager.users.jasper = import ./users/jasper.nix;
-          #}
-        ];
-      };
       # Test server
-      virtualbox = lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
+      virtualbox = let
+        system = "x86_64-linux";
+      in
+        lib.nixosSystem {
           inherit system;
+          specialArgs = {
+            inherit inputs;
+            inherit system;
+          };
+          modules = [
+            overlays
+            arion.nixosModules.arion
+            ./configuration.nix
+            agenix.nixosModules.default
+            ./modules/agenix-cli.nix
+            ./modules/snapraid/module.nix
+            ./modules/xmpp-bridge/module.nix
+            inventree.nixosModule
+            ./modules/inventree-backup/module.nix
+            #./modules/immich/immich.nix
+            ./hosts/virtualbox/configuration.nix
+            ./hosts/virtualbox/hw-config.nix
+            ./users/jasper/user.nix
+            #home-manager.nixosModules.home-manager {
+            #  home-manager.useGlobalPkgs = true;
+            #  home-manager.useUserPackages = true;
+            #  home-manager.users.jasper = import ./users/jasper.nix;
+            #}
+          ];
         };
-        modules = [
-          overlays
-          arion.nixosModules.arion
-          ./configuration.nix
-          agenix.nixosModules.default
-          ./modules/agenix-cli.nix
-          ./modules/snapraid/module.nix
-          ./modules/xmpp-bridge/module.nix
-          inventree.nixosModule
-          ./modules/inventree-backup/module.nix
-          #./modules/immich/immich.nix
-          ./hosts/virtualbox/configuration.nix
-          ./hosts/virtualbox/hw-config.nix
-          ./users/jasper/user.nix
-          #home-manager.nixosModules.home-manager {
-          #  home-manager.useGlobalPkgs = true;
-          #  home-manager.useUserPackages = true;
-          #  home-manager.users.jasper = import ./users/jasper.nix;
-          #}
-        ];
-      };
     };
     packages.x86_64-linux = {
       ptolemy-installer = nixos-generators.nixosGenerate {

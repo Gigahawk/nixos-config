@@ -42,9 +42,14 @@
       url = "github:Gigahawk/nix-top";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware = {
+      url = "github:nixos/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
+    self,
     nixpkgs,
     home-manager,
     agenix,
@@ -55,14 +60,31 @@
     bcrypt-tool,
     inventree,
     nix-top,
+    nixos-hardware,
     ... }:
   let
     lib = nixpkgs.lib;
+    mkSdImage = host:
+      (self.nixosConfigurations.${host}.extendModules {
+        modules = [
+          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+        ];
+      }).config.system.build.sdImage;
     overlays = { pkgs, config, ... }: {
       config.nixpkgs.overlays = [
+        # TODO: does this cause problems for other systems?
+        # The following is requried for building RPi images {
+        # https://github.com/NixOS/nixpkgs/issues/126755#issuecomment-869149243
+        (final: super: {
+          makeModulesClosure = x:
+            super.makeModulesClosure (x // { allowMissing = true; });
+        })
       ];
     };
   in {
+    images = {
+      haro = mkSdImage "haro";
+    };
     nixosConfigurations = {
       # Main server
       ptolemy = let
@@ -94,6 +116,29 @@
             #  home-manager.users.jasper = import ./users/jasper.nix;
             #}
           ];
+        };
+      # Main server Pi KVM
+      haro = let
+        system = "aarch64-linux";
+      in
+        lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs;
+            inherit system;
+          };
+          modules = [
+            overlays
+            ./configuration.nix
+            #agenix.nixosModules.default
+            #./modules/agenix-cli.nix
+            #./modules/xmpp-bridge/module.nix
+            ./modules/raspi4
+            ./hosts/haro/configuration.nix
+            ./hosts/haro/hw-config.nix
+            ./users/jasper/user.nix
+          ];
+
         };
       # Test server
       virtualbox = let

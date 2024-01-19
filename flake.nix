@@ -44,7 +44,8 @@
     };
     nixos-hardware = {
       url = "github:nixos/nixos-hardware";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # nixos-hardware doesn't rely on nixpkgs
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -130,8 +131,8 @@
           modules = [
             overlays
             ./configuration.nix
-            #agenix.nixosModules.default
-            #./modules/agenix-cli.nix
+            agenix.nixosModules.default
+            ./modules/agenix-cli.nix
             #./modules/xmpp-bridge/module.nix
             ./modules/raspi4
             ./hosts/haro/configuration.nix

@@ -80,37 +80,26 @@
   #  };
   #};
 
-  #age.secrets = {
-  #  #alert-outlook = {
-  #  #  file = ../../secrets/alert-outlook.age;
-  #  #};
-  #  jasper = {
-  #    file = ../../secrets/jasper-ptolemy.age;
-  #  };
-  #  #samba-virtualbox = {
-  #  #  file = ../../secrets/samba-virtualbox.age;
-  #  #  path = "/home/jasper/samba-test";
-  #  #  mode = "777";
-  #  #};
-  #  syncthing-key = {
-  #    file = ../../secrets/syncthing-key-ptolemy.age;
-  #  };
-  #  syncthing-cert = {
-  #    file = ../../secrets/syncthing-cert-ptolemy.age;
-  #  };
-  #  tailscale-key = {
-  #    file = ../../secrets/tailscale-ptolemy.age;
-  #  };
-  #  xmpp-password = {
-  #    file = ../../secrets/xmpp-password-ptolemy.age;
-  #  };
-  #  xmpp-jid = {
-  #    file = ../../secrets/xmpp-jid-ptolemy.age;
-  #  };
-  #  xmpp-target-jid = {
-  #    file = ../../secrets/xmpp-target-jid.age;
-  #  };
-  #};
+  age.secrets = {
+    #alert-outlook = {
+    #  file = ../../secrets/alert-outlook.age;
+    #};
+    jasper = {
+      file = ../../secrets/jasper-ptolemy.age;
+    };
+    #tailscale-key = {
+    #  file = ../../secrets/tailscale-ptolemy.age;
+    #};
+    #xmpp-password = {
+    #  file = ../../secrets/xmpp-password-ptolemy.age;
+    #};
+    #xmpp-jid = {
+    #  file = ../../secrets/xmpp-jid-ptolemy.age;
+    #};
+    #xmpp-target-jid = {
+    #  file = ../../secrets/xmpp-target-jid.age;
+    #};
+  };
 
 }
 

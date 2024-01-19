@@ -39,7 +39,6 @@
     xplr
 
     # Custom packages
-    inputs.arion.packages.${system}.default
     inputs.nix-top.packages.${system}.default
   ];
 

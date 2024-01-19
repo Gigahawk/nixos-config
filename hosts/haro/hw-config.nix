@@ -1,14 +1,21 @@
 { config, lib, pkgs, modulesPath, ... }:
-
+let
+  rpi4-hw = fetchTarball {
+    url = "https://github.com/NixOS/nixos-hardware/archive/32f61571b486efc987baca553fb35df22532ba63.tar.gz";
+    sha256 = "sha256:0sf34kb40gf73zrhcy2j0jijgbzd571rfq1wzan4qa6hg04xjbhf";
+  };
+in
 {
-  imports = [ ];
+  imports = [
+    "${rpi4-hw}/raspberry-pi/4"
+  ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackages_rpi4;
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  ##boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  #boot.initrd.kernelModules = [ ];
+  ##boot.kernelModules = [ "kvm-amd" ];
+  #boot.extraModulePackages = [ ];
 
   fileSystems = {
     "/" = {

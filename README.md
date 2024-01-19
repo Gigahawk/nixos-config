@@ -18,9 +18,6 @@
 5. Add `modules/syncthing.nix` to the import list for the host
 6. Define all relevant options (paths, etc.) in the host `configuration.nix`
 
-
-
-
 ## Hosts
 
 ### Servers (virtualbox, ptolemy)
@@ -30,6 +27,8 @@
 - `ptolemy`
     - Main server
     - Syncthing device ID: `DVSWOT3-6RE3PRD-OB3IVQI-VELDUFR-EMHZZCR-MPGNVW3-EIHW4LK-REFXVAJ`
+- `haro`
+    - Pi KVM connected to `ptolemy`
 
 #### Samba bootstrapping
 
@@ -70,6 +69,14 @@ Simulation of a reboot after a complete drive failure (no longer detected etc.)
     - This should import the entire database, including user accounts
     - If there are warnings about (image) files missing, make sure step 3 was completed properly
 4. Run `sudo arion run inventree-server invoke update`
+
+## Building Raspberry Pi Images
+
+1. Run `nix build .#images.<host>`
+    - ARM packages can't be directly built on non-NixOS hosts, you will probably have to use a remote builder for now.
+        - See https://nixos.org/manual/nix/stable/advanced-topics/distributed-builds.html
+        - To connect to a remote builder over SSH you'll need an SSH key that is not password protected, use `eval $(ssh-agent)`, then `ssh-add` to temporarily have passwordless access to your key
+        - You'll probably need something like `--builders '<user@host> aarch64-linux - <core_count> - big-parallel'`
 
 ## Non-NixOS Hosts
 

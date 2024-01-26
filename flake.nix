@@ -199,6 +199,7 @@
             pkgs.nixos-rebuild  # Build test systems locally
             inventree.packages.${system}.inventree-gen-secret  # Generate secret_key.txt
             pkgs.zstd  # Compress/decompress Pi images
+            pkgs.unixtools.fdisk
           ];
           shellHook = ''
             export EDITOR=vim

@@ -31,7 +31,7 @@ in
   };
 
   config = {
-    snapraid = {
+    services.snapraid = {
       enable = true;
       # disable maintenance services, handle using our own service
       sync.interval = "1970-01-01";

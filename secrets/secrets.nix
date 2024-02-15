@@ -5,8 +5,14 @@ let
 
   virtualbox = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFeQvEjbv20hcOaJ4RpzrC5eojf1FGG8fN4h9g8vHU/q";
   ptolemy = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEsuCHOVN9ua62cq+m9C9i9PVrpZaOGiA3NJ0Fhn1kF1";
-  systems = [ virtualbox ptolemy ];
+  haro = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBexEu5Y3tOU4oe+QXiZWVM/eJcLD3qRjZj1kcsVs4p2";
+  # For build image host detection
+  systems = {
+    inherit haro ptolemy virtualbox;
+  };
 in {
+  inherit systems;
+
   "alert-outlook.age".publicKeys = users ++ [ virtualbox ];
 
   "jasper-virtualbox.age".publicKeys = users ++ [ virtualbox ];
@@ -25,7 +31,11 @@ in {
   "syncthing-cert-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "syncthing-key-ptolemy.age".publicKeys = users ++ [ ptolemy ];
 
-  "xmpp-target-jid.age".publicKeys = users ++ systems;
+  "jasper-haro.age".publicKeys = users ++ [ haro ];
+  "tailscale-haro.age".publicKeys = users ++ [ ptolemy ];
+
+  "wifi-env.age".publicKeys = users ++ (builtins.attrValues systems);
+  "xmpp-target-jid.age".publicKeys = users ++ (builtins.attrValues systems);
 }
 
 

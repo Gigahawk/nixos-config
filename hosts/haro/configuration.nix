@@ -12,6 +12,7 @@
   #boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "haro";
+  networking.wireless.enable = true;
 
   # This is a server, disable sleep
   systemd.targets.sleep.enable = false;
@@ -85,7 +86,7 @@
     #  file = ../../secrets/alert-outlook.age;
     #};
     jasper = {
-      file = ../../secrets/jasper-ptolemy.age;
+      file = ../../secrets/jasper-haro.age;
     };
     #tailscale-key = {
     #  file = ../../secrets/tailscale-ptolemy.age;
@@ -99,6 +100,9 @@
     #xmpp-target-jid = {
     #  file = ../../secrets/xmpp-target-jid.age;
     #};
+    wifi-env = {
+      file = ../../secrets/wifi-env.age;
+    };
   };
 
 }

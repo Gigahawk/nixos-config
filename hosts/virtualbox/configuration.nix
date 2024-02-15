@@ -237,6 +237,9 @@
       owner = "inventree";
       group = "inventree";
     };
+    wifi-env = {
+      file = ../../secrets/wifi-env.age;
+    };
   };
 
 }

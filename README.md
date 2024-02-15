@@ -73,10 +73,12 @@ Simulation of a reboot after a complete drive failure (no longer detected etc.)
 ## Building Raspberry Pi Images
 
 1. Run `nix build .#images.<host>`
-    - ARM packages can't be directly built on non-NixOS hosts, you will probably have to use a remote builder for now.
-        - See https://nixos.org/manual/nix/stable/advanced-topics/distributed-builds.html
-        - To connect to a remote builder over SSH you'll need an SSH key that is not password protected, use `eval $(ssh-agent)`, then `ssh-add` to temporarily have passwordless access to your key
-        - You'll probably need something like `--builders '<user@host> aarch64-linux - <core_count> - big-parallel'`
+    - In order to build on non-NixOS hosts, install `qemu-user` (for Ubuntu see [this link](https://azeria-labs.com/arm-on-x86-qemu-user/)), then add `extra-platforms = aarch64-linux` to your `nix.conf`
+1. Copy the image out of `result/sd-image/` to your local directory
+1. Extract the `.zst` file with `unzstd`
+1. Mount the extracted image with fdisk etc.
+1. 
+
 
 ## Non-NixOS Hosts
 

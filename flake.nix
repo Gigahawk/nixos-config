@@ -191,6 +191,9 @@
           nativeBuildInputs = [
             pkgs.nix-output-monitor # Better nix build output
             pkgs.vim
+            pkgs.openssh
+            pkgs.rsync
+            pkgs.jq
             pkgs.systemd  # Read journalctl logs locally
             pkgs.mkpasswd  # Generate password hashes
             pkgs.syncthing  # Generate syncthing keys

@@ -66,6 +66,14 @@
     settings.KbdInteractiveAuthentication = false;
   };
 
+  networking.wireless = {
+    environmentFile = config.age.secrets.wifi-env.path;
+    networks = {
+      gameboy.psk = "@GAMEBOY_PASS@";
+      gameboy-5GHz.psk = "@GAMEBOY_PASS@";
+    };
+  };
+
   users.mutableUsers = false;
 
   system.stateVersion = "23.05";

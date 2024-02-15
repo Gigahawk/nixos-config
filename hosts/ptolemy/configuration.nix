@@ -214,6 +214,9 @@
     xmpp-target-jid = {
       file = ../../secrets/xmpp-target-jid.age;
     };
+    wifi-env = {
+      file = ../../secrets/wifi-env.age;
+    };
   };
 
 }

@@ -17,6 +17,8 @@
   #  };
   #};
 
+  virtualisation.oci-containers.backend = "docker";
+
   # For now all paths need to be strings?
   services.inventree = {
     enable = true;
@@ -53,6 +55,13 @@
     enablePush = true;
     pushRemote = "Gigahawk/inventree-test-backup";
     patFile = config.age.secrets.inventree-backup-pat.path;
+  };
+
+  services.immich = {
+    enable = true;
+    dataPath = "/mnt/pool/immich";
+    dbPath = "/mnt/pool/immich/data";
+    dbCredentialsFile = config.age.secrets.immich-db-creds.path;
   };
 
   # use the systemd-boot efi boot loader.
@@ -236,6 +245,9 @@
       file = ../../secrets/inventree-jasper-virtualbox.age;
       owner = "inventree";
       group = "inventree";
+    };
+    immich-db-creds = {
+      file = ../../secrets/immich-db-creds-virtualbox.age;
     };
     wifi-env = {
       file = ../../secrets/wifi-env.age;

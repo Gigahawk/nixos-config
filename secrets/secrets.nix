@@ -23,6 +23,7 @@ in {
   "inventree-secret-virtualbox.age".publicKeys = users ++ [ virtualbox ];
   "inventree-jasper-virtualbox.age".publicKeys = users ++ [ virtualbox ];
   "inventree-backup-pat-virtualbox.age".publicKeys = users ++ [ virtualbox ];
+  "immich-db-creds-virtualbox.age".publicKeys = users ++ [ virtualbox ];
 
   "jasper-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "tailscale-ptolemy.age".publicKeys = users ++ [ ptolemy ];

@@ -161,7 +161,7 @@
             ./modules/xmpp-bridge/module.nix
             inventree.nixosModule
             ./modules/inventree-backup/module.nix
-            #./modules/immich/immich.nix
+            ./modules/immich/immich.nix
             ./hosts/virtualbox/configuration.nix
             ./hosts/virtualbox/hw-config.nix
             ./users/jasper/user.nix

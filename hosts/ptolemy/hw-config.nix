@@ -78,6 +78,13 @@
     "d /mnt/pool/inventree-data 0777 root root"
     # Syncthing dirs
     #"d /mnt/pool/test-folder 0777 root root"
+
+    # TODO: this should probably be owned by a immich user?
+    "d /mnt/pool/immich 0777 root root"
+    "d /mnt/pool/immich/data 0777 root root"
+    "d /mnt/pool/immich/config 0777 root root"
+    "d /mnt/pool/immich/photos 0777 root root"
+    "d /mnt/pool/immich/config/machine-learning 0777 root root"
   ];
 
   swapDevices =

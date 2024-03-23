@@ -21,6 +21,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  virtualisation.oci-containers.backend = "docker";
+
   # Emulated systems for building
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
@@ -126,6 +128,13 @@
     };
   };
 
+  services.immich = {
+    enable = true;
+    dataPath = "/mnt/pool/immich";
+    dbPath = "/mnt/pool/immich/data";
+    dbCredentialsFile = config.age.secrets.immich-db-creds.path;
+  };
+
   systemd.services.tailscale-autoconnect = {
     description = "Automatic connection to Tailscale";
 
@@ -213,6 +222,9 @@
     };
     xmpp-target-jid = {
       file = ../../secrets/xmpp-target-jid.age;
+    };
+    immich-db-creds = {
+      file = ../../secrets/immich-db-creds-ptolemy.age;
     };
     wifi-env = {
       file = ../../secrets/wifi-env.age;

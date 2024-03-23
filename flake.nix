@@ -108,6 +108,7 @@
             ./modules/smartp/module.nix
             ./modules/syncthing.nix
             ./modules/jellyfin.nix
+            ./modules/immich/immich.nix
             ./hosts/ptolemy/configuration.nix
             ./hosts/ptolemy/hw-config.nix
             ./users/jasper/user.nix

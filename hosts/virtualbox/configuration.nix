@@ -64,6 +64,8 @@
     dbCredentialsFile = config.age.secrets.immich-db-creds.path;
   };
 
+
+
   # use the systemd-boot efi boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -248,6 +250,19 @@
     };
     immich-db-creds = {
       file = ../../secrets/immich-db-creds-virtualbox.age;
+    };
+    # TODO: Figure out actual permissions for these files
+    restic-environment-storj = {
+      file = ../../secrets/restic-environment-storj-virtualbox.age;
+      mode = "777";
+    };
+    restic-repository-storj = {
+      file = ../../secrets/restic-repository-storj-virtualbox.age;
+      mode = "777";
+    };
+    restic-password-storj = {
+      file = ../../secrets/restic-password-storj-virtualbox.age;
+      mode = "777";
     };
     wifi-env = {
       file = ../../secrets/wifi-env.age;

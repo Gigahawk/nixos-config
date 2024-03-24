@@ -24,6 +24,9 @@ in {
   "inventree-jasper-virtualbox.age".publicKeys = users ++ [ virtualbox ];
   "inventree-backup-pat-virtualbox.age".publicKeys = users ++ [ virtualbox ];
   "immich-db-creds-virtualbox.age".publicKeys = users ++ [ virtualbox ];
+  "restic-environment-storj-virtualbox.age".publicKeys = users ++ [ virtualbox ];
+  "restic-repository-storj-virtualbox.age".publicKeys = users ++ [ virtualbox ];
+  "restic-password-storj-virtualbox.age".publicKeys = users ++ [ virtualbox ];
 
   "jasper-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "tailscale-ptolemy.age".publicKeys = users ++ [ ptolemy ];

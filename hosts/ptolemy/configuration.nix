@@ -73,6 +73,14 @@
     parityFiles = [
       "/mnt/parity0/snapraid0.parity"
     ];
+    stopServices = [
+      # Immich is constantly accessing postgres which will throw warnings
+      # TODO: find out if the server will recover on it's own if we only shut
+      # off postgres
+      "docker-immich-server.service"
+      "docker-immich-db.service"
+      "docker-immich-cache.service"
+    ];
   };
 
 

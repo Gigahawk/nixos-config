@@ -7,6 +7,12 @@ let
 in
 {
   options.snapraidSettings = {
+    stopServices = mkOption {
+      description = mdDoc ''
+        List of systemd services to stop during the sync
+      '';
+      default = [];
+    };
     dataDisks = mkOption {
       description = mdDoc ''
         Attr set of disks to sync
@@ -57,7 +63,18 @@ in
         (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config; })
         pkgs.snapraid
       ];
+      preStart = ( "xmpp-alert echo 'Starting snapraid sync' \n" +
+        concatStringsSep "\n" (
+          builtins.map(s: "xmpp-alert echo Stopping service '${s}'\nsystemctl stop ${s}")
+            cfg.stopServices)
+      );
       script = builtins.readFile ./snapraid_sync.sh;
+      postStart = (
+        concatStringsSep "\n" (
+          builtins.map(s: "xmpp-alert echo Starting service '${s}'\nsystemctl start ${s}")
+            cfg.stopServices
+        )
+      );
     };
     systemd.timers.snapraid_sync = {
       wantedBy = [ "timers.target" ];

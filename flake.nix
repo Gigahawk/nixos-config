@@ -109,6 +109,7 @@
             ./modules/syncthing.nix
             ./modules/jellyfin.nix
             ./modules/immich/immich.nix
+            ./modules/restic/module.nix
             ./hosts/ptolemy/configuration.nix
             ./hosts/ptolemy/hw-config.nix
             ./users/jasper/user.nix

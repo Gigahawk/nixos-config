@@ -234,6 +234,15 @@
     immich-db-creds = {
       file = ../../secrets/immich-db-creds-ptolemy.age;
     };
+    restic-environment-storj = {
+      file = ../../secrets/restic-environment-storj-ptolemy.age;
+    };
+    restic-repository-storj = {
+      file = ../../secrets/restic-repository-storj-ptolemy.age;
+    };
+    restic-password-storj = {
+      file = ../../secrets/restic-password-storj-ptolemy.age;
+    };
     wifi-env = {
       file = ../../secrets/wifi-env.age;
     };

@@ -35,6 +35,9 @@ in {
   "syncthing-cert-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "syncthing-key-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "immich-db-creds-ptolemy.age".publicKeys = users ++ [ ptolemy ];
+  "restic-environment-storj-ptolemy.age".publicKeys = users ++ [ ptolemy ];
+  "restic-repository-storj-ptolemy.age".publicKeys = users ++ [ ptolemy ];
+  "restic-password-storj-ptolemy.age".publicKeys = users ++ [ ptolemy ];
 
   "jasper-haro.age".publicKeys = users ++ [ haro ];
   "tailscale-haro.age".publicKeys = users ++ [ ptolemy ];

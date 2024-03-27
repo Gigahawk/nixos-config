@@ -34,6 +34,15 @@
 
 After a fresh install, add user passwords with `smbpasswd -a <user>`
 
+#### Backups
+
+Hosts containing important data are backed up to Storj using restic.
+
+The latest backup can be restored by running
+```
+sudo restic-storj restore --target <path_to_restore_to> latest
+```
+
 #### SnapRAID drive replacement procedure
 
 Simulation of a reboot after a complete drive failure (no longer detected etc.)

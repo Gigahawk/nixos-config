@@ -28,11 +28,21 @@
     kexecTime = "10m";
   };
 
+  services.kvmd = {
+    enable = true;
+    ipmiPasswordFile = config.age.secrets.kvmd-ipmipasswd.path;
+    vncPasswordFile = config.age.secrets.kvmd-vncpasswd.path;
+    htPasswordFile = config.age.secrets.kvmd-htpasswd.path;
+    vncSslKeyFile = config.age.secrets.kvmd-vnc-key.path;
+    vncSslCertFile = config.age.secrets.kvmd-vnc-cert.path;
+  };
+
   environment.systemPackages = with pkgs; [
     raspberrypi-eeprom
   ];
 
-  hardware.az-raspi4-base.enable = true;
+  #hardware.az-raspi4-base.enable = true;
+  hardware.raspberry-pi."4".dwc2.enable = true;
 
   #systemd.services.tailscale-autoconnect = {
   #  description = "Automatic connection to Tailscale";
@@ -100,6 +110,21 @@
     #xmpp-target-jid = {
     #  file = ../../secrets/xmpp-target-jid.age;
     #};
+    kvmd-ipmipasswd = {
+      file = ../../secrets/kvmd-ipmipasswd-haro.age;
+    };
+    kvmd-htpasswd = {
+      file = ../../secrets/kvmd-htpasswd-haro.age;
+    };
+    kvmd-vncpasswd = {
+      file = ../../secrets/kvmd-vncpasswd-haro.age;
+    };
+    kvmd-vnc-key = {
+      file = ../../secrets/kvmd-vnc-key-haro.age;
+    };
+    kvmd-vnc-cert = {
+      file = ../../secrets/kvmd-vnc-cert-haro.age;
+    };
     wifi-env = {
       file = ../../secrets/wifi-env.age;
     };

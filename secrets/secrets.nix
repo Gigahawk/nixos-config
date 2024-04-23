@@ -40,6 +40,11 @@ in {
   "restic-password-storj-ptolemy.age".publicKeys = users ++ [ ptolemy ];
 
   "jasper-haro.age".publicKeys = users ++ [ haro ];
+  "kvmd-ipmipasswd-haro.age".publicKeys = users ++ [ haro ];
+  "kvmd-htpasswd-haro.age".publicKeys = users ++ [ haro ];
+  "kvmd-vncpasswd-haro.age".publicKeys = users ++ [ haro ];
+  "kvmd-vnc-key-haro.age".publicKeys = users ++ [ haro ];
+  "kvmd-vnc-cert-haro.age".publicKeys = users ++ [ haro ];
   "tailscale-haro.age".publicKeys = users ++ [ ptolemy ];
 
   "wifi-env.age".publicKeys = users ++ (builtins.attrValues systems);

@@ -38,6 +38,10 @@
       url = "github:Gigahawk/nixos-inventree";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    kvmd = {
+      url = "github:Gigahawk/nixos-kvmd";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-top = {
       url = "github:Gigahawk/nix-top";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -60,6 +64,7 @@
     xmpp-bridge,
     bcrypt-tool,
     inventree,
+    kvmd,
     nix-top,
     nixos-hardware,
     ... }:
@@ -134,9 +139,11 @@
             overlays
             ./configuration.nix
             agenix.nixosModules.default
+            kvmd.nixosModule
             ./modules/agenix-cli.nix
             #./modules/xmpp-bridge/module.nix
-            ./modules/raspi4
+            #./modules/raspi4
+            nixos-hardware.nixosModules.raspberry-pi-4
             ./hosts/haro/configuration.nix
             ./hosts/haro/hw-config.nix
             ./users/jasper/user.nix

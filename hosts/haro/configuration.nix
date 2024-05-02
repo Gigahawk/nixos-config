@@ -94,34 +94,18 @@
   #  };
   #};
 
-  # Example service that supports listening to UNIX sockets
-  services.hedgedoc = {
-    enable = true;
-    settings.path = "/run/hedgedoc/hedgedoc.sock";
-  };
-
   services.nginx = {
     enable = true;
     virtualHosts."_" = {
       #enableACME = true;
       #forceSSL = true;
-      locations."/".proxyPass = "http://unix:/run/hedgedoc/hedgedoc.sock";
+      locations."/".proxyPass = "http://unix:/run/kvmd/kvmd.sock";
     };
   };
 
   # This is needed for nginx to be able to read other processes
   # directories in `/run`. Else it will fail with (13: Permission denied)
   systemd.services.nginx.serviceConfig.ProtectHome = false;
-
-  # Most services will create sockets with 660 permissions.
-  # This means you have to add nginx to their group.
-  users.groups.hedgedoc.members = [ "nginx" ];
-
-  # Alternatively, you can try to force the unit to create the socket with
-  # different permissions, if you have a reason for not wanting to add nginx
-  # to their group. This might not work, depending on how the program sets
-  # its permissions for the socket.
-  systemd.services.hedgedoc.serviceConfig.UMask = lib.mkForce "0000";
 
   age.secrets = {
     #alert-outlook = {

@@ -99,7 +99,9 @@
     virtualHosts."_" = {
       #enableACME = true;
       #forceSSL = true;
-      locations."/".proxyPass = "http://unix:/run/kvmd/kvmd.sock";
+      locations."/" = {
+        root = inputs.kvmd.packages."${system}".kvmd-src + /src/web;
+      };
     };
   };
 

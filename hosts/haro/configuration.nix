@@ -38,6 +38,26 @@
     htPasswordFile = config.age.secrets.kvmd-htpasswd.path;
     vncSslKeyFile = config.age.secrets.kvmd-vnc-key.path;
     vncSslCertFile = config.age.secrets.kvmd-vnc-cert.path;
+    overrides = {
+      kvmd = {
+        auth = {
+          enabled = false;
+        };
+        msd = {
+          type = "disabled";
+        };
+        hid = {
+          mouse_alt = {
+            device = "";
+          };
+        };
+        nginx = {
+          # Does this actually do anything?
+          http.port = 8080;
+          https.port = 4430;
+        };
+      };
+    };
   };
 
   environment.systemPackages = with pkgs; [
@@ -93,21 +113,6 @@
   #    };
   #  };
   #};
-
-  services.nginx = {
-    enable = true;
-    virtualHosts."_" = {
-      #enableACME = true;
-      #forceSSL = true;
-      locations."/" = {
-        root = inputs.kvmd.packages."${system}".kvmd-src + /src/web;
-      };
-    };
-  };
-
-  # This is needed for nginx to be able to read other processes
-  # directories in `/run`. Else it will fail with (13: Permission denied)
-  systemd.services.nginx.serviceConfig.ProtectHome = false;
 
   age.secrets = {
     #alert-outlook = {

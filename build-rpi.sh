@@ -13,6 +13,17 @@ while [[ $# -gt 0 ]]; do
       SSH_KEY="$2"
       shift # past argument
       shift # past value
+      ;;
+    --cores)
+      CORES="$2";
+      shift # past argument
+      shift # past value
+      ;;
+    --max-jobs)
+      MAX_JOBS="$2";
+      shift # past argument
+      shift # past value
+      ;;
   esac
 done
 
@@ -44,8 +55,10 @@ sudo umount $MOUNT_DIR
 rm -rf $MOUNT_DIR
 rm -rf nixos-sd-image-*-aarch64-linux.img*
 
+set -e
+
 echo -e "\nBuilding image"
-nom build ".#images.$HOST"
+nom build ".#images.$HOST" --cores ${CORES:-4} --max-jobs ${MAX_JOBS:-4}
 
 echo -e "\nCopying image"
 rsync -ah --progress result/sd-image/nixos-sd-image-*-aarch64-linux.img.zst .

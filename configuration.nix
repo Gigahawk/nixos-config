@@ -41,6 +41,7 @@
 
     # Custom packages
     inputs.nix-top.packages.${system}.default
+    (callPackage ./packages/nixos-update.nix { })
   ];
 
   networking.firewall = {

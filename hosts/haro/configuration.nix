@@ -31,11 +31,14 @@
     kexecTime = "10m";
   };
 
-  # Map video capture device (cheap USB HDMI capture dongle for now)
-  # HACK: no idea if ATTRS{index}=="0" actually works generally but it seems
-  # to be fine for now
   services.udev.extraRules = ''
+    # Map video capture device (cheap USB HDMI capture dongle for now)
+    # HACK: no idea if ATTRS{index}=="0" actually works generally but it seems
+    # to be fine for now
     ACTION=="add", ATTRS{idVendor}=="534d", ATTRS{idProduct}=="2109", ATTR{index}=="0", SYMLINK+="kvmd-video"
+    # Taken straight from a pikvm image, is this always reliable?
+    KERNEL=="hidg0", GROUP="kvmd", SYMLINK+="kvmd-hid-keyboard"
+    KERNEL=="hidg1", GROUP="kvmd", SYMLINK+="kvmd-hid-mouse"
   '';
 
   services.kvmd = {

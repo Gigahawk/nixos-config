@@ -440,11 +440,11 @@
         "pip2nix": "pip2nix_2"
       },
       "locked": {
-        "lastModified": 1715574532,
-        "narHash": "sha256-IJga1oxiepfHcIbyOp+4ZaI0rWdE48ItRlyoHybUADM=",
+        "lastModified": 1715652513,
+        "narHash": "sha256-GqUC10cQ4wvPSzObBNwfuV4YFkEN789Kk9qktu4upi0=",
         "owner": "Gigahawk",
         "repo": "nixos-kvmd",
-        "rev": "b36eb722ef33f4b562435161913eccb53fca0eda",
+        "rev": "9ed4f7d0feb005f9528007294040b2f5c65b2fa1",
         "type": "github"
       },
       "original": {

@@ -33,6 +33,7 @@
 
   services.kvmd = {
     enable = true;
+    allowMmap = true;
     ipmiPasswordFile = config.age.secrets.kvmd-ipmipasswd.path;
     vncPasswordFile = config.age.secrets.kvmd-vncpasswd.path;
     htPasswordFile = config.age.secrets.kvmd-htpasswd.path;

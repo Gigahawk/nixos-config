@@ -61,10 +61,7 @@ echo -e "\nBuilding image"
 nom build ".#images.$HOST" --cores ${CORES:-4} --max-jobs ${MAX_JOBS:-4}
 
 echo -e "\nCopying image"
-rsync -ah --progress result/sd-image/nixos-sd-image-*-aarch64-linux.img.zst .
-
-echo -e "\nExtracting image"
-unzstd nixos-sd-image-*-aarch64-linux.img.zst
+rsync -ah --progress result/sd-image/nixos-sd-image-*-aarch64-linux.img .
 
 echo -e "\nMounting image"
 fdisk -l nixos-sd-image-*-aarch64-linux.img

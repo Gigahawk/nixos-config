@@ -74,6 +74,9 @@
       (self.nixosConfigurations.${host}.extendModules {
         modules = [
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+          {
+            config.sdImage.compressImage = false;
+          }
         ];
       }).config.system.build.sdImage;
     overlays = { pkgs, config, ... }: {

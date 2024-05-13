@@ -31,9 +31,17 @@
     kexecTime = "10m";
   };
 
+  # Map video capture device (cheap USB HDMI capture dongle for now)
+  # HACK: no idea if ATTRS{index}=="0" actually works generally but it seems
+  # to be fine for now
+  services.udev.extraRules = ''
+    ACTION=="add", ATTRS{idVendor}=="534d", ATTRS{idProduct}=="2109", ATTR{index}=="0", SYMLINK+="kvmd-video"
+  '';
+
   services.kvmd = {
     enable = true;
     allowMmap = true;
+    baseConfig = "v2-hdmiusb-rpi4.yaml";
     ipmiPasswordFile = config.age.secrets.kvmd-ipmipasswd.path;
     vncPasswordFile = config.age.secrets.kvmd-vncpasswd.path;
     htPasswordFile = config.age.secrets.kvmd-htpasswd.path;

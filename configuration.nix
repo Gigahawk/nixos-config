@@ -23,6 +23,7 @@
   environment.systemPackages = with pkgs; [
     bat
     btop
+    evtest
     git
     gosu
     hddtemp
@@ -35,6 +36,7 @@
     syncthing
     tailscale
     tree
+    usbutils
     vim
     wget
     xplr

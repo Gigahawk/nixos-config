@@ -37,6 +37,7 @@
     allowMmap = true;
     baseConfig = "v2-hdmi-rpi4.yaml";
     udevRules = "v2-hdmi-rpi4.rules";
+    fanConfig = "v3-hdmi.ini";
     htPasswordFile = config.age.secrets.kvmd-htpasswd.path;
     totpSecretFile = config.age.secrets.kvmd-totp-secret.path;
     vncSslKeyFile = config.age.secrets.kvmd-vnc-key.path;

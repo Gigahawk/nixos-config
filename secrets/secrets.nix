@@ -42,6 +42,7 @@ in {
   "jasper-haro.age".publicKeys = users ++ [ haro ];
   "kvmd-ipmipasswd-haro.age".publicKeys = users ++ [ haro ];
   "kvmd-htpasswd-haro.age".publicKeys = users ++ [ haro ];
+  "kvmd-totp-secret-haro.age".publicKeys = users ++ [ haro ];
   "kvmd-vncpasswd-haro.age".publicKeys = users ++ [ haro ];
   "kvmd-vnc-key-haro.age".publicKeys = users ++ [ haro ];
   "kvmd-vnc-cert-haro.age".publicKeys = users ++ [ haro ];

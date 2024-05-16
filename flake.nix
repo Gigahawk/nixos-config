@@ -202,6 +202,7 @@
       in {
         devShell = pkgs.mkShell {
           nativeBuildInputs = [
+            pkgs.apacheHttpd  # Generate htpasswd files for kvmd
             pkgs.nix-output-monitor # Better nix build output
             pkgs.vim
             pkgs.openssh

@@ -37,17 +37,13 @@
     allowMmap = true;
     baseConfig = "v2-hdmiusb-rpi4.yaml";
     udevRules = "v2-hdmiusb-generic.rules";
-    ipmiPasswordFile = config.age.secrets.kvmd-ipmipasswd.path;
-    vncPasswordFile = config.age.secrets.kvmd-vncpasswd.path;
     htPasswordFile = config.age.secrets.kvmd-htpasswd.path;
+    totpSecretFile = config.age.secrets.kvmd-totp-secret.path;
     vncSslKeyFile = config.age.secrets.kvmd-vnc-key.path;
     vncSslCertFile = config.age.secrets.kvmd-vnc-cert.path;
     createMsdImage = true;
     overrides = {
       kvmd = {
-        auth = {
-          enabled = false;
-        };
         hid = {
           mouse_alt = {
             device = "";
@@ -137,18 +133,33 @@
     #};
     kvmd-ipmipasswd = {
       file = ../../secrets/kvmd-ipmipasswd-haro.age;
+      owner = "kvmd";
+      group = "kvmd";
     };
     kvmd-htpasswd = {
       file = ../../secrets/kvmd-htpasswd-haro.age;
+      owner = "kvmd";
+      group = "kvmd";
+    };
+    kvmd-totp-secret = {
+      file = ../../secrets/kvmd-totp-secret-haro.age;
+      owner = "kvmd";
+      group = "kvmd";
     };
     kvmd-vncpasswd = {
       file = ../../secrets/kvmd-vncpasswd-haro.age;
+      owner = "kvmd";
+      group = "kvmd";
     };
     kvmd-vnc-key = {
       file = ../../secrets/kvmd-vnc-key-haro.age;
+      owner = "kvmd";
+      group = "kvmd";
     };
     kvmd-vnc-cert = {
       file = ../../secrets/kvmd-vnc-cert-haro.age;
+      owner = "kvmd";
+      group = "kvmd";
     };
     wifi-env = {
       file = ../../secrets/wifi-env.age;

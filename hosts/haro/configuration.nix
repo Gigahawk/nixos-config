@@ -35,8 +35,8 @@
   services.kvmd = {
     enable = true;
     allowMmap = true;
-    baseConfig = "v2-hdmiusb-rpi4.yaml";
-    udevRules = "v2-hdmiusb-generic.rules";
+    baseConfig = "v2-hdmi-rpi4.yaml";
+    udevRules = "v2-hdmi-rpi4.rules";
     htPasswordFile = config.age.secrets.kvmd-htpasswd.path;
     totpSecretFile = config.age.secrets.kvmd-totp-secret.path;
     vncSslKeyFile = config.age.secrets.kvmd-vnc-key.path;
@@ -62,8 +62,10 @@
     raspberrypi-eeprom
   ];
 
-  #hardware.az-raspi4-base.enable = true;
-  hardware.raspberry-pi."4".dwc2.enable = true;
+  hardware.raspberry-pi."4" = {
+    dwc2.enable = true;
+    tc358743.enable = true;
+  };
 
   #systemd.services.tailscale-autoconnect = {
   #  description = "Automatic connection to Tailscale";

@@ -47,9 +47,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware = {
-      url = "github:nixos/nixos-hardware";
-      # nixos-hardware doesn't rely on nixpkgs
-      # inputs.nixpkgs.follows = "nixpkgs";
+      # HACK: tc358743-overlay doesn't build on master
+      #url = "github:nixos/nixos-hardware";
+      url = "github:Gigahawk/nixos-hardware/filter-tc358743-overlay";
     };
   };
 

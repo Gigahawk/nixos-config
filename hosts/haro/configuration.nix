@@ -38,6 +38,7 @@
     baseConfig = "v2-hdmi-rpi4.yaml";
     udevRules = "v2-hdmi-rpi4.rules";
     fanConfig = "v3-hdmi.ini";
+    edidConfig = "v2.hex";
     htPasswordFile = config.age.secrets.kvmd-htpasswd.path;
     totpSecretFile = config.age.secrets.kvmd-totp-secret.path;
     vncSslKeyFile = config.age.secrets.kvmd-vnc-key.path;
@@ -62,11 +63,6 @@
   environment.systemPackages = with pkgs; [
     raspberrypi-eeprom
   ];
-
-  hardware.raspberry-pi."4" = {
-    dwc2.enable = true;
-    tc358743.enable = true;
-  };
 
   #systemd.services.tailscale-autoconnect = {
   #  description = "Automatic connection to Tailscale";

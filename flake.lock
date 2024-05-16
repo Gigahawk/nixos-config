@@ -421,11 +421,11 @@
         "nixpkgs-wiringpi": "nixpkgs-wiringpi"
       },
       "locked": {
-        "lastModified": 1715834432,
-        "narHash": "sha256-EhfmjjrGWuSO9J760kQJCvxES9UBme5JaXcLhkMhTo8=",
+        "lastModified": 1715850834,
+        "narHash": "sha256-LoeaptGBGEWNcYfK++ihNh5EPX9L9LsVLKjTyFBh5jE=",
         "owner": "Gigahawk",
         "repo": "nixos-kvmd",
-        "rev": "e90687f88247815f78a889faf590b2d9c058fc76",
+        "rev": "f91bbc059a0907e2ea70af370bb3c18e102c2422",
         "type": "github"
       },
       "original": {
@@ -537,15 +537,16 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1715148395,
-        "narHash": "sha256-lRxjTxY3103LGMjWdVqntKZHhlmMX12QUjeFrQMmGaE=",
-        "owner": "nixos",
+        "lastModified": 1715851583,
+        "narHash": "sha256-MOthlbc3wOM6V3HrEUx9KuUga1BBnzgluEc2lmo9XRU=",
+        "owner": "Gigahawk",
         "repo": "nixos-hardware",
-        "rev": "a4e2b7909fc1bdf30c30ef21d388fde0b5cdde4a",
+        "rev": "10edf432dc4e5b3ed373155ce44b11430fbe9ec5",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
+        "owner": "Gigahawk",
+        "ref": "filter-tc358743-overlay",
         "repo": "nixos-hardware",
         "type": "github"
       }

@@ -42,13 +42,11 @@
     htPasswordFile = config.age.secrets.kvmd-htpasswd.path;
     vncSslKeyFile = config.age.secrets.kvmd-vnc-key.path;
     vncSslCertFile = config.age.secrets.kvmd-vnc-cert.path;
+    createMsdImage = true;
     overrides = {
       kvmd = {
         auth = {
           enabled = false;
-        };
-        msd = {
-          type = "disabled";
         };
         hid = {
           mouse_alt = {

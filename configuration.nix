@@ -28,6 +28,7 @@
     gosu
     hddtemp
     hwinfo
+    i2c-tools
     jq
     lm_sensors
     lshw

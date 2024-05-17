@@ -4,6 +4,7 @@
   hardware.raspberry-pi."4" = {
     dwc2.enable = true;
     tc358743.enable = true;
+    i2c1.enable = true;
   };
 
   fileSystems = {

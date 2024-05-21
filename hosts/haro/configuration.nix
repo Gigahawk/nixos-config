@@ -35,7 +35,7 @@
   services.kvmd = {
     enable = true;
     allowMmap = true;
-    baseConfig = "v2-hdmi-rpi4.yaml";
+    baseConfig = "v3-hdmi-rpi4.yaml";
     udevRules = "v2-hdmi-rpi4.rules";
     fanConfig = "v3-hdmi.ini";
     edidConfig = "v2.hex";

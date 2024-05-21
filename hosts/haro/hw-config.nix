@@ -7,6 +7,37 @@
     i2c1.enable = true;
   };
 
+  hardware.deviceTree.overlays = [
+    # RTC for BliKVM PCIe
+    {
+      name = "pcf8563-overlay";
+      dtsText = ''
+        /dts-v1/;
+        /plugin/;
+
+        / {
+          compatible = "brcm,bcm2711";
+
+          fragment@0 {
+            target = <&i2c1>;
+
+            __overlay__ {
+              #address-cells = <1>;
+              #size-cells = <0>;
+              status = "okay";
+
+              pcf8563: pcf8563@51 {
+                compatible = "nxp,pcf8563";
+                reg = <0x51>;
+              };
+            };
+          };
+        };
+      '';
+    }
+
+  ];
+
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-label/NIXOS_SD";

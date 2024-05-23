@@ -1,10 +1,17 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, modulesPath, options, ... }:
 {
 
   hardware.raspberry-pi."4" = {
     dwc2.enable = true;
+    dwc2.dr_mode = "peripheral";
     tc358743.enable = true;
     i2c1.enable = true;
+  };
+
+  # Disable traditional dwc-otg driver
+  # to allow dwc2 to work
+  raspi4.config = options.raspi4.config.default // {
+    cm4.otg_mode = 0;
   };
 
   hardware.deviceTree.overlays = [

@@ -31,7 +31,6 @@
     kexecTime = "10m";
   };
 
-
   services.kvmd = {
     enable = true;
     allowMmap = true;
@@ -49,15 +48,14 @@
     createMsdImage = true;
     overrides = {
       kvmd = {
-        hid = {
-          mouse_alt = {
-            device = "";
+        gpio = {
+          scheme = {
+            __v3_usb_breaker__ = {
+              pulse = {
+                delay = 0;
+              };
+            };
           };
-        };
-        nginx = {
-          # Does this actually do anything?
-          http.port = 8080;
-          https.port = 4430;
         };
       };
     };

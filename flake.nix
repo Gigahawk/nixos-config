@@ -71,14 +71,7 @@
   let
     lib = nixpkgs.lib;
     mkSdImage = host:
-      (self.nixosConfigurations.${host}.extendModules {
-        modules = [
-          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-          {
-            config.sdImage.compressImage = false;
-          }
-        ];
-      }).config.system.build.sdImage;
+      self.nixosConfigurations.${host}.config.system.build.sdImage;
     overlays = { pkgs, config, ... }: {
       config.nixpkgs.overlays = [
         # TODO: does this cause problems for other systems?
@@ -145,7 +138,7 @@
             kvmd.nixosModule
             ./modules/agenix-cli.nix
             #./modules/xmpp-bridge/module.nix
-            #./modules/raspi4
+            ./modules/raspi4/module.nix
             nixos-hardware.nixosModules.raspberry-pi-4
             ./hosts/haro/configuration.nix
             ./hosts/haro/hw-config.nix

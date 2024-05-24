@@ -48,6 +48,11 @@
     createMsdImage = true;
     overrides = {
       kvmd = {
+        hid = {
+          mouse_alt = {
+            device = "/dev/kvmd-hid-mouse-alt";
+          };
+        };
         gpio = {
           scheme = {
             __v3_usb_breaker__ = {

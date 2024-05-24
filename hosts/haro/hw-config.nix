@@ -5,13 +5,16 @@
     dwc2.enable = true;
     dwc2.dr_mode = "peripheral";
     tc358743.enable = true;
+    tc358743.lanes = 4;
     i2c1.enable = true;
   };
 
-  # Disable traditional dwc-otg driver
-  # to allow dwc2 to work
   raspi4.config = options.raspi4.config.default // {
-    cm4.otg_mode = 0;
+    cm4 = {
+      # Disable traditional dwc-otg driver
+      # to allow dwc2 to work
+      otg_mode = 0;
+    };
   };
 
   hardware.deviceTree.overlays = [

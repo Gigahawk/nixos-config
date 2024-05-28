@@ -421,11 +421,11 @@
         "nixpkgs-wiringpi": "nixpkgs-wiringpi"
       },
       "locked": {
-        "lastModified": 1716538901,
-        "narHash": "sha256-pkyvOi2YUQcTsJ2TZoSQ/q6sgjgIaPPr5XhwNVLglQ4=",
+        "lastModified": 1716947689,
+        "narHash": "sha256-EdqfyekupPMyN/C4nXwbxAGZy9AL0ihJBc0V6adFmhM=",
         "owner": "Gigahawk",
         "repo": "nixos-kvmd",
-        "rev": "62b3b9824d554b83387ae0b030ed7019decbe17c",
+        "rev": "974a177b0c22b3d7293fb3f98b15e1c13ac2d27a",
         "type": "github"
       },
       "original": {

@@ -47,6 +47,7 @@
     vncSslCertFile = config.age.secrets.kvmd-vnc-cert.path;
     createMsdImage = true;
     msdImageSize = "64G";
+    enableOled = true;
     overrides = {
       kvmd = {
         hid = {

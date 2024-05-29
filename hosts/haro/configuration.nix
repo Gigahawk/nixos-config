@@ -12,7 +12,6 @@
   #boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "haro";
-  networking.wireless.enable = true;
   networking.firewall.allowedTCPPorts = [
     80
   ];

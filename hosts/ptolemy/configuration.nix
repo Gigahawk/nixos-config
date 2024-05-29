@@ -201,6 +201,26 @@
     };
   };
 
+  power.ups = {
+    enable = true;
+    ups."apc-back-ups" = {
+      driver = "usbhid-ups";
+      port = "auto";
+    };
+    users = {
+      upsmon = {
+        passwordFile = config.age.secrets.upsmon.path;
+        upsmon = "master";
+      };
+      jasper = {
+        passwordFile = config.age.secrets.upsmon.path;
+        actions = [ "set" "fsd" ];
+        instcmds = [ "all" ];
+      };
+    };
+    upsmon.monitor."apc-back-ups".user = "upsmon";
+  };
+
   age.secrets = {
     #alert-outlook = {
     #  file = ../../secrets/alert-outlook.age;
@@ -221,6 +241,9 @@
     };
     tailscale-key = {
       file = ../../secrets/tailscale-ptolemy.age;
+    };
+    upsmon = {
+      file = ../../secrets/upsmon-ptolemy.age;
     };
     xmpp-password = {
       file = ../../secrets/xmpp-password-ptolemy.age;

@@ -14,7 +14,7 @@
       pkgs.util-linux
       inputs.xmpp-bridge.packages.${system}.default
       inputs.smartp.packages.${system}.default
-      (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config; })
+      (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config inputs system; })
     ];
     script = builtins.readFile ./run_smartp.sh;
   };
@@ -31,7 +31,7 @@
       pkgs.util-linux
       inputs.xmpp-bridge.packages.${system}.default
       inputs.smartp.packages.${system}.default
-      (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config; })
+      (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config inputs system; })
     ];
     script = builtins.readFile ./run_smartp_long.sh;
   };

@@ -107,6 +107,7 @@
             ./modules/snapraid/module.nix
             ./modules/xmpp-bridge/module.nix
             ./modules/smartp/module.nix
+            ./modules/smartd.nix
             ./modules/syncthing.nix
             ./modules/jellyfin.nix
             ./modules/immich/immich.nix

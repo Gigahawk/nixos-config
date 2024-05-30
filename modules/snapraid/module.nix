@@ -60,7 +60,7 @@ in
       startLimitBurst = 5;
       path = [
         inputs.xmpp-bridge.packages.${system}.default
-        (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config; })
+        (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config inputs system; })
         pkgs.snapraid
       ];
       preStart = ( "xmpp-alert echo 'Starting snapraid sync' \n" +

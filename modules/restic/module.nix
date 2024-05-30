@@ -33,7 +33,7 @@
     serviceConfig.Type = "oneshot";
     path = [
       inputs.xmpp-bridge.packages.${system}.default
-      (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config; })
+      (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config inputs system; })
     ];
     script = ''
       xmpp-alert echo "RESTIC BACKUP LOGS (PASS)"
@@ -49,7 +49,7 @@
     serviceConfig.Type = "oneshot";
     path = [
       inputs.xmpp-bridge.packages.${system}.default
-      (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config; })
+      (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config inputs system; })
     ];
     script = ''
       xmpp-alert echo "RESTIC BACKUP LOGS (FAIL)"

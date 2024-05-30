@@ -2,6 +2,6 @@
 {
   environment.systemPackages = [
     inputs.xmpp-bridge.packages.${system}.default
-    (import ./xmpp-alert.nix { inherit pkgs config; })
+    (import ./xmpp-alert.nix { inherit pkgs config inputs system; })
   ];
 }

@@ -57,7 +57,7 @@ in
       startLimitBurst = 5;
       path = [
         inputs.xmpp-bridge.packages.${system}.default
-        (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config; })
+        (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config inputs system; })
         inputs.inventree.packages.${system}.inventree-invoke
         pkgs.git
       ];

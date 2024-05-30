@@ -983,11 +983,11 @@
         "poetry2nix": "poetry2nix_2"
       },
       "locked": {
-        "lastModified": 1704275669,
-        "narHash": "sha256-decwMO1gLmJVGUqRdkNC0Ah/XIjQddk8NgpM7M0pf14=",
+        "lastModified": 1717056311,
+        "narHash": "sha256-SO34pCTq0DkDNKCo1MBRp5I2PKFg7HQVECn7cxkHYcM=",
         "owner": "Gigahawk",
         "repo": "xmpp-bridge-py",
-        "rev": "ff72d44dec804323370f7e284fd699aff4d54e79",
+        "rev": "202492198c4f3c5ddea5d69aa16de0730d6571fb",
         "type": "github"
       },
       "original": {

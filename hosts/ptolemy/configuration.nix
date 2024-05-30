@@ -198,7 +198,16 @@
         # enable machine learning
         "enabled" = "yes";
       };
+      plugins = {
+        "python.d" = "yes";
+      };
     };
+    configDir = {
+      "python.d/smartd_log.conf" = pkgs.writeText "smartd_log.conf" ''
+        log_path: '/var/log/smartd/'
+      '';
+    };
+    python.enable = true;
   };
 
   power.ups = {

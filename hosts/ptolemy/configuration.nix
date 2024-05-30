@@ -206,6 +206,8 @@
       "python.d/smartd_log.conf" = pkgs.writeText "smartd_log.conf" ''
         log_path: '/var/log/smartd/'
       '';
+      "charts.d/nut.conf" = pkgs.writeText "nut.conf" ''
+      '';
     };
     python.enable = true;
   };

@@ -17,6 +17,18 @@
   #  };
   #};
 
+  # Sometimes to deal with issues like a web server bound only to
+  # localhost it's useful to have an xserver running so that we
+  # can run a web browser or whatever
+  services.xserver = {
+    enable = true;
+    desktopManager = {
+      xterm.enable = false;
+      xfce.enable = true;
+    };
+    displayManager.defaultSession = "xfce";
+  };
+
   # use the systemd-boot efi boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

@@ -212,14 +212,11 @@
       };
       plugins = {
         "python.d" = "yes";
-        "go.d" = "yes";
       };
     };
     configDir = {
       "python.d/smartd_log.conf" = pkgs.writeText "smartd_log.conf" ''
         log_path: '/var/log/smartd/'
-      '';
-      "go.d/intelgpu.conf" = pkgs.writeText "intelgpu.conf" ''
       '';
     };
     python.enable = true;

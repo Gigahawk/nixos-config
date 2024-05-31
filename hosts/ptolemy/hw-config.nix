@@ -7,8 +7,30 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ ];
+  boot.kernelParams = [
+    "i915.enable_guc=3"
+  ];
   boot.extraModulePackages = [ ];
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    intel-vaapi-driver = pkgs.intel-vaapi-driver.override {
+      enableHybridCodec = true;
+    };
+  };
+
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      intel-vaapi-driver
+      intel-compute-runtime
+      libvdpau-va-gl
+    ];
+  };
+
+  # Is this necessary?
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
   fileSystems."/" =
     { device = "/dev/disk/by-label/nixos";

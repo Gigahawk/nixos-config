@@ -51,6 +51,10 @@
       #url = "github:nixos/nixos-hardware";
       url = "github:Gigahawk/nixos-hardware/filter-tc358743-overlay";
     };
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -67,6 +71,7 @@
     kvmd,
     nix-top,
     nixos-hardware,
+    nixos-wsl,
     ... }:
   let
     lib = nixpkgs.lib;
@@ -120,6 +125,27 @@
             #  home-manager.useUserPackages = true;
             #  home-manager.users.jasper = import ./users/jasper.nix;
             #}
+          ];
+        };
+      # WSL on JASPER-PC
+      veda = let
+        system = "x86_64-linux";
+      in
+        lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs;
+            inherit system;
+          };
+          modules = [
+            overlays
+            nixos-wsl.nixosModules.default
+            ./configuration.nix
+            agenix.nixosModules.default
+            ./modules/agenix-cli.nix
+            ./hosts/veda/configuration.nix
+            #./hosts/veda/hw-config.nix
+            ./users/jasper/user.nix
           ];
         };
       # Main server Pi KVM

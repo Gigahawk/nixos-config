@@ -2,11 +2,29 @@
 
 ## Adding a new host
 
+### Setting up a host ssh key
+
+1. Login as root on a freshly installed host
+2. Create a host ssh key with `ssh-keygen -t ed25519 -C "root@<hostname>"`
+    - Ensure the key is saved as `/etc/ssh/ssh_host_ed25519_key`
+    - Ensure no password is set
+3. Run `cat /etc/ssh/ssh_host_ed25519_key.pub` and add it to the list of hosts in `secrets/secret.nix`
+
 ### Creating a new user password
 
 1. Generate a new password using `mkpasswd -m sha-512`
 2. Copy it into an agenix secret
 3. Reference the secret in `users.users.<name>.hashedPasswordFile`
+
+For WSL installs see https://nix-community.github.io/NixOS-WSL/how-to/change-username.html for how to properly switch users
+
+### Creating a user ssh key
+
+1. Login as the user
+2. Create a ssh key with `ssh-keygen -t ed25519 -C "<username>@<hostname>"`
+3. Run `cat ~/.ssh/id_ed25519.pub` and add it to the list of users in `secrets/secret.nix`
+4. On an existing machine, run `agenix -r` to in the `secrets` directory to rekey all secrets.
+    - Comment out the `inherit systems;` line to prevent agenix from attempting and failing to rekey it
 
 ### Creating a new Syncthing config
 

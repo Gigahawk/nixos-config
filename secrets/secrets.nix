@@ -1,17 +1,19 @@
 let
   jasper-virtualbox = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILBoOvyE+sGI2jS1owqCXlHpqZcVOSrJwe6QPH5pnTpq";
   jasper-pc-wsl = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIjA/h30yvAJQkkfMBncAKo2aY1dzb+2m/eWw3MLfV76";
-  users = [ jasper-pc-wsl jasper-virtualbox ];
+  jasper-veda = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFuW7/do+fI6PCEQdb+Ui0zBPlZvo/YKf5Nl6uujoPl2";
+  users = [ jasper-pc-wsl jasper-virtualbox jasper-veda ];
 
   virtualbox = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFeQvEjbv20hcOaJ4RpzrC5eojf1FGG8fN4h9g8vHU/q";
   ptolemy = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEsuCHOVN9ua62cq+m9C9i9PVrpZaOGiA3NJ0Fhn1kF1";
   haro = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBexEu5Y3tOU4oe+QXiZWVM/eJcLD3qRjZj1kcsVs4p2";
+  veda = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID/c40iufgOIcv8xroyGvyhuVJnlPZpuXUdofu1elpIU";
   # For build image host detection
   systems = {
-    inherit haro ptolemy virtualbox;
+    inherit haro ptolemy virtualbox veda;
   };
 in {
-  inherit systems;
+  #inherit systems;
 
   "alert-outlook.age".publicKeys = users ++ [ virtualbox ];
 
@@ -48,6 +50,8 @@ in {
   "kvmd-vnc-key-haro.age".publicKeys = users ++ [ haro ];
   "kvmd-vnc-cert-haro.age".publicKeys = users ++ [ haro ];
   "tailscale-haro.age".publicKeys = users ++ [ ptolemy ];
+
+  "jasper-veda.age".publicKeys = users ++ [ veda ];
 
   "wifi-env.age".publicKeys = users ++ (builtins.attrValues systems);
   "xmpp-target-jid.age".publicKeys = users ++ (builtins.attrValues systems);

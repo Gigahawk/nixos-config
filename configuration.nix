@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, system, ... }:
+{ config, lib, pkgs, inputs, system, ... }:
 
 {
   imports = [ ];
@@ -81,7 +81,7 @@
 
   users.mutableUsers = false;
 
-  system.stateVersion = "23.05";
+  system.stateVersion = lib.mkDefault "23.05";
 
 }
 

@@ -2,15 +2,19 @@
 {
   imports = [ ];
 
+  networking.hostName = "veda";
+
   wsl.enable = true;
   wsl.defaultUser = "jasper";
   vscode-remote-workaround.enable = true;
-
-  networking.hostName = "veda";
-
   # This is disabled by default to allow
   # bootstrapping nixos-wsl
   security.sudo.wheelNeedsPassword = true;
+
+  # Emulated systems for building
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+  ];
 
   age.secrets = {
     jasper = {

@@ -55,6 +55,10 @@
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vscode-remote-workaround = {
+      url = "github:K900/vscode-remote-workaround/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -72,6 +76,7 @@
     nix-top,
     nixos-hardware,
     nixos-wsl,
+    vscode-remote-workaround,
     ... }:
   let
     lib = nixpkgs.lib;
@@ -142,6 +147,7 @@
             nixos-wsl.nixosModules.default
             ./configuration.nix
             agenix.nixosModules.default
+            vscode-remote-workaround.nixosModules.default
             ./modules/agenix-cli.nix
             ./hosts/veda/configuration.nix
             #./hosts/veda/hw-config.nix

@@ -4,6 +4,7 @@
 
   wsl.enable = true;
   wsl.defaultUser = "jasper";
+  vscode-remote-workaround.enable = true;
 
   networking.hostName = "veda";
 

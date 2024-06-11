@@ -7,7 +7,7 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
+  boot.kernelModules = [ "nct6775" ];
   boot.kernelParams = [
     "i915.enable_guc=3"
   ];

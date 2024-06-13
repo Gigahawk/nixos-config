@@ -51,6 +51,7 @@
   networking.firewall.allowedTCPPorts = [
     5357 # wsdd (some samba thing)
     19999 # netdata
+    8096 # jellyfin
   ];
   networking.firewall.allowedUDPPorts = [
     3702 # wsdd (some samba thing)

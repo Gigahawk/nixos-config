@@ -203,7 +203,7 @@
             inventree.nixosModule
             ./modules/inventree-backup/module.nix
             ./modules/immich/immich.nix
-            ./modules/restic/module.nix
+            #./modules/restic/module.nix
             ./hosts/virtualbox/configuration.nix
             ./hosts/virtualbox/hw-config.nix
             ./users/jasper/user.nix

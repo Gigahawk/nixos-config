@@ -113,6 +113,7 @@
             arion.nixosModules.arion
             ./configuration.nix
             agenix.nixosModules.default
+            ./modules/tailscale-autoconnect/module.nix
             ./modules/agenix-cli.nix
             ./modules/snapraid/module.nix
             ./modules/xmpp-bridge/module.nix
@@ -169,6 +170,7 @@
             ./configuration.nix
             agenix.nixosModules.default
             kvmd.nixosModule
+            ./modules/tailscale-autoconnect/module.nix
             ./modules/agenix-cli.nix
             #./modules/xmpp-bridge/module.nix
             ./modules/raspi4/module.nix
@@ -194,6 +196,7 @@
             arion.nixosModules.arion
             ./configuration.nix
             agenix.nixosModules.default
+            ./modules/tailscale-autoconnect/module.nix
             ./modules/agenix-cli.nix
             ./modules/snapraid/module.nix
             ./modules/xmpp-bridge/module.nix

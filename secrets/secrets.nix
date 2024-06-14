@@ -49,7 +49,7 @@ in {
   "kvmd-vncpasswd-haro.age".publicKeys = users ++ [ haro ];
   "kvmd-vnc-key-haro.age".publicKeys = users ++ [ haro ];
   "kvmd-vnc-cert-haro.age".publicKeys = users ++ [ haro ];
-  "tailscale-haro.age".publicKeys = users ++ [ ptolemy ];
+  "tailscale-haro.age".publicKeys = users ++ [ haro ];
 
   "jasper-veda.age".publicKeys = users ++ [ veda ];
 

@@ -24,6 +24,7 @@
     bat
     btop
     evtest
+    fastfetch
     git
     gosu
     hddtemp

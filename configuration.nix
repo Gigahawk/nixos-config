@@ -34,6 +34,7 @@
     lm_sensors
     lshw
     nix-output-monitor
+    nix-tree
     smartmontools
     syncthing
     tailscale

@@ -58,7 +58,7 @@ in
       path = [
         inputs.xmpp-bridge.packages.${system}.default
         (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config inputs system; })
-        inputs.inventree.packages.${system}.inventree-invoke
+        inputs.inventree.packages.${system}.invoke
         pkgs.git
       ];
       serviceConfig = {

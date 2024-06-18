@@ -385,11 +385,11 @@
         "pip2nix": "pip2nix"
       },
       "locked": {
-        "lastModified": 1710921908,
-        "narHash": "sha256-UgE3PlpfsxzrMdqqIkyc02v19pCFyv5dJ3R6/6swspc=",
+        "lastModified": 1718679820,
+        "narHash": "sha256-gO2oAZi9qL+hWr4+ornrG+JziApOhAzZIhFNQM1ktl8=",
         "owner": "Gigahawk",
         "repo": "nixos-inventree",
-        "rev": "9f16574e7d05c71fbf46411b32f282d6309c0b6d",
+        "rev": "147441981cf3cae8cf5736cc921645c0031def3d",
         "type": "github"
       },
       "original": {

@@ -7,16 +7,6 @@
 {
   imports = [ ];
 
-  #virtualisation.arion = {
-  #  backend = "docker";
-  #  projects = 
-  #  {
-  #    inventree.settings = {
-  #      imports = [./../../docker-compose/inventree/arion-compose.nix];
-  #    };
-  #  };
-  #};
-
   virtualisation.oci-containers.backend = "docker";
 
   # For now all paths need to be strings?

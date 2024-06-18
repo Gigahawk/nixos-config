@@ -7,16 +7,6 @@
 {
   imports = [ ];
 
-  #virtualisation.arion = {
-  #  backend = "docker";
-  #  projects =
-  #  {
-  #    inventree.settings = {
-  #      imports = [./../../docker-compose/inventree/arion-compose.nix];
-  #    };
-  #  };
-  #};
-
   # Sometimes to deal with issues like a web server bound only to
   # localhost it's useful to have an xserver running so that we
   # can run a web browser or whatever

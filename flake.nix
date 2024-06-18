@@ -11,10 +11,6 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    arion = {
-      url = "github:hercules-ci/arion";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     flake-utils = {
       url = "github:numtide/flake-utils";
     };
@@ -66,7 +62,6 @@
     nixpkgs,
     home-manager,
     agenix,
-    arion,
     flake-utils,
     nixos-generators,
     xmpp-bridge,
@@ -110,7 +105,6 @@
           };
           modules = [
             overlays
-            arion.nixosModules.arion
             ./configuration.nix
             agenix.nixosModules.default
             ./modules/tailscale-autoconnect/module.nix
@@ -193,7 +187,6 @@
           };
           modules = [
             overlays
-            arion.nixosModules.arion
             ./configuration.nix
             agenix.nixosModules.default
             ./modules/tailscale-autoconnect/module.nix

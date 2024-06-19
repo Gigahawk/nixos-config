@@ -47,15 +47,6 @@
     patFile = config.age.secrets.inventree-backup-pat.path;
   };
 
-  services.immich = {
-    enable = true;
-    dataPath = "/mnt/pool/immich";
-    dbPath = "/mnt/pool/immich/data";
-    dbCredentialsFile = config.age.secrets.immich-db-creds.path;
-  };
-
-
-
   # use the systemd-boot efi boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

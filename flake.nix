@@ -106,6 +106,7 @@
           modules = [
             overlays
             ./configuration.nix
+            ./modules/neovim/module.nix
             agenix.nixosModules.default
             ./modules/tailscale-autoconnect/module.nix
             ./modules/agenix-cli.nix
@@ -146,6 +147,7 @@
             ./modules/agenix-cli.nix
             ./hosts/veda/configuration.nix
             #./hosts/veda/hw-config.nix
+            ./modules/neovim/module.nix
             ./users/jasper/user.nix
           ];
         };
@@ -188,6 +190,7 @@
           modules = [
             overlays
             ./configuration.nix
+            ./modules/neovim/module.nix
             agenix.nixosModules.default
             ./modules/tailscale-autoconnect/module.nix
             ./modules/agenix-cli.nix
@@ -226,7 +229,6 @@
           nativeBuildInputs = [
             pkgs.apacheHttpd  # Generate htpasswd files for kvmd
             pkgs.nix-output-monitor # Better nix build output
-            pkgs.vim
             pkgs.openssh
             pkgs.rsync
             pkgs.jq
@@ -240,9 +242,6 @@
             pkgs.zstd  # Compress/decompress Pi images
             pkgs.unixtools.fdisk
           ];
-          shellHook = ''
-            export EDITOR=vim
-            '';
         };
       }
     )

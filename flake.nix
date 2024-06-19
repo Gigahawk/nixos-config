@@ -237,7 +237,7 @@
             agenix.packages.${system}.agenix
             bcrypt-tool.packages.${system}.default
             pkgs.nixos-rebuild  # Build test systems locally
-            inventree.packages.${system}.inventree-gen-secret  # Generate secret_key.txt
+            inventree.packages.${system}.gen-secret  # Generate secret_key.txt
             pkgs.zstd  # Compress/decompress Pi images
             pkgs.unixtools.fdisk
           ];

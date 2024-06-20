@@ -11,6 +11,8 @@
   # bootstrapping nixos-wsl
   security.sudo.wheelNeedsPassword = true;
 
+  virtualisation.docker.enable = true;
+
   # Emulated systems for building
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"

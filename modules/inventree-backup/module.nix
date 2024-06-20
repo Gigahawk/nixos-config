@@ -60,6 +60,7 @@ in
         (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config inputs system; })
         inputs.inventree.packages.${system}.invoke
         pkgs.git
+        pkgs.hostname
       ];
       serviceConfig = {
         Type = "oneshot";

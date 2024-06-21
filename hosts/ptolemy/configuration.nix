@@ -25,6 +25,40 @@
 
   virtualisation.oci-containers.backend = "docker";
 
+  services.inventree = {
+    enable = true;
+    serverBind = "0.0.0.0:1337";
+    config = {
+      database = {
+        ENGINE = "sqlite";
+        NAME = "/mnt/pool/inventree-data/database.sqlite";
+      };
+      debug = true;
+      social_backends = [];
+      social_providers = {};
+      secret_key_file = config.age.secrets.inventree-secret.path;
+      static_root = "/mnt/pool/inventree-data/static";
+      static_i18_root = "/mnt/pool/inventree-data/static_i18";
+      media_root = "/mnt/pool/inventree-data/media";
+      backup_dir = "/mnt/pool/inventree-data/backup";
+    };
+    users = {
+      jasper = {
+        email = "jasperchan515@gmail.com";
+        is_superuser = true;
+        password_file = config.age.secrets.inventree-jasper.path;
+      };
+    };
+  };
+  services.inventreeBackup = {
+    enable = true;
+    backupPath = "/mnt/pool/inventree-data/git-backup";
+
+    enablePush = true;
+    pushRemote = "Gigahawk/inventree-backup-ptolemy";
+    patFile = config.age.secrets.inventree-backup-pat.path;
+  };
+
   # Emulated systems for building
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
@@ -232,12 +266,33 @@
     };
     xmpp-password = {
       file = ../../secrets/xmpp-password-ptolemy.age;
+      group = "xmpp-alert";
+      mode = "440";
     };
     xmpp-jid = {
       file = ../../secrets/xmpp-jid-ptolemy.age;
+      group = "xmpp-alert";
+      mode = "440";
     };
     xmpp-target-jid = {
       file = ../../secrets/xmpp-target-jid.age;
+      group = "xmpp-alert";
+      mode = "440";
+    };
+    inventree-secret = {
+      file = ../../secrets/inventree-secret-ptolemy.age;
+      owner = "inventree";
+      group = "inventree";
+    };
+    inventree-backup-pat = {
+      file = ../../secrets/inventree-backup-pat-ptolemy.age;
+      owner = "inventree";
+      group = "inventree";
+    };
+    inventree-jasper = {
+      file = ../../secrets/inventree-jasper-ptolemy.age;
+      owner = "inventree";
+      group = "inventree";
     };
     immich-db-creds = {
       file = ../../secrets/immich-db-creds-ptolemy.age;

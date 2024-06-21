@@ -117,6 +117,8 @@
             ./modules/syncthing.nix
             ./modules/jellyfin.nix
             ./modules/immich/immich.nix
+            inventree.nixosModule
+            ./modules/inventree-backup/module.nix
             ./modules/restic/module.nix
             ./hosts/ptolemy/configuration.nix
             ./hosts/ptolemy/hw-config.nix

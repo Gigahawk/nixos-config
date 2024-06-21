@@ -97,7 +97,12 @@
     #"d /mnt/data2 0777 root root"
     "d /mnt/pool 0777 root root"
     # TODO: this should probably be owned by a inventree user?
-    "d /mnt/pool/inventree-data 0777 root root"
+    "d /mnt/pool/inventree-data 0775 inventree inventree"
+    "d /mnt/pool/inventree-data/static 0775 inventree inventree"
+    "d /mnt/pool/inventree-data/static_i18 0775 inventree inventree"
+    "d /mnt/pool/inventree-data/media 0775 inventree inventree"
+    "d /mnt/pool/inventree-data/backup 0775 inventree inventree"
+    "d /mnt/pool/inventree-data/git-backup 0775 inventree inventree"
     # Syncthing dirs
     #"d /mnt/pool/test-folder 0777 root root"
 

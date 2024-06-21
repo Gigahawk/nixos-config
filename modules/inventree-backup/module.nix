@@ -68,9 +68,11 @@ in
         Restart = "on-failure";
         User = defaultUser;
         Group = defaultGroup;
+        SupplementaryGroups = "xmpp-alert";
         ExecStart =
-          "+${pkgs.writers.writeBash "inventree-backup" ''
-            xmpp-alert echo "Starting InvenTree backup"
+          "${pkgs.writers.writeBash "inventree-backup" ''
+            xmpp-alert echo "Starting InvenTree backup as"
+            xmpp-alert whoami
 
             xmpp-alert echo "Ensuring backup dir exists"
             mkdir -p ${cfg.backupPath}
@@ -81,6 +83,8 @@ in
             xmpp-alert git branch -m master
             xmpp-alert git config user.email "inventree-backup@$(hostname)"
             xmpp-alert git config user.name "inventree-backup"
+            # Set it to some big number to allow pushing big commits
+            xmpp-alert git config http.postBuffer 524288000
 
             xmpp-alert echo "Running database backup"
             xmpp-alert rm data.json*
@@ -99,7 +103,7 @@ in
             xmpp-alert echo "InvenTree backup complete"
           ''}";
         ExecStartPost = mkIf cfg.enablePush (
-          "+${pkgs.writers.writeBash "inventree-backup-push" ''
+          "${pkgs.writers.writeBash "inventree-backup-push" ''
             cd ${cfg.backupPath}
             xmpp-alert echo "Pushing InvenTree backups"
             xmpp-alert git push \

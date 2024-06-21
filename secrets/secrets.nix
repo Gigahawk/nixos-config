@@ -36,6 +36,9 @@ in {
   "xmpp-password-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "syncthing-cert-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "syncthing-key-ptolemy.age".publicKeys = users ++ [ ptolemy ];
+  "inventree-secret-ptolemy.age".publicKeys = users ++ [ ptolemy ];
+  "inventree-jasper-ptolemy.age".publicKeys = users ++ [ ptolemy ];
+  "inventree-backup-pat-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "immich-db-creds-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "restic-environment-storj-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "restic-repository-storj-ptolemy.age".publicKeys = users ++ [ ptolemy ];

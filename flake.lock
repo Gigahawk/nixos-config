@@ -10,11 +10,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1715290355,
-        "narHash": "sha256-2T7CHTqBXJJ3ZC6R/4TXTcKoXWHcvubKNj9SfomURnw=",
+        "lastModified": 1718371084,
+        "narHash": "sha256-abpBi61mg0g+lFFU0zY4C6oP6fBwPzbHPKBGw676xsA=",
         "owner": "ryantm",
         "repo": "agenix",
-        "rev": "8d37c5bdeade12b6479c85acd133063ab53187a0",
+        "rev": "3a56735779db467538fb2e577eda28a9daacaca6",
         "type": "github"
       },
       "original": {
@@ -364,11 +364,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1715930644,
-        "narHash": "sha256-W9pyM3/vePxrffHtzlJI6lDS3seANQ+Nqp+i58O46LI=",
+        "lastModified": 1720045378,
+        "narHash": "sha256-lmE7B+QXw7lWdBu5GQlUABSpzPk3YBb9VbV+IYK5djk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "e3ad5108f54177e6520535768ddbf1e6af54b59d",
+        "rev": "0a30138c694ab3b048ac300794c2eb599dc40266",
         "type": "github"
       },
       "original": {
@@ -403,16 +403,14 @@
         "flake-utils": "flake-utils_5",
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "nixpkgs-ustreamer": "nixpkgs-ustreamer",
-        "nixpkgs-wiringpi": "nixpkgs-wiringpi"
+        ]
       },
       "locked": {
-        "lastModified": 1716947689,
-        "narHash": "sha256-EdqfyekupPMyN/C4nXwbxAGZy9AL0ihJBc0V6adFmhM=",
+        "lastModified": 1720074058,
+        "narHash": "sha256-QIO6ukaXKeZc/KfdD2QEp/ee0ZSZWXb34rJ/sQ2jnpo=",
         "owner": "Gigahawk",
         "repo": "nixos-kvmd",
-        "rev": "974a177b0c22b3d7293fb3f98b15e1c13ac2d27a",
+        "rev": "d1455231833e8c95a849b5aa834c0cb4f2b3b758",
         "type": "github"
       },
       "original": {
@@ -488,11 +486,11 @@
     },
     "nixlib": {
       "locked": {
-        "lastModified": 1712450863,
-        "narHash": "sha256-K6IkdtMtq9xktmYPj0uaYc8NsIqHuaAoRBaMgu9Fvrw=",
+        "lastModified": 1719708727,
+        "narHash": "sha256-XFNKtyirrGNdehpg7lMNm1skEcBApjqGhaHc/OI95HY=",
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
-        "rev": "3c62b6a12571c9a7f65ab037173ee153d539905f",
+        "rev": "1bba8a624b3b9d4f68db94fb63aaeb46039ce9e6",
         "type": "github"
       },
       "original": {
@@ -509,11 +507,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1716210724,
-        "narHash": "sha256-iqQa3omRcHGpWb1ds75jS9ruA5R39FTmAkeR3J+ve1w=",
+        "lastModified": 1720055043,
+        "narHash": "sha256-SKizewU4UeYrkZWPUjur8EoxscGoNb0pGcrNL4YzAIg=",
         "owner": "nix-community",
         "repo": "nixos-generators",
-        "rev": "d14b286322c7f4f897ca4b1726ce38cb68596c94",
+        "rev": "168b220231a70e47cc1f0919048fa5914415fb18",
         "type": "github"
       },
       "original": {
@@ -547,11 +545,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1717976391,
-        "narHash": "sha256-STKlWaiiFKDybexvQCg5U1+DSLRaxT93NwVaiBSEvTI=",
+        "lastModified": 1719220171,
+        "narHash": "sha256-xywM6JoGT8AwfoOFJBTv8GRlvNu8LYqqqMS/OQ6uCgE=",
         "owner": "nix-community",
         "repo": "NixOS-WSL",
-        "rev": "e3f215e518d52f6f2e68cf713cefe773284e1aa6",
+        "rev": "269411cfed6aab694e46f719277c972de96177bb",
         "type": "github"
       },
       "original": {
@@ -592,38 +590,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-ustreamer": {
-      "locked": {
-        "lastModified": 1714553215,
-        "narHash": "sha256-vLFtS2WyJopiYTNbQ0+eBd8mFWb2wXH56V8AoQy5nko=",
-        "owner": "r-ryantm",
-        "repo": "nixpkgs",
-        "rev": "651e173f70c9ccba75b1a02a8e216cdd99cb85f2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "r-ryantm",
-        "ref": "auto-update/ustreamer",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-wiringpi": {
-      "locked": {
-        "lastModified": 1715231385,
-        "narHash": "sha256-eNlxOv5ydSwoKW5sVtVB+6ARwjCawRN0JN5aaTlgTzA=",
-        "owner": "Gigahawk",
-        "repo": "nixpkgs",
-        "rev": "0fee6d55a69ba1e8b7ce9317d6df777a4dcec3f3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Gigahawk",
-        "ref": "update-wiringpi",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1635350005,
@@ -642,11 +608,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1716137900,
-        "narHash": "sha256-sowPU+tLQv8GlqtVtsXioTKeaQvlMz/pefcdwg8MvfM=",
+        "lastModified": 1719848872,
+        "narHash": "sha256-H3+EC5cYuq+gQW8y0lSrrDZfH71LB4DAf+TDFyvwCNA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "6c0b7a92c30122196a761b440ac0d46d3d9954f1",
+        "rev": "00d80d13810dbfea8ab4ed1009b09100cca86ba8",
         "type": "github"
       },
       "original": {

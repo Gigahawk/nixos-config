@@ -1030,15 +1030,15 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1696937317,
-        "narHash": "sha256-FQRnK07SnyoKHCitl3f09knWib0E2x/la9C3W5hN/m8=",
-        "owner": "K900",
+        "lastModified": 1720201300,
+        "narHash": "sha256-zz+BLNeRJKj3hz3c8SVWq5ojntQ2nu96p9iUzJZ9XQE=",
+        "owner": "Gigahawk",
         "repo": "vscode-remote-workaround",
-        "rev": "142aeb19b344bc21ed74aa18c9868ae65bc1759a",
+        "rev": "57b35a6957fe28e98dbbb6d7f722b3b245093e43",
         "type": "github"
       },
       "original": {
-        "owner": "K900",
+        "owner": "Gigahawk",
         "ref": "main",
         "repo": "vscode-remote-workaround",
         "type": "github"

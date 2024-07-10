@@ -52,7 +52,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     vscode-remote-workaround = {
-      url = "github:K900/vscode-remote-workaround/main";
+      url = "github:Gigahawk/vscode-remote-workaround/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

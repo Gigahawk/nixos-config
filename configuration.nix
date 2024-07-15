@@ -38,6 +38,7 @@
     smartmontools
     syncthing
     tailscale
+    traceroute
     tree
     usbutils
     vim

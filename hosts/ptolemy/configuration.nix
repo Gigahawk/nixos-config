@@ -25,6 +25,52 @@
 
   virtualisation.oci-containers.backend = "docker";
 
+  services.avahi = {
+    enable = true;
+    # TODO: figure out what any of this does
+    nssmdns4 = true;
+    openFirewall = true;
+    publish = {
+      enable = true;
+      userServices = true;
+    };
+  };
+  services.printing = {
+    enable = true;
+    webInterface = false;
+    stateless = true;
+    startWhenNeeded = false;
+    listenAddresses = [ "*:631" ];
+    # TODO: is there a better way to secure this?
+    allowFrom = [ "all" ];
+    browsing = true;
+    defaultShared = true;
+    openFirewall = true;
+    drivers = with pkgs; [
+      gutenprint
+      gutenprintBin
+      foomatic-db-ppds-withNonfreeDb
+      foo2zjs
+    ];
+  };
+
+  hardware.printers = {
+    ensurePrinters = [
+      {
+        name = "Xerox_WorkCentre_6015NI";
+        description = "Xerox WorkCentre 6015NI";
+        location = "Home";
+        deviceUri = "usb://Xerox/WorkCentre%206015NI?serial=BD1028394&interface=1";
+        model = "Xerox-WorkCentre_6015.ppd.gz";
+        ppdOptions = {
+          PageSize = "letter";
+        };
+
+      }
+    ];
+    ensureDefaultPrinter = "Xerox_WorkCentre_6015NI";
+  };
+
   services.inventree = {
     enable = true;
     serverBind = "0.0.0.0:1337";
@@ -135,6 +181,7 @@
   services.samba-wsdd.enable = true;
   services.samba = {
     enable = true;
+    package = pkgs.sambaFull;
     openFirewall = true;
     securityType = "user";
     extraConfig = ''
@@ -151,6 +198,11 @@
       # idk disabled in the example
       # use sendfile = yes
       # max protocol = smb2
+
+      # Printing
+      load printers = yes
+      printing = cups
+      printcap name = cups
 
       hosts allow = 0.0.0.0/0
       # hosts allow = 192.168.1. 192.168.0. 192.168.56. 127.0.0.1 localhost
@@ -169,6 +221,16 @@
         "directory mask" = "0755";
         #"force user" = "username";
         #"force group" = "groupname";
+      };
+      printers = {
+        comment = "All Printers";
+        path = "/var/spool/samba";
+        public = "yes";
+        browseable = "yes";
+        "guest ok" = "yes";
+        writable = "no";
+        printable = "yes";
+        "create mode" = 0700;
       };
     };
   };

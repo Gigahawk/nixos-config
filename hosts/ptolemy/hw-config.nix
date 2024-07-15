@@ -112,6 +112,9 @@
     "d /mnt/pool/immich/config 0777 root root"
     "d /mnt/pool/immich/photos 0777 root root"
     "d /mnt/pool/immich/config/machine-learning 0777 root root"
+
+    # Printing over samba
+    "d /var/spool/samba 1777 root root -"
   ];
 
   swapDevices =

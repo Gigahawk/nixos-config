@@ -17,7 +17,7 @@
   hardware = {
     enableAllFirmware = true;
     # TODO: do we need this?
-    opengl.driSupport32Bit = true;
+    graphics.enable32Bit = true;
   };
 
   environment.systemPackages = with pkgs; [

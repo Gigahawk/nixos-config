@@ -23,6 +23,7 @@
   environment.systemPackages = with pkgs; [
     bat
     btop
+    dmidecode
     evtest
     fastfetch
     git
@@ -33,6 +34,7 @@
     jq
     lm_sensors
     lshw
+    mprime
     nix-output-monitor
     nix-tree
     smartmontools

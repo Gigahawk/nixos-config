@@ -26,6 +26,7 @@
     dmidecode
     evtest
     fastfetch
+    ffmpeg
     git
     gosu
     hddtemp

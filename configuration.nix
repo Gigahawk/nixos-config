@@ -22,6 +22,7 @@
 
   environment.systemPackages = with pkgs; [
     bat
+    binwalk
     btop
     dmidecode
     evtest

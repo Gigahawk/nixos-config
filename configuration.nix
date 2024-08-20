@@ -44,6 +44,7 @@
     tailscale
     traceroute
     tree
+    unzip
     usbutils
     vim
     wget

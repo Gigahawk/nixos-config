@@ -24,6 +24,7 @@
     bat
     binwalk
     btop
+    bmon
     dmidecode
     evtest
     fastfetch
@@ -38,6 +39,7 @@
     lm_sensors
     lshw
     mprime
+    nethogs
     nix-output-monitor
     nix-tree
     smartmontools

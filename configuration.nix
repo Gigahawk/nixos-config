@@ -28,6 +28,7 @@
     evtest
     fastfetch
     ffmpeg
+    file
     git
     gosu
     hddtemp

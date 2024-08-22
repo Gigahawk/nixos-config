@@ -42,6 +42,7 @@
     nethogs
     nix-output-monitor
     nix-tree
+    p7zip
     smartmontools
     syncthing
     tailscale

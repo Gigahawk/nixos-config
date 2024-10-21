@@ -31,6 +31,7 @@
     ffmpeg
     file
     git
+    git-lfs
     gosu
     hddtemp
     hwinfo

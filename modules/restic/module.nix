@@ -19,7 +19,7 @@
     ];
 
     timerConfig = {
-      OnCalendar = "*-*-* 01:00:00";
+      OnCalendar = "Sun *-*-* 01:00:00";
       # Trigger immediately if we missed the last time
       Persistent = true;
     };

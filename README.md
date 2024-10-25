@@ -68,6 +68,8 @@ Simulation of a reboot after a complete drive failure (no longer detected etc.)
 1. Shutdown machine
 1. Replace the bad drive in the machine
 1. Reboot the machine, it should fail to boot, dropping you to a recovery prompt
+    - Note that you may get `Cannot open access to console, the root account is locked.`, in this case, interrupt `systemd-boot` by pressing `e`, then adding ` rescue systemd.setenv=SYSTEMD_SULOGIN_FORCE=1` to the end of the boot command
+        - TODO: what are the security implications of this?
 1. Type in the root password to get to the shell
 1. Run `lsblk -l -o NAME,SIZE,LABEL,MODEL,SERIAL` to figure out which drive is the new one (should have no label)
 1. Run `mkfs.ext4 -m 0 -L <missing label> /dev/sd<new disk>`

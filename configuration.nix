@@ -21,6 +21,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    alejandra
     bat
     binwalk
     btop

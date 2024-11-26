@@ -105,6 +105,11 @@
     patFile = config.age.secrets.inventree-backup-pat.path;
   };
 
+  services.cypress-ticket-scraper = {
+    enable = true;
+    dataDir = "/mnt/pool/cypress-ticket-data";
+  };
+
   # Emulated systems for building
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"

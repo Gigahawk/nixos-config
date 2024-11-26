@@ -38,6 +38,10 @@
       url = "github:Gigahawk/nixos-kvmd";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    cypress-ticket-scraper = {
+      url = "github:Gigahawk/cypress-ticket-scraper";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-top = {
       url = "github:Gigahawk/nix-top";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -68,6 +72,7 @@
     bcrypt-tool,
     inventree,
     kvmd,
+    cypress-ticket-scraper,
     nix-top,
     nixos-hardware,
     nixos-wsl,
@@ -118,6 +123,7 @@
             ./modules/jellyfin.nix
             ./modules/immich/immich.nix
             inventree.nixosModule
+            cypress-ticket-scraper.nixosModule
             ./modules/inventree-backup/module.nix
             ./modules/restic/module.nix
             ./hosts/ptolemy/configuration.nix

@@ -16,6 +16,7 @@
     ];
     extraBackupArgs = [
       "--exclude-caches"
+      "--compression max"
     ];
 
     timerConfig = {

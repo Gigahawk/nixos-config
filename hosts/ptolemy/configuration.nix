@@ -292,6 +292,9 @@
     ups."apc-back-ups" = {
       driver = "usbhid-ups";
       port = "auto";
+      directives = [
+        "lowbatt = 80"
+      ];
     };
     users = {
       upsmon = {

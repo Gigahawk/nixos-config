@@ -37,6 +37,7 @@
     hddtemp
     hwinfo
     i2c-tools
+    imagemagick
     jq
     lm_sensors
     lshw

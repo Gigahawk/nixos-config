@@ -240,7 +240,7 @@
     };
   };
 
-  services.immich = {
+  services.immich-oci = {
     enable = true;
     dataPath = "/mnt/pool/immich";
     dbPath = "/mnt/pool/immich/data";

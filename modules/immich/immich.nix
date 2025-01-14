@@ -2,11 +2,11 @@
 { lib, config, pkgs, ... }:
 with lib;
 let
-  cfg = config.services.immich;
+  cfg = config.services.immich-oci;
   version = "1.99.0";
 in {
 
-  options.services.immich = {
+  options.services.immich-oci = {
     enable = mkEnableOption
       (lib.mdDoc "High performance self-hosted photo and video management solution.");
 

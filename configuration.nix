@@ -88,10 +88,10 @@
   };
 
   networking.wireless = {
-    environmentFile = config.age.secrets.wifi-env.path;
+    secretsFile = config.age.secrets.wifi-env.path;
     networks = {
-      gameboy.psk = "@GAMEBOY_PASS@";
-      gameboy-5GHz.psk = "@GAMEBOY_PASS@";
+      gameboy.pskRaw = "ext:GAMEBOY_PASS";
+      gameboy-5GHz.pskRaw = "ext:GAMEBOY_PASS";
     };
   };
 

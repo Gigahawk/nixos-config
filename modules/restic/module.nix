@@ -18,6 +18,11 @@
       "--exclude-caches"
       "--compression max"
     ];
+    exclude = [
+      "/mnt/pool/Anime"
+      "/mnt/pool/Movies"
+      "/mnt/pool/Shows"
+    ];
 
     timerConfig = {
       OnCalendar = "Sun *-*-* 01:00:00";

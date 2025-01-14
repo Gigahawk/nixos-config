@@ -22,6 +22,9 @@
     jasper = {
       file = ../../secrets/jasper-veda.age;
     };
+    wifi-env = {
+      file = ../../secrets/wifi-env.age;
+    };
   };
   system.stateVersion = "23.11";
 }

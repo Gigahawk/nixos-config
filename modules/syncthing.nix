@@ -119,7 +119,7 @@ in
             };
           };
           remarkable_sync = mkIf (builtins.hasAttr "remarkable_sync" cfg.folders) {
-            type = "recieveonly";
+            type = "receiveonly";
             id = "remarkable_sync";
             path = cfg.folders.remarkable_sync.path;
             devices = [

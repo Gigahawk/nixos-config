@@ -189,33 +189,36 @@
     package = pkgs.sambaFull;
     openFirewall = true;
     securityType = "user";
-    extraConfig = ''
-      workgroup = WORKGROUP
-      server string = Samba %v on (%h)
-      server role = standalone server
+    settings = {
+      global = {
+        "workgroup" = "WORKGROUP";
+        "server string" = "Samba %v on (%h)";
+        "server role" = "standalone server";
 
-      # idk if this needs to be set
-      # netbios name = ptolemy
+        # idk if this needs to be set
+        # netbios name = ptolemy
 
-      # isn't this set by securityType?
-      # security = user
+        # isn't this set by securityType?
+        # security = user
 
-      # idk disabled in the example
-      # use sendfile = yes
-      # max protocol = smb2
+        # idk disabled in the example
+        # use sendfile = yes
+        # max protocol = smb2
 
-      # Printing
-      load printers = yes
-      printing = cups
-      printcap name = cups
+        # Printing
+        "load printers" = "yes";
+        "printing" = "cups";
+        "printcap name" = "cups";
 
-      hosts allow = 0.0.0.0/0
-      # hosts allow = 192.168.1. 192.168.0. 192.168.56. 127.0.0.1 localhost
-      # hosts deny = 0.0.0.0/0
+        "hosts allow" = "0.0.0.0/0";
+        # hosts allow = 192.168.1. 192.168.0. 192.168.56. 127.0.0.1 localhost
+        # hosts deny = 0.0.0.0/0
 
-      # guest account = jasper
-      # map to guest = bad user
-    '';
+        # guest account = jasper
+        # map to guest = bad user
+      };
+
+    };
     shares = {
       pool = {
         path = "/mnt/pool";

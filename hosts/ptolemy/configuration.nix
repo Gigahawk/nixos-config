@@ -302,7 +302,7 @@
     users = {
       upsmon = {
         passwordFile = config.age.secrets.upsmon.path;
-        upsmon = "master";
+        upsmon = "primary";
       };
       jasper = {
         passwordFile = config.age.secrets.upsmon.path;

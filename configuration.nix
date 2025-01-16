@@ -26,11 +26,13 @@
     binwalk
     btop
     bmon
+    dua
     dmidecode
     evtest
     fastfetch
     ffmpeg
     file
+    gdu
     git
     git-lfs
     gosu

@@ -221,9 +221,14 @@
         };
     };
     packages.x86_64-linux = {
-      ptolemy-installer = nixos-generators.nixosGenerate {
+      installer = nixos-generators.nixosGenerate {
         system = "x86_64-linux";
+        specialArgs = {
+          system = "x86_64-linux";
+          inherit inputs;
+        };
         modules = [
+          ./configuration.nix
           ./hosts/installer/configuration.nix
         ];
         format = "install-iso";

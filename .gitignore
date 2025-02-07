@@ -2,3 +2,4 @@ result
 *.img
 *.img.zst
 **ssh_*
+**.iso

@@ -99,7 +99,7 @@
 
   users.mutableUsers = false;
 
-  system.stateVersion = lib.mkDefault "23.05";
+  system.stateVersion = lib.mkOverride 1100 "23.05";
 
 }
 

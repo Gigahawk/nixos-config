@@ -1171,11 +1171,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1720201300,
-        "narHash": "sha256-zz+BLNeRJKj3hz3c8SVWq5ojntQ2nu96p9iUzJZ9XQE=",
+        "lastModified": 1738882909,
+        "narHash": "sha256-xL8i+f1WKJfGxZsC7RKIZScE5QbWPJvlg3ME3hOEwVE=",
         "owner": "Gigahawk",
         "repo": "vscode-remote-workaround",
-        "rev": "57b35a6957fe28e98dbbb6d7f722b3b245093e43",
+        "rev": "b0aa4ae444ad444e5b043493ab0bcc0feec24f38",
         "type": "github"
       },
       "original": {

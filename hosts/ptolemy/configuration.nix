@@ -290,6 +290,27 @@
     python.enable = true;
   };
 
+  services.gitea = {
+    enable = true;
+    appName = "Gigahawk's Gitea Server";
+    stateDir = "/mnt/pool/gitea";
+    lfs = {
+      enable = true;
+    };
+    settings = {
+      indexer = {
+        # Workaround for putting stateDir on MergerFS
+        # https://github.com/go-gitea/gitea/issues/11154#issuecomment-635559118
+        ISSUE_INDEXER_PATH = "/mnt/pool/gitea/data/indexers/issues.bleve";
+        ISSUE_INDEXER_TYPE = "db";
+      };
+      server = {
+        HTTP_PORT = 3001;
+        DOMAIN = "ptolemy";
+      };
+    };
+  };
+
   power.ups = {
     enable = true;
     ups."apc-back-ups" = {

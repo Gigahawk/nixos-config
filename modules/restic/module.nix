@@ -22,6 +22,7 @@
       "/mnt/pool/Anime"
       "/mnt/pool/Movies"
       "/mnt/pool/Shows"
+      "/mnt/pool/Games"
     ];
 
     timerConfig = {

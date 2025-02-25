@@ -9,6 +9,8 @@
 
   virtualisation.oci-containers.backend = "docker";
 
+  virtualisation.docker.enable = true;
+
   # For now all paths need to be strings?
   services.inventree = {
     enable = true;

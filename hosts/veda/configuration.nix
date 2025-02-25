@@ -13,15 +13,6 @@
 
   virtualisation.docker.enable = true;
 
-  xdg.portal = {
-    enable = true;
-    config.common.default = "*";
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-    ];
-  };
-
-
   # Emulated systems for building
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"

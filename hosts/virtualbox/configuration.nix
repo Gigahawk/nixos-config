@@ -94,26 +94,29 @@
     enable = true;
     openFirewall = true;
     securityType = "user";
-    extraConfig = ''
-      workgroup = WORKGROUP
-      server string = Samba %v on (%h)
+    settings = {
+      global = {
+        "workgroup" = "WORKGROUP";
+        "server string" = "Samba %v on (%h)";
 
-      # idk if this needs to be set
-      # netbios name = virtualbox
+        # idk if this needs to be set
+        # netbios name = virtualbox
 
-      # isn't this set by securityType?
-      # security = user
+        # isn't this set by securityType?
+        # security = user
 
-      # idk disabled in the example
-      # use sendfile = yes
-      # max protocol = smb2
+        # idk disabled in the example
+        # use sendfile = yes
+        # max protocol = smb2
 
-      hosts allow = 192.168.1. 192.168.0. 192.168.56. 127.0.0.1 localhost
-      hosts deny = 0.0.0.0/0
+        "hosts allow" = "192.168.1. 192.168.0. 192.168.56. 127.0.0.1 localhost";
+        "hosts deny" = "0.0.0.0/0";
 
-      guest account = jasper
-      map to guest = bad user
-    '';
+        #"guest account = jasper"
+        #"map to guest = bad user"
+
+      };
+    };
     shares = {
       public = {
         path = "/home/jasper/share";

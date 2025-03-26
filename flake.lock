@@ -670,18 +670,17 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1736931935,
-        "narHash": "sha256-Xcn/RYUUjuEp2bxg9vgCg+Eq3i8Mko4a8Qz8E2l3RrM=",
-        "owner": "Gigahawk",
+        "lastModified": 1742669843,
+        "narHash": "sha256-G5n+FOXLXcRx+3hCJ6Rt6ZQyF1zqQ0DL0sWAMn2Nk0w=",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "71b80275c1a114dcbac8ce561fe426b1b64fd002",
+        "rev": "1e5b653dff12029333a6546c11e108ede13052eb",
         "type": "github"
       },
       "original": {
-        "owner": "Gigahawk",
-        "ref": "django-q2-fix-nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "id": "nixpkgs",
+        "ref": "nixos-unstable",
+        "type": "indirect"
       }
     },
     "pip2nix": {

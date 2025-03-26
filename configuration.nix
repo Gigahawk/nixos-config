@@ -11,6 +11,9 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    (import ./overlays/yt-dlp.nix)
+  ];
 
   boot.crashDump.enable = true;
 
@@ -59,6 +62,7 @@
     vim
     wget
     xplr
+    yt-dlp
 
     # Custom packages
     inputs.nix-top.packages.${system}.default

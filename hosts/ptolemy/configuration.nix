@@ -317,7 +317,10 @@
       driver = "usbhid-ups";
       port = "auto";
       directives = [
-        "lowbatt = 80"
+        "ignorelb"
+        "override.battery.charge.warning = 90"
+        "override.battery.charge.low = 80"
+        "override.battery.runtime.low = 600"
       ];
     };
     users = {
@@ -359,20 +362,22 @@
         [ "NOTOFF" "SYSLOG+WALL+EXEC" ]
         [ "BYPASS" "SYSLOG+WALL+EXEC" ]
         [ "NOTBYPASS" "SYSLOG+WALL+EXEC" ]
-        [ "ECO" "SYSLOG+WALL+EXEC" ]
-        [ "NOTECO" "SYSLOG+WALL+EXEC" ]
-        [ "ALARM" "SYSLOG+WALL+EXEC" ]
-        [ "NOTALARM" "SYSLOG+WALL+EXEC" ]
-        [ "OVER" "SYSLOG+WALL+EXEC" ]
-        [ "NOTOVER" "SYSLOG+WALL+EXEC" ]
-        [ "TRIM" "SYSLOG+WALL+EXEC" ]
-        [ "NOTTRIM" "SYSLOG+WALL+EXEC" ]
-        [ "BOOST" "SYSLOG+WALL+EXEC" ]
-        [ "NOTBOOST" "SYSLOG+WALL+EXEC" ]
-        [ "OTHER" "SYSLOG+WALL+EXEC" ]
-        [ "NOTOTHER" "SYSLOG+WALL+EXEC" ]
-        [ "SUSPEND_STARTING" "SYSLOG+WALL+EXEC" ]
-        [ "SUSPEND_FINISHED" "SYSLOG+WALL+EXEC" ]
+        # Apparently these are invalid notify types?
+        # Need to update to 2.8.3+
+        # [ "ECO" "SYSLOG+WALL+EXEC" ]
+        # [ "NOTECO" "SYSLOG+WALL+EXEC" ]
+        # [ "ALARM" "SYSLOG+WALL+EXEC" ]
+        # [ "NOTALARM" "SYSLOG+WALL+EXEC" ]
+        # [ "OVER" "SYSLOG+WALL+EXEC" ]
+        # [ "NOTOVER" "SYSLOG+WALL+EXEC" ]
+        # [ "TRIM" "SYSLOG+WALL+EXEC" ]
+        # [ "NOTTRIM" "SYSLOG+WALL+EXEC" ]
+        # [ "BOOST" "SYSLOG+WALL+EXEC" ]
+        # [ "NOTBOOST" "SYSLOG+WALL+EXEC" ]
+        # [ "OTHER" "SYSLOG+WALL+EXEC" ]
+        # [ "NOTOTHER" "SYSLOG+WALL+EXEC" ]
+        # [ "SUSPEND_STARTING" "SYSLOG+WALL+EXEC" ]
+        # [ "SUSPEND_FINISHED" "SYSLOG+WALL+EXEC" ]
       ];
     };
   };

@@ -126,6 +126,7 @@
             cypress-ticket-scraper.nixosModule
             ./modules/inventree-backup/module.nix
             ./modules/restic/module.nix
+            ./modules/notify-startup-shutdown/module.nix
             ./hosts/ptolemy/configuration.nix
             ./hosts/ptolemy/hw-config.nix
             ./users/jasper/user.nix

@@ -332,6 +332,49 @@
       };
     };
     upsmon.monitor."apc-back-ups".user = "upsmon";
+    upsmon.settings = {
+      MINSUPPLIES = 1;
+      NOTIFYCMD = "${pkgs.writers.writeBash "upsmon-notify" ''
+        NL=$'\n'
+        full_message="UPS EVENT TYPE $NOTIFYTYPE FROM $UPSNAME ''${NL}''${NL}$1"
+        ${(import ../../modules/xmpp-bridge/xmpp-alert.nix { inherit pkgs config inputs system; })}/bin/xmpp-alert echo "$full_message"
+      ''}";
+      POWERDOWNFLAG = "/run/killpower";
+      RUN_AS_USER = "root";
+      SHUTDOWNCMD = "${pkgs.systemd}/bin/shutdown now";
+      NOTIFYFLAG = [
+        [ "ONLINE" "SYSLOG+WALL+EXEC" ]
+        [ "ONBATT" "SYSLOG+WALL+EXEC" ]
+        [ "LOWBATT" "SYSLOG+WALL+EXEC" ]
+        [ "FSD" "SYSLOG+WALL+EXEC" ]
+        [ "COMMOK" "SYSLOG+WALL+EXEC" ]
+        [ "COMMBAD" "SYSLOG+WALL+EXEC" ]
+        [ "SHUTDOWN" "SYSLOG+WALL+EXEC" ]
+        [ "REPLBATT" "SYSLOG+WALL+EXEC" ]
+        [ "NOCOMM" "SYSLOG+WALL+EXEC" ]
+        [ "NOPARENT" "SYSLOG+WALL+EXEC" ]
+        [ "CAL" "SYSLOG+WALL+EXEC" ]
+        [ "NOTCAL" "SYSLOG+WALL+EXEC" ]
+        [ "OFF" "SYSLOG+WALL+EXEC" ]
+        [ "NOTOFF" "SYSLOG+WALL+EXEC" ]
+        [ "BYPASS" "SYSLOG+WALL+EXEC" ]
+        [ "NOTBYPASS" "SYSLOG+WALL+EXEC" ]
+        [ "ECO" "SYSLOG+WALL+EXEC" ]
+        [ "NOTECO" "SYSLOG+WALL+EXEC" ]
+        [ "ALARM" "SYSLOG+WALL+EXEC" ]
+        [ "NOTALARM" "SYSLOG+WALL+EXEC" ]
+        [ "OVER" "SYSLOG+WALL+EXEC" ]
+        [ "NOTOVER" "SYSLOG+WALL+EXEC" ]
+        [ "TRIM" "SYSLOG+WALL+EXEC" ]
+        [ "NOTTRIM" "SYSLOG+WALL+EXEC" ]
+        [ "BOOST" "SYSLOG+WALL+EXEC" ]
+        [ "NOTBOOST" "SYSLOG+WALL+EXEC" ]
+        [ "OTHER" "SYSLOG+WALL+EXEC" ]
+        [ "NOTOTHER" "SYSLOG+WALL+EXEC" ]
+        [ "SUSPEND_STARTING" "SYSLOG+WALL+EXEC" ]
+        [ "SUSPEND_FINISHED" "SYSLOG+WALL+EXEC" ]
+      ];
+    };
   };
 
   age.secrets = {

@@ -24,6 +24,8 @@
     '';
   };
 
+  # Kinda hacky, based on https://unix.stackexchange.com/questions/739363/a-systemd-service-that-runs-just-before-shutdown-and-uses-a-mounted-filesystem
+  # Not sure why I cant just use before reboot.target or something
   systemd.services.shutdown-notify = {
     description = "Report imminent shutdown";
 

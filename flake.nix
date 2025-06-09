@@ -207,6 +207,7 @@
             ./modules/xmpp-bridge/module.nix
             inventree.nixosModule
             ./modules/inventree-backup/module.nix
+            ./modules/ghidra-server/module.nix
             #./modules/restic/module.nix
             ./hosts/virtualbox/configuration.nix
             ./hosts/virtualbox/hw-config.nix

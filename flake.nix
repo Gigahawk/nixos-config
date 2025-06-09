@@ -127,6 +127,7 @@
             ./modules/inventree-backup/module.nix
             ./modules/restic/module.nix
             ./modules/notify-startup-shutdown/module.nix
+            ./modules/ghidra-server/module.nix
             ./hosts/ptolemy/configuration.nix
             ./hosts/ptolemy/hw-config.nix
             ./users/jasper/user.nix
@@ -207,6 +208,7 @@
             ./modules/xmpp-bridge/module.nix
             inventree.nixosModule
             ./modules/inventree-backup/module.nix
+            ./modules/ghidra-server/module.nix
             #./modules/restic/module.nix
             ./hosts/virtualbox/configuration.nix
             ./hosts/virtualbox/hw-config.nix

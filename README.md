@@ -36,6 +36,22 @@ For WSL installs see https://nix-community.github.io/NixOS-WSL/how-to/change-use
 5. Add `modules/syncthing.nix` to the import list for the host
 6. Define all relevant options (paths, etc.) in the host `configuration.nix`
 
+## Updating
+
+### Locally
+
+All hosts come with a `nixos-update` script which under the hood calls `nixos-rebuild` with arguments to fetch this repo from GitHub and show the build output in `nix-output-monitor`
+
+### Remotely
+
+For hosts that are performance limited, it may be faster (or required) to build the updated config on a different host, and then push it. This can be done with
+```
+nixos-rebuild \
+    --flake .#<hostname> \
+    --target-host jasper@<target_ip> \
+    --use-remote-sudo switch
+```
+
 ## Hosts
 
 ### Servers (virtualbox, ptolemy)

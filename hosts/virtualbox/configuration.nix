@@ -56,8 +56,8 @@
   networking.hostName = "virtualbox";
 
   services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.lxqt.enable = true;
   services.xserver.xautolock.time = 99999;
 
   # This is a server, disable sleep
@@ -93,9 +93,10 @@
   services.samba = {
     enable = true;
     openFirewall = true;
-    securityType = "user";
     settings = {
       global = {
+        security = "user";
+
         "workgroup" = "WORKGROUP";
         "server string" = "Samba %v on (%h)";
 
@@ -116,8 +117,6 @@
         #"map to guest = bad user"
 
       };
-    };
-    shares = {
       public = {
         path = "/home/jasper/share";
         browseable = "yes";

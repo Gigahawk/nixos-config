@@ -31,6 +31,7 @@
     bmon
     dua
     dmidecode
+    dos2unix
     evtest
     fastfetch
     ffmpeg

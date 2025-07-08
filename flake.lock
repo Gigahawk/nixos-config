@@ -446,11 +446,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1721109671,
-        "narHash": "sha256-oBrpZdxJgQYf5nmY3TFL7uZf/5TC9zEcGSOoVUp6kCY=",
+        "lastModified": 1751970897,
+        "narHash": "sha256-lDQkkaIsYDPPWI/QuHBVLqpDqw15qBF2Ye8Qg3/X5Oo=",
         "owner": "Gigahawk",
         "repo": "nixos-kvmd",
-        "rev": "eff37ba47f298de435fad635d8ba7b406924fcc7",
+        "rev": "ba1f4b255e85080bc313008bcbd56836f8082f36",
         "type": "github"
       },
       "original": {
@@ -584,16 +584,16 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1716536242,
-        "narHash": "sha256-Esz8MkqKj6R8TxGxa5fQHkc+zoK+lj16UhS8WZSDW+A=",
+        "lastModified": 1752002207,
+        "narHash": "sha256-TKOy3UDXyefx6KTYozqmb8lIh/0EsG2mFOMee3JgfmQ=",
         "owner": "Gigahawk",
         "repo": "nixos-hardware",
-        "rev": "bd26ee848bb1586fa4d72352b5657321045fc7b3",
+        "rev": "c07066b263d5fbac77bbe74125dffc88a5319a4d",
         "type": "github"
       },
       "original": {
         "owner": "Gigahawk",
-        "ref": "filter-tc358743-overlay",
+        "ref": "personal",
         "repo": "nixos-hardware",
         "type": "github"
       }

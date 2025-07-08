@@ -1,14 +1,6 @@
 { config, lib, pkgs, modulesPath, options, ... }:
 {
 
-  hardware.raspberry-pi."4" = {
-    dwc2.enable = true;
-    dwc2.dr_mode = "peripheral";
-    tc358743.enable = true;
-    tc358743.lanes = 4;
-    i2c1.enable = true;
-  };
-
   raspi4.config = options.raspi4.config.default // {
     cm4 = {
       # Disable traditional dwc-otg driver
@@ -17,36 +9,65 @@
     };
   };
 
-  hardware.deviceTree.overlays = [
-    # RTC for BliKVM PCIe
-    {
-      name = "pcf8563-overlay";
-      dtsText = ''
-        /dts-v1/;
-        /plugin/;
+  hardware.raspberry-pi."4" = {
+    apply-overlays-dtmerge.enable = true;
+    tc358743 = {
+      enable = true;
+      lanes = 4;
+    };
+    i2c1.enable = true;
+  };
 
-        / {
-          compatible = "brcm,bcm2711";
+  hardware.deviceTree = {
+    enable = true;
+    filter = "bcm2711-rpi-cm4.dtb";
+    overlays = [
+      rec {
+        name = "dwc2";
+        dtboFile = "${config.boot.kernelPackages.kernel}/dtbs/overlays/${name}.dtbo";
+      }
 
-          fragment@0 {
-            target = <&i2c1>;
+      # Use one from nixos-hardware to support overriding number of lanes
+      #rec {
+      #  name = "tc358743";
+      #  dtboFile = "${config.boot.kernelPackages.kernel}/dtbs/overlays/${name}.dtbo";
+      #}
 
-            __overlay__ {
-              #address-cells = <1>;
-              #size-cells = <0>;
-              status = "okay";
+      # Doesn't seem to work? use nixos-hardware one instead
+      #rec {
+      #  name = "i2c1";
+      #  dtboFile = "${config.boot.kernelPackages.kernel}/dtbs/overlays/${name}.dtbo";
+      #}
 
-              pcf8563: pcf8563@51 {
-                compatible = "nxp,pcf8563";
-                reg = <0x51>;
+      # RTC for BliKVM PCIe
+      {
+        name = "pcf8563-overlay";
+        dtsText = ''
+          /dts-v1/;
+          /plugin/;
+
+          / {
+            compatible = "brcm,bcm2711";
+
+            fragment@0 {
+              target = <&i2c1>;
+
+              __overlay__ {
+                #address-cells = <1>;
+                #size-cells = <0>;
+                status = "okay";
+
+                pcf8563: pcf8563@51 {
+                  compatible = "nxp,pcf8563";
+                  reg = <0x51>;
+                };
               };
             };
           };
-        };
-      '';
-    }
-
-  ];
+        '';
+      }
+    ];
+  };
 
   fileSystems = {
     "/" = {

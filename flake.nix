@@ -47,9 +47,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware = {
-      # HACK: tc358743-overlay doesn't build on master
+      # HACK: prevent skipped overlays https://github.com/NixOS/nixos-hardware/issues/1529
+      # HACK: support 4 lane CSI https://github.com/NixOS/nixos-hardware/pull/1530
+      url = "github:Gigahawk/nixos-hardware/personal";
       #url = "github:nixos/nixos-hardware";
-      url = "github:Gigahawk/nixos-hardware/filter-tc358743-overlay";
     };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";

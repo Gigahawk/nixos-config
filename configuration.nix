@@ -48,7 +48,6 @@
     jq
     lm_sensors
     lshw
-    mprime
     nethogs
     nix-output-monitor
     nix-tree
@@ -69,7 +68,12 @@
     # Custom packages
     inputs.nix-top.packages.${system}.default
     (callPackage ./packages/nixos-update.nix { })
-  ];
+  ] ++ (
+    if builtins.elem system [ "i686-linux" "x86_64-linux" "x86_64-darwin"] then
+      [ mprime ]
+    else
+      []
+  );
 
   networking.firewall = {
     enable = true;

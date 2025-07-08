@@ -29,6 +29,7 @@
     binwalk
     btop
     bmon
+    dig
     dua
     dmidecode
     dos2unix

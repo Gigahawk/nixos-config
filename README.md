@@ -52,6 +52,23 @@ nixos-rebuild \
     --use-remote-sudo switch
 ```
 
+## Tailscale
+
+All hosts are connected via Tailscale.
+
+### Renewing Keys
+
+Eventually, the keys for a host will expire.
+
+> Note that the [official docs](https://tailscale.com/kb/1028/key-expiry#renewing-keys-for-an-expired-device) instruct to run `tailscale up --force-reauth` to update keys which will appear to work, but this method does not persist a reboot since our key is stored in agenix
+
+To renew the key:
+
+1. Generate a new auth key from https://login.tailscale.com/admin/settings/keys
+2. Update the relevant secrets file and push
+3. Pull the updated config on the host
+    - If you need Tailscale to access the device see the [official docs](https://tailscale.com/kb/1028/key-expiry#renewing-keys-for-an-expired-device) for how to temporarily regain access
+
 ## Hosts
 
 ### Servers (virtualbox, ptolemy)

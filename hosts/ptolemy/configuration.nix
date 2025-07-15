@@ -16,15 +16,14 @@
       xterm.enable = false;
       xfce.enable = true;
     };
-    displayManager.defaultSession = "xfce";
   };
+  services.displayManager.defaultSession = "xfce";
 
   services.ghidra-server = {
     enable = true;
     host = "ptolemy";
     directory = "/mnt/pool/ghidra-server";
   };
-
 
   # use the systemd-boot efi boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -195,18 +194,15 @@
     enable = true;
     package = pkgs.sambaFull;
     openFirewall = true;
-    securityType = "user";
     settings = {
       global = {
         "workgroup" = "WORKGROUP";
         "server string" = "Samba %v on (%h)";
         "server role" = "standalone server";
+        "security" = "user";
 
         # idk if this needs to be set
         # netbios name = ptolemy
-
-        # isn't this set by securityType?
-        # security = user
 
         # idk disabled in the example
         # use sendfile = yes
@@ -225,8 +221,6 @@
         # map to guest = bad user
       };
 
-    };
-    shares = {
       pool = {
         path = "/mnt/pool";
         browseable = "yes";

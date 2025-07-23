@@ -49,6 +49,12 @@
     patFile = config.age.secrets.inventree-backup-pat.path;
   };
 
+  services.immich = {
+    enable = true;
+    host = "0.0.0.0";
+    mediaLocation = "/mnt/pool/immich-nixos";
+  };
+
   services.ghidra-server = {
     enable = true;
     host = "virtualbox";

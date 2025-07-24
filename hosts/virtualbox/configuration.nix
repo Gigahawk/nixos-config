@@ -7,59 +7,59 @@
 {
   imports = [ ];
 
-  virtualisation.oci-containers.backend = "docker";
+  #virtualisation.oci-containers.backend = "docker";
 
-  virtualisation.docker.enable = true;
+  #virtualisation.docker.enable = true;
 
-  # For now all paths need to be strings?
-  services.inventree = {
-    enable = true;
+  ## For now all paths need to be strings?
+  #services.inventree = {
+  #  enable = true;
 
-    serverBind = "0.0.0.0:1337";
+  #  serverBind = "0.0.0.0:1337";
 
-    config = {
-      database = {
-        ENGINE = "sqlite";
-        NAME = "/mnt/pool/inventree-test/test.sqlite";
-      };
-      debug = true;
-      social_backends = [];
-      social_providers = {};
-      secret_key_file = config.age.secrets.inventree-secret.path;
-      static_root = "/mnt/pool/inventree-test/static";
-      static_i18_root = "/mnt/pool/inventree-test/static_i18";
-      media_root = "/mnt/pool/inventree-test/media";
-      backup_dir = "/mnt/pool/inventree-test/backup";
-    };
+  #  config = {
+  #    database = {
+  #      ENGINE = "sqlite";
+  #      NAME = "/mnt/pool/inventree-test/test.sqlite";
+  #    };
+  #    debug = true;
+  #    social_backends = [];
+  #    social_providers = {};
+  #    secret_key_file = config.age.secrets.inventree-secret.path;
+  #    static_root = "/mnt/pool/inventree-test/static";
+  #    static_i18_root = "/mnt/pool/inventree-test/static_i18";
+  #    media_root = "/mnt/pool/inventree-test/media";
+  #    backup_dir = "/mnt/pool/inventree-test/backup";
+  #  };
 
-    users = {
-      jasper = {
-        email = "jasperchan515@gmail.com";
-        is_superuser = true;
-        password_file = config.age.secrets.inventree-jasper.path;
-      };
-    };
-  };
-  services.inventreeBackup = {
-    enable = true;
-    backupPath = "/mnt/pool/inventree-test/git-backup";
+  #  users = {
+  #    jasper = {
+  #      email = "jasperchan515@gmail.com";
+  #      is_superuser = true;
+  #      password_file = config.age.secrets.inventree-jasper.path;
+  #    };
+  #  };
+  #};
+  #services.inventreeBackup = {
+  #  enable = true;
+  #  backupPath = "/mnt/pool/inventree-test/git-backup";
 
-    enablePush = true;
-    pushRemote = "Gigahawk/inventree-test-backup";
-    patFile = config.age.secrets.inventree-backup-pat.path;
-  };
+  #  enablePush = true;
+  #  pushRemote = "Gigahawk/inventree-test-backup";
+  #  patFile = config.age.secrets.inventree-backup-pat.path;
+  #};
 
-  services.immich = {
-    enable = true;
-    host = "0.0.0.0";
-    mediaLocation = "/mnt/pool/immich-nixos";
-  };
+  #services.immich = {
+  #  enable = true;
+  #  host = "0.0.0.0";
+  #  mediaLocation = "/mnt/pool/immich-nixos";
+  #};
 
-  services.ghidra-server = {
-    enable = true;
-    host = "virtualbox";
-    directory = "/mnt/pool/ghidra-server";
-  };
+  #services.ghidra-server = {
+  #  enable = true;
+  #  host = "virtualbox";
+  #  directory = "/mnt/pool/ghidra-server";
+  #};
 
   # use the systemd-boot efi boot loader.
   boot.loader.systemd-boot.enable = true;

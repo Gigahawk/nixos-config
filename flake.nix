@@ -125,7 +125,6 @@
             ./modules/smartd.nix
             ./modules/syncthing.nix
             ./modules/jellyfin.nix
-            ./modules/immich/immich.nix
             inventree.nixosModule
             cypress-ticket-scraper.nixosModule
             ./modules/inventree-backup/module.nix

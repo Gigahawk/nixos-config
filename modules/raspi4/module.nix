@@ -1,4 +1,3 @@
-# Based on https://kressle.in/articles/2023/immich-on-docker-with-nixos.php
 { lib, config, pkgs, inputs, ... }:
 with lib;
 let

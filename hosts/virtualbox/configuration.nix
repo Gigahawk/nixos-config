@@ -218,9 +218,6 @@
       owner = "inventree";
       group = "inventree";
     };
-    immich-db-creds = {
-      file = ../../secrets/immich-db-creds-virtualbox.age;
-    };
     restic-environment-storj = {
       file = ../../secrets/restic-environment-storj-virtualbox.age;
     };

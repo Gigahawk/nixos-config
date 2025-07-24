@@ -171,9 +171,8 @@
       # Immich is constantly accessing postgres which will throw warnings
       # TODO: find out if the server will recover on it's own if we only shut
       # off postgres
-      "docker-immich-server.service"
-      "docker-immich-db.service"
-      "docker-immich-cache.service"
+      "immich-server.service"
+      "immich-machine-learning.service"
     ];
   };
 
@@ -244,11 +243,32 @@
     };
   };
 
-  services.immich-oci = {
+  services.immich = {
     enable = true;
-    dataPath = "/mnt/pool/immich";
-    dbPath = "/mnt/pool/immich/data";
-    dbCredentialsFile = config.age.secrets.immich-db-creds.path;
+    host = "0.0.0.0";
+    mediaLocation = "/mnt/pool/immich/photos";
+    accelerationDevices = null;
+    machine-learning = {
+      enable = true;
+    };
+    settings = {
+      newVersionCheck.enabled = false;
+      backup.database = {
+        enabled = true;
+      };
+      logging = {
+        enabled = true;
+        level = "verbose";
+      };
+      trash = {
+        enabled = true;
+      };
+    };
+  };
+  users.users.immich = {
+    extraGroups = [ "video" "render" ];
+    home = "/var/lib/immich";
+    createHome = true;
   };
 
   #services.nginx = {
@@ -436,9 +456,6 @@
       file = ../../secrets/inventree-jasper-ptolemy.age;
       owner = "inventree";
       group = "inventree";
-    };
-    immich-db-creds = {
-      file = ../../secrets/immich-db-creds-ptolemy.age;
     };
     restic-environment-storj = {
       file = ../../secrets/restic-environment-storj-ptolemy.age;

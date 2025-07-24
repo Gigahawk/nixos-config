@@ -67,8 +67,8 @@
 
   networking.hostName = "virtualbox";
 
+  services.displayManager.ly.enable = true;
   services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
   services.xserver.desktopManager.lxqt.enable = true;
   services.xserver.xautolock.time = 99999;
 

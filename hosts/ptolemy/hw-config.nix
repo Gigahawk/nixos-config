@@ -32,6 +32,24 @@
   # Is this necessary?
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
+  boot.initrd.luks = {
+    reusePassphrases = true;
+    devices = {
+      data0_decrypted = {
+        device = "/dev/disk/by-label/data0_encrypted";
+      };
+      data1_decrypted = {
+        device = "/dev/disk/by-label/data1_encrypted";
+      };
+      # For some reason this doesn't work unless the name is changed?
+      # The name doesn't really matter anyways since we rely on the label
+      # applied to the ext4 filesystem for mounting
+      parity0_decrypted_asdf = {
+        device = "/dev/disk/by-label/parity0_encrypted";
+      };
+    };
+  };
+
   fileSystems."/" =
     { device = "/dev/disk/by-label/nixos";
       fsType = "ext4";

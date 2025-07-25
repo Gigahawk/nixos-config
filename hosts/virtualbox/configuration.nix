@@ -75,6 +75,14 @@
       clock = "%c";
     };
   };
+  #programs.hyprland = {
+  #  enable = true;
+  #  xwayland.enable = true;
+  #};
+  #programs.sway = {
+  #  enable = true;
+  #  wrapperFeatures.gtk = true;
+  #};
   services.xserver.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
   services.xserver.xautolock.time = 99999;
@@ -89,6 +97,7 @@
     firefox
     mergerfs
     mergerfs-tools
+    kitty
   ];
 
   snapraidSettings = {
@@ -175,16 +184,16 @@
     };
   };
 
-  services.nginx = {
-    enable = true;
-    virtualHosts."virtualbox.neon-chameleon.ts.net" = {
-      locations."/inventree/" = {
-        return = "301 $scheme://$host:1337$request_uri";
-      };
-      # enableACME = true;
-      # forceSSL = true;
-    };
-  };
+  #services.nginx = {
+  #  enable = true;
+  #  virtualHosts."virtualbox.neon-chameleon.ts.net" = {
+  #    locations."/inventree/" = {
+  #      return = "301 $scheme://$host:1337$request_uri";
+  #    };
+  #    # enableACME = true;
+  #    # forceSSL = true;
+  #  };
+  #};
 
   age.secrets = {
     alert-outlook = {
@@ -210,21 +219,21 @@
     xmpp-target-jid = {
       file = ../../secrets/xmpp-target-jid.age;
     };
-    inventree-secret = {
-      file = ../../secrets/inventree-secret-virtualbox.age;
-      owner = "inventree";
-      group = "inventree";
-    };
-    inventree-backup-pat = {
-      file = ../../secrets/inventree-backup-pat-virtualbox.age;
-      owner = "inventree";
-      group = "inventree";
-    };
-    inventree-jasper = {
-      file = ../../secrets/inventree-jasper-virtualbox.age;
-      owner = "inventree";
-      group = "inventree";
-    };
+    #inventree-secret = {
+    #  file = ../../secrets/inventree-secret-virtualbox.age;
+    #  owner = "inventree";
+    #  group = "inventree";
+    #};
+    #inventree-backup-pat = {
+    #  file = ../../secrets/inventree-backup-pat-virtualbox.age;
+    #  owner = "inventree";
+    #  group = "inventree";
+    #};
+    #inventree-jasper = {
+    #  file = ../../secrets/inventree-jasper-virtualbox.age;
+    #  owner = "inventree";
+    #  group = "inventree";
+    #};
     restic-environment-storj = {
       file = ../../secrets/restic-environment-storj-virtualbox.age;
     };

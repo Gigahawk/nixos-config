@@ -71,8 +71,8 @@
     "d /mnt/data1 0777 root root"
     "d /mnt/data2 0777 root root"
     "d /mnt/pool 0777 root root"
-    # TODO: this should probably be owned by a inventree user?
-    "d /mnt/pool/inventree-data 0777 root root"
+    ## TODO: this should probably be owned by a inventree user?
+    #"d /mnt/pool/inventree-data 0777 root root"
 
     # TODO: this should probably be owned by a immich user?
     "d /mnt/pool/immich 0777 root root"

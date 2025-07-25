@@ -49,7 +49,7 @@ For hosts that are performance limited, it may be faster (or required) to build 
 nixos-rebuild \
     --flake .#<hostname> \
     --target-host jasper@<target_ip> \
-    --use-remote-sudo switch
+    --sudo --ask-sudo-password switch
 ```
 
 ## Tailscale

@@ -67,9 +67,16 @@
 
   networking.hostName = "virtualbox";
 
-  services.displayManager.ly.enable = true;
+  services.displayManager.ly = {
+    enable = true;
+    settings = {
+      animation = "matrix";
+      bigclock = "en";
+      clock = "%c";
+    };
+  };
   services.xserver.enable = true;
-  services.xserver.desktopManager.lxqt.enable = true;
+  services.xserver.desktopManager.xfce.enable = true;
   services.xserver.xautolock.time = 99999;
 
   # This is a server, disable sleep

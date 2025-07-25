@@ -84,7 +84,10 @@
   #  wrapperFeatures.gtk = true;
   #};
   services.xserver.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
+  services.xserver.desktopManager.xfce = {
+    enable = true;
+    enableScreensaver = false;
+  };
   services.xserver.xautolock.time = 99999;
 
   # This is a server, disable sleep

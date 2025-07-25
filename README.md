@@ -98,6 +98,19 @@ sudo restic-storj restore --target <path_to_restore_to> latest
 
 Simulation of a reboot after a complete drive failure (no longer detected etc.)
 
+> These instructions are now for encrypted drives, ensure the `boot.initrd.luks` is setup correctly.
+> For example:
+> ```
+>   boot.initrd.luks = {
+>   reusePassphrases = true;
+>   devices = {
+>     data0_decrypted = {
+>       device = "/dev/disk/by-label/data0_encrypted";
+>     };
+>   };
+> };
+> ```
+
 1. Shutdown machine
 1. Replace the bad drive in the machine
 1. Reboot the machine, it should fail to boot, dropping you to a recovery prompt
@@ -105,11 +118,14 @@ Simulation of a reboot after a complete drive failure (no longer detected etc.)
         - TODO: what are the security implications of this?
 1. Type in the root password to get to the shell
 1. Run `lsblk -l -o NAME,SIZE,LABEL,MODEL,SERIAL` to figure out which drive is the new one (should have no label)
-1. Run `mkfs.ext4 -m 0 -L <missing label> /dev/sd<new disk>`
+1. Run `cryptsetup luksFormat --label <missing_label>_encrypted /dev/sd<new disk>` to setup an encrypted drive
+1. Run `cryptsetup open /dev/disk/by-label/<missing_label>_encrypted <missing_label>_decrypted` to unlock the drive to `/dev/mapper/<missing_label>_decrypted`
+1. Run `mkfs.ext4 -m 0 -L <missing label> /dev/mapper/<missing_label>_decrypted`
     - If no replacement drive is available, you may try to reuse the bad drive by reformatting with the `-cc` option to have the new filesystem avoid detected bad blocks
 1. Press `Ctrl+D` to continue booting
 1. Once logged in, run `snapraid -l /tmp/snapraid-fix.log fix`
     - Add `-d <disk name>` to only target the replaced drive
+    - If replacing a parity drive use `snapraid -l /tmp/snapraid-sync.log --force-full sync`
 
 
 #### InvenTree Setup

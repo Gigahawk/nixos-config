@@ -29,6 +29,7 @@
     binwalk
     btop
     bmon
+    cryptsetup
     dig
     dua
     dmidecode

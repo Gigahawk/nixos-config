@@ -8,6 +8,24 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
+  boot.initrd.luks = {
+    reusePassphrases = true;
+    devices = {
+      data0_decrypted = {
+        device = "/dev/disk/by-label/data0_encrypted";
+      };
+      data1_decrypted = {
+        device = "/dev/disk/by-label/data1_encrypted";
+      };
+      data2_decrypted = {
+        device = "/dev/disk/by-label/data2_encrypted";
+      };
+      parity0_decrypted = {
+        device = "/dev/disk/by-label/parity0_encrypted";
+      };
+    };
+  };
+
   fileSystems."/" =
     { device = "/dev/disk/by-label/nixos";
       fsType = "ext4";

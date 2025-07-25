@@ -32,6 +32,21 @@
   # Is this necessary?
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
+  boot.initrd.luks = {
+    reusePassphrases = true;
+    devices = {
+      data0_decrypted = {
+        device = "/dev/disk/by-label/data0_encrypted";
+      };
+      #data1_decrypted = {
+      #  device = "/dev/disk/by-label/data1_encrypted";
+      #};
+      #parity0_decrypted = {
+      #  device = "/dev/disk/by-label/parity0_encrypted";
+      #};
+    };
+  };
+
   fileSystems."/" =
     { device = "/dev/disk/by-label/nixos";
       fsType = "ext4";

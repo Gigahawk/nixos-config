@@ -131,6 +131,9 @@
     "d /mnt/pool/immich/photos 0777 root root"
     "d /mnt/pool/immich/config/machine-learning 0777 root root"
 
+    # Allow everyone (jellyfin) to access shows
+    "Z /mnt/pool/Shows 0777 root root"
+
     # Printing over samba
     "d /var/spool/samba 1777 root root -"
   ];

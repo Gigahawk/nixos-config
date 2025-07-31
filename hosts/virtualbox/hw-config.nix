@@ -101,6 +101,9 @@
 
     "d /mnt/pool/immich-nixos 0755 immich immich"
     "Z /mnt/pool/immich-nixos 0755 immich immich"
+
+    "d /mnt/pool/postgres 0750 postgres postgres"
+    "Z /mnt/pool/postgres 0750 postgres postgres"
   ];
 
   swapDevices =

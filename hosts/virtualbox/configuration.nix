@@ -49,6 +49,8 @@
   #  patFile = config.age.secrets.inventree-backup-pat.path;
   #};
 
+  services.postgresql.dataDir = "/mnt/pool/postgres";
+
   services.immich = {
     enable = true;
     host = "0.0.0.0";

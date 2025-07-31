@@ -243,53 +243,54 @@
     };
   };
 
-  #services.immich = {
-  #  enable = true;
-  #  host = "0.0.0.0";
-  #  mediaLocation = "/mnt/pool/immich/photos";
-  #  accelerationDevices = null;
-  #  machine-learning = {
-  #    enable = true;
-  #  };
-  #  settings = {
-  #    newVersionCheck.enabled = false;
-  #    backup.database = {
-  #      enabled = true;
-  #    };
-  #    logging = {
-  #      enabled = true;
-  #      level = "verbose";
-  #    };
-  #    trash = {
-  #      enabled = true;
-  #    };
-  #  };
-  #};
-  #users.users.immich = {
-  #  extraGroups = [ "video" "render" ];
-  #  home = "/var/lib/immich";
-  #  createHome = true;
-  #};
+  services.immich = {
+    enable = true;
+    host = "0.0.0.0";
+    mediaLocation = "/mnt/pool/immich/photos";
+    accelerationDevices = null;
+    machine-learning = {
+      enable = true;
+    };
+    settings = {
+      newVersionCheck.enabled = false;
+      backup.database = {
+        enabled = true;
+      };
+      logging = {
+        enabled = true;
+        level = "verbose";
+      };
+      trash = {
+        enabled = true;
+      };
+    };
+  };
+  users.users.immich = {
+    extraGroups = [ "video" "render" ];
+    home = "/var/lib/immich";
+    createHome = true;
+  };
 
   services.postgresql.dataDir = "/mnt/pool/postgres";
   # Temporarily enable postgres for backup restore
+  # The extensions are needed to prevent errors when trying to restore
   #https://github.com/NixOS/nixpkgs/blob/nixos-25.05/nixos/modules/services/web-apps/immich.nix
-  services.postgresql = {
-      enable = true;
-      #ensureDatabases = mkIf cfg.database.createDB [ cfg.database.name ];
-      #ensureUsers = mkIf cfg.database.createDB [
-      #  {
-      #    name = cfg.database.user;
-      #    ensureDBOwnership = true;
-      #    ensureClauses.login = true;
-      #  }
-      #];
-      extensions = ps: with ps; [ pgvecto-rs ];
-      settings = {
-        shared_preload_libraries = [ "vectors.so" ];
-        search_path = "\"$user\", public, vectors";
-      };
-    };
+  #services.postgresql = {
+  #  enable = true;
+  #  #ensureDatabases = mkIf cfg.database.createDB [ cfg.database.name ];
+  #  #ensureUsers = mkIf cfg.database.createDB [
+  #  #  {
+  #  #    name = cfg.database.user;
+  #  #    ensureDBOwnership = true;
+  #  #    ensureClauses.login = true;
+  #  #  }
+  #  #];
+  #  extensions = ps: with ps; [ pgvecto-rs ];
+  #  settings = {
+  #    shared_preload_libraries = [ "vectors.so" ];
+  #    search_path = "\"$user\", public, vectors";
+  #  };
+  #};
 
   #services.nginx = {
   #  enable = true;

@@ -7,6 +7,18 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+    };
+    grub = {
+      enable = true;
+      useOSProber = true;
+      efiSupport = true;
+      #efiInstallAsRemovable = true;
+      device = "nodev";
+    };
+  };
 
   boot.initrd.luks = {
     reusePassphrases = true;

@@ -134,6 +134,10 @@
     # Allow everyone (jellyfin) to access shows
     "Z /mnt/pool/Shows 0777 root root"
 
+    # Set permissions properly on for postgres
+    "d /mnt/pool/postgres 0750 postgres postgres"
+    "Z /mnt/pool/postgres 0750 postgres postgres"
+
     # Printing over samba
     "d /var/spool/samba 1777 root root -"
   ];

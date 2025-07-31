@@ -171,6 +171,7 @@
       # Immich is constantly accessing postgres which will throw warnings
       # TODO: find out if the server will recover on it's own if we only shut
       # off postgres
+      "postgresql.service"
       "immich-server.service"
       "immich-machine-learning.service"
     ];

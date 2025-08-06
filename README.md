@@ -83,6 +83,8 @@ To renew the key:
 
 > WARNING: THIS WILL WIPE THE SYSTEM
 
+> WARNING: ENSURE YOU HAVE A COPY OF THE SSH HOST KEYS FOR THE SYSTEM. AGENIX WILL NEED THESE TO BOOT PROPERLY.
+
 > Partially based on https://www.notashelf.dev/posts/impermanence
 
 1. Boot into a NixOS installer
@@ -117,7 +119,13 @@ mount /dev/disk/by-label/nixos /mnt
 mkdir /mnt/boot
 mount /dev/disk/by-label/BOOT /mnt/boot
 ``` 
-4. Install with `nixos-install --flake github:Gigahawk/nixos-config#<hostname>`
+4. Copy the root ssh keys with correct permissions:
+```
+$ ls -al /etc/ssh/ssh_host*
+-r-------- 1 root root 399 Nov 15  2023 /etc/ssh/ssh_host_ed25519_key
+-rw-r--r-- 1 root root  94 Nov 15  2023 /etc/ssh/ssh_host_ed25519_key.pub
+```
+5. Install with `nixos-install --flake github:Gigahawk/nixos-config#<hostname>`
     - If you get out of space errors set `TMPDIR=/mnt/flake/tmp`.
       You may need to garbage collect with `nix-collect-garbage` or even reboot the installer and remount after the first error.
         - Also might have to randomly `mkdir -p /mnt/flake/tmp/nix-build-mounts.sh.drv-0` for some reason?

@@ -157,6 +157,29 @@ Simulation of a reboot after a complete drive failure (no longer detected etc.)
 1. Mount the extracted image with fdisk etc.
 1. 
 
+### WSL (veda)
+
+- `veda`
+    - WSL install on Jasper-PC
+
+#### SystemD/D-Bus issues
+
+If `systemctl --user` isn't working, try running some of the following
+
+```
+sudo loginctl enable-linger "$USER"
+```
+
+Run the following as root (this will break running Windows apps from bash, but seems to work fine if you open a new WSL session)
+```
+bash -c \
+"until [ -S /run/dbus/system_bus_socket ]; \
+ do sleep 1; \
+done; \
+systemctl restart user@1000; \
+export DBUS_SESSION_BUS_ADDRESS='unix:path/run/user/1000/bus'; \
+exec sudo --preserve-env=DBUS_SESSION_BUS_ADDRESS --user jasper bash"
+```
 
 ## Non-NixOS Hosts
 

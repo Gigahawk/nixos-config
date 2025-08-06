@@ -81,6 +81,48 @@ To renew the key:
 
 #### Installing 
 
+> WARNING: THIS WILL WIPE THE SYSTEM
+
+> Partially based on https://www.notashelf.dev/posts/impermanence
+
+1. Boot into a NixOS installer
+2. Run the following commands to format and partition the boot drive
+```bash
+export DISK=/dev/sdX # use target disk
+
+# Set up GPT
+parted "$DISK" -- mklabel gpt
+
+# Set up boot partition
+parted "$DISK" -- mkpart ESP fat32 1MiB 1GiB  # Use a larger value like 2GiB to store more generations
+parted "$DISK" -- set 1 boot on # Do this for UEFI support?
+mkfs.vfat -n BOOT "$DISK"1
+
+# Set up swap
+parted "$DISK" -- mkpart Swap linux-swap 1GiB 9GiB  # For an 8GiB swap partition
+mkswap -L swap "$DISK"2
+swapon "$DISK"2
+
+# Set up root partition
+parted "$DISK" -- mkpart primary ext4 9GiB 100%  # Assuming swap ends at 9GiB
+# Set up encrypted volume
+cryptsetup --verify-passphrase -v luksFormat --label nixos_encrpyted "$DISK"3
+cryptsetup open "$DISK"3 enc # mount encrypted volume to /dev/mapper/enc
+# Partition encrypted volume
+mkfs.ext4 -L nixos /dev/mapper/enc
+```
+3. Mount the drive for install
+```bash
+mount /dev/disk/by-label/nixos /mnt
+mkdir /mnt/boot
+mount /dev/disk/by-label/BOOT /mnt/boot
+``` 
+4. Install with `nixos-install --flake github:Gigahawk/nixos-config#<hostname>`
+    - If you get out of space errors set `TMPDIR=/mnt/flake/tmp`.
+      You may need to garbage collect with `nix-collect-garbage` or even reboot the installer and remount after the first error.
+        - Also might have to randomly `mkdir -p /mnt/flake/tmp/nix-build-mounts.sh.drv-0` for some reason?
+
+
 #### Samba bootstrapping
 
 After a fresh install, add user passwords with `smbpasswd -a <user>`

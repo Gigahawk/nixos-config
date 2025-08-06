@@ -49,13 +49,13 @@
   #  patFile = config.age.secrets.inventree-backup-pat.path;
   #};
 
-  services.postgresql.dataDir = "/mnt/pool/postgres";
+  #services.postgresql.dataDir = "/mnt/pool/postgres";
 
-  services.immich = {
-    enable = true;
-    host = "0.0.0.0";
-    mediaLocation = "/mnt/pool/immich-nixos";
-  };
+  #services.immich = {
+  #  enable = true;
+  #  host = "0.0.0.0";
+  #  mediaLocation = "/mnt/pool/immich-nixos";
+  #};
 
   #services.ghidra-server = {
   #  enable = true;
@@ -169,21 +169,21 @@
     };
   };
 
-  programs.msmtp = {
-    enable = true;
-    accounts.default = {
-      auth = true;
-      tls = true;
-      tls_starttls = true;
-      tls_trust_file = "/etc/ssl/certs/ca-bundle.crt";
-      tls_certcheck = true;
-      host = "smtp.office365.com";
-      port = 587;
-      from = "jaspervirtualbox@outlook.com";
-      user = "jaspervirtualbox@outlook.com";
-      passwordeval = "cat ${config.age.secrets.alert-outlook.path}";
-    };
-  };
+  #programs.msmtp = {
+  #  enable = true;
+  #  accounts.default = {
+  #    auth = true;
+  #    tls = true;
+  #    tls_starttls = true;
+  #    tls_trust_file = "/etc/ssl/certs/ca-bundle.crt";
+  #    tls_certcheck = true;
+  #    host = "smtp.office365.com";
+  #    port = 587;
+  #    from = "jaspervirtualbox@outlook.com";
+  #    user = "jaspervirtualbox@outlook.com";
+  #    passwordeval = "cat ${config.age.secrets.alert-outlook.path}";
+  #  };
+  #};
 
   #services.nginx = {
   #  enable = true;

@@ -78,8 +78,8 @@ To renew the key:
 - `ptolemy`
     - Main server
     - Syncthing device ID: `DVSWOT3-6RE3PRD-OB3IVQI-VELDUFR-EMHZZCR-MPGNVW3-EIHW4LK-REFXVAJ`
-- `haro`
-    - Pi KVM connected to `ptolemy`
+
+#### Installing 
 
 #### Samba bootstrapping
 
@@ -148,15 +148,6 @@ Simulation of a reboot after a complete drive failure (no longer detected etc.)
     - If there are warnings about (image) files missing, make sure step 3 was completed properly
 4. Run `sudo arion run inventree-server invoke update`
 
-## Building Raspberry Pi Images
-
-1. Run `nix build .#images.<host>`
-    - In order to build on non-NixOS hosts, install `qemu-user` (for Ubuntu see [this link](https://azeria-labs.com/arm-on-x86-qemu-user/)), then add `extra-platforms = aarch64-linux` to your `nix.conf`
-1. Copy the image out of `result/sd-image/` to your local directory
-1. Extract the `.zst` file with `unzstd`
-1. Mount the extracted image with fdisk etc.
-1. 
-
 ### WSL (veda)
 
 - `veda`
@@ -180,6 +171,21 @@ systemctl restart user@1000; \
 export DBUS_SESSION_BUS_ADDRESS='unix:path/run/user/1000/bus'; \
 exec sudo --preserve-env=DBUS_SESSION_BUS_ADDRESS --user jasper bash"
 ```
+
+### Raspberry Pi Images
+
+- `haro`
+    - Pi KVM connected to `ptolemy`
+
+#### Building Raspberry Pi Images
+
+1. Run `nix build .#images.<host>`
+    - In order to build on non-NixOS hosts, install `qemu-user` (for Ubuntu see [this link](https://azeria-labs.com/arm-on-x86-qemu-user/)), then add `extra-platforms = aarch64-linux` to your `nix.conf`
+1. Copy the image out of `result/sd-image/` to your local directory
+1. Extract the `.zst` file with `unzstd`
+1. Mount the extracted image with fdisk etc.
+1. Copy over private keys?
+
 
 ## Non-NixOS Hosts
 

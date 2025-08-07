@@ -4,7 +4,7 @@ let
   jasper-veda = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFuW7/do+fI6PCEQdb+Ui0zBPlZvo/YKf5Nl6uujoPl2";
   users = [ jasper-pc-wsl jasper-virtualbox jasper-veda ];
 
-  virtualbox = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILPeXwx/iJuZ13kr1v6yLcXWJKk4ItG8iic9crq1Q2wl";
+  virtualbox = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFllWhwsgBivFqFcs7djQpb3qbf8EySKMLdGJC2rp0JK";
   ptolemy = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEsuCHOVN9ua62cq+m9C9i9PVrpZaOGiA3NJ0Fhn1kF1";
   haro = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBexEu5Y3tOU4oe+QXiZWVM/eJcLD3qRjZj1kcsVs4p2";
   veda = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID/c40iufgOIcv8xroyGvyhuVJnlPZpuXUdofu1elpIU";

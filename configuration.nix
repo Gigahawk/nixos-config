@@ -35,6 +35,7 @@
     dmidecode
     dos2unix
     evtest
+    expect
     fastfetch
     ffmpeg
     file

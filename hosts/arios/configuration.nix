@@ -25,7 +25,11 @@
       clock = "%c";
     };
   };
-  services.desktopManager.gnome.enable = true;
+  #services.desktopManager.gnome.enable = true;
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
  
   services.openssh.enable = true;
 

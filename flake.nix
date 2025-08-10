@@ -222,6 +222,28 @@
             #}
           ];
         };
+      # Thinkpad x250
+      arios = let
+        system = "x86_64-linux";
+      in
+        lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs;
+            inherit system;
+          };
+          modules = [
+            overlays
+            ./configuration.nix
+            ./modules/neovim/module.nix
+            agenix.nixosModules.default
+            ./modules/tailscale-autoconnect/module.nix
+            ./modules/agenix-cli.nix
+            ./hosts/arios/configuration.nix
+            ./hosts/arios/hw-config.nix
+            ./users/jasper/user.nix
+          ];
+        };
     };
     packages.x86_64-linux = {
       installer = nixos-generators.nixosGenerate {

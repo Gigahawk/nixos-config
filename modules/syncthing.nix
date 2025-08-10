@@ -60,6 +60,9 @@ in
           ptolemy = {
             id = "DVSWOT3-6RE3PRD-OB3IVQI-VELDUFR-EMHZZCR-MPGNVW3-EIHW4LK-REFXVAJ";
           };
+          arios = {
+            id = "53W7CGR-T26ZSLR-24VDJKE-VTZZVTJ-PP64OGV-SMXMQOS-CABLEOT-ZCBPJQM";
+          };
           remarkable = {  # reMarkable
             id = "UVYGJP5-OUFMTDJ-KFGK7I2-TR4NTSS-CFH7CDS-RFIKZE3-OLCJQ4Q-KURM3QR";
           };

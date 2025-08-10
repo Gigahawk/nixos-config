@@ -8,9 +8,10 @@ let
   ptolemy = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEsuCHOVN9ua62cq+m9C9i9PVrpZaOGiA3NJ0Fhn1kF1";
   haro = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBexEu5Y3tOU4oe+QXiZWVM/eJcLD3qRjZj1kcsVs4p2";
   veda = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID/c40iufgOIcv8xroyGvyhuVJnlPZpuXUdofu1elpIU";
+  arios = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEQmT9/tG95cTnt2wrN+/PlKPiRtFUv11dhtnSyiixVN";
   # For build image host detection
   systems = {
-    inherit haro ptolemy virtualbox veda;
+    inherit haro ptolemy virtualbox veda arios;
   };
 in {
   #inherit systems;
@@ -53,6 +54,11 @@ in {
   "tailscale-haro.age".publicKeys = users ++ [ haro ];
 
   "jasper-veda.age".publicKeys = users ++ [ veda ];
+
+  "jasper-arios.age".publicKeys = users ++ [ arios ];
+  "tailscale-arios.age".publicKeys = users ++ [ arios ];
+  "syncthing-cert-arios.age".publicKeys = users ++ [ arios ];
+  "syncthing-key-arios.age".publicKeys = users ++ [ arios ];
 
   "wifi-env.age".publicKeys = users ++ (builtins.attrValues systems);
   "xmpp-target-jid.age".publicKeys = users ++ (builtins.attrValues systems);

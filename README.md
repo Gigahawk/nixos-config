@@ -2,13 +2,67 @@
 
 ## Adding a new host
 
+### Installing 
+
+> WARNING: THIS WILL WIPE THE SYSTEM
+
+> WARNING: IF YOU ARE REINSTALLING, ENSURE YOU HAVE A COPY OF THE SSH HOST KEYS FOR THE SYSTEM. AGENIX WILL NEED THESE TO BOOT PROPERLY.
+
+> Partially based on https://www.notashelf.dev/posts/impermanence
+
+1. Boot into a NixOS installer
+2. Run the following commands to format and partition the boot drive
+```bash
+export DISK=/dev/sdX # use target disk
+
+# Set up GPT
+parted "$DISK" -- mklabel gpt
+
+# Set up boot partition
+parted "$DISK" -- mkpart ESP fat32 1MiB 1GiB  # Use a larger value like 2GiB to store more generations
+parted "$DISK" -- set 1 boot on # Do this for UEFI support?
+mkfs.vfat -n BOOT "$DISK"1
+
+# Set up swap
+parted "$DISK" -- mkpart Swap linux-swap 1GiB 9GiB  # For an 8GiB swap partition
+mkswap -L swap "$DISK"2
+swapon "$DISK"2
+
+# Set up root partition
+parted "$DISK" -- mkpart primary ext4 9GiB 100%  # Assuming swap ends at 9GiB
+# Set up encrypted volume
+cryptsetup --verify-passphrase -v luksFormat --label nixos_encrpyted "$DISK"3
+cryptsetup open "$DISK"3 enc # mount encrypted volume to /dev/mapper/enc
+# Partition encrypted volume
+mkfs.ext4 -L nixos /dev/mapper/enc
+```
+3. Mount the drive for install
+```bash
+mount /dev/disk/by-label/nixos /mnt
+mkdir /mnt/boot
+mount /dev/disk/by-label/BOOT /mnt/boot
+``` 
+4. Copy or generate host ssh keys with correct permissions:
+    - See below for key generation details
+```
+$ ls -al /mnt/etc/ssh/ssh_host*
+-r-------- 1 root root 399 Nov 15  2023 /mnt/etc/ssh/ssh_host_ed25519_key
+-rw-r--r-- 1 root root  94 Nov 15  2023 /mnt/etc/ssh/ssh_host_ed25519_key.pub
+```
+5. If this is a new host, generate a new config with `nixos-generate-config --root /mnt`, then copy to this flake and modify as needed.
+6. Install with `nixos-install --flake github:Gigahawk/nixos-config#<hostname>`
+    - If you get out of space errors set `TMPDIR=/mnt/flake/tmp`.
+      You may need to garbage collect with `nix-collect-garbage` or even reboot the installer and remount after the first error.
+        - Also might have to randomly `mkdir -p /mnt/flake/tmp/nix-build-mounts.sh.drv-0` for some reason?
+
+
 ### Setting up a host ssh key
 
 1. Login as root on a freshly installed host
 2. Create a host ssh key with `ssh-keygen -t ed25519 -C "root@<hostname>"`
-    - Ensure the key is saved as `/etc/ssh/ssh_host_ed25519_key`
+    - Ensure the key is saved as `/mnt/etc/ssh/ssh_host_ed25519_key`
     - Ensure no password is set
-3. Run `cat /etc/ssh/ssh_host_ed25519_key.pub` and add it to the list of hosts in `secrets/secret.nix`
+3. Run `cat /mnt/etc/ssh/ssh_host_ed25519_key.pub` and add it to the list of hosts in `secrets/secret.nix`
 
 ### Creating a new user password
 
@@ -78,57 +132,6 @@ To renew the key:
 - `ptolemy`
     - Main server
     - Syncthing device ID: `DVSWOT3-6RE3PRD-OB3IVQI-VELDUFR-EMHZZCR-MPGNVW3-EIHW4LK-REFXVAJ`
-
-#### Installing 
-
-> WARNING: THIS WILL WIPE THE SYSTEM
-
-> WARNING: ENSURE YOU HAVE A COPY OF THE SSH HOST KEYS FOR THE SYSTEM. AGENIX WILL NEED THESE TO BOOT PROPERLY.
-
-> Partially based on https://www.notashelf.dev/posts/impermanence
-
-1. Boot into a NixOS installer
-2. Run the following commands to format and partition the boot drive
-```bash
-export DISK=/dev/sdX # use target disk
-
-# Set up GPT
-parted "$DISK" -- mklabel gpt
-
-# Set up boot partition
-parted "$DISK" -- mkpart ESP fat32 1MiB 1GiB  # Use a larger value like 2GiB to store more generations
-parted "$DISK" -- set 1 boot on # Do this for UEFI support?
-mkfs.vfat -n BOOT "$DISK"1
-
-# Set up swap
-parted "$DISK" -- mkpart Swap linux-swap 1GiB 9GiB  # For an 8GiB swap partition
-mkswap -L swap "$DISK"2
-swapon "$DISK"2
-
-# Set up root partition
-parted "$DISK" -- mkpart primary ext4 9GiB 100%  # Assuming swap ends at 9GiB
-# Set up encrypted volume
-cryptsetup --verify-passphrase -v luksFormat --label nixos_encrpyted "$DISK"3
-cryptsetup open "$DISK"3 enc # mount encrypted volume to /dev/mapper/enc
-# Partition encrypted volume
-mkfs.ext4 -L nixos /dev/mapper/enc
-```
-3. Mount the drive for install
-```bash
-mount /dev/disk/by-label/nixos /mnt
-mkdir /mnt/boot
-mount /dev/disk/by-label/BOOT /mnt/boot
-``` 
-4. Copy the root ssh keys with correct permissions:
-```
-$ ls -al /etc/ssh/ssh_host*
--r-------- 1 root root 399 Nov 15  2023 /etc/ssh/ssh_host_ed25519_key
--rw-r--r-- 1 root root  94 Nov 15  2023 /etc/ssh/ssh_host_ed25519_key.pub
-```
-5. Install with `nixos-install --flake github:Gigahawk/nixos-config#<hostname>`
-    - If you get out of space errors set `TMPDIR=/mnt/flake/tmp`.
-      You may need to garbage collect with `nix-collect-garbage` or even reboot the installer and remount after the first error.
-        - Also might have to randomly `mkdir -p /mnt/flake/tmp/nix-build-mounts.sh.drv-0` for some reason?
 
 
 #### Samba bootstrapping

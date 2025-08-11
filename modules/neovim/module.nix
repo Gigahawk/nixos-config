@@ -1,9 +1,12 @@
-{ lib, pkgs, config, inputs, system, ... }:
+{ inputs, system, ... }:
 {
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-  };
+  environment.systemPackages = [
+    inputs.self.packages.${system}.nvim
+  ];
+  #programs.neovim = {
+  #  enable = true;
+  #  defaultEditor = true;
+  #  viAlias = true;
+  #  vimAlias = true;
+  #};
 }

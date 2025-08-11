@@ -62,6 +62,10 @@
       url = "github:Gigahawk/vscode-remote-workaround/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -80,6 +84,7 @@
     nixos-hardware,
     nixos-wsl,
     vscode-remote-workaround,
+    nvf,
     ... }:
   let
     lib = nixpkgs.lib;
@@ -264,6 +269,14 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
       in {
+        packages = {
+	  nvim = (nvf.lib.neovimConfiguration {
+	    inherit pkgs;
+	    modules = [
+	      ./nvim-config/nvim-config.nix
+	    ];
+	  }).neovim;
+	};
         devShell = pkgs.mkShell {
           nativeBuildInputs = [
             pkgs.apacheHttpd  # Generate htpasswd files for kvmd

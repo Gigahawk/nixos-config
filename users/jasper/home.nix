@@ -15,10 +15,14 @@
     settings = {
       "$mod" = "SUPER";
       "$term" = "kitty";
+      "$menu" = "walker";
 
       bind =
         [
           "$mod, Return, exec, $term"
+
+          "$mod, D, exec, $menu"
+
           "$mod, Q, killactive"
 
           "$mod, H, movefocus, l"
@@ -40,6 +44,22 @@
             ])
             9)
         );
+    };
+  };
+  services.walker = {
+    enable = true;
+    settings = {
+      app_launch_prefix = "";
+      as_window = false;
+      close_when_open = false;
+      disable_click_to_close = false;
+      force_keyboard_focus = false;
+      hotreload_theme = false;
+      locale = " ";
+      monitor = "";
+      terminal_title_flag = "";
+      theme = "default";
+      timeout = 0;
     };
   };
 }

@@ -251,6 +251,12 @@
               ./hosts/arios/configuration.nix
               ./hosts/arios/hw-config.nix
               ./users/jasper/user.nix
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.jasper = ./users/jasper/home.nix;
+              }
             ];
           };
       };

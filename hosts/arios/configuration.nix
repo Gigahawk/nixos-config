@@ -16,9 +16,8 @@
     enable = true;
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
+  # PC/GUI stuff
+  # TODO: migrate to another file
   services.displayManager.ly = {
     enable = true;
     settings = {
@@ -27,10 +26,23 @@
       clock = "%c";
     };
   };
-  #services.desktopManager.gnome.enable = true;
+
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+  };
+
+  services.kanata = {
+    enable = true;
+    keyboards = {
+      default = {
+        devices = [];
+        config = ''
+          (defsrc caps)
+          (deflayer base esc)
+        '';
+      };
+    };
   };
 
   services.openssh.enable = true;
@@ -61,4 +73,3 @@
 
   system.stateVersion = "25.05";
 }
-

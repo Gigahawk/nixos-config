@@ -1,6 +1,8 @@
-{ pkg, lib, ... }:
-
 {
+  pkg,
+  lib,
+  ...
+}: {
   vim = {
     viAlias = true;
     vimAlias = true;
@@ -58,7 +60,6 @@
       indent-blankline.enable = true;
 
       cellular-automaton.enable = false;
-
     };
 
     statusline = {
@@ -125,13 +126,11 @@
       ccc.enable = true;
       vim-wakatime.enable = false;
       diffview-nvim.enable = true;
-      yanky-nvim = {
-        enable = true;
-        setupOpts.ring.storage = "sqlite";
-      };
+      #yanky-nvim = {
+      #  enable = true;
+      #  setupOpts.ring.storage = "sqlite";
+      #};
       icon-picker.enable = true;
-
     };
-
   };
 }

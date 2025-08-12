@@ -17,6 +17,10 @@
       "$term" = "kitty";
       "$menu" = "walker";
 
+      input.touchpad = {
+        natural_scroll = true;
+      };
+
       bind =
         [
           "$mod, Return, exec, $term"

@@ -126,10 +126,14 @@
       ccc.enable = true;
       vim-wakatime.enable = false;
       diffview-nvim.enable = true;
-      #yanky-nvim = {
-      #  enable = true;
-      #  setupOpts.ring.storage = "sqlite";
-      #};
+      yanky-nvim = {
+        enable = true;
+        setupOpts = {
+          ring.storage = "sqlite";
+          # disable for now to avoid annoying clipboard read warnings from kitty (OSC 52)
+          system_clipboard.sync_with_ring = false;
+        };
+      };
       icon-picker.enable = true;
     };
   };

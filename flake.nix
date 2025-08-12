@@ -85,218 +85,223 @@
     nixos-wsl,
     vscode-remote-workaround,
     nvf,
-    ... }:
-  let
+    ...
+  }: let
     lib = nixpkgs.lib;
     mkSdImage = host:
       self.nixosConfigurations.${host}.config.system.build.sdImage;
-    overlays = { pkgs, config, ... }: {
+    overlays = {
+      pkgs,
+      config,
+      ...
+    }: {
       config.nixpkgs.overlays = [
         # TODO: does this cause problems for other systems?
         # The following is requried for building RPi images {
         # https://github.com/NixOS/nixpkgs/issues/126755#issuecomment-869149243
         (final: super: {
           makeModulesClosure = x:
-            super.makeModulesClosure (x // { allowMissing = true; });
+            super.makeModulesClosure (x // {allowMissing = true;});
         })
       ];
     };
-  in {
-    images = {
-      haro = mkSdImage "haro";
-    };
-    nixosConfigurations = {
-      # Main server
-      ptolemy = let
-        system = "x86_64-linux";
-      in
-        lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs;
-            inherit system;
-          };
-          modules = [
-            overlays
-            ./configuration.nix
-            ./modules/neovim/module.nix
-            agenix.nixosModules.default
-            ./modules/tailscale-autoconnect/module.nix
-            ./modules/agenix-cli.nix
-            ./modules/snapraid/module.nix
-            ./modules/xmpp-bridge/module.nix
-            ./modules/smartp/module.nix
-            ./modules/smartd.nix
-            ./modules/syncthing.nix
-            ./modules/jellyfin.nix
-            inventree.nixosModule
-            cypress-ticket-scraper.nixosModule
-            ./modules/inventree-backup/module.nix
-            ./modules/restic/module.nix
-            ./modules/notify-startup-shutdown/module.nix
-            ./modules/ghidra-server/module.nix
-            ./hosts/ptolemy/configuration.nix
-            ./hosts/ptolemy/hw-config.nix
-            ./users/jasper/user.nix
-            #home-manager.nixosModules.home-manager {
-            #  home-manager.useGlobalPkgs = true;
-            #  home-manager.useUserPackages = true;
-            #  home-manager.users.jasper = import ./users/jasper.nix;
-            #}
-          ];
-        };
-      # WSL on JASPER-PC
-      veda = let
-        system = "x86_64-linux";
-      in
-        lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs;
-            inherit system;
-          };
-          modules = [
-            overlays
-            nixos-wsl.nixosModules.default
-            ./configuration.nix
-            agenix.nixosModules.default
-            vscode-remote-workaround.nixosModules.default
-            ./modules/agenix-cli.nix
-            ./hosts/veda/configuration.nix
-            #./hosts/veda/hw-config.nix
-            ./modules/neovim/module.nix
-            ./users/jasper/user.nix
-          ];
-        };
-      # Main server Pi KVM
-      haro = let
-        system = "aarch64-linux";
-      in
-        lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs;
-            inherit system;
-          };
-          modules = [
-            overlays
-            ./configuration.nix
-            agenix.nixosModules.default
-            kvmd.nixosModule
-            ./modules/tailscale-autoconnect/module.nix
-            ./modules/agenix-cli.nix
-            #./modules/xmpp-bridge/module.nix
-            ./modules/raspi4/module.nix
-            nixos-hardware.nixosModules.raspberry-pi-4
-            ./hosts/haro/configuration.nix
-            ./hosts/haro/hw-config.nix
-            ./users/jasper/user.nix
-          ];
-
-        };
-      # Test server
-      virtualbox = let
-        system = "x86_64-linux";
-      in
-        lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs;
-            inherit system;
-          };
-          modules = [
-            overlays
-            ./configuration.nix
-            ./modules/neovim/module.nix
-            agenix.nixosModules.default
-            ./modules/tailscale-autoconnect/module.nix
-            ./modules/agenix-cli.nix
-            ./modules/snapraid/module.nix
-            ./modules/xmpp-bridge/module.nix
-            #inventree.nixosModule
-            #./modules/inventree-backup/module.nix
-            #./modules/ghidra-server/module.nix
-            #./modules/restic/module.nix
-            ./hosts/virtualbox/configuration.nix
-            ./hosts/virtualbox/hw-config.nix
-            ./users/jasper/user.nix
-            #home-manager.nixosModules.home-manager {
-            #  home-manager.useGlobalPkgs = true;
-            #  home-manager.useUserPackages = true;
-            #  home-manager.users.jasper = import ./users/jasper.nix;
-            #}
-          ];
-        };
-      # Thinkpad x250
-      arios = let
-        system = "x86_64-linux";
-      in
-        lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs;
-            inherit system;
-          };
-          modules = [
-            overlays
-            ./configuration.nix
-            ./modules/neovim/module.nix
-            agenix.nixosModules.default
-            ./modules/tailscale-autoconnect/module.nix
-            ./modules/agenix-cli.nix
-            ./hosts/arios/configuration.nix
-            ./hosts/arios/hw-config.nix
-            ./users/jasper/user.nix
-          ];
-        };
-    };
-    packages.x86_64-linux = {
-      installer = nixos-generators.nixosGenerate {
-        system = "x86_64-linux";
-        specialArgs = {
-          system = "x86_64-linux";
-          inherit inputs;
-        };
-        modules = [
-          ./configuration.nix
-          ./hosts/installer/configuration.nix
-        ];
-        format = "install-iso";
+  in
+    {
+      images = {
+        haro = mkSdImage "haro";
       };
-    };
-  } // (
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in {
-        packages = {
-	  nvim = (nvf.lib.neovimConfiguration {
-	    inherit pkgs;
-	    modules = [
-	      ./nvim-config/nvim-config.nix
-	    ];
-	  }).neovim;
-	};
-        devShell = pkgs.mkShell {
-          nativeBuildInputs = [
-            pkgs.apacheHttpd  # Generate htpasswd files for kvmd
-            pkgs.nix-output-monitor # Better nix build output
-            pkgs.openssh
-            pkgs.rsync
-            pkgs.jq
-            pkgs.systemd  # Read journalctl logs locally
-            pkgs.mkpasswd  # Generate password hashes
-            pkgs.syncthing  # Generate syncthing keys
-            agenix.packages.${system}.agenix
-            bcrypt-tool.packages.${system}.default
-            pkgs.nixos-rebuild  # Build test systems locally
-            inventree.packages.${system}.gen-secret  # Generate secret_key.txt
-            pkgs.zstd  # Compress/decompress Pi images
-            pkgs.unixtools.fdisk
+      nixosConfigurations = {
+        # Main server
+        ptolemy = let
+          system = "x86_64-linux";
+        in
+          lib.nixosSystem {
+            inherit system;
+            specialArgs = {
+              inherit inputs;
+              inherit system;
+            };
+            modules = [
+              overlays
+              ./configuration.nix
+              ./modules/neovim/module.nix
+              agenix.nixosModules.default
+              ./modules/tailscale-autoconnect/module.nix
+              ./modules/agenix-cli.nix
+              ./modules/snapraid/module.nix
+              ./modules/xmpp-bridge/module.nix
+              ./modules/smartp/module.nix
+              ./modules/smartd.nix
+              ./modules/syncthing.nix
+              ./modules/jellyfin.nix
+              inventree.nixosModule
+              cypress-ticket-scraper.nixosModule
+              ./modules/inventree-backup/module.nix
+              ./modules/restic/module.nix
+              ./modules/notify-startup-shutdown/module.nix
+              ./modules/ghidra-server/module.nix
+              ./hosts/ptolemy/configuration.nix
+              ./hosts/ptolemy/hw-config.nix
+              ./users/jasper/user.nix
+              #home-manager.nixosModules.home-manager {
+              #  home-manager.useGlobalPkgs = true;
+              #  home-manager.useUserPackages = true;
+              #  home-manager.users.jasper = import ./users/jasper.nix;
+              #}
+            ];
+          };
+        # WSL on JASPER-PC
+        veda = let
+          system = "x86_64-linux";
+        in
+          lib.nixosSystem {
+            inherit system;
+            specialArgs = {
+              inherit inputs;
+              inherit system;
+            };
+            modules = [
+              overlays
+              nixos-wsl.nixosModules.default
+              ./configuration.nix
+              agenix.nixosModules.default
+              vscode-remote-workaround.nixosModules.default
+              ./modules/agenix-cli.nix
+              ./hosts/veda/configuration.nix
+              #./hosts/veda/hw-config.nix
+              ./modules/neovim/module.nix
+              ./users/jasper/user.nix
+            ];
+          };
+        # Main server Pi KVM
+        haro = let
+          system = "aarch64-linux";
+        in
+          lib.nixosSystem {
+            inherit system;
+            specialArgs = {
+              inherit inputs;
+              inherit system;
+            };
+            modules = [
+              overlays
+              ./configuration.nix
+              agenix.nixosModules.default
+              kvmd.nixosModule
+              ./modules/tailscale-autoconnect/module.nix
+              ./modules/agenix-cli.nix
+              #./modules/xmpp-bridge/module.nix
+              ./modules/raspi4/module.nix
+              nixos-hardware.nixosModules.raspberry-pi-4
+              ./hosts/haro/configuration.nix
+              ./hosts/haro/hw-config.nix
+              ./users/jasper/user.nix
+            ];
+          };
+        # Test server
+        virtualbox = let
+          system = "x86_64-linux";
+        in
+          lib.nixosSystem {
+            inherit system;
+            specialArgs = {
+              inherit inputs;
+              inherit system;
+            };
+            modules = [
+              overlays
+              ./configuration.nix
+              ./modules/neovim/module.nix
+              agenix.nixosModules.default
+              ./modules/tailscale-autoconnect/module.nix
+              ./modules/agenix-cli.nix
+              ./modules/snapraid/module.nix
+              ./modules/xmpp-bridge/module.nix
+              #inventree.nixosModule
+              #./modules/inventree-backup/module.nix
+              #./modules/ghidra-server/module.nix
+              #./modules/restic/module.nix
+              ./hosts/virtualbox/configuration.nix
+              ./hosts/virtualbox/hw-config.nix
+              ./users/jasper/user.nix
+              #home-manager.nixosModules.home-manager {
+              #  home-manager.useGlobalPkgs = true;
+              #  home-manager.useUserPackages = true;
+              #  home-manager.users.jasper = import ./users/jasper.nix;
+              #}
+            ];
+          };
+        # Thinkpad x250
+        arios = let
+          system = "x86_64-linux";
+        in
+          lib.nixosSystem {
+            inherit system;
+            specialArgs = {
+              inherit inputs;
+              inherit system;
+            };
+            modules = [
+              overlays
+              ./configuration.nix
+              ./modules/neovim/module.nix
+              agenix.nixosModules.default
+              ./modules/tailscale-autoconnect/module.nix
+              ./modules/agenix-cli.nix
+              ./hosts/arios/configuration.nix
+              ./hosts/arios/hw-config.nix
+              ./users/jasper/user.nix
+            ];
+          };
+      };
+      packages.x86_64-linux = {
+        installer = nixos-generators.nixosGenerate {
+          system = "x86_64-linux";
+          specialArgs = {
+            system = "x86_64-linux";
+            inherit inputs;
+          };
+          modules = [
+            ./configuration.nix
+            ./hosts/installer/configuration.nix
           ];
+          format = "install-iso";
         };
-      }
-    )
-  );
+      };
+    }
+    // (
+      flake-utils.lib.eachDefaultSystem (
+        system: let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in {
+          packages = {
+            nvim =
+              (nvf.lib.neovimConfiguration {
+                inherit pkgs;
+                modules = [
+                  ./nvim-config/nvim-config.nix
+                ];
+              }).neovim;
+          };
+          devShell = pkgs.mkShell {
+            nativeBuildInputs = [
+              pkgs.apacheHttpd # Generate htpasswd files for kvmd
+              pkgs.nix-output-monitor # Better nix build output
+              pkgs.openssh
+              pkgs.rsync
+              pkgs.jq
+              pkgs.systemd # Read journalctl logs locally
+              pkgs.mkpasswd # Generate password hashes
+              pkgs.syncthing # Generate syncthing keys
+              agenix.packages.${system}.agenix
+              bcrypt-tool.packages.${system}.default
+              pkgs.nixos-rebuild # Build test systems locally
+              inventree.packages.${system}.gen-secret # Generate secret_key.txt
+              pkgs.zstd # Compress/decompress Pi images
+              pkgs.unixtools.fdisk
+            ];
+          };
+        }
+      )
+    );
 }
-

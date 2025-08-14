@@ -23,11 +23,11 @@
   systemd.targets.hybrid-sleep.enable = false;
 
   # Reset on crash?
-  systemd.watchdog = {
-    device = "/dev/watchdog";
-    runtimeTime = "30s";
-    rebootTime = "10m";
-    kexecTime = "10m";
+  systemd.settings.Manager = {
+    WatchdogDevice = "/dev/watchdog";
+    RuntimeWatchdogSec = "30s";
+    RebootWatchdogSec = "600s";
+    KExecWatchdogSec = "600s";
   };
 
   services.kvmd = {

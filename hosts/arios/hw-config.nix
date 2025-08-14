@@ -31,6 +31,9 @@
       nixos_decrypted = {
         device = "/dev/disk/by-label/nixos_encrypted";
       };
+      swap_decrypted = {
+        device = "/dev/disk/by-label/swap_encrypted";
+      };
     };
   };
  

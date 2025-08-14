@@ -54,6 +54,10 @@
     kitty
   ];
 
+  fonts.packages = with pkgs; [
+    font-awesome
+  ];
+
   virtualisation.docker.enable = true;
 
   # Emulated systems for building

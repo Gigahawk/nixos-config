@@ -468,11 +468,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1751970897,
-        "narHash": "sha256-lDQkkaIsYDPPWI/QuHBVLqpDqw15qBF2Ye8Qg3/X5Oo=",
+        "lastModified": 1755142313,
+        "narHash": "sha256-cf8bNLAIXxmfVCV7LKCYF18tIZ5n+d9tNib0BVBWjrs=",
         "owner": "Gigahawk",
         "repo": "nixos-kvmd",
-        "rev": "ba1f4b255e85080bc313008bcbd56836f8082f36",
+        "rev": "7c7e6775f18216192227036d530410310bf5a27d",
         "type": "github"
       },
       "original": {

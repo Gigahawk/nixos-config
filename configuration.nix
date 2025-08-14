@@ -1,9 +1,14 @@
-{ config, lib, pkgs, inputs, system, ... }:
-
 {
-  imports = [ ];
+  config,
+  lib,
+  pkgs,
+  inputs,
+  system,
+  ...
+}: {
+  imports = [];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   nix.settings.trusted-users = [
     "root"
@@ -23,66 +28,68 @@
     graphics.enable32Bit = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    alejandra
-    bat
-    binwalk
-    btop
-    bmon
-    cryptsetup
-    dig
-    dua
-    dmidecode
-    dos2unix
-    evtest
-    expect
-    fastfetch
-    ffmpeg
-    file
-    gdu
-    git
-    git-lfs
-    gosu
-    hddtemp
-    hwinfo
-    i2c-tools
-    imagemagick
-    jq
-    lm_sensors
-    lshw
-    nethogs
-    nix-output-monitor
-    nix-tree
-    nixfmt-rfc-style
-    p7zip
-    smartmontools
-    syncthing
-    tailscale
-    traceroute
-    tree
-    unzip
-    usbutils
-    vim
-    wget
-    xplr
-    yt-dlp
+  environment.systemPackages = with pkgs;
+    [
+      alejandra
+      bat
+      binwalk
+      btop
+      bmon
+      cryptsetup
+      dig
+      dua
+      dmidecode
+      dos2unix
+      evtest
+      expect
+      fastfetch
+      ffmpeg
+      file
+      gdu
+      git
+      git-lfs
+      gosu
+      hddtemp
+      hwinfo
+      i2c-tools
+      imagemagick
+      jq
+      lm_sensors
+      lshw
+      nethogs
+      nix-output-monitor
+      nix-tree
+      nixfmt-rfc-style
+      p7zip
+      smartmontools
+      syncthing
+      tailscale
+      traceroute
+      tree
+      unzip
+      usbutils
+      vim
+      wget
+      xplr
+      yt-dlp
+      zoxide
 
-    # Custom packages
-    inputs.nix-top.packages.${system}.default
-    (callPackage ./packages/nixos-update.nix { })
-  ] ++ (
-    if builtins.elem system [ "i686-linux" "x86_64-linux" "x86_64-darwin"] then
-      [ mprime ]
-    else
-      []
-  );
+      # Custom packages
+      inputs.nix-top.packages.${system}.default
+      (callPackage ./packages/nixos-update.nix {})
+    ]
+    ++ (
+      if builtins.elem system ["i686-linux" "x86_64-linux" "x86_64-darwin"]
+      then [mprime]
+      else []
+    );
 
   networking.firewall = {
     enable = true;
     allowPing = true;
-    trustedInterfaces = [ "tailscale0" ];
-    allowedUDPPorts = [ config.services.tailscale.port ];
-    allowedTCPPorts = [ 22 ];
+    trustedInterfaces = ["tailscale0"];
+    allowedUDPPorts = [config.services.tailscale.port];
+    allowedTCPPorts = [22];
   };
 
   services.tailscale.enable = true;
@@ -113,7 +120,4 @@
   users.mutableUsers = false;
 
   system.stateVersion = lib.mkOverride 1100 "23.05";
-
 }
-
-

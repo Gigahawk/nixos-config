@@ -72,7 +72,6 @@
       wget
       xplr
       yt-dlp
-      zoxide
 
       # Custom packages
       inputs.nix-top.packages.${system}.default

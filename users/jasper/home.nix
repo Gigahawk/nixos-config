@@ -54,6 +54,7 @@
         );
     };
   };
+
   services.walker = {
     enable = true;
     settings = {
@@ -69,5 +70,9 @@
       theme = "default";
       timeout = 0;
     };
+  };
+
+  services.fnott = {
+    enable = true;
   };
 }

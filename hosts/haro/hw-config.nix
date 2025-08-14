@@ -14,6 +14,7 @@
     tc358743 = {
       enable = true;
       lanes = 4;
+      media-controller = false;
     };
     i2c1.enable = true;
   };

@@ -621,11 +621,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1752002207,
-        "narHash": "sha256-TKOy3UDXyefx6KTYozqmb8lIh/0EsG2mFOMee3JgfmQ=",
+        "lastModified": 1755146875,
+        "narHash": "sha256-EwI0XgY/0k/Ky3jeHDDlO/xAzEOoUL80CyCeBjnXRhg=",
         "owner": "Gigahawk",
         "repo": "nixos-hardware",
-        "rev": "c07066b263d5fbac77bbe74125dffc88a5319a4d",
+        "rev": "f67c9ba43f5c81ad0dc6c039d4e6e6927d3572f7",
         "type": "github"
       },
       "original": {

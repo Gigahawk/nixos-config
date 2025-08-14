@@ -14,6 +14,7 @@
   # interactive systems, use networkmanager for now
   networking.networkmanager = {
     enable = true;
+    wifi.backend = "iwd";
   };
 
   # PC/GUI stuff

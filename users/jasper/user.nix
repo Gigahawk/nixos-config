@@ -9,6 +9,7 @@
     extraGroups = [
       "wheel" # Enable ‘sudo’ for the user.
       "docker"
+      "input"
     ];
     openssh.authorizedKeys.keys = [
       # JASPER-PC Ubuntu WSL

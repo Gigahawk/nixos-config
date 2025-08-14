@@ -29,6 +29,8 @@
 
           "$mod, Q, killactive"
 
+          "$mod, F, fullscreen"
+
           "$mod, H, movefocus, l"
           "$mod, J, movefocus, d"
           "$mod, K, movefocus, u"
@@ -38,6 +40,8 @@
           "$mod SHIFT, J, movewindow, d"
           "$mod SHIFT, K, movewindow, u"
           "$mod SHIFT, L, movewindow, r"
+
+          "$mod SHIFT, W, exec, iwmenu -l $menu"
         ]
         ++ (
           builtins.concatLists (builtins.genList (i: let

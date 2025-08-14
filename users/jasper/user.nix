@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   users.users.jasper = {
     isNormalUser = true;
     hashedPasswordFile = config.age.secrets.jasper.path;
@@ -18,5 +20,3 @@
     ];
   };
 }
-
-

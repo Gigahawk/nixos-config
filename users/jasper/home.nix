@@ -16,10 +16,15 @@
       "$mod" = "SUPER";
       "$term" = "kitty";
       "$menu" = "walker";
+      "$bar" = "waybar";
 
       input.touchpad = {
         natural_scroll = true;
       };
+
+      exec-once = [
+        "waybar"
+      ];
 
       bind =
         [
@@ -73,6 +78,10 @@
   };
 
   services.fnott = {
+    enable = true;
+  };
+
+  programs.waybar = {
     enable = true;
   };
 }

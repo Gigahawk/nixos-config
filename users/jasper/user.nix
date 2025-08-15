@@ -11,6 +11,7 @@
       "docker"
       "input"
     ];
+    shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
       # JASPER-PC Ubuntu WSL
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIjA/h30yvAJQkkfMBncAKo2aY1dzb+2m/eWw3MLfV76 jasper"

@@ -10,6 +10,11 @@
 
   programs.home-manager.enable = true;
 
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -88,5 +93,6 @@
   programs.zoxide = {
     enable = true;
     enableBashIntegration = true;
+    enableZshIntegration = true;
   };
 }

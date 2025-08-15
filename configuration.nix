@@ -83,6 +83,8 @@
       else []
     );
 
+  programs.zsh.enable = true;
+
   networking.firewall = {
     enable = true;
     allowPing = true;

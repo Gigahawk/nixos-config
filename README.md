@@ -1,8 +1,44 @@
 # nixos-config
 
-## Adding a new host
+<!-- vscode-markdown-toc -->
+* 1. [Adding a new host](#Addinganewhost)
+	* 1.1. [Installing](#Installing)
+	* 1.2. [Setting up a host ssh key](#Settingupahostsshkey)
+	* 1.3. [Creating a new user password](#Creatinganewuserpassword)
+	* 1.4. [Creating a user ssh key](#Creatingausersshkey)
+	* 1.5. [Creating a new Syncthing config](#CreatinganewSyncthingconfig)
+* 2. [Updating](#Updating)
+	* 2.1. [Locally](#Locally)
+	* 2.2. [Remotely](#Remotely)
+* 3. [Tailscale](#Tailscale)
+	* 3.1. [Renewing Keys](#RenewingKeys)
+	* 3.2. [DNS Failures](#DNSFailures)
+* 4. [Hosts](#Hosts)
+	* 4.1. [Servers (virtualbox, ptolemy)](#Serversvirtualboxptolemy)
+		* 4.1.1. [Samba bootstrapping](#Sambabootstrapping)
+		* 4.1.2. [Backups](#Backups)
+		* 4.1.3. [SnapRAID drive replacement procedure](#SnapRAIDdrivereplacementprocedure)
+		* 4.1.4. [InvenTree Setup](#InvenTreeSetup)
+		* 4.1.5. [InvenTree bootstrapping](#InvenTreebootstrapping)
+	* 4.2. [WSL (veda)](#WSLveda)
+		* 4.2.1. [SystemD/D-Bus issues](#SystemDD-Busissues)
+	* 4.3. [Raspberry Pi Images](#RaspberryPiImages)
+		* 4.3.1. [Building Raspberry Pi Images](#BuildingRaspberryPiImages)
+* 5. [Non-NixOS Hosts](#Non-NixOSHosts)
+	* 5.1. [Syncthing](#Syncthing)
+		* 5.1.1. [Windows](#Windows)
+		* 5.1.2. [Android](#Android)
+		* 5.1.3. [reMarkable](#reMarkable)
 
-### Installing 
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+
+##  1. <a name='Addinganewhost'></a>Adding a new host
+
+###  1.1. <a name='Installing'></a>Installing 
 
 > WARNING: THIS WILL WIPE THE SYSTEM
 
@@ -61,7 +97,7 @@ $ ls -al /mnt/etc/ssh/ssh_host*
         - Also might have to randomly `mkdir -p /mnt/flake/tmp/nix-build-mounts.sh.drv-0` for some reason?
 
 
-### Setting up a host ssh key
+###  1.2. <a name='Settingupahostsshkey'></a>Setting up a host ssh key
 
 1. Login as root on a freshly installed host
 2. Create a host ssh key with `ssh-keygen -t ed25519 -C "root@<hostname>"`
@@ -69,7 +105,7 @@ $ ls -al /mnt/etc/ssh/ssh_host*
     - Ensure no password is set
 3. Run `cat /mnt/etc/ssh/ssh_host_ed25519_key.pub` and add it to the list of hosts in `secrets/secret.nix`
 
-### Creating a new user password
+###  1.3. <a name='Creatinganewuserpassword'></a>Creating a new user password
 
 1. Generate a new password using `mkpasswd -m sha-512`
 2. Copy it into an agenix secret
@@ -77,7 +113,7 @@ $ ls -al /mnt/etc/ssh/ssh_host*
 
 For WSL installs see https://nix-community.github.io/NixOS-WSL/how-to/change-username.html for how to properly switch users
 
-### Creating a user ssh key
+###  1.4. <a name='Creatingausersshkey'></a>Creating a user ssh key
 
 1. Login as the user
 2. Create a ssh key with `ssh-keygen -t ed25519 -C "<username>@<hostname>"`
@@ -85,7 +121,7 @@ For WSL installs see https://nix-community.github.io/NixOS-WSL/how-to/change-use
 4. On an existing machine, run `agenix -r` to in the `secrets` directory to rekey all secrets.
     - Comment out the `inherit systems;` line to prevent agenix from attempting and failing to rekey it
 
-### Creating a new Syncthing config
+###  1.5. <a name='CreatinganewSyncthingconfig'></a>Creating a new Syncthing config
 
 1. Generate a new set of keys using `syncthing -generate=<foldername>`
 2. Import the `cert.pem` and `key.pem` files into agenix
@@ -95,13 +131,13 @@ For WSL installs see https://nix-community.github.io/NixOS-WSL/how-to/change-use
 5. Add `modules/syncthing.nix` to the import list for the host
 6. Define all relevant options (paths, etc.) in the host `configuration.nix`
 
-## Updating
+##  2. <a name='Updating'></a>Updating
 
-### Locally
+###  2.1. <a name='Locally'></a>Locally
 
 All hosts come with a `nixos-update` script which under the hood calls `nixos-rebuild` with arguments to fetch this repo from GitHub and show the build output in `nix-output-monitor`
 
-### Remotely
+###  2.2. <a name='Remotely'></a>Remotely
 
 For hosts that are performance limited, it may be faster (or required) to build the updated config on a different host, and then push it. This can be done with
 ```
@@ -111,11 +147,11 @@ nixos-rebuild \
     --sudo --ask-sudo-password switch
 ```
 
-## Tailscale
+##  3. <a name='Tailscale'></a>Tailscale
 
 All hosts are connected via Tailscale.
 
-### Renewing Keys
+###  3.1. <a name='RenewingKeys'></a>Renewing Keys
 
 Eventually, the keys for a host will expire.
 
@@ -128,9 +164,23 @@ To renew the key:
 3. Pull the updated config on the host
     - If you need Tailscale to access the device see the [official docs](https://tailscale.com/kb/1028/key-expiry#renewing-keys-for-an-expired-device) for how to temporarily regain access
 
-## Hosts
+###  3.2. <a name='DNSFailures'></a>DNS Failures
 
-### Servers (virtualbox, ptolemy)
+Occasionally DNS failures will prevent systems from reaching the internet
+(see https://github.com/tailscale/tailscale/issues/13235).
+
+Usually when this happens the device is still connected to Tailscale so it can still be accessed over SSH.
+
+Resetting the Tailscale service seems to fix this.
+
+```
+sudo systemctl restart tailscaled.service
+sudo tailscale up
+```
+
+##  4. <a name='Hosts'></a>Hosts
+
+###  4.1. <a name='Serversvirtualboxptolemy'></a>Servers (virtualbox, ptolemy)
 
 - `virtualbox`
     - Virtualbox host to experiment with server setup before committing to real hardware
@@ -139,11 +189,11 @@ To renew the key:
     - Syncthing device ID: `DVSWOT3-6RE3PRD-OB3IVQI-VELDUFR-EMHZZCR-MPGNVW3-EIHW4LK-REFXVAJ`
 
 
-#### Samba bootstrapping
+####  4.1.1. <a name='Sambabootstrapping'></a>Samba bootstrapping
 
 After a fresh install, add user passwords with `smbpasswd -a <user>`
 
-#### Backups
+####  4.1.2. <a name='Backups'></a>Backups
 
 Hosts containing important data are backed up to Storj using restic.
 
@@ -152,7 +202,7 @@ The latest backup can be restored by running
 sudo restic-storj restore --target <path_to_restore_to> latest
 ```
 
-#### SnapRAID drive replacement procedure
+####  4.1.3. <a name='SnapRAIDdrivereplacementprocedure'></a>SnapRAID drive replacement procedure
 
 Simulation of a reboot after a complete drive failure (no longer detected etc.)
 
@@ -186,12 +236,12 @@ Simulation of a reboot after a complete drive failure (no longer detected etc.)
     - If replacing a parity drive use `snapraid -l /tmp/snapraid-sync.log --force-full sync`
 
 
-#### InvenTree Setup
+####  4.1.4. <a name='InvenTreeSetup'></a>InvenTree Setup
 
 1. Generate a new secret key with `inventree-gen-secret`, import into agenix
 1. Map it into the config with permissions ??? and ownership ???
 
-#### InvenTree bootstrapping
+####  4.1.5. <a name='InvenTreebootstrapping'></a>InvenTree bootstrapping
 
 1. Clone `git@github.com:Gigahawk/inventree-backup.git` to `/mnt/pool/inventree-backup`
     - This path is required for the automated backup script to work
@@ -206,12 +256,12 @@ Simulation of a reboot after a complete drive failure (no longer detected etc.)
     - If there are warnings about (image) files missing, make sure step 3 was completed properly
 4. Run `sudo arion run inventree-server invoke update`
 
-### WSL (veda)
+###  4.2. <a name='WSLveda'></a>WSL (veda)
 
 - `veda`
     - WSL install on Jasper-PC
 
-#### SystemD/D-Bus issues
+####  4.2.1. <a name='SystemDD-Busissues'></a>SystemD/D-Bus issues
 
 If `systemctl --user` isn't working, try running some of the following
 
@@ -230,12 +280,12 @@ export DBUS_SESSION_BUS_ADDRESS='unix:path/run/user/1000/bus'; \
 exec sudo --preserve-env=DBUS_SESSION_BUS_ADDRESS --user jasper bash"
 ```
 
-### Raspberry Pi Images
+###  4.3. <a name='RaspberryPiImages'></a>Raspberry Pi Images
 
 - `haro`
     - Pi KVM connected to `ptolemy`
 
-#### Building Raspberry Pi Images
+####  4.3.1. <a name='BuildingRaspberryPiImages'></a>Building Raspberry Pi Images
 
 1. Run `nix build .#images.<host>`
     - In order to build on non-NixOS hosts, install `qemu-user` (for Ubuntu see [this link](https://azeria-labs.com/arm-on-x86-qemu-user/)), then add `extra-platforms = aarch64-linux` to your `nix.conf`
@@ -245,9 +295,9 @@ exec sudo --preserve-env=DBUS_SESSION_BUS_ADDRESS --user jasper bash"
 1. Copy over private keys?
 
 
-## Non-NixOS Hosts
+##  5. <a name='Non-NixOSHosts'></a>Non-NixOS Hosts
 
-### Syncthing
+###  5.1. <a name='Syncthing'></a>Syncthing
 
 Instead of building the Syncthing config directly, the NixOS module builds a
 shell script that configures Syncthing through the API.
@@ -266,7 +316,7 @@ Generally:
     - Modify the `path` attribute of all `folder` tags (the web GUI doesn't let you modify them after creation)
 6. Copy the modified config to the target host (see below for details)
 
-#### Windows
+####  5.1.1. <a name='Windows'></a>Windows
 
 Install [SyncTrazor](https://github.com/canton7/SyncTrayzor#installation)
 
@@ -287,7 +337,7 @@ Syncthing's config folder is usually at `%APPDATA%\..\Local\Syncthing`
 - remarkable_sync
     - JASPER-PC: `D:\remarkable_sync`
 
-#### Android
+####  5.1.2. <a name='Android'></a>Android
 
 Install [Syncthing-Fork](https://play.google.com/store/apps/details?id=com.github.catfriend1.syncthingandroid&hl=en&gl=US)
 
@@ -312,7 +362,7 @@ You can import the config by doing the following:
 - pdf2remarkable: `/storage/emulated/0/pdf2remarkable`
 - remarkable_sync: `/storage/emulated/0/remarkable_sync`
 
-#### reMarkable
+####  5.1.3. <a name='reMarkable'></a>reMarkable
 
 > TODO: figure out how installation works from toltec and service stuff
 

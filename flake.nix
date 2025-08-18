@@ -120,6 +120,10 @@
             specialArgs = {
               inherit inputs;
               inherit system;
+              # ptolemy runs a basic desktop env for easy pikvm
+              # access but we don't really want anything too fancy
+              # or shortcut heavy like the standard hyprland setup
+              desktop = false;
             };
             modules = [
               overlays
@@ -143,11 +147,6 @@
               ./hosts/ptolemy/configuration.nix
               ./hosts/ptolemy/hw-config.nix
               ./users/jasper/user.nix
-              #home-manager.nixosModules.home-manager {
-              #  home-manager.useGlobalPkgs = true;
-              #  home-manager.useUserPackages = true;
-              #  home-manager.users.jasper = import ./users/jasper.nix;
-              #}
             ];
           };
         # WSL on JASPER-PC
@@ -159,6 +158,7 @@
             specialArgs = {
               inherit inputs;
               inherit system;
+              desktop = false;
             };
             modules = [
               overlays
@@ -182,6 +182,7 @@
             specialArgs = {
               inherit inputs;
               inherit system;
+              desktop = false;
             };
             modules = [
               overlays
@@ -207,6 +208,9 @@
             specialArgs = {
               inherit inputs;
               inherit system;
+              # virtualbox doesn't seem to play nice with wayland
+              # manually configure x11 desktop
+              desktop = false;
             };
             modules = [
               overlays
@@ -224,11 +228,6 @@
               ./hosts/virtualbox/configuration.nix
               ./hosts/virtualbox/hw-config.nix
               ./users/jasper/user.nix
-              #home-manager.nixosModules.home-manager {
-              #  home-manager.useGlobalPkgs = true;
-              #  home-manager.useUserPackages = true;
-              #  home-manager.users.jasper = import ./users/jasper.nix;
-              #}
             ];
           };
         # Thinkpad x250
@@ -240,6 +239,7 @@
             specialArgs = {
               inherit inputs;
               inherit system;
+              desktop = true;
             };
             modules = [
               overlays
@@ -251,12 +251,6 @@
               ./hosts/arios/configuration.nix
               ./hosts/arios/hw-config.nix
               ./users/jasper/user.nix
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.jasper = ./users/jasper/home.nix;
-              }
             ];
           };
       };

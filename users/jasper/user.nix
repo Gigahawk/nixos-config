@@ -1,8 +1,18 @@
 {
   config,
   pkgs,
+  lib,
+  inputs,
+  desktop,
   ...
 }: {
+  imports = [
+    (import inputs.home-manager.nixosModules.home-manager)
+  ];
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+
   users.users.jasper = {
     isNormalUser = true;
     hashedPasswordFile = config.age.secrets.jasper.path;
@@ -21,4 +31,24 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILBoOvyE+sGI2jS1owqCXlHpqZcVOSrJwe6QPH5pnTpq jasper"
     ];
   };
+
+  services.displayManager.ly = {
+    enable = lib.mkDefault desktop;
+    settings = {
+      animation = "matrix";
+      bigclock = "en";
+      clock = "%c";
+    };
+  };
+
+  programs.hyprland = {
+    enable = lib.mkDefault desktop;
+    xwayland.enable = true;
+  };
+
+  home-manager.extraSpecialArgs = {
+    inherit desktop;
+  };
+
+  home-manager.users.jasper = ./home.nix;
 }

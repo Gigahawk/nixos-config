@@ -17,22 +17,7 @@
     wifi.backend = "iwd";
   };
 
-  # PC/GUI stuff
-  # TODO: migrate to another file
-  services.displayManager.ly = {
-    enable = true;
-    settings = {
-      animation = "matrix";
-      bigclock = "en";
-      clock = "%c";
-    };
-  };
-
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
+  # Should this be universal for desktop devices?
   services.kanata = {
     enable = true;
     keyboards = {

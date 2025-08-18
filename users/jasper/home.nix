@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  desktop,
   ...
 }: {
   home.username = "jasper";
@@ -16,7 +17,7 @@
   };
 
   wayland.windowManager.hyprland = {
-    enable = true;
+    enable = desktop;
     settings = {
       "$mod" = "SUPER";
       "$term" = "kitty";
@@ -75,7 +76,7 @@
   };
 
   services.walker = {
-    enable = true;
+    enable = desktop;
     settings = {
       app_launch_prefix = "";
       as_window = false;
@@ -92,11 +93,11 @@
   };
 
   services.fnott = {
-    enable = true;
+    enable = desktop;
   };
 
   programs.waybar = {
-    enable = true;
+    enable = desktop;
   };
 
   programs.zoxide = {

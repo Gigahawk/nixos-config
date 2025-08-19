@@ -43,6 +43,7 @@ in {
   "restic-repository-storj-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "restic-password-storj-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "upsmon-ptolemy.age".publicKeys = users ++ [ ptolemy ];
+  "jellyfin-ptolemy.age".publicKeys = users ++ [ ptolemy ];
 
   "jasper-haro.age".publicKeys = users ++ [ haro ];
   "kvmd-ipmipasswd-haro.age".publicKeys = users ++ [ haro ];

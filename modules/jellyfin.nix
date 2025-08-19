@@ -1,6 +1,10 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
+  imports = [
+    inputs.declarative-jellyfin.nixosModules.default
+  ];
+
   environment.systemPackages = with pkgs; [
     jellyfin
     jellyfin-web
@@ -10,9 +14,23 @@
   users.groups.render.members = [ "jellyfin" ];
   users.groups.video.members = [ "jellyfin" ];
 
-  services.jellyfin = {
+  services.declarative-jellyfin = {
     enable = true;
     openFirewall = true;
+
+    system = {
+      UICulture = "en-US";
+    };
+
+    users = {
+      jasper = {
+        mutable = false;
+        permissions = {
+          isAdministrator = true;
+        };
+        hashedPasswordFile = config.age.secrets.jellyfin-password.path;
+      };
+    };
   };
 }
 

@@ -350,6 +350,55 @@
     };
   };
 
+  services.declarative-jellyfin = {
+    serverId = "dfed9c03845d44d8bb2c74f7984d7761";
+
+    # Putting datadir in pool causes files to be owned by root for some
+    # reason
+    #dataDir = "/mnt/pool/jellyfin";
+    #backupDir = "/mnt/pool/jellyfin/backups";
+
+    libraries = {
+      Movies = {
+        enabled = true;
+        contentType = "movies";
+        pathInfos = [
+          "/mnt/pool/Movies"
+        ];
+      };
+      Shows = {
+        enabled = true;
+        contentType = "tvshows";
+        pathInfos = [
+          "/mnt/pool/Shows"
+        ];
+      };
+      Music = {
+        enabled = true;
+        contentType = "music";
+        pathInfos = [
+          "/mnt/pool/Music"
+        ];
+      };
+    };
+
+    encoding = {
+      enableHardwareEncoding = true;
+      hardwareAccelerationType = "vaapi";
+      enableDecodingColorDepth10Hevc = true;
+      allowHevcEncoding = true;
+      allowAv1Encoding = true;
+      hardwareDecodingCodecs = [
+        "mpeg2video"
+        "h264"
+        "hevc"
+        "vp9"
+        #"vc1"
+        "av1"
+      ];
+    };
+  };
+
   power.ups = {
     enable = true;
     ups."apc-back-ups" = {
@@ -483,6 +532,11 @@
     };
     restic-password-storj = {
       file = ../../secrets/restic-password-storj-ptolemy.age;
+    };
+    jellyfin-password = {
+      file = ../../secrets/jellyfin-ptolemy.age;
+      owner = "jellyfin";
+      group = "jellyfin";
     };
     wifi-env = {
       file = ../../secrets/wifi-env.age;

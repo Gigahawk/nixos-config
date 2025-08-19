@@ -88,6 +88,28 @@
         "type": "github"
       }
     },
+    "declarative-jellyfin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": "systems_6",
+        "treefmt-nix": "treefmt-nix_2"
+      },
+      "locked": {
+        "lastModified": 1754870144,
+        "narHash": "sha256-8zmoYu6bakvwC7QYxbKa/z9j2oZGUhnPO4gZYgte5MA=",
+        "owner": "Sveske-Juice",
+        "repo": "declarative-jellyfin",
+        "rev": "d677a98fa9afe121aec802bbc62a2b8d1c5fea0c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Sveske-Juice",
+        "repo": "declarative-jellyfin",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -177,7 +199,7 @@
     },
     "flake-utils_10": {
       "inputs": {
-        "systems": "systems_14"
+        "systems": "systems_15"
       },
       "locked": {
         "lastModified": 1685518550,
@@ -195,7 +217,7 @@
     },
     "flake-utils_11": {
       "inputs": {
-        "systems": "systems_15"
+        "systems": "systems_16"
       },
       "locked": {
         "lastModified": 1710146030,
@@ -213,7 +235,7 @@
     },
     "flake-utils_12": {
       "inputs": {
-        "systems": "systems_16"
+        "systems": "systems_17"
       },
       "locked": {
         "lastModified": 1710146030,
@@ -267,7 +289,7 @@
     },
     "flake-utils_4": {
       "inputs": {
-        "systems": "systems_6"
+        "systems": "systems_7"
       },
       "locked": {
         "lastModified": 1710146030,
@@ -285,7 +307,7 @@
     },
     "flake-utils_5": {
       "inputs": {
-        "systems": "systems_7"
+        "systems": "systems_8"
       },
       "locked": {
         "lastModified": 1731533236,
@@ -303,7 +325,7 @@
     },
     "flake-utils_6": {
       "inputs": {
-        "systems": "systems_8"
+        "systems": "systems_9"
       },
       "locked": {
         "lastModified": 1710146030,
@@ -321,7 +343,7 @@
     },
     "flake-utils_7": {
       "inputs": {
-        "systems": "systems_9"
+        "systems": "systems_10"
       },
       "locked": {
         "lastModified": 1701680307,
@@ -339,7 +361,7 @@
     },
     "flake-utils_8": {
       "inputs": {
-        "systems": "systems_11"
+        "systems": "systems_12"
       },
       "locked": {
         "lastModified": 1731533236,
@@ -357,7 +379,7 @@
     },
     "flake-utils_9": {
       "inputs": {
-        "systems": "systems_12"
+        "systems": "systems_13"
       },
       "locked": {
         "lastModified": 1726560853,
@@ -727,7 +749,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems_10"
+        "systems": "systems_11"
       },
       "locked": {
         "lastModified": 1754832356,
@@ -776,8 +798,8 @@
           "smartp",
           "nixpkgs"
         ],
-        "systems": "systems_13",
-        "treefmt-nix": "treefmt-nix_2"
+        "systems": "systems_14",
+        "treefmt-nix": "treefmt-nix_3"
       },
       "locked": {
         "lastModified": 1736884309,
@@ -801,8 +823,8 @@
           "xmpp-bridge",
           "nixpkgs"
         ],
-        "systems": "systems_17",
-        "treefmt-nix": "treefmt-nix_3"
+        "systems": "systems_18",
+        "treefmt-nix": "treefmt-nix_4"
       },
       "locked": {
         "lastModified": 1723512448,
@@ -898,6 +920,7 @@
         "agenix": "agenix",
         "bcrypt-tool": "bcrypt-tool",
         "cypress-ticket-scraper": "cypress-ticket-scraper",
+        "declarative-jellyfin": "declarative-jellyfin",
         "flake-utils": "flake-utils_4",
         "home-manager": "home-manager_2",
         "inventree": "inventree",
@@ -1065,6 +1088,21 @@
         "type": "github"
       },
       "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_18": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
         "id": "systems",
         "type": "indirect"
       }
@@ -1138,9 +1176,8 @@
         "type": "github"
       },
       "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
+        "id": "systems",
+        "type": "indirect"
       }
     },
     "systems_7": {
@@ -1213,6 +1250,27 @@
     "treefmt-nix_2": {
       "inputs": {
         "nixpkgs": [
+          "declarative-jellyfin",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1749194973,
+        "narHash": "sha256-eEy8cuS0mZ2j/r/FE0/LYBSBcIs/MKOIVakwHVuqTfk=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "a05be418a1af1198ca0f63facb13c985db4cb3c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "treefmt-nix_3": {
+      "inputs": {
+        "nixpkgs": [
           "smartp",
           "poetry2nix",
           "nixpkgs"
@@ -1232,7 +1290,7 @@
         "type": "github"
       }
     },
-    "treefmt-nix_3": {
+    "treefmt-nix_4": {
       "inputs": {
         "nixpkgs": [
           "xmpp-bridge",

@@ -149,8 +149,16 @@
     "d /mnt/pool/immich/photos 0777 root root"
     "d /mnt/pool/immich/config/machine-learning 0777 root root"
 
+
+    # Doesn't seem to work? files created by jellyfin service
+    # end up owned by root and break the service for some reason
+    ## Setup jellyfin datadir
+    #"Z /mnt/pool/jellyfin 2775 jellyfin jellyfin"
+    #"A /mnt/pool/jellyfin - - - - default:user::rwx,default:user:jellyfin:rwx,default:group::rwx,default:group:jellyfin:rwx,default:other::0"
+
     # Allow everyone (jellyfin) to access shows
     "Z /mnt/pool/Shows 0777 root root"
+
 
     # Set permissions properly on for postgres
     "d /mnt/pool/postgres 0750 postgres postgres"

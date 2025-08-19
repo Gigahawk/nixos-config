@@ -61,8 +61,6 @@ mkfs.vfat -n BOOT "$DISK"1
 
 # Set up swap partition
 parted "$DISK" -- mkpart Swap linux-swap 1GiB 9GiB  # For an 8GiB swap partition
-mkswap -L swap "$DISK"2
-swapon "$DISK"2
 
 # Set up root partition
 parted "$DISK" -- mkpart primary ext4 9GiB 100%  # Assuming swap ends at 9GiB
@@ -71,6 +69,7 @@ parted "$DISK" -- mkpart primary ext4 9GiB 100%  # Assuming swap ends at 9GiB
 cryptsetup --verify-passphrase -v luksFormat --label swap_encrypted "$DISK"2
 cryptsetup open "$DISK"2 swap_decrypted  # mount encrypted swap to /dev/mapper/swap_decrypted
 mkswap -L swap /dev/mapper/swap_decrypted  # create up swap fs
+swapon /dev/disk/by-label/swap
 
 # Set up encrypted root
 cryptsetup --verify-passphrase -v luksFormat --label nixos_encrpyted "$DISK"3

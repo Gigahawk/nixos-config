@@ -239,6 +239,14 @@
       };
     };
   };
+  services.samba-users = {
+    enable = true;
+    users = {
+      jasper = {
+        password_file = config.age.secrets.samba-password.path;
+      };
+    };
+  };
 
   services.immich = {
     enable = true;
@@ -537,6 +545,9 @@
       file = ../../secrets/jellyfin-ptolemy.age;
       owner = "jellyfin";
       group = "jellyfin";
+    };
+    samba-password = {
+      file = ../../secrets/samba-ptolemy.age;
     };
     wifi-env = {
       file = ../../secrets/wifi-env.age;

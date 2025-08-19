@@ -34,6 +34,7 @@ in {
   "tailscale-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "xmpp-jid-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "xmpp-password-ptolemy.age".publicKeys = users ++ [ ptolemy ];
+  "samba-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "syncthing-cert-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "syncthing-key-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "inventree-secret-ptolemy.age".publicKeys = users ++ [ ptolemy ];

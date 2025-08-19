@@ -139,6 +139,7 @@
               ./modules/agenix-cli.nix
               ./modules/snapraid/module.nix
               ./modules/xmpp-bridge/module.nix
+              ./modules/samba-users/module.nix
               ./modules/smartp/module.nix
               ./modules/smartd.nix
               ./modules/syncthing.nix

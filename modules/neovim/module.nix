@@ -3,10 +3,6 @@
   environment.systemPackages = [
     inputs.self.packages.${system}.nvim
   ];
-  #programs.neovim = {
-  #  enable = true;
-  #  defaultEditor = true;
-  #  viAlias = true;
-  #  vimAlias = true;
-  #};
+  # Disable base neovim and use nvf config instead
+  programs.neovim.enable = false;
 }

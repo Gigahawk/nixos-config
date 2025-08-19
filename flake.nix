@@ -279,7 +279,7 @@
               (nvf.lib.neovimConfiguration {
                 inherit pkgs;
                 modules = [
-                  ./nvim-config/nvim-config.nix
+                  ./modules/neovim/nvim-config.nix
                 ];
               }).neovim;
           };

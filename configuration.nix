@@ -120,5 +120,16 @@
 
   users.mutableUsers = false;
 
+  # Gross
+  programs.nano.enable = false;
+  programs.neovim = {
+    enable = lib.mkDefault true;
+    viAlias = true;
+    vimAlias = true;
+  };
+  environment.variables = {
+    EDITOR = "nvim";
+  };
+
   system.stateVersion = lib.mkOverride 1100 "23.05";
 }

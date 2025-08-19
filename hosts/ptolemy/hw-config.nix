@@ -12,6 +12,18 @@
     "i915.enable_guc=3"
   ];
   boot.extraModulePackages = [ ];
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+    };
+    grub = {
+      enable = true;
+      useOSProber = true;
+      efiSupport = true;
+      #efiInstallAsRemovable = true;
+      device = "nodev";
+    };
+  };
 
   nixpkgs.config.packageOverrides = pkgs: {
     intel-vaapi-driver = pkgs.intel-vaapi-driver.override {

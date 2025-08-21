@@ -76,6 +76,10 @@ in {
             # Android
             id = "ELDFXOS-ACVLSIP-X53SGCS-MW6OC6X-B6PZVJN-X5ZTT6V-QHEIPLF-AQDTGAP";
           };
+          xperia-1-vii = {
+            # Android
+            id = "RFVEXCD-DJU6OEU-N23RCRA-NYNDR2P-6DRCAUB-GBPBALG-WHMQSRK-3HIONQK";
+          };
         };
         folders = {
           Music = mkIf (builtins.hasAttr "Music" cfg.folders) {
@@ -86,6 +90,7 @@ in {
               "jasper-void"
               "ptolemy"
               "zenfone-9"
+              "xperia-1-vii"
             ];
             versioning = {
               type = "staggered";
@@ -103,6 +108,7 @@ in {
               "jasper-void"
               "ptolemy"
               "zenfone-9"
+              "xperia-1-vii"
             ];
             versioning = {
               type = "staggered";
@@ -138,6 +144,7 @@ in {
               "ptolemy"
               "remarkable"
               "zenfone-9"
+              "xperia-1-vii"
             ];
             versioning = {
               type = "staggered";
@@ -156,6 +163,7 @@ in {
               "ptolemy"
               "remarkable"
               "zenfone-9"
+              "xperia-1-vii"
             ];
           };
         };

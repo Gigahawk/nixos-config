@@ -1,11 +1,14 @@
-{ lib, pkgs, config, ... }:
-with lib;
-let
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+with lib; let
   cfg = config.syncthingSettings;
   # What does this do?
-  settingsFormat = pkgs.formats.json { };
-in
-{
+  settingsFormat = pkgs.formats.json {};
+in {
   options.syncthingSettings = {
     guiPassword = mkOption {
       type = types.str;
@@ -15,7 +18,7 @@ in
       '';
     };
     folders = mkOption {
-      type = types.attrsOf (types.submodule({ name, ...}: {
+      type = types.attrsOf (types.submodule ({name, ...}: {
         freeformType = settingsFormat.type;
         options = {
           name = mkOption {
@@ -51,10 +54,12 @@ in
       overrideFolders = true;
       settings = {
         devices = {
-          JASPER-PC = {  # Windows
+          JASPER-PC = {
+            # Windows
             id = "F424O47-RWTQQSG-L7TZ7CP-OM77COG-QVB4WZW-XVOA2DU-5CJPTYQ-KKYHHQQ";
           };
-          jasper-void = {  # Void Linux
+          jasper-void = {
+            # Void Linux
             id = "2M3W4TM-4BJQSNJ-BTUNFTU-PJ4TK7E-B7C37VA-BMOSV7X-UFHVNJE-UDBPQQ7";
           };
           ptolemy = {
@@ -63,10 +68,12 @@ in
           arios = {
             id = "53W7CGR-T26ZSLR-24VDJKE-VTZZVTJ-PP64OGV-SMXMQOS-CABLEOT-ZCBPJQM";
           };
-          remarkable = {  # reMarkable
+          remarkable = {
+            # reMarkable
             id = "UVYGJP5-OUFMTDJ-KFGK7I2-TR4NTSS-CFH7CDS-RFIKZE3-OLCJQ4Q-KURM3QR";
           };
-          zenfone-9 = {  # Android
+          zenfone-9 = {
+            # Android
             id = "ELDFXOS-ACVLSIP-X53SGCS-MW6OC6X-B6PZVJN-X5ZTT6V-QHEIPLF-AQDTGAP";
           };
         };
@@ -153,7 +160,7 @@ in
           };
         };
         options = {
-          urAccepted = 3;  # Allow usage reporting
+          urAccepted = 3; # Allow usage reporting
         };
         gui = {
           user = "jasper";
@@ -161,8 +168,5 @@ in
         };
       };
     };
-
   };
 }
-
-

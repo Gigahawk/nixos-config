@@ -29,6 +29,8 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFuW7/do+fI6PCEQdb+Ui0zBPlZvo/YKf5Nl6uujoPl2 jasper"
       # virtualbox
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILBoOvyE+sGI2jS1owqCXlHpqZcVOSrJwe6QPH5pnTpq jasper"
+      # arios
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSsOe84SBbBKRQwWuU1rl3SUeHArkWymY4PMqtaPPI3 jasper"
     ];
   };
 

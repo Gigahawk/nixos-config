@@ -2,9 +2,8 @@
   description = "System Config";
 
   inputs = {
-    #nixpkgs.url = "nixpkgs/nixos-unstable";
-    # Needed for https://nixpk.gs/pr-tracker.html?pr=427905
-    nixpkgs.url = "github:Gigahawk/nixpkgs/personal";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+    #nixpkgs.url = "github:Gigahawk/nixpkgs/personal";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";

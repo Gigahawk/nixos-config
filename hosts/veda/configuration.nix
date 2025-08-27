@@ -18,6 +18,9 @@
     "aarch64-linux"
   ];
 
+  # Use tailscale via windows client
+  services.tailscale.enable = false;
+
   age.secrets = {
     jasper = {
       file = ../../secrets/jasper-veda.age;

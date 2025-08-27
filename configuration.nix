@@ -94,7 +94,7 @@
   };
 
   services.tailscale = {
-    enable = true;
+    enable = lib.mkDefault true;
     authKeyFile = config.age.secrets.tailscale-key.path;
     openFirewall = true;
   };

@@ -93,7 +93,11 @@
     allowedTCPPorts = [22];
   };
 
-  services.tailscale.enable = true;
+  services.tailscale = {
+    enable = true;
+    authKeyFile = config.age.secrets.tailscale-key.path;
+    openFirewall = true;
+  };
   services.localtimed.enable = true;
   services.geoclue2.enable = true;
   services.uptimed.enable = true;

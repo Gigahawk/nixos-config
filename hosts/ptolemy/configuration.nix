@@ -407,6 +407,22 @@
     };
   };
 
+  services.paperless = {
+    enable = true;
+    dataDir = "/mnt/pool/paperless";
+    passwordFile = config.age.secrets.paperless.path;
+    consumptionDirIsPublic = true;
+    configureTika = true;
+    settings = {
+      PAPERLESS_OCR_LANGUAGE = "eng";
+      PAPERLESS_OCR_USER_ARGS = {
+        deskew = true;
+        optimize = 1;
+        pdfa_image_compression = "lossless";
+      };
+    };
+  };
+
   power.ups = {
     enable = true;
     ups."apc-back-ups" = {
@@ -548,6 +564,9 @@
     };
     samba-password = {
       file = ../../secrets/samba-ptolemy.age;
+    };
+    paperless = {
+      file = ../../secrets/paperless-ptolemy.age;
     };
     wifi-env = {
       file = ../../secrets/wifi-env.age;

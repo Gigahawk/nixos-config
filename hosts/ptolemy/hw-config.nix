@@ -120,7 +120,9 @@
       options = [
         "defaults"
         "allow_other"
-        "cache.files=off"
+        # https://moraes.dev.br/2021/07/26/sqlite3-on-merger-fs
+        "cache.files=partial"
+        "dropcacheonclose=true"
         "moveonenospc=true"
       ];
     };
@@ -158,7 +160,6 @@
 
     # Allow everyone (jellyfin) to access shows
     "Z /mnt/pool/Shows 0777 root root"
-
 
     # Set permissions properly on for postgres
     "d /mnt/pool/postgres 0750 postgres postgres"

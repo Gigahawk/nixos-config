@@ -34,6 +34,31 @@
     ];
   };
 
+  nixpkgs.config.permittedInsecurePackages =
+    [
+    ]
+    ++ (
+      if desktop
+      then [
+        # KDE Itinerary uses this for matrix sync
+        # or something
+        "olm-3.2.16"
+      ]
+      else []
+    );
+
+  environment.systemPackages =
+    [
+    ]
+    ++ (
+      if desktop
+      then
+        with pkgs; [
+          kdePackages.itinerary
+        ]
+      else []
+    );
+
   services.displayManager.ly = {
     enable = lib.mkDefault desktop;
     settings = {

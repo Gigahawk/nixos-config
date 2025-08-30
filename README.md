@@ -26,6 +26,7 @@
       [SnapRAID drive replacement procedure](#SnapRAIDdrivereplacementprocedure)
     - 4.1.4. [InvenTree Setup](#InvenTreeSetup)
     - 4.1.5. [InvenTree bootstrapping](#InvenTreebootstrapping)
+    - 4.1.6. [InvenTree Backup Key](#InvenTreeBackupKey)
   - 4.2. [WSL (veda)](#WSLveda)
     - 4.2.1. [SystemD/D-Bus issues](#SystemDD-Busissues)
   - 4.3. [Raspberry Pi Images](#RaspberryPiImages)
@@ -306,6 +307,11 @@ Simulation of a reboot after a complete drive failure (no longer detected etc.)
      completed properly
 5. Run `sudo arion run inventree-server invoke update`
 
+#### 4.1.6. <a name='InvenTreeBackupKey'></a>InvenTree Backup Key
+
+The InvenTree backup key is just a fine-grained GitHub PAT with write access to
+a repo. When it expires, generate a new one.
+
 ### 4.2. <a name='WSLveda'></a>WSL (veda)
 
 - `veda`
@@ -427,4 +433,3 @@ You can import the config by doing the following:
 > TODO: figure out how installation works from toltec and service stuff
 
 Ensure the `type` attribute of the `remarkable_sync` folder is set to `sendonly`
-

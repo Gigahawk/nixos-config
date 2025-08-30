@@ -36,7 +36,6 @@
   environment.systemPackages = with pkgs; [
     iwmenu
     firefox
-    kitty
   ];
 
   fonts.packages = with pkgs; [

@@ -131,7 +131,7 @@
         enable = true;
         setupOpts = {
           ring.storage = "sqlite";
-          # disable for now to avoid annoying clipboard read warnings from kitty (OSC 52)
+          # disable for now to avoid annoying clipboard read warnings from kitty/ghostty (OSC 52)
           system_clipboard.sync_with_ring = false;
         };
       };

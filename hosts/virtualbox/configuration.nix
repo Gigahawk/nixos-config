@@ -1,11 +1,12 @@
 # edit this configuration file to define what should be installed on
 # your system.  help is available in the configuration.nix(5) man page
 # and in the nixos manual (accessible by running `nixos-help`).
-
-{ config, pkgs, ... }:
-
 {
-  imports = [ ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [];
 
   #virtualisation.oci-containers.backend = "docker";
 
@@ -98,7 +99,8 @@
     firefox
     mergerfs
     mergerfs-tools
-    kitty
+    #kitty
+    ghostty
   ];
 
   snapraidSettings = {
@@ -144,7 +146,6 @@
 
         #"guest account = jasper"
         #"map to guest = bad user"
-
       };
       public = {
         path = "/home/jasper/share";
@@ -248,7 +249,4 @@
       file = ../../secrets/wifi-env.age;
     };
   };
-
 }
-
-

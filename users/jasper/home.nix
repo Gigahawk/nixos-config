@@ -20,7 +20,7 @@
     enable = desktop;
     settings = {
       "$mod" = "SUPER";
-      "$term" = "kitty";
+      "$term" = "ghostty";
       "$menu" = "walker";
       "$bar" = "waybar";
 
@@ -98,6 +98,12 @@
 
   programs.waybar = {
     enable = desktop;
+  };
+
+  programs.ghostty = {
+    enable = desktop;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
   };
 
   programs.zoxide = {

@@ -98,6 +98,21 @@
 
   programs.waybar = {
     enable = desktop;
+    settings = {
+      mainBar = {
+        modules-left = [
+          "hyprland/workspaces"
+        ];
+        modules-center = [
+          "hyprland/window"
+        ];
+        modules-right = [
+          "clock"
+          "battery"
+          "network"
+        ];
+      };
+    };
   };
 
   programs.ghostty = {

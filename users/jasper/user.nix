@@ -34,6 +34,19 @@
     ];
   };
 
+  fonts.packages =
+    [
+    ]
+    ++ (
+      if desktop
+      then
+        with pkgs; [
+          roboto
+          font-awesome
+        ]
+      else []
+    );
+
   nixpkgs.config.permittedInsecurePackages =
     [
     ]
@@ -54,6 +67,8 @@
       if desktop
       then
         with pkgs; [
+          xorg.xauth # Needed for x11 logins for some reason?
+          wlogout
           kdePackages.itinerary
         ]
       else []
@@ -67,6 +82,10 @@
       clock = "%c";
     };
   };
+
+  # Fallback for when wayland breaks/virtualbox
+  services.xserver.enable = lib.mkDefault desktop;
+  services.xserver.windowManager.icewm.enable = lib.mkDefault desktop;
 
   programs.hyprland = {
     enable = lib.mkDefault desktop;

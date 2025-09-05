@@ -67,7 +67,7 @@
       if desktop
       then
         with pkgs; [
-          xorg.xauth # Needed for x11 logins for some reason?
+          brightnessctl
           wlogout
           kdePackages.itinerary
         ]

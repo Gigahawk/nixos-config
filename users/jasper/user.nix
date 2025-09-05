@@ -42,7 +42,7 @@
       then
         with pkgs; [
           roboto
-          font-awesome
+          nerd-fonts.symbols-only
         ]
       else []
     );

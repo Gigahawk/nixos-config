@@ -13,6 +13,83 @@
       #programmingWordlist.enable = true;
     };
 
+    keymaps = let
+      # Visual append similar to vscodevim
+      # Behavior:
+      # - Visual block mode: fall back to standard neovim behavior
+      # - Visual line mode: emulate VSCode behavior
+      # - Visual mode: not implemented, can't think of why you would want to do this anyways
+      visual-insert-keybind = key: {
+        inherit key;
+        mode = ["x"];
+        lua = true;
+        action = ''
+          function()
+            -- Only do this in visual line mode
+            local mode = vim.fn.mode()
+            if mode ~= "V" then
+              vim.api.nvim_feedkeys("${key}", "n", false)
+              return
+            end
+
+            -- Cache visual line numbers
+            local l1 = vim.fn.getpos(".")[2]
+            local lorig = l1
+            local l2 = vim.fn.getpos("v")[2]
+
+            if l1 > l2 then
+              l1, l2 = l2, l1
+            end
+
+            -- Exit visual, go into append mode
+            vim.api.nvim_feedkeys(
+              vim.api.nvim_replace_termcodes(
+                "<Esc>${key}", true, false, true
+              ),
+              "n",
+              false
+            )
+
+            vim.api.nvim_create_autocmd("InsertLeave", {
+              once = true,
+              callback = function()
+                local cursor_pos = vim.api.nvim_win_get_cursor(0)
+
+                for lnum = l1, l2 do
+                  -- Move to each non blank line and reapply the last insert
+                  local line = vim.fn.getline(lnum)
+                  if line:match("%S") and lnum ~= lorig then
+                    vim.api.nvim_feedkeys(
+                      vim.api.nvim_replace_termcodes(
+                        ":" .. tostring(lnum) .. "<CR>.", true, false, true
+                      ),
+                      "n",
+                      false
+                    )
+                  end
+                end
+
+                -- Return cursor to original location
+                -- Doesn't seem to work?
+                --vim.api.nvim_win_set_cursor(0, cursor_pos)
+                vim.api.nvim_feedkeys(
+                  vim.api.nvim_replace_termcodes(
+                    ":" .. tostring(cursor_pos[1]) .. "<CR>" .. tostring(cursor_pos[2] + 1) .. "|",
+                    true, false, true
+                  ),
+                  "n",
+                  false
+                )
+              end
+            })
+          end
+        '';
+      };
+    in [
+      (visual-insert-keybind "A")
+      (visual-insert-keybind "I")
+    ];
+
     lsp = {
       enable = true;
 
@@ -124,6 +201,10 @@
     projects.project-nvim.enable = true;
 
     utility = {
+      # I have no idea how this works, using multicursor.nvim instead
+      #multicursors = {
+      #  enable = true;
+      #};
       ccc.enable = true;
       vim-wakatime.enable = false;
       diffview-nvim.enable = true;
@@ -142,6 +223,23 @@
       guess-indent = {
         package = pkgs.vimPlugins.guess-indent-nvim;
         setup = "require('guess-indent').setup {}";
+      };
+    };
+
+    lazy.plugins = {
+      "multicursor.nvim" = {
+        package = pkgs.vimPlugins.multicursor-nvim;
+        setupModule = "multicursor-nvim";
+        after = ''
+          local mc = require("multicursor-nvim")
+
+          local set = vim.keymap.set
+
+          set({"n", "x"}, "<up>", function() mc.lineAddCursor(-1) end)
+          set({"n", "x"}, "<down>", function() mc.lineAddCursor(1) end)
+          set({"n", "x"}, "<leader><up>", function() mc.lineSkipCursor(-1) end)
+          set({"n", "x"}, "<leader><down>", function() mc.lineSkipCursor(1) end)
+        '';
       };
     };
   };

@@ -35,7 +35,6 @@
 
   environment.systemPackages = with pkgs; [
     iwmenu
-    firefox
   ];
 
   virtualisation.docker.enable = true;

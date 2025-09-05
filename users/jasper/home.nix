@@ -564,4 +564,95 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
   };
+
+  programs.chromium = {
+    enable = desktop;
+    commandLineArgs = [
+      "--force-dark-mode"
+    ];
+    dictionaries = [
+      pkgs.hunspellDictsChromium.en_US
+    ];
+    extensions = [
+      {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";} # ublock origin
+      {id = "gfbliohnnapiefjpjlpjnehglfpaknnc";} # surfingkeys
+      {
+        id = "dcpihecpambacapedldabdbpakmachpb";
+        updateUrl = "https://raw.githubusercontent.com/iamadamdev/bypass-paywalls-chrome/master/updates.xml";
+      }
+    ];
+  };
+
+  programs.firefox = {
+    enable = desktop;
+    policies = {
+      AppAutoUpdate = false;
+      # Ideally this would be off but apparently it's
+      # the only way to see valid settings values???
+      #BlockAboutConfig = true;
+      ManagedBookmarks = [
+      ];
+      DisablePocket = true;
+      DisableProfileImport = true;
+      DisableProfileRefresh = true;
+      DisableSetDesktopBackground = true;
+      DisableTelemetry = true;
+      DisableThirdPartyModuleBlocking = true;
+      DisplayBookmarksToolbar = true;
+      DisplayMenuBar = false;
+      # TODO: migrate these to use NUR?
+      ExtensionSettings = {
+        "uBlock0@raymondhill.net" = {
+          default_area = "menupanel";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+          installation_mode = "force_installed";
+          private_browsing = true;
+        };
+        "addon@darkreader.org" = {
+          default_area = "menupanel";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
+          installation_mode = "force_installed";
+          private_browsing = true;
+        };
+        #"{d7742d87-e61d-4b78-b8a1-b469842139fa}" = {
+        #  default_area = "menupanel";
+        #  install_url = "https://addons.mozilla.org/firefox/downloads/latest/vimium-ff/latest.xpi";
+        #  installation_mode = "force_installed";
+        #  private_browsing = true;
+        #};
+        "{a8332c60-5b6d-41ee-bfc8-e9bb331d34ad}" = {
+          default_area = "menupanel";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/surfingkeys_ff/latest.xpi";
+          installation_mode = "force_installed";
+          private_browsing = true;
+        };
+      };
+    };
+    profiles = {
+      default = {
+        id = 0;
+        isDefault = true;
+        settings = {
+          "browser.startup.homepage" = "https://hackaday.com";
+          # This doesn't seem to work?
+          "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+        };
+        bookmarks = {
+          force = true;
+          settings = [
+            {
+              name = "Nixpkgs Search";
+              url = "search.nixos.org";
+              #toolbar = true;
+            }
+            {
+              name = "Home Manager Options";
+              url = "https://nix-community.github.io/home-manager/options.xhtml";
+              #toolbar = true;
+            }
+          ];
+        };
+      };
+    };
+  };
 }

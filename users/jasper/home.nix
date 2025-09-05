@@ -57,11 +57,12 @@
         ++ (
           builtins.concatLists (builtins.genList (i: let
               ws = i + 1;
+              keycode = 10 + i;
             in [
-              "$mod, code:1${toString i}, workspace, ${toString ws}"
-              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+              "$mod, code:${toString keycode}, workspace, ${toString ws}"
+              "$mod SHIFT, code:${toString keycode}, movetoworkspace, ${toString ws}"
             ])
-            9)
+            10)
         );
 
       bindel = [

@@ -2,8 +2,9 @@
   description = "System Config";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
-    #nixpkgs.url = "github:Gigahawk/nixpkgs/personal";
+    # Waiting for trackpoint changes to be merged https://github.com/NixOS/nixpkgs/pull/440539
+    #nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:Gigahawk/nixpkgs/personal";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";

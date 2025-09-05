@@ -565,7 +565,7 @@
     enableZshIntegration = true;
   };
 
-  programs.chromium = {
+  programs.brave = {
     enable = desktop;
     commandLineArgs = [
       "--force-dark-mode"

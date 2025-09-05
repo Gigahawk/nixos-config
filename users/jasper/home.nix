@@ -187,7 +187,7 @@
 
         "cpu" = {
           interval = 1;
-          format = "{}% ";
+          format = "{usage}% ";
         };
 
         "memory" = {

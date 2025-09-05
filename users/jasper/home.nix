@@ -138,6 +138,7 @@
           "hyprland/window"
         ];
         modules-right = [
+          "disk"
           "group/perfgroup"
           "backlight"
           "wireplumber"
@@ -192,6 +193,15 @@
         "memory" = {
           interval = 1;
           format = "{}% ";
+        };
+
+        "disk" = {
+          interval = 30;
+          # TODO: Some hosts  might want more than one of these modules
+          # i.e. ptolemy might want for monitoring pool usage
+          # Maybe put these in a dropdown? How to show which disk is being indicated?
+          path = "/";
+          format = "{percentage_used}% ";
         };
 
         "wireplumber" = {

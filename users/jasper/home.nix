@@ -365,22 +365,9 @@
           background-color: #26A65B;
       }
 
-      @keyframes blink {
-          to {
-              background-color: #ffffff;
-              color: #000000;
-          }
-      }
-
-      /* Using steps() instead of linear as a timing function to limit cpu usage */
       #battery.critical:not(.charging) {
           background-color: #f53c3c;
           color: #ffffff;
-          animation-name: blink;
-          animation-duration: 0.5s;
-          animation-timing-function: steps(12);
-          animation-iteration-count: infinite;
-          animation-direction: alternate;
       }
 
       #power-profiles-daemon {

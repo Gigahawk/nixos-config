@@ -134,6 +134,7 @@
           "hyprland/window"
         ];
         modules-right = [
+          "backlight"
           "wireplumber"
           # TODO: battery should only be displayed on hosts with battery?
           "group/batterygroup"
@@ -190,6 +191,12 @@
           };
           justify = "center";
           #on-click = "pavucontrol"
+        };
+
+        "backlight" = {
+          # device = "acpi_video1";
+          format = "{percent}% {icon}";
+          format-icons = ["" "" "" "" "" "" "" "" ""];
         };
       };
     };

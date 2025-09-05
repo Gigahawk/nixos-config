@@ -138,6 +138,7 @@
           "hyprland/window"
         ];
         modules-right = [
+          "group/perfgroup"
           "backlight"
           "wireplumber"
           # TODO: battery should only be displayed on hosts with battery?
@@ -174,6 +175,24 @@
 
         "battery#ariosbat0" = batConfig "BAT0";
         "battery#ariosbat1" = batConfig "BAT1";
+
+        "group/perfgroup" = {
+          orientation = "vertical";
+          modules = [
+            "cpu"
+            "memory"
+          ];
+        };
+
+        "cpu" = {
+          interval = 1;
+          format = "{}% ";
+        };
+
+        "memory" = {
+          interval = 1;
+          format = "{}% ";
+        };
 
         "wireplumber" = {
           # scroll-step: 1, # %, can be a float

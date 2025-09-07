@@ -70,6 +70,7 @@
           brightnessctl
           wlogout
           kdePackages.itinerary
+          prusa-slicer
         ]
       else []
     );

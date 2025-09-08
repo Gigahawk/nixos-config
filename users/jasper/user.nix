@@ -95,6 +95,7 @@
 
   home-manager.extraSpecialArgs = {
     inherit desktop;
+    inherit inputs;
   };
 
   home-manager.users.jasper = ./home.nix;

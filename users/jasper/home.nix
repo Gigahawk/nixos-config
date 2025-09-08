@@ -2,6 +2,7 @@
   config,
   pkgs,
   desktop,
+  inputs,
   ...
 }: {
   home.username = "jasper";
@@ -14,6 +15,18 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+  };
+
+  programs.nnn = {
+    enable = true;
+    package = pkgs.nnn.override {
+      withNerdIcons = true;
+      # Something about regex support?
+      withPcre = true;
+    };
+    plugins = {
+      src = inputs.nnn-plugins + "/plugins";
+    };
   };
 
   wayland.windowManager.hyprland = {

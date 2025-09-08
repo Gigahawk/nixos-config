@@ -741,6 +741,22 @@
         "type": "github"
       }
     },
+    "nnn-plugins": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1754782278,
+        "narHash": "sha256-0ea4+dmZULPZux5n1bhjQeUGSd3puDalpi7jsnaKNno=",
+        "owner": "jarun",
+        "repo": "nnn",
+        "rev": "b0bb51180c3f2e33d6d65990734b5fd78e07a35c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jarun",
+        "repo": "nnn",
+        "type": "github"
+      }
+    },
     "nvf": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -930,6 +946,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
+        "nnn-plugins": "nnn-plugins",
         "nvf": "nvf",
         "smartp": "smartp",
         "vscode-remote-workaround": "vscode-remote-workaround",

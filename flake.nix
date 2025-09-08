@@ -70,6 +70,10 @@
       url = "github:Sveske-Juice/declarative-jellyfin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nnn-plugins = {
+      url = "github:jarun/nnn";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {

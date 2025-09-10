@@ -66,6 +66,8 @@
           "$mod SHIFT, L, movewindow, r"
 
           "$mod SHIFT, W, exec, iwmenu -l $menu"
+
+          "$mod, P, exec, wlogout"
         ]
         ++ (
           builtins.concatLists (builtins.genList (i: let

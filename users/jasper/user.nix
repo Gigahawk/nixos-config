@@ -71,6 +71,7 @@
           wlogout
           kdePackages.itinerary
           prusa-slicer
+          mayo
         ]
       else []
     );

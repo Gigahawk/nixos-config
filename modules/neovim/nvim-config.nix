@@ -172,7 +172,12 @@
 
     filetree.neo-tree.enable = true;
 
-    tabline.nvimBufferline.enable = true;
+    tabline.nvimBufferline = {
+      enable = true;
+      mappings = {
+        closeCurrent = "<leader>bq";
+      };
+    };
 
     treesitter.context.enable = true;
 

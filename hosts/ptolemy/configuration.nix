@@ -1,11 +1,14 @@
 # edit this configuration file to define what should be installed on
 # your system.  help is available in the configuration.nix(5) man page
 # and in the nixos manual (accessible by running `nixos-help`).
-
-{ config, pkgs, inputs, system, ... }:
-
 {
-  imports = [ ];
+  config,
+  pkgs,
+  inputs,
+  system,
+  ...
+}: {
+  imports = [];
 
   # Sometimes to deal with issues like a web server bound only to
   # localhost it's useful to have an xserver running so that we
@@ -42,9 +45,9 @@
     webInterface = false;
     stateless = true;
     startWhenNeeded = false;
-    listenAddresses = [ "*:631" ];
+    listenAddresses = ["*:631"];
     # TODO: is there a better way to secure this?
-    allowFrom = [ "all" ];
+    allowFrom = ["all"];
     browsing = true;
     defaultShared = true;
     openFirewall = true;
@@ -67,7 +70,6 @@
         ppdOptions = {
           PageSize = "letter";
         };
-
       }
     ];
     ensureDefaultPrinter = "Xerox_WorkCentre_6015NI";
@@ -173,7 +175,6 @@
     ];
   };
 
-
   syncthingSettings = {
     guiPassword = "$2a$10$mPe007buYdatkjXt9w71cu8XBuBACsAHgQ0oLEfacIqUeNOt6Dok6";
     folders = {
@@ -271,7 +272,7 @@
     };
   };
   users.users.immich = {
-    extraGroups = [ "video" "render" ];
+    extraGroups = ["video" "render"];
     home = "/var/lib/immich";
     createHome = true;
   };
@@ -410,6 +411,9 @@
   services.paperless = {
     enable = true;
     address = "0.0.0.0";
+    # TODO: this apparently needs to be set but we don't
+    # have a real domain, is hostname good enough?
+    domain = "ptolemy";
     port = 28981;
     dataDir = "/mnt/pool/paperless";
     passwordFile = config.age.secrets.paperless.path;
@@ -444,8 +448,8 @@
       };
       jasper = {
         passwordFile = config.age.secrets.upsmon.path;
-        actions = [ "set" "fsd" ];
-        instcmds = [ "all" ];
+        actions = ["set" "fsd"];
+        instcmds = ["all"];
       };
     };
     upsmon.monitor."apc-back-ups".user = "upsmon";
@@ -454,28 +458,28 @@
       NOTIFYCMD = "${pkgs.writers.writeBash "upsmon-notify" ''
         NL=$'\n'
         full_message="UPS EVENT TYPE $NOTIFYTYPE FROM $UPSNAME ''${NL}''${NL}$1"
-        ${(import ../../modules/xmpp-bridge/xmpp-alert.nix { inherit pkgs config inputs system; })}/bin/xmpp-alert echo "$full_message"
+        ${(import ../../modules/xmpp-bridge/xmpp-alert.nix {inherit pkgs config inputs system;})}/bin/xmpp-alert echo "$full_message"
       ''}";
       POWERDOWNFLAG = "/run/killpower";
       RUN_AS_USER = "root";
       SHUTDOWNCMD = "${pkgs.systemd}/bin/shutdown now";
       NOTIFYFLAG = [
-        [ "ONLINE" "SYSLOG+WALL+EXEC" ]
-        [ "ONBATT" "SYSLOG+WALL+EXEC" ]
-        [ "LOWBATT" "SYSLOG+WALL+EXEC" ]
-        [ "FSD" "SYSLOG+WALL+EXEC" ]
-        [ "COMMOK" "SYSLOG+WALL+EXEC" ]
-        [ "COMMBAD" "SYSLOG+WALL+EXEC" ]
-        [ "SHUTDOWN" "SYSLOG+WALL+EXEC" ]
-        [ "REPLBATT" "SYSLOG+WALL+EXEC" ]
-        [ "NOCOMM" "SYSLOG+WALL+EXEC" ]
-        [ "NOPARENT" "SYSLOG+WALL+EXEC" ]
-        [ "CAL" "SYSLOG+WALL+EXEC" ]
-        [ "NOTCAL" "SYSLOG+WALL+EXEC" ]
-        [ "OFF" "SYSLOG+WALL+EXEC" ]
-        [ "NOTOFF" "SYSLOG+WALL+EXEC" ]
-        [ "BYPASS" "SYSLOG+WALL+EXEC" ]
-        [ "NOTBYPASS" "SYSLOG+WALL+EXEC" ]
+        ["ONLINE" "SYSLOG+WALL+EXEC"]
+        ["ONBATT" "SYSLOG+WALL+EXEC"]
+        ["LOWBATT" "SYSLOG+WALL+EXEC"]
+        ["FSD" "SYSLOG+WALL+EXEC"]
+        ["COMMOK" "SYSLOG+WALL+EXEC"]
+        ["COMMBAD" "SYSLOG+WALL+EXEC"]
+        ["SHUTDOWN" "SYSLOG+WALL+EXEC"]
+        ["REPLBATT" "SYSLOG+WALL+EXEC"]
+        ["NOCOMM" "SYSLOG+WALL+EXEC"]
+        ["NOPARENT" "SYSLOG+WALL+EXEC"]
+        ["CAL" "SYSLOG+WALL+EXEC"]
+        ["NOTCAL" "SYSLOG+WALL+EXEC"]
+        ["OFF" "SYSLOG+WALL+EXEC"]
+        ["NOTOFF" "SYSLOG+WALL+EXEC"]
+        ["BYPASS" "SYSLOG+WALL+EXEC"]
+        ["NOTBYPASS" "SYSLOG+WALL+EXEC"]
         # Apparently these are invalid notify types?
         # Need to update to 2.8.3+
         # [ "ECO" "SYSLOG+WALL+EXEC" ]
@@ -574,7 +578,4 @@
       file = ../../secrets/wifi-env.age;
     };
   };
-
 }
-
-

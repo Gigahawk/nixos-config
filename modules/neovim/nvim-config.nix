@@ -88,6 +88,11 @@
     in [
       (visual-insert-keybind "A")
       (visual-insert-keybind "I")
+      {
+        key = "<leader>fe";
+        mode = "";
+        action = ":Neotree<CR>";
+      }
     ];
 
     lsp = {

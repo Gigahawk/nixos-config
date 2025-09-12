@@ -591,6 +591,7 @@
     extensions = [
       {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";} # ublock origin
       {id = "gfbliohnnapiefjpjlpjnehglfpaknnc";} # surfingkeys
+      {id = "eimadpbcbfnmbkopoojfekhnkhdbieeh";} # darkreader
       {
         id = "dcpihecpambacapedldabdbpakmachpb";
         updateUrl = "https://raw.githubusercontent.com/iamadamdev/bypass-paywalls-chrome/master/updates.xml";

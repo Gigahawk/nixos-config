@@ -8,6 +8,8 @@
     viAlias = true;
     vimAlias = true;
 
+    searchCase = "smart";
+
     spellcheck = {
       enable = true;
       #programmingWordlist.enable = true;

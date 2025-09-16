@@ -89,6 +89,8 @@
   services.xserver.enable = lib.mkDefault desktop;
   services.xserver.windowManager.icewm.enable = lib.mkDefault desktop;
 
+  programs.kdeconnect.enable = desktop;
+
   programs.hyprland = {
     enable = lib.mkDefault desktop;
     xwayland.enable = true;

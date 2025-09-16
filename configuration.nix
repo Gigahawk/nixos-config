@@ -76,6 +76,7 @@
       # Custom packages
       inputs.nix-top.packages.${system}.default
       (callPackage ./packages/nixos-update.nix {})
+      (callPackage ./packages/nix-flake-init.nix {})
     ]
     ++ (
       if builtins.elem system ["i686-linux" "x86_64-linux" "x86_64-darwin"]

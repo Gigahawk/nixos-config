@@ -70,6 +70,7 @@
           brightnessctl
           wlogout
           kdePackages.itinerary
+          localsend
           prusa-slicer
           mayo
         ]

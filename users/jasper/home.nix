@@ -147,6 +147,7 @@
         margins = "0 0 0 0";
 
         modules-left = [
+          "tray"
           "hyprland/workspaces"
         ];
         modules-center = [
@@ -162,6 +163,11 @@
           "network"
           "clock"
         ];
+
+        #"tray" = {
+        #  icon-size = 21;
+        #  spacing = 1;
+        #};
 
         "clock" = {
           interval = 1;

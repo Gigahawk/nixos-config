@@ -44,6 +44,10 @@
     "aarch64-linux"
   ];
 
+  systemd.sleep.extraConfig = ''
+    HibernateMode=shutdown
+  '';
+
   age.secrets = {
     jasper = {
       file = ../../secrets/jasper-arios.age;

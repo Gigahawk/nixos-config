@@ -671,4 +671,98 @@
       };
     };
   };
+
+  programs.vesktop = {
+    enable = desktop;
+    settings = {
+      discordBranch = "stable";
+      transparencyOption = "acrylic";
+      tray = true;
+      minimizeToTray = true;
+      openLinksWithElectron = false;
+      enableMenu = true;
+      disableSmoothScroll = false;
+      hardwareAcceleration = true;
+      hardwareVideoAcceleration = true;
+      arRPC = false;
+      appBadge = true;
+      disableMinSize = true;
+      clickTrayToShowHide = true;
+      customTitleBar = false;
+
+      enableSplashScreen = false;
+      splashTheming = false;
+      splashColor = "white";
+      splashBackground = "black";
+
+      spellCheckLanguages = ["en"];
+
+      audio = {
+        workaround = false;
+
+        deviceSelect = true;
+        granularSelect = true;
+
+        ignoreVirtual = false;
+        ignoreDevices = false;
+        ignoreInputMedia = false;
+
+        onlySpeakers = false;
+        onlyDefaultSpeakers = false;
+      };
+    };
+    vencord = {
+      settings = {
+        autoUpdate = false;
+        autoupdateNotification = false;
+        useQuickCss = false;
+        eagerPatches = false;
+        enabledThemes = [];
+        enableReactDevtools = false;
+        themeLinks = [];
+        frameless = false;
+        transparent = true;
+        winCtrlQ = false;
+        disableMinSize = true;
+        winNativeTitleBar = false;
+
+        plugins = {
+          AlwaysAnimate.enabled = true;
+          AnonymiseFileNames.enabled = true;
+          BetterGifPicker.enabled = true;
+          BetterSessions.enabled = true;
+          BetterSettings.enabled = true;
+          BetterUploadButton.enabled = true;
+          BiggerStreamPreview.enabled = true;
+          CallTimer.enabled = true;
+          ClearURLs.enabled = true;
+          CopyFileContents.enabled = true;
+          FakeNitro.enabled = true;
+          FixImagesQuality.enabled = true;
+          FixSpotifyEmbeds.enabled = true;
+          FixYoutubeEmbeds.enabled = true;
+          FriendsSince.enabled = true;
+          FullSearchContext.enabled = true;
+          ImageZoom.enabled = true;
+          MessageLatency.enabled = true;
+          MessageLinkEmbeds = true;
+          MessageLogger.enabled = true;
+          NoOnboardingDelay.enabled = true;
+          NoTrack.enabled = true;
+          ReverseImageSearch.enabled = true;
+          Settings.enabled = true;
+          YoutubeAdblock.enabled = true;
+        };
+
+        notifications = {
+          timeout = 1;
+          position = "top-right";
+          useNative = "never";
+          logLimit = 2;
+        };
+      };
+      themes = {
+      };
+    };
+  };
 }

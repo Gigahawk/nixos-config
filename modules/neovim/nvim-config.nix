@@ -170,7 +170,16 @@
 
     snippets.luasnip.enable = true;
 
-    filetree.neo-tree.enable = true;
+    filetree.neo-tree = {
+      enable = true;
+      setupOpts = {
+        filesystem = {
+          filtered_items = {
+            visible = true;
+          };
+        };
+      };
+    };
 
     tabline.nvimBufferline = {
       enable = true;

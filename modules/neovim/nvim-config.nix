@@ -125,7 +125,13 @@
       go.enable = true;
       lua.enable = true;
       zig.enable = true;
-      python.enable = true;
+      python = {
+        enable = true;
+        format = {
+          enable = true;
+          type = "ruff";
+        };
+      };
       typst.enable = true;
       rust = {
         enable = true;

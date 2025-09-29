@@ -30,6 +30,11 @@
       };
     };
   };
+  services.logind.settings = {
+    Login = {
+      HandleLidSwitch = "ignore";
+    };
+  };
 
   services.openssh.enable = true;
 

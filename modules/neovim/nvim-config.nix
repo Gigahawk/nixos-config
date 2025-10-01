@@ -112,7 +112,14 @@
       enableTreesitter = true;
       enableExtraDiagnostics = true;
 
-      nix.enable = true;
+      nix = {
+        enable = true;
+        lsp.enable = true;
+        format = {
+          enable = true;
+          type = "nixfmt";
+        };
+      };
       markdown.enable = true;
       bash.enable = true;
       clang.enable = true;

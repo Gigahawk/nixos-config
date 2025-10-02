@@ -69,6 +69,7 @@
 
   environment.systemPackages = with pkgs; [
     raspberrypi-eeprom
+    libraspberrypi
   ];
 
   #services.netdata = {

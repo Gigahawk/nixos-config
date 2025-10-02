@@ -17,7 +17,6 @@
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
-    (import ./overlays/yt-dlp.nix)
   ];
 
   boot.crashDump.enable = true;

@@ -221,9 +221,7 @@
             specialArgs = {
               inherit inputs;
               inherit system;
-              # virtualbox doesn't seem to play nice with wayland
-              # manually configure x11 desktop
-              desktop = false;
+              desktop = true;
             };
             modules = [
               overlays

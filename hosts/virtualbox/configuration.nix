@@ -66,27 +66,6 @@
 
   networking.hostName = "virtualbox";
 
-  services.displayManager.ly = {
-    enable = true;
-    settings = {
-      animation = "matrix";
-      bigclock = "en";
-      clock = "%c";
-    };
-  };
-  #programs.hyprland = {
-  #  enable = true;
-  #  xwayland.enable = true;
-  #};
-  #programs.sway = {
-  #  enable = true;
-  #  wrapperFeatures.gtk = true;
-  #};
-  services.xserver.enable = true;
-  services.xserver.desktopManager.xfce = {
-    enable = true;
-    enableScreensaver = false;
-  };
   services.xserver.xautolock.time = 99999;
 
   # This is a server, disable sleep

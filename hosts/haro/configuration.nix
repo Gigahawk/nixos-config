@@ -70,6 +70,7 @@
   environment.systemPackages = with pkgs; [
     raspberrypi-eeprom
     libraspberrypi
+    (callPackage ../../packages/vcgencmd_nice.nix {})
   ];
 
   #services.netdata = {

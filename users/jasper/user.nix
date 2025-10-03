@@ -20,6 +20,7 @@
       "wheel" # Enable ‘sudo’ for the user.
       "docker"
       "input"
+      "video" # Allow vcgencmd to work on rpi
     ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [

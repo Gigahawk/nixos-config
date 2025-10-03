@@ -35,6 +35,10 @@ parse_get_throttled() {
         hex="${1#*=}"
         val=$((hex))
 
+        if (( val == 0 )); then
+                echo "No bits set"
+        fi
+
         for ((i=0; i<32; i++)); do
                 if (( (val >> i) & 1)); then
                         meaning="${bit_meanings[$i]}"

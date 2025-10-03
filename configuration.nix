@@ -70,7 +70,6 @@
       vim
       wget
       xplr
-      yt-dlp
 
       # Custom packages
       inputs.nix-top.packages.${system}.default

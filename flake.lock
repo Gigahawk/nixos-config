@@ -485,16 +485,14 @@
     "kvmd": {
       "inputs": {
         "flake-utils": "flake-utils_6",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1759440249,
+        "lastModified": 1759446670,
         "narHash": "sha256-wuYLjHdN2UmBlHwZiET5s9iHg8peaxY790Cwd88T1wc=",
         "owner": "Gigahawk",
         "repo": "nixos-kvmd",
-        "rev": "4b2a15629419b4f23ebb1fae9a2826e7869a7161",
+        "rev": "343b1c0440e21da26f4601079ffb75497956cdd1",
         "type": "github"
       },
       "original": {
@@ -727,6 +725,21 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1759381078,
+        "narHash": "sha256-gTrEEp5gEspIcCOx9PD8kMaF1iEmfBcTbO0Jag2QhQs=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "7df7ff7d8e00218376575f0acdcc5d66741351ee",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-unstable",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1759442354,
         "narHash": "sha256-CWvUzmKnFWVpddTP7iXVAKDVhKjawpko+RiObS0oogk=",
         "owner": "Gigahawk",
@@ -945,7 +958,7 @@
         "nixos-generators": "nixos-generators",
         "nixos-hardware": "nixos-hardware",
         "nixos-wsl": "nixos-wsl",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "nnn-plugins": "nnn-plugins",
         "nvf": "nvf",
         "smartp": "smartp",

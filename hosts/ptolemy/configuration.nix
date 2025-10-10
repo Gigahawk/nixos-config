@@ -42,7 +42,7 @@
   };
   services.printing = {
     enable = true;
-    webInterface = false;
+    webInterface = true;
     stateless = true;
     startWhenNeeded = false;
     listenAddresses = ["*:631"];

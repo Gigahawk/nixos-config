@@ -291,6 +291,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
+        formatter = pkgs.nixfmt-tree;
         packages = {
           nvim =
             (nvf.lib.neovimConfiguration {

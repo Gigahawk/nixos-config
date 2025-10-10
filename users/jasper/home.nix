@@ -40,14 +40,14 @@ in
       "$mod" = "SUPER";
       "$term" = "ghostty";
       "$menu" = "walker";
-      "$bar" = "waybar";
+      #"$bar" = "waybar";
 
       input.touchpad = {
         natural_scroll = true;
       };
 
       exec-once = [
-        "waybar"
+        #"waybar"
       ];
 
       bind = [
@@ -135,7 +135,7 @@ in
   };
 
   programs.waybar = {
-    enable = desktop;
+    #enable = desktop;
     settings =
       let
         batConfig = bat: {

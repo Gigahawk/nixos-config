@@ -45,6 +45,7 @@
     webInterface = true;
     stateless = true;
     startWhenNeeded = false;
+    logLevel = "debug";
     listenAddresses = ["*:631"];
     # TODO: is there a better way to secure this?
     allowFrom = ["all"];

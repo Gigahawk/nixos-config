@@ -3,7 +3,6 @@
   pkgs,
   desktop,
   inputs,
-  system,
   ...
 }:
 let
@@ -15,9 +14,6 @@ let
 
 in
 {
-  imports = [
-    inputs.ironbar.homeManagerModules.default
-  ];
   home.username = "jasper";
   home.homeDirectory = "/home/jasper";
 
@@ -139,7 +135,7 @@ in
   };
 
   programs.waybar = {
-    #enable = desktop;
+    enable = desktop;
     settings =
       let
         batConfig = bat: {
@@ -615,22 +611,6 @@ in
           background-color: #0069d4;
       }
     '';
-  };
-
-  programs.ironbar = {
-    enable = true;
-    config = {
-      start = [
-        {
-          type = "tray";
-        }
-        {
-          type = "workspaces";
-        }
-      ];
-      center = [ ];
-      end = [ ];
-    };
   };
 
   programs.ghostty = {

@@ -1,9 +1,21 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}:
 
 {
   imports = [ ];
 
-  boot.initrd.availableKernelModules = [ "ata_piix" "ohci_pci" "ahci" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [
+    "ata_piix"
+    "ohci_pci"
+    "ahci"
+    "sd_mod"
+    "sr_mod"
+  ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
@@ -41,63 +53,63 @@
     };
   };
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-label/nixos";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/nixos";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-label/BOOT";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-label/BOOT";
+    fsType = "vfat";
+  };
 
-  fileSystems."/mnt/parity0" =
-    { device = "/dev/disk/by-label/parity0";
-      fsType = "ext4";
-      options = [
-        "defaults"
-        "errors=remount-ro"
-      ];
-    };
+  fileSystems."/mnt/parity0" = {
+    device = "/dev/disk/by-label/parity0";
+    fsType = "ext4";
+    options = [
+      "defaults"
+      "errors=remount-ro"
+    ];
+  };
 
-  fileSystems."/mnt/data0" =
-    { device = "/dev/disk/by-label/data0";
-      fsType = "ext4";
-      options = [
-        "defaults"
-        "errors=remount-ro"
-      ];
-    };
+  fileSystems."/mnt/data0" = {
+    device = "/dev/disk/by-label/data0";
+    fsType = "ext4";
+    options = [
+      "defaults"
+      "errors=remount-ro"
+    ];
+  };
 
-  fileSystems."/mnt/data1" =
-    { device = "/dev/disk/by-label/data1";
-      fsType = "ext4";
-      options = [
-        "defaults"
-        "errors=remount-ro"
-      ];
-    };
+  fileSystems."/mnt/data1" = {
+    device = "/dev/disk/by-label/data1";
+    fsType = "ext4";
+    options = [
+      "defaults"
+      "errors=remount-ro"
+    ];
+  };
 
-  fileSystems."/mnt/data2" =
-    { device = "/dev/disk/by-label/data2";
-      fsType = "ext4";
-      options = [
-        "defaults"
-        "errors=remount-ro"
-      ];
-    };
-  
-  fileSystems."/mnt/pool" =
-    { device = "/mnt/data*";
-      fsType = "fuse.mergerfs";
-      options = [
-        "defaults"
-        "allow_other"
-        "cache.files=off"
-        "moveonenospc=true"
-      ];
-    };
-  
+  fileSystems."/mnt/data2" = {
+    device = "/dev/disk/by-label/data2";
+    fsType = "ext4";
+    options = [
+      "defaults"
+      "errors=remount-ro"
+    ];
+  };
+
+  fileSystems."/mnt/pool" = {
+    device = "/mnt/data*";
+    fsType = "fuse.mergerfs";
+    options = [
+      "defaults"
+      "allow_other"
+      "cache.files=off"
+      "moveonenospc=true"
+    ];
+  };
+
   # Set global rw on data drives
   systemd.tmpfiles.rules = [
     "d /mnt/data0 0777 root root"
@@ -121,7 +133,7 @@
     "Z /mnt/pool/postgres 0750 postgres postgres"
   ];
 
-  swapDevices = [ 
+  swapDevices = [
     { device = "/dev/disk/by-label/swap"; }
   ];
 
@@ -135,4 +147,3 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   virtualisation.virtualbox.guest.enable = true;
 }
-

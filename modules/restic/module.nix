@@ -1,4 +1,11 @@
-{ lib, pkgs, config, inputs, system, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  inputs,
+  system,
+  ...
+}:
 {
   services.restic.backups.storj = {
     initialize = true;
@@ -40,7 +47,14 @@
     serviceConfig.Type = "oneshot";
     path = [
       inputs.xmpp-bridge.packages.${system}.default
-      (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config inputs system; })
+      (import ../xmpp-bridge/xmpp-alert.nix {
+        inherit
+          pkgs
+          config
+          inputs
+          system
+          ;
+      })
     ];
     script = ''
       xmpp-alert echo "RESTIC BACKUP LOGS (PASS)"
@@ -56,7 +70,14 @@
     serviceConfig.Type = "oneshot";
     path = [
       inputs.xmpp-bridge.packages.${system}.default
-      (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config inputs system; })
+      (import ../xmpp-bridge/xmpp-alert.nix {
+        inherit
+          pkgs
+          config
+          inputs
+          system
+          ;
+      })
     ];
     script = ''
       xmpp-alert echo "RESTIC BACKUP LOGS (FAIL)"

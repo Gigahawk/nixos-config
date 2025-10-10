@@ -4,38 +4,48 @@
   config,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.syncthingSettings;
   # What does this do?
-  settingsFormat = pkgs.formats.json {};
-in {
+  settingsFormat = pkgs.formats.json { };
+in
+{
   options.syncthingSettings = {
     guiPassword = mkOption {
       type = types.str;
       description = mdDoc ''
-        Password to the web GUI
-        ENSURE THIS IS A BCRYPT ENCRYPTED PASSWORD
+        
+                Password to the web GUI
+                ENSURE THIS IS A BCRYPT ENCRYPTED PASSWORD
       '';
     };
     folders = mkOption {
-      type = types.attrsOf (types.submodule ({name, ...}: {
-        freeformType = settingsFormat.type;
-        options = {
-          name = mkOption {
-            type = types.str;
-            default = name;
-            description = mdDoc ''
-              The name of the folder as specified in `modules/syncthing.nix`
-            '';
-          };
-          path = mkOption {
-            type = types.str;
-            description = mdDoc ''
-              The path to keep the folder
-            '';
-          };
-        };
-      }));
+      type = types.attrsOf (
+        types.submodule (
+          { name, ... }:
+          {
+            freeformType = settingsFormat.type;
+            options = {
+              name = mkOption {
+                type = types.str;
+                default = name;
+                description = mdDoc ''
+                  
+                                The name of the folder as specified in `modules/syncthing.nix`
+                '';
+              };
+              path = mkOption {
+                type = types.str;
+                description = mdDoc ''
+                  
+                                The path to keep the folder
+                '';
+              };
+            };
+          }
+        )
+      );
     };
   };
 

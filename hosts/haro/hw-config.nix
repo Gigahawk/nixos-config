@@ -1,4 +1,11 @@
-{ config, lib, pkgs, modulesPath, options, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  options,
+  ...
+}:
 {
 
   raspi4.config = options.raspi4.config.default // {
@@ -87,4 +94,3 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 }
-

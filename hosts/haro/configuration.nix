@@ -2,7 +2,14 @@
 # your system.  help is available in the configuration.nix(5) man page
 # and in the nixos manual (accessible by running `nixos-help`).
 
-{ config, lib, pkgs, inputs, system, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  system,
+  ...
+}:
 
 {
   imports = [ ];
@@ -70,7 +77,7 @@
   environment.systemPackages = with pkgs; [
     raspberrypi-eeprom
     libraspberrypi
-    (callPackage ../../packages/vcgencmd_nice.nix {})
+    (callPackage ../../packages/vcgencmd_nice.nix { })
   ];
 
   #services.netdata = {
@@ -148,5 +155,3 @@
   };
 
 }
-
-

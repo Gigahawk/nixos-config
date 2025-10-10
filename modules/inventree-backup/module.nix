@@ -1,4 +1,12 @@
-{ lib, pkgs, config, options, system, inputs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  options,
+  system,
+  inputs,
+  ...
+}:
 with lib;
 let
   ivCfg = config.services.inventree;
@@ -11,8 +19,7 @@ let
 in
 {
   options.services.inventreeBackup = {
-    enable = mkEnableOption
-      (lib.mdDoc "Routine backups for the local InvenTree install");
+    enable = mkEnableOption (lib.mdDoc "Routine backups for the local InvenTree install");
 
     interval = mkOption {
       type = types.str;
@@ -29,8 +36,7 @@ in
       '';
     };
 
-    enablePush = mkEnableOption
-      (lib.mdDoc "Enable pushing backups to a remote github repo");
+    enablePush = mkEnableOption (lib.mdDoc "Enable pushing backups to a remote github repo");
     pushRemote = mkOption {
       type = types.str;
       example = "Gigahawk/inventree-backup";
@@ -40,7 +46,7 @@ in
     };
     patFile = mkOption {
       type = types.path;
-      description  = lib.mdDoc ''
+      description = lib.mdDoc ''
         Path to a file containing the Github PAT to access the repo
       '';
     };
@@ -57,7 +63,14 @@ in
       startLimitBurst = 5;
       path = [
         inputs.xmpp-bridge.packages.${system}.default
-        (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config inputs system; })
+        (import ../xmpp-bridge/xmpp-alert.nix {
+          inherit
+            pkgs
+            config
+            inputs
+            system
+            ;
+        })
         inputs.inventree.packages.${system}.invoke
         pkgs.git
         pkgs.hostname
@@ -69,39 +82,38 @@ in
         User = defaultUser;
         Group = defaultGroup;
         SupplementaryGroups = "xmpp-alert";
-        ExecStart =
-          "${pkgs.writers.writeBash "inventree-backup" ''
-            xmpp-alert echo "Starting InvenTree backup as"
-            xmpp-alert whoami
+        ExecStart = "${pkgs.writers.writeBash "inventree-backup" ''
+          xmpp-alert echo "Starting InvenTree backup as"
+          xmpp-alert whoami
 
-            xmpp-alert echo "Ensuring backup dir exists"
-            mkdir -p ${cfg.backupPath}
-            cd ${cfg.backupPath}
+          xmpp-alert echo "Ensuring backup dir exists"
+          mkdir -p ${cfg.backupPath}
+          cd ${cfg.backupPath}
 
-            xmpp-alert echo "Initializing git repo"
-            xmpp-alert git init
-            xmpp-alert git branch -m master
-            xmpp-alert git config user.email "inventree-backup@$(hostname)"
-            xmpp-alert git config user.name "inventree-backup"
-            # Set it to some big number to allow pushing big commits
-            xmpp-alert git config http.postBuffer 524288000
+          xmpp-alert echo "Initializing git repo"
+          xmpp-alert git init
+          xmpp-alert git branch -m master
+          xmpp-alert git config user.email "inventree-backup@$(hostname)"
+          xmpp-alert git config user.name "inventree-backup"
+          # Set it to some big number to allow pushing big commits
+          xmpp-alert git config http.postBuffer 524288000
 
-            xmpp-alert echo "Running database backup"
-            xmpp-alert rm data.json*
-            xmpp-alert inventree-invoke export-records -f "$(pwd)/data.json"
-            xmpp-alert rm *.tmp
-            xmpp-alert git add data.json
+          xmpp-alert echo "Running database backup"
+          xmpp-alert rm data.json*
+          xmpp-alert inventree-invoke export-records -f "$(pwd)/data.json"
+          xmpp-alert rm *.tmp
+          xmpp-alert git add data.json
 
-            xmpp-alert echo "Running media backup"
-            xmpp-alert rm -rf media
-            xmpp-alert cp -r ${ivCfg.config.media_root} ./media
-            xmpp-alert git add media
+          xmpp-alert echo "Running media backup"
+          xmpp-alert rm -rf media
+          xmpp-alert cp -r ${ivCfg.config.media_root} ./media
+          xmpp-alert git add media
 
-            xmpp-alert echo "Comitting backup"
-            xmpp-alert git commit -m "\"Backup at $(date)\""
+          xmpp-alert echo "Comitting backup"
+          xmpp-alert git commit -m "\"Backup at $(date)\""
 
-            xmpp-alert echo "InvenTree backup complete"
-          ''}";
+          xmpp-alert echo "InvenTree backup complete"
+        ''}";
         ExecStartPost = mkIf cfg.enablePush (
           "${pkgs.writers.writeBash "inventree-backup-push" ''
             cd ${cfg.backupPath}

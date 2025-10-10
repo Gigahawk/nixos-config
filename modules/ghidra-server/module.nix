@@ -1,17 +1,25 @@
 # Based on https://git.lain.faith/haskal/dragnpkgs/src/commit/dfcb303eef8a59f1e2f451fd15745a63acd89b02/modules/ghidra-server/default.nix
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
 let
   cfg = config.services.ghidra-server;
   adminCli = pkgs.callPackage ./cli.nix {
     inherit (cfg) package jdkPackage directory;
   };
-in {
+in
+{
   options.services.ghidra-server = {
     enable = mkEnableOption "ghidra-server";
-    enableAdminCli = mkEnableOption "ghidra-svrAdmin" // { default = true; };
-    package = mkPackageOption pkgs "ghidra" {  };
-    jdkPackage = mkPackageOption pkgs "openjdk21" {  };
+    enableAdminCli = mkEnableOption "ghidra-svrAdmin" // {
+      default = true;
+    };
+    package = mkPackageOption pkgs "ghidra" { };
+    jdkPackage = mkPackageOption pkgs "openjdk21" { };
     host = mkOption {
       default = null;
       defaultText = literalExpression "null";
@@ -48,26 +56,33 @@ in {
       isSystemUser = true;
       home = cfg.directory;
       inherit (cfg) group;
-      packages = [ cfg.package cfg.jdkPackage ];
+      packages = [
+        cfg.package
+        cfg.jdkPackage
+      ];
     };
 
-    users.groups."${cfg.group}" = {};
+    users.groups."${cfg.group}" = { };
 
     systemd.services."ghidra-server" =
       let
         ghidra_log4j_config = ./custom.log4j.xml;
         ghidra_java_opt = "-Dlog4j.configurationFile=${ghidra_log4j_config} -Djava.net.preferIPv4Stack=true -Djava.io.tmpdir=/tmp -Djna.tmpdir=/tmp -Dghidra.tls.server.protocols=TLSv1.2;TLSv1.3 -Ddb.buffers.DataBuffer.compressedOutput=true -Xms396m -Xmx768m";
         ghidra_home = "${cfg.package}/lib/ghidra";
-        ghidra_classpath = with builtins; let
-          input = lib.readFile "${ghidra_home}/Ghidra/Features/GhidraServer/data/classpath.frag";
-          inputSplit = split "[^\n]*ghidra_home.([^\n]*)\n" input;
-          paths = map head (filter isList inputSplit);
-        in ghidra_home + (concatStringsSep (":" + ghidra_home) paths);
+        ghidra_classpath =
+          with builtins;
+          let
+            input = lib.readFile "${ghidra_home}/Ghidra/Features/GhidraServer/data/classpath.frag";
+            inputSplit = split "[^\n]*ghidra_home.([^\n]*)\n" input;
+            paths = map head (filter isList inputSplit);
+          in
+          ghidra_home + (concatStringsSep (":" + ghidra_home) paths);
         ghidra_mainclass = "ghidra.server.remote.GhidraServer";
         ghidra_args = "-a0 -u -p${toString cfg.basePort} -ip ${cfg.host} ${cfg.directory}/repositories";
-      in {
+      in
+      {
         description = "Ghidra server";
-        after = ["network.target"];
+        after = [ "network.target" ];
         serviceConfig = {
           ExecStart = "${cfg.jdkPackage}/bin/java ${ghidra_java_opt} -classpath ${ghidra_classpath} ${ghidra_mainclass} ${ghidra_args}";
           WorkingDirectory = cfg.directory;
@@ -86,8 +101,8 @@ in {
           PrivateTmp = true;
           NoNewPrivileges = true;
         };
-        wantedBy = ["multi-user.target"];
+        wantedBy = [ "multi-user.target" ];
       };
-      environment.systemPackages = optionals cfg.enableAdminCli [ adminCli ];
+    environment.systemPackages = optionals cfg.enableAdminCli [ adminCli ];
   };
 }

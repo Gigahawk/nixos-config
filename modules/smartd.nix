@@ -1,6 +1,21 @@
-{ config, pkgs, inputs, system, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  system,
+  ...
+}:
 let
-  xmpp-alert = (import ./xmpp-bridge/xmpp-alert.nix { inherit pkgs config inputs system; });
+  xmpp-alert = (
+    import ./xmpp-bridge/xmpp-alert.nix {
+      inherit
+        pkgs
+        config
+        inputs
+        system
+        ;
+    }
+  );
   notifyScript = pkgs.writeScript "smartd-notify.sh" ''
     #! ${pkgs.runtimeShell}
     ${xmpp-alert}/bin/xmpp-alert ${pkgs.coreutils}/bin/cat << EOF
@@ -30,5 +45,3 @@ in
     defaults.autodetected = "-a -o on -s (S/../.././02|L/../../7/04) -m <nomailer> -M exec ${notifyScript} -M test";
   };
 }
-
-

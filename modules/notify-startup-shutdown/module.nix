@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, system, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  system,
+  ...
+}:
 {
   systemd.services.startup-notify = {
     description = "Report successful bootup";
@@ -9,7 +15,14 @@
 
     path = [
       inputs.xmpp-bridge.packages.${system}.default
-      (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config inputs system; })
+      (import ../xmpp-bridge/xmpp-alert.nix {
+        inherit
+          pkgs
+          config
+          inputs
+          system
+          ;
+      })
       pkgs.hostname
     ];
     serviceConfig = {
@@ -19,7 +32,7 @@
       SupplementaryGroups = "xmpp-alert";
     };
 
-    script =  ''
+    script = ''
       xmpp-alert echo "$(hostname) has booted up"
     '';
   };
@@ -35,7 +48,14 @@
 
     path = [
       inputs.xmpp-bridge.packages.${system}.default
-      (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config inputs system; })
+      (import ../xmpp-bridge/xmpp-alert.nix {
+        inherit
+          pkgs
+          config
+          inputs
+          system
+          ;
+      })
       pkgs.hostname
     ];
     serviceConfig = {

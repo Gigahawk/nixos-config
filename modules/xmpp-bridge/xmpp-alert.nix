@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, system, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  system,
+  ...
+}:
 pkgs.writeShellScriptBin "xmpp-alert" ''
   export XMPPBRIDGE_JID=$(${pkgs.coreutils}/bin/cat ${config.age.secrets.xmpp-jid.path})
   export XMPPBRIDGE_PASSWORD=$(${pkgs.coreutils}/bin/cat ${config.age.secrets.xmpp-password.path})

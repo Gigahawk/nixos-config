@@ -5,7 +5,8 @@
   inputs,
   desktop,
   ...
-}: {
+}:
+{
   imports = [
     (import inputs.home-manager.nixosModules.home-manager)
   ];
@@ -35,49 +36,49 @@
     ];
   };
 
-  fonts.packages =
-    [
-    ]
-    ++ (
-      if desktop
-      then
-        with pkgs; [
-          roboto
-          nerd-fonts.symbols-only
-        ]
-      else []
-    );
+  fonts.packages = [
+  ]
+  ++ (
+    if desktop then
+      with pkgs;
+      [
+        roboto
+        nerd-fonts.symbols-only
+      ]
+    else
+      [ ]
+  );
 
-  nixpkgs.config.permittedInsecurePackages =
-    [
-    ]
-    ++ (
-      if desktop
-      then [
+  nixpkgs.config.permittedInsecurePackages = [
+  ]
+  ++ (
+    if desktop then
+      [
         # KDE Itinerary uses this for matrix sync
         # or something
         "olm-3.2.16"
       ]
-      else []
-    );
+    else
+      [ ]
+  );
 
-  environment.systemPackages =
-    [
-    ]
-    ++ (
-      if desktop
-      then
-        with pkgs; [
-          brightnessctl
-          wlogout
-          kdePackages.itinerary
-          localsend
-          prusa-slicer
-          mayo
-          yt-dlp
-        ]
-      else []
-    );
+  environment.systemPackages = [
+  ]
+  ++ (
+    if desktop then
+      with pkgs;
+      [
+        brightnessctl
+        wlogout
+        kdePackages.itinerary
+        localsend
+        prusa-slicer
+        mayo
+        yt-dlp
+      ]
+    else
+      [ ]
+  );
 
   services.displayManager.ly = {
     enable = lib.mkDefault desktop;

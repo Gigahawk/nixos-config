@@ -7,8 +7,9 @@
   inputs,
   system,
   ...
-}: {
-  imports = [];
+}:
+{
+  imports = [ ];
 
   # Sometimes to deal with issues like a web server bound only to
   # localhost it's useful to have an xserver running so that we
@@ -46,9 +47,9 @@
     stateless = true;
     startWhenNeeded = false;
     logLevel = "debug";
-    listenAddresses = ["*:631"];
+    listenAddresses = [ "*:631" ];
     # TODO: is there a better way to secure this?
-    allowFrom = ["all"];
+    allowFrom = [ "all" ];
     browsing = true;
     defaultShared = true;
     openFirewall = true;
@@ -85,8 +86,8 @@
         NAME = "/mnt/pool/inventree-data/database.sqlite";
       };
       debug = true;
-      social_backends = [];
-      social_providers = {};
+      social_backends = [ ];
+      social_providers = { };
       secret_key_file = config.age.secrets.inventree-secret.path;
       static_root = "/mnt/pool/inventree-data/static";
       static_i18_root = "/mnt/pool/inventree-data/static_i18";
@@ -273,7 +274,10 @@
     };
   };
   users.users.immich = {
-    extraGroups = ["video" "render"];
+    extraGroups = [
+      "video"
+      "render"
+    ];
     home = "/var/lib/immich";
     createHome = true;
   };
@@ -449,8 +453,11 @@
       };
       jasper = {
         passwordFile = config.age.secrets.upsmon.path;
-        actions = ["set" "fsd"];
-        instcmds = ["all"];
+        actions = [
+          "set"
+          "fsd"
+        ];
+        instcmds = [ "all" ];
       };
     };
     upsmon.monitor."apc-back-ups".user = "upsmon";
@@ -459,28 +466,85 @@
       NOTIFYCMD = "${pkgs.writers.writeBash "upsmon-notify" ''
         NL=$'\n'
         full_message="UPS EVENT TYPE $NOTIFYTYPE FROM $UPSNAME ''${NL}''${NL}$1"
-        ${(import ../../modules/xmpp-bridge/xmpp-alert.nix {inherit pkgs config inputs system;})}/bin/xmpp-alert echo "$full_message"
+        ${
+          (import ../../modules/xmpp-bridge/xmpp-alert.nix {
+            inherit
+              pkgs
+              config
+              inputs
+              system
+              ;
+          })
+        }/bin/xmpp-alert echo "$full_message"
       ''}";
       POWERDOWNFLAG = "/run/killpower";
       RUN_AS_USER = "root";
       SHUTDOWNCMD = "${pkgs.systemd}/bin/shutdown now";
       NOTIFYFLAG = [
-        ["ONLINE" "SYSLOG+WALL+EXEC"]
-        ["ONBATT" "SYSLOG+WALL+EXEC"]
-        ["LOWBATT" "SYSLOG+WALL+EXEC"]
-        ["FSD" "SYSLOG+WALL+EXEC"]
-        ["COMMOK" "SYSLOG+WALL+EXEC"]
-        ["COMMBAD" "SYSLOG+WALL+EXEC"]
-        ["SHUTDOWN" "SYSLOG+WALL+EXEC"]
-        ["REPLBATT" "SYSLOG+WALL+EXEC"]
-        ["NOCOMM" "SYSLOG+WALL+EXEC"]
-        ["NOPARENT" "SYSLOG+WALL+EXEC"]
-        ["CAL" "SYSLOG+WALL+EXEC"]
-        ["NOTCAL" "SYSLOG+WALL+EXEC"]
-        ["OFF" "SYSLOG+WALL+EXEC"]
-        ["NOTOFF" "SYSLOG+WALL+EXEC"]
-        ["BYPASS" "SYSLOG+WALL+EXEC"]
-        ["NOTBYPASS" "SYSLOG+WALL+EXEC"]
+        [
+          "ONLINE"
+          "SYSLOG+WALL+EXEC"
+        ]
+        [
+          "ONBATT"
+          "SYSLOG+WALL+EXEC"
+        ]
+        [
+          "LOWBATT"
+          "SYSLOG+WALL+EXEC"
+        ]
+        [
+          "FSD"
+          "SYSLOG+WALL+EXEC"
+        ]
+        [
+          "COMMOK"
+          "SYSLOG+WALL+EXEC"
+        ]
+        [
+          "COMMBAD"
+          "SYSLOG+WALL+EXEC"
+        ]
+        [
+          "SHUTDOWN"
+          "SYSLOG+WALL+EXEC"
+        ]
+        [
+          "REPLBATT"
+          "SYSLOG+WALL+EXEC"
+        ]
+        [
+          "NOCOMM"
+          "SYSLOG+WALL+EXEC"
+        ]
+        [
+          "NOPARENT"
+          "SYSLOG+WALL+EXEC"
+        ]
+        [
+          "CAL"
+          "SYSLOG+WALL+EXEC"
+        ]
+        [
+          "NOTCAL"
+          "SYSLOG+WALL+EXEC"
+        ]
+        [
+          "OFF"
+          "SYSLOG+WALL+EXEC"
+        ]
+        [
+          "NOTOFF"
+          "SYSLOG+WALL+EXEC"
+        ]
+        [
+          "BYPASS"
+          "SYSLOG+WALL+EXEC"
+        ]
+        [
+          "NOTBYPASS"
+          "SYSLOG+WALL+EXEC"
+        ]
         # Apparently these are invalid notify types?
         # Need to update to 2.8.3+
         # [ "ECO" "SYSLOG+WALL+EXEC" ]

@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [ ];
@@ -16,8 +21,9 @@
       config.boot.kernelPackages.broadcom_sta
     ];
     kernelModules = [ "wl" ];
-    initrd.kernelModules = [ "kvm-intel" "wl" ];
+    initrd.kernelModules = [
+      "kvm-intel"
+      "wl"
+    ];
   };
 }
-
-

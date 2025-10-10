@@ -1,4 +1,11 @@
-{ lib, pkgs, config, inputs, system, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  inputs,
+  system,
+  ...
+}:
 with lib;
 let
   cfg = config.snapraidSettings;
@@ -11,21 +18,21 @@ in
       description = mdDoc ''
         List of systemd services to stop during the sync
       '';
-      default = [];
+      default = [ ];
     };
     dataDisks = mkOption {
       description = mdDoc ''
         Attr set of disks to sync
       '';
       type = types.attrsOf types.str;
-      default = {};
+      default = { };
     };
     parityFiles = mkOption {
       description = mdDoc ''
         List of files to store parity data in
       '';
       type = types.listOf types.str;
-      default = [];
+      default = [ ];
     };
     exclude = mkOption {
       description = mdDoc ''
@@ -47,9 +54,10 @@ in
       parityFiles = cfg.parityFiles;
       exclude = cfg.exclude;
       # Put a content file on every data disk
-      contentFiles = [ "/var/snapraid.content" ] ++ lib.mapAttrsToList
-        (name: path: "${path}/snapraid.content")
-        cfg.dataDisks;
+      contentFiles = [
+        "/var/snapraid.content"
+      ]
+      ++ lib.mapAttrsToList (name: path: "${path}/snapraid.content") cfg.dataDisks;
     };
 
     systemd.services.snapraid_sync = {
@@ -60,19 +68,26 @@ in
       startLimitBurst = 5;
       path = [
         inputs.xmpp-bridge.packages.${system}.default
-        (import ../xmpp-bridge/xmpp-alert.nix { inherit pkgs config inputs system; })
+        (import ../xmpp-bridge/xmpp-alert.nix {
+          inherit
+            pkgs
+            config
+            inputs
+            system
+            ;
+        })
         pkgs.snapraid
       ];
-      preStart = ( "xmpp-alert echo 'Starting snapraid sync' \n" +
-        concatStringsSep "\n" (
-          builtins.map(s: "xmpp-alert echo Stopping service '${s}'\nsystemctl stop ${s}")
-            cfg.stopServices)
+      preStart = (
+        "xmpp-alert echo 'Starting snapraid sync' \n"
+        + concatStringsSep "\n" (
+          builtins.map (s: "xmpp-alert echo Stopping service '${s}'\nsystemctl stop ${s}") cfg.stopServices
+        )
       );
       script = builtins.readFile ./snapraid_sync.sh;
       postStart = (
         concatStringsSep "\n" (
-          builtins.map(s: "xmpp-alert echo Starting service '${s}'\nsystemctl start ${s}")
-            cfg.stopServices
+          builtins.map (s: "xmpp-alert echo Starting service '${s}'\nsystemctl start ${s}") cfg.stopServices
         )
       );
     };
@@ -84,5 +99,3 @@ in
     };
   };
 }
-
-

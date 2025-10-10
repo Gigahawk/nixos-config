@@ -1,7 +1,8 @@
-{ writeShellScriptBin
-, nix-output-monitor
-, nixos-rebuild
-, ...
+{
+  writeShellScriptBin,
+  nix-output-monitor,
+  nixos-rebuild,
+  ...
 }:
 
 writeShellScriptBin "nixos-update" ''

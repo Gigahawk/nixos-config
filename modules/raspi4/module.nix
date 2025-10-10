@@ -1,10 +1,17 @@
-{ lib, config, pkgs, inputs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 with lib;
 let
   cfg = config.raspi4;
   configFormat = pkgs.formats.ini { };
   configTxtFile = configFormat.generate "config.txt" cfg.config;
-in {
+in
+{
   imports = [
     "${inputs.nixpkgs}/nixos/modules/installer/sd-card/sd-image.nix"
   ];

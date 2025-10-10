@@ -6,8 +6,9 @@
   lib,
   pkgs,
   ...
-}: {
-  imports = [];
+}:
+{
+  imports = [ ];
 
   networking.hostName = "arios";
   # Seems like using networking.wireless doesn't work super well on
@@ -22,7 +23,7 @@
     enable = true;
     keyboards = {
       default = {
-        devices = [];
+        devices = [ ];
         config = ''
           (defsrc caps)
           (deflayer base esc)

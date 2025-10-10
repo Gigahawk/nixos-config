@@ -126,7 +126,7 @@ in
   };
 
   services.udiskie = {
-    enable = false;
+    enable = true;
     settings = {
       program_options = {
         file_manager = "${nnn}/bin/nnn";

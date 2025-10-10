@@ -5,10 +5,14 @@
   inputs,
   system,
   ...
-}: {
-  imports = [];
+}:
+{
+  imports = [ ];
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   nix.settings.trusted-users = [
     "root"
@@ -27,7 +31,8 @@
     graphics.enable32Bit = true;
   };
 
-  environment.systemPackages = with pkgs;
+  environment.systemPackages =
+    with pkgs;
     [
       alejandra
       bat
@@ -73,13 +78,20 @@
 
       # Custom packages
       inputs.nix-top.packages.${system}.default
-      (callPackage ./packages/nixos-update.nix {})
-      (callPackage ./packages/nix-flake-init.nix {})
+      (callPackage ./packages/nixos-update.nix { })
+      (callPackage ./packages/nix-flake-init.nix { })
     ]
     ++ (
-      if builtins.elem system ["i686-linux" "x86_64-linux" "x86_64-darwin"]
-      then [mprime]
-      else []
+      if
+        builtins.elem system [
+          "i686-linux"
+          "x86_64-linux"
+          "x86_64-darwin"
+        ]
+      then
+        [ mprime ]
+      else
+        [ ]
     );
 
   programs.zsh.enable = true;
@@ -87,9 +99,9 @@
   networking.firewall = {
     enable = true;
     allowPing = true;
-    trustedInterfaces = ["tailscale0"];
-    allowedUDPPorts = [config.services.tailscale.port];
-    allowedTCPPorts = [22];
+    trustedInterfaces = [ "tailscale0" ];
+    allowedUDPPorts = [ config.services.tailscale.port ];
+    allowedTCPPorts = [ 22 ];
   };
 
   services.tailscale = {
@@ -119,6 +131,10 @@
       gameboy.pskRaw = "ext:GAMEBOY_PASS";
       gameboy-5GHz.pskRaw = "ext:GAMEBOY_PASS";
     };
+  };
+
+  services.udisks2 = {
+    enable = true;
   };
 
   users.mutableUsers = false;

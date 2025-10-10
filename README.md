@@ -1,5 +1,41 @@
 # nixos-config
 
+<!-- vim-markdown-toc GFM -->
+
+- [Adding a new host](#adding-a-new-host)
+  - [Installing](#installing)
+  - [Setting up a host ssh key](#setting-up-a-host-ssh-key)
+  - [Creating a new user password](#creating-a-new-user-password)
+  - [Creating a user ssh key](#creating-a-user-ssh-key)
+  - [Creating a new Syncthing config](#creating-a-new-syncthing-config)
+- [Updating](#updating)
+  - [Locally](#locally)
+  - [Remotely](#remotely)
+- [Tailscale](#tailscale)
+  - [Renewing Keys](#renewing-keys)
+  - [DNS Failures](#dns-failures)
+- [Hosts](#hosts)
+  - [Servers (virtualbox, ptolemy)](#servers-virtualbox-ptolemy)
+    - [Samba bootstrapping](#samba-bootstrapping)
+    - [Backups](#backups)
+    - [SnapRAID drive replacement procedure](#snapraid-drive-replacement-procedure)
+    - [InvenTree Setup](#inventree-setup)
+    - [InvenTree bootstrapping](#inventree-bootstrapping)
+    - [InvenTree Backup Key](#inventree-backup-key)
+  - [WSL (veda)](#wsl-veda)
+    - [SystemD/D-Bus issues](#systemdd-bus-issues)
+  - [Raspberry Pi Images](#raspberry-pi-images)
+    - [Building Raspberry Pi Images](#building-raspberry-pi-images)
+- [Non-NixOS Hosts](#non-nixos-hosts)
+  - [Syncthing](#syncthing)
+    - [Windows](#windows)
+      - [Common folder paths](#common-folder-paths)
+    - [Android](#android)
+      - [Common folder paths](#common-folder-paths-1)
+    - [reMarkable](#remarkable)
+
+<!-- vim-markdown-toc -->
+
 ## Adding a new host
 
 ### Installing

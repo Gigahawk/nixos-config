@@ -69,6 +69,7 @@
       with pkgs;
       [
         brightnessctl
+        gparted
         wlogout
         kdePackages.itinerary
         localsend

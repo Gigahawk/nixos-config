@@ -4,6 +4,7 @@
   lib,
   inputs,
   desktop,
+  system,
   ...
 }:
 {
@@ -104,6 +105,7 @@
   home-manager.extraSpecialArgs = {
     inherit desktop;
     inherit inputs;
+    inherit system;
   };
 
   home-manager.users.jasper = ./home.nix;

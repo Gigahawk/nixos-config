@@ -8,6 +8,7 @@
   - [Creating a new user password](#creating-a-new-user-password)
   - [Creating a user ssh key](#creating-a-user-ssh-key)
   - [Creating a new Syncthing config](#creating-a-new-syncthing-config)
+- [Reinstalling a host](#reinstalling-a-host)
 - [Updating](#updating)
   - [Locally](#locally)
   - [Remotely](#remotely)
@@ -43,7 +44,8 @@
 > WARNING: THIS WILL WIPE THE SYSTEM
 
 > WARNING: IF YOU ARE REINSTALLING, ENSURE YOU HAVE A COPY OF THE SSH HOST KEYS
-> FOR THE SYSTEM. AGENIX WILL NEED THESE TO BOOT PROPERLY.
+> FOR THE SYSTEM. AGENIX WILL NEED THESE TO BOOT PROPERLY. See
+> [Reinstalling a host](#reinstalling-a-host) for details
 
 > Partially based on https://www.notashelf.dev/posts/impermanence
 
@@ -145,6 +147,15 @@ properly switch users
 4. Generate a GUI password using `bcrypt-tool hash <password> 10`
 5. Add `modules/syncthing.nix` to the import list for the host
 6. Define all relevant options (paths, etc.) in the host `configuration.nix`
+
+## Reinstalling a host
+
+If you need to reinstall a host (i.e. move install to new drive), ensure you
+have the following backed up:
+
+- Home directory files if necessary
+- User SSH key (`~/.ssh/id_ed25519`)
+- Root SSH key (`/etc/ssh/ssh_host_ed25519_key`)
 
 ## Updating
 

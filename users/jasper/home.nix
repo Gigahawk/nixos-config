@@ -2,7 +2,6 @@
   config,
   pkgs,
   desktop,
-  system,
   inputs,
   ...
 }:
@@ -15,10 +14,6 @@ let
 
 in
 {
-  imports = [
-    inputs.gBar.homeManagerModules.${system}.default
-  ];
-
   home.username = "jasper";
   home.homeDirectory = "/home/jasper";
 
@@ -45,13 +40,14 @@ in
       "$mod" = "SUPER";
       "$term" = "ghostty";
       "$menu" = "walker";
+      "$bar" = "waybar";
 
       input.touchpad = {
         natural_scroll = true;
       };
 
       exec-once = [
-        #"waybar"
+        "waybar"
       ];
 
       bind = [
@@ -138,16 +134,8 @@ in
     };
   };
 
-  programs.gBar = {
-    enable = desktop;
-    config = {
-      Location = "L";
-      EnableSNI = true;
-    };
-  };
-
   programs.waybar = {
-    enable = false;
+    enable = desktop;
     settings =
       let
         batConfig = bat: {

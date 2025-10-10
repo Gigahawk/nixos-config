@@ -120,7 +120,13 @@
           type = "nixfmt";
         };
       };
-      markdown.enable = true;
+      markdown = {
+        enable = true;
+        lsp.enable = true;
+        extensions = {
+          render-markdown-nvim.enable = true;
+        };
+      };
       bash.enable = true;
       clang.enable = true;
       css.enable = true;
@@ -257,6 +263,10 @@
       guess-indent = {
         package = pkgs.vimPlugins.guess-indent-nvim;
         setup = "require('guess-indent').setup {}";
+      };
+      markdown-toc = {
+        package = pkgs.vimPlugins.vim-markdown-toc;
+        #setup = "require('vim-markdown-toc').setup {}";
       };
     };
 

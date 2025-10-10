@@ -81,54 +81,57 @@
     };
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    home-manager,
-    agenix,
-    flake-utils,
-    nixos-generators,
-    xmpp-bridge,
-    bcrypt-tool,
-    inventree,
-    kvmd,
-    cypress-ticket-scraper,
-    nix-top,
-    nixos-hardware,
-    nixos-wsl,
-    vscode-remote-workaround,
-    nvf,
-    declarative-jellyfin,
-    ...
-  }: let
-    lib = nixpkgs.lib;
-    mkSdImage = host:
-      self.nixosConfigurations.${host}.config.system.build.sdImage;
-    overlays = {
-      pkgs,
-      config,
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      agenix,
+      flake-utils,
+      nixos-generators,
+      xmpp-bridge,
+      bcrypt-tool,
+      inventree,
+      kvmd,
+      cypress-ticket-scraper,
+      nix-top,
+      nixos-hardware,
+      nixos-wsl,
+      vscode-remote-workaround,
+      nvf,
+      declarative-jellyfin,
       ...
-    }: {
-      config.nixpkgs.overlays = [
-        # TODO: does this cause problems for other systems?
-        # The following is requried for building RPi images {
-        # https://github.com/NixOS/nixpkgs/issues/126755#issuecomment-869149243
-        (final: super: {
-          makeModulesClosure = x:
-            super.makeModulesClosure (x // {allowMissing = true;});
-        })
-      ];
-    };
-  in
+    }:
+    let
+      lib = nixpkgs.lib;
+      mkSdImage = host: self.nixosConfigurations.${host}.config.system.build.sdImage;
+      overlays =
+        {
+          pkgs,
+          config,
+          ...
+        }:
+        {
+          config.nixpkgs.overlays = [
+            # TODO: does this cause problems for other systems?
+            # The following is requried for building RPi images {
+            # https://github.com/NixOS/nixpkgs/issues/126755#issuecomment-869149243
+            (final: super: {
+              makeModulesClosure = x: super.makeModulesClosure (x // { allowMissing = true; });
+            })
+          ];
+        };
+    in
     {
       images = {
         haro = mkSdImage "haro";
       };
       nixosConfigurations = {
         # Main server
-        ptolemy = let
-          system = "x86_64-linux";
-        in
+        ptolemy =
+          let
+            system = "x86_64-linux";
+          in
           lib.nixosSystem {
             inherit system;
             specialArgs = {
@@ -164,9 +167,10 @@
             ];
           };
         # WSL on JASPER-PC
-        veda = let
-          system = "x86_64-linux";
-        in
+        veda =
+          let
+            system = "x86_64-linux";
+          in
           lib.nixosSystem {
             inherit system;
             specialArgs = {
@@ -188,9 +192,10 @@
             ];
           };
         # Main server Pi KVM
-        haro = let
-          system = "aarch64-linux";
-        in
+        haro =
+          let
+            system = "aarch64-linux";
+          in
           lib.nixosSystem {
             inherit system;
             specialArgs = {
@@ -213,9 +218,10 @@
             ];
           };
         # Test server
-        virtualbox = let
-          system = "x86_64-linux";
-        in
+        virtualbox =
+          let
+            system = "x86_64-linux";
+          in
           lib.nixosSystem {
             inherit system;
             specialArgs = {
@@ -241,9 +247,10 @@
             ];
           };
         # Thinkpad x250
-        arios = let
-          system = "x86_64-linux";
-        in
+        arios =
+          let
+            system = "x86_64-linux";
+          in
           lib.nixosSystem {
             inherit system;
             specialArgs = {
@@ -278,39 +285,39 @@
         };
       };
     }
-    // (
-      flake-utils.lib.eachDefaultSystem (
-        system: let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in {
-          packages = {
-            nvim =
-              (nvf.lib.neovimConfiguration {
-                inherit pkgs;
-                modules = [
-                  ./modules/neovim/nvim-config.nix
-                ];
-              }).neovim;
-          };
-          devShell = pkgs.mkShell {
-            nativeBuildInputs = [
-              pkgs.apacheHttpd # Generate htpasswd files for kvmd
-              pkgs.nix-output-monitor # Better nix build output
-              pkgs.openssh
-              pkgs.rsync
-              pkgs.jq
-              pkgs.systemd # Read journalctl logs locally
-              pkgs.mkpasswd # Generate password hashes
-              pkgs.syncthing # Generate syncthing keys
-              agenix.packages.${system}.agenix
-              bcrypt-tool.packages.${system}.default
-              pkgs.nixos-rebuild # Build test systems locally
-              inventree.packages.${system}.gen-secret # Generate secret_key.txt
-              pkgs.zstd # Compress/decompress Pi images
-              pkgs.unixtools.fdisk
-            ];
-          };
-        }
-      )
-    );
+    // (flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        packages = {
+          nvim =
+            (nvf.lib.neovimConfiguration {
+              inherit pkgs;
+              modules = [
+                ./modules/neovim/nvim-config.nix
+              ];
+            }).neovim;
+        };
+        devShell = pkgs.mkShell {
+          nativeBuildInputs = [
+            pkgs.apacheHttpd # Generate htpasswd files for kvmd
+            pkgs.nix-output-monitor # Better nix build output
+            pkgs.openssh
+            pkgs.rsync
+            pkgs.jq
+            pkgs.systemd # Read journalctl logs locally
+            pkgs.mkpasswd # Generate password hashes
+            pkgs.syncthing # Generate syncthing keys
+            agenix.packages.${system}.agenix
+            bcrypt-tool.packages.${system}.default
+            pkgs.nixos-rebuild # Build test systems locally
+            inventree.packages.${system}.gen-secret # Generate secret_key.txt
+            pkgs.zstd # Compress/decompress Pi images
+            pkgs.unixtools.fdisk
+          ];
+        };
+      }
+    ));
 }

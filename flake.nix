@@ -119,6 +119,7 @@
             (final: super: {
               makeModulesClosure = x: super.makeModulesClosure (x // { allowMissing = true; });
             })
+            (import ./overlays/python.nix)
           ];
         };
     in

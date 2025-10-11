@@ -15,9 +15,9 @@ in
     guiPassword = mkOption {
       type = types.str;
       description = mdDoc ''
-        
-                Password to the web GUI
-                ENSURE THIS IS A BCRYPT ENCRYPTED PASSWORD
+
+        Password to the web GUI
+        ENSURE THIS IS A BCRYPT ENCRYPTED PASSWORD
       '';
     };
     folders = mkOption {
@@ -31,15 +31,15 @@ in
                 type = types.str;
                 default = name;
                 description = mdDoc ''
-                  
-                                The name of the folder as specified in `modules/syncthing.nix`
+
+                  The name of the folder as specified in `modules/syncthing.nix`
                 '';
               };
               path = mkOption {
                 type = types.str;
                 description = mdDoc ''
-                  
-                                The path to keep the folder
+
+                  The path to keep the folder
                 '';
               };
             };

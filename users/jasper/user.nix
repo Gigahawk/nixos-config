@@ -75,7 +75,7 @@
         localsend
         prusa-slicer
         mayo
-        yt-dlp
+        #yt-dlp
       ]
     else
       [ ]

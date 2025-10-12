@@ -262,7 +262,7 @@
             modules = [
               overlays
               ./configuration.nix
-              ./modules/neovim/module.nix
+              #./modules/neovim/module.nix
               agenix.nixosModules.default
               ./modules/agenix-cli.nix
               ./hosts/arios/configuration.nix

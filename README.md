@@ -76,7 +76,7 @@ mkswap -L swap /dev/mapper/swap_decrypted  # create up swap fs
 swapon /dev/disk/by-label/swap
 
 # Set up encrypted root
-cryptsetup --verify-passphrase -v luksFormat --label nixos_encrpyted "$DISK"3
+cryptsetup --verify-passphrase -v luksFormat --label nixos_encrypted "$DISK"3
 cryptsetup open "$DISK"3 nixos_decrypted  # mount encrypted volume to /dev/mapper/nixos_decrypted
 mkfs.ext4 -L nixos /dev/mapper/nixos_decrypted  # create root fs
 ```

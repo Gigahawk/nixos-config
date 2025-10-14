@@ -53,6 +53,7 @@
       git
       git-lfs
       gnupg
+      gopass
       gosu
       hddtemp
       hwinfo

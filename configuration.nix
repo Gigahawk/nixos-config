@@ -52,6 +52,7 @@
       gdu
       git
       git-lfs
+      gnupg
       gosu
       hddtemp
       hwinfo

@@ -26,6 +26,17 @@ in
     enableCompletion = true;
   };
 
+  services.gpg-agent = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+
+    pinentry = {
+      package = pkgs.pinentry-qt;
+      program = "pinentry-qt";
+    };
+  };
+
   programs.nnn = {
     enable = true;
     package = nnn;

@@ -219,6 +219,10 @@
 
     telescope.enable = true;
 
+    runner.run-nvim = {
+      enable = true;
+    };
+
     git = {
       enable = true;
       gitsigns = {

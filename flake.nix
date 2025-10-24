@@ -4,8 +4,6 @@
   inputs = {
     # Waiting for trackpoint changes to be merged https://github.com/NixOS/nixpkgs/pull/440539
     # Waiting for mayo to be merged https://github.com/NixOS/nixpkgs/pull/442185
-    # Waiting for tailscale fix to be merged https://github.com/NixOS/nixpkgs/pull/437536
-    # Waiting for tkinter fix to be merged https://github.com/NixOS/nixpkgs/pull/442184
     #nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs.url = "github:Gigahawk/nixpkgs/personal";
     home-manager = {

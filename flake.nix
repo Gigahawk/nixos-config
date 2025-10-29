@@ -35,7 +35,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     inventree = {
-      url = "github:Gigahawk/nixos-inventree";
+      url = "github:Gigahawk/nixos-inventree/update_1.0";
       #inputs.nixpkgs.follows = "nixpkgs";
     };
     kvmd = {
@@ -237,7 +237,7 @@
               ./modules/agenix-cli.nix
               ./modules/snapraid/module.nix
               ./modules/xmpp-bridge/module.nix
-              #inventree.nixosModule
+              inventree.nixosModule
               #./modules/inventree-backup/module.nix
               #./modules/ghidra-server/module.nix
               #./modules/restic/module.nix

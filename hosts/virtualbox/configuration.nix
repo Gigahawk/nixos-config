@@ -13,35 +13,38 @@
 
   #virtualisation.docker.enable = true;
 
-  ## For now all paths need to be strings?
-  #services.inventree = {
-  #  enable = true;
+  # For now all paths need to be strings?
+  services.inventree = {
+    enable = true;
 
-  #  serverBind = "0.0.0.0:1337";
+    bindIp = "0.0.0.0";
+    bindPort = 1337;
+    siteUrl = "http://virtualbox.neon-chameleon.ts.net:1337";
+    allowedHosts = [ "*" ];
 
-  #  config = {
-  #    database = {
-  #      ENGINE = "sqlite";
-  #      NAME = "/mnt/pool/inventree-test/test.sqlite";
-  #    };
-  #    debug = true;
-  #    social_backends = [];
-  #    social_providers = {};
-  #    secret_key_file = config.age.secrets.inventree-secret.path;
-  #    static_root = "/mnt/pool/inventree-test/static";
-  #    static_i18_root = "/mnt/pool/inventree-test/static_i18";
-  #    media_root = "/mnt/pool/inventree-test/media";
-  #    backup_dir = "/mnt/pool/inventree-test/backup";
-  #  };
+    config = {
+      database = {
+        ENGINE = "sqlite";
+        NAME = "/mnt/pool/inventree-test/test.sqlite";
+      };
+      debug = true;
+      social_backends = [ ];
+      social_providers = { };
+      secret_key_file = config.age.secrets.inventree-secret.path;
+      static_root = "/mnt/pool/inventree-test/static";
+      static_i18_root = "/mnt/pool/inventree-test/static_i18";
+      media_root = "/mnt/pool/inventree-test/media";
+      backup_dir = "/mnt/pool/inventree-test/backup";
+    };
 
-  #  users = {
-  #    jasper = {
-  #      email = "jasperchan515@gmail.com";
-  #      is_superuser = true;
-  #      password_file = config.age.secrets.inventree-jasper.path;
-  #    };
-  #  };
-  #};
+    users = {
+      jasper = {
+        email = "jasperchan515@gmail.com";
+        is_superuser = true;
+        password_file = config.age.secrets.inventree-jasper.path;
+      };
+    };
+  };
   #services.inventreeBackup = {
   #  enable = true;
   #  backupPath = "/mnt/pool/inventree-test/git-backup";
@@ -201,21 +204,21 @@
     xmpp-target-jid = {
       file = ../../secrets/xmpp-target-jid.age;
     };
-    #inventree-secret = {
-    #  file = ../../secrets/inventree-secret-virtualbox.age;
-    #  owner = "inventree";
-    #  group = "inventree";
-    #};
-    #inventree-backup-pat = {
-    #  file = ../../secrets/inventree-backup-pat-virtualbox.age;
-    #  owner = "inventree";
-    #  group = "inventree";
-    #};
-    #inventree-jasper = {
-    #  file = ../../secrets/inventree-jasper-virtualbox.age;
-    #  owner = "inventree";
-    #  group = "inventree";
-    #};
+    inventree-secret = {
+      file = ../../secrets/inventree-secret-virtualbox.age;
+      owner = "inventree";
+      group = "inventree";
+    };
+    inventree-backup-pat = {
+      file = ../../secrets/inventree-backup-pat-virtualbox.age;
+      owner = "inventree";
+      group = "inventree";
+    };
+    inventree-jasper = {
+      file = ../../secrets/inventree-jasper-virtualbox.age;
+      owner = "inventree";
+      group = "inventree";
+    };
     restic-environment-storj = {
       file = ../../secrets/restic-environment-storj-virtualbox.age;
     };

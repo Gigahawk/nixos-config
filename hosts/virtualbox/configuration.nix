@@ -29,6 +29,9 @@
       };
       debug = true;
       log_level = "DEBUG";
+
+      plugins_enabled = true;
+
       social_backends = [ ];
       social_providers = { };
       secret_key_file = config.age.secrets.inventree-secret.path;

@@ -28,6 +28,7 @@
         NAME = "/mnt/pool/inventree-test/test.sqlite";
       };
       debug = true;
+      log_level = "DEBUG";
       social_backends = [ ];
       social_providers = { };
       secret_key_file = config.age.secrets.inventree-secret.path;

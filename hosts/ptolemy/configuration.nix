@@ -79,7 +79,13 @@
 
   services.inventree = {
     enable = true;
-    serverBind = "0.0.0.0:1337";
+
+    bindIp = "0.0.0.0";
+    bindPort = 1337;
+    siteUrl = "http://ptolemy.neon-chameleon.ts.net:1337";
+    allowedHosts = [ "*" ];
+
+
     config = {
       database = {
         ENGINE = "sqlite";

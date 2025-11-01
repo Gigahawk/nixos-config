@@ -468,15 +468,16 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1761727464,
-        "narHash": "sha256-nHiS7+M8cDpYd4jAisoRA9MgptWinRprxeO5q1JcO3Y=",
+        "lastModified": 1761970358,
+        "narHash": "sha256-SqG9ZmHMNmoYLiiBw9hteDLO8z1XaH08CmPWhRfr8aY=",
         "owner": "Gigahawk",
         "repo": "nixos-inventree",
-        "rev": "c11dc0c03bb5b3de0b926183a66e386ff7936e56",
+        "rev": "df3b68ba53b178cd2f882bdedf43d9010458100b",
         "type": "github"
       },
       "original": {
         "owner": "Gigahawk",
+        "ref": "plugins",
         "repo": "nixos-inventree",
         "type": "github"
       }

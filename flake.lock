@@ -97,11 +97,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1760603229,
-        "narHash": "sha256-PBienw3IxbOn95/0NU+78EdRR7LmhAnHtxEA3opGKic=",
+        "lastModified": 1761143269,
+        "narHash": "sha256-pebbh3IEl8crA9g0fbHeUvNyawAvhO2kNq8klpUWyk0=",
         "owner": "Sveske-Juice",
         "repo": "declarative-jellyfin",
-        "rev": "301e653d70310e95fa72cdd340f95eb2f317b6d0",
+        "rev": "740743deba3de6bc227d9769adb94d4a14a3f25c",
         "type": "github"
       },
       "original": {

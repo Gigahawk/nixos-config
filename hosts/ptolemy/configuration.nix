@@ -77,6 +77,55 @@
     ensureDefaultPrinter = "Xerox_WorkCentre_6015NI";
   };
 
+  services.homepage-dashboard = {
+    enable = true;
+    listenPort = 8082;
+    openFirewall = true;
+    allowedHosts = "localhost:8082,ptolemy:8082";
+    services = [
+      {
+        "Services" = [
+          {
+            "Inventree" = {
+              description = "Parts database";
+              href = "http://ptolemy:1337/";
+            };
+          }
+          {
+            "Immich" = {
+              description = "Photo gallery";
+              href = "http://ptolemy:2283/";
+            };
+          }
+          {
+            "Netdata" = {
+              description = "System performance metrics";
+              href = "http://ptolemy:19999/";
+            };
+          }
+          {
+            "Gitea" = {
+              description = "Git server";
+              href = "http://ptolemy:3001/";
+            };
+          }
+          {
+            "Jellyfin" = {
+              description = "Media server";
+              href = "http://ptolemy:8096/";
+            };
+          }
+          {
+            "Paperless" = {
+              description = "Documents manager";
+              href = "http://ptolemy:28981/";
+            };
+          }
+        ];
+      }
+    ];
+  };
+
   services.inventree = {
     enable = true;
 
@@ -84,7 +133,6 @@
     bindPort = 1337;
     siteUrl = "http://ptolemy.neon-chameleon.ts.net:1337";
     allowedHosts = [ "*" ];
-
 
     config = {
       database = {

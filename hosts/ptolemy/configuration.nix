@@ -370,6 +370,7 @@
 
   services.netdata = {
     enable = true;
+    package = pkgs.netdataCloud;
     config = {
       global = {
         # uncomment to reduce memory to 32 MB

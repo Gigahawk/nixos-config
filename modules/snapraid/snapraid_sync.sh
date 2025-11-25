@@ -5,7 +5,9 @@ set +e
 
 xmpp-alert echo "Syncing SnapRAID array"
 
-xmpp-alert snapraid sync
+# Hopefully this won't come back to bite me, postgres seems to always
+# leave behind zero files even when stopped regularly?
+xmpp-alert snapraid sync --force-zero
 
 if [[ $? -ne 0 ]]; then
     xmpp-alert echo "ERROR: SYNC FAILED"

@@ -3,7 +3,6 @@
 
   inputs = {
     # Waiting for mayo to be merged https://github.com/NixOS/nixpkgs/pull/442185
-    # Waiting for libquotient build fix to be merged https://github.com/NixOS/nixpkgs/pull/455083
     #nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs.url = "github:Gigahawk/nixpkgs/personal";
     home-manager = {

@@ -138,6 +138,11 @@
       database = {
         ENGINE = "sqlite";
         NAME = "/mnt/pool/inventree-data/database.sqlite";
+        OPTIONS = {
+          # HACK: hopefully workaround database is locked errors
+          # https://docs.djangoproject.com/en/dev/ref/databases/#database-is-locked-errors
+          "timeout" = 20;
+        };
       };
       debug = true;
       social_backends = [ ];
@@ -230,15 +235,15 @@
       "immich-server.service"
       "immich-machine-learning.service"
 
-      # Inventree
-      "inventree-cluster.service"
-      "inventree-server.service"
-
       # Paperless
       "paperless-consumer.service"
       "paperless-scheduler.service"
       "paperless-task-queue.service"
       "paperless-web.service"
+
+      # Inventree tends to fail for some reason, put it at the end
+      "inventree-cluster.service"
+      "inventree-server.service"
     ];
   };
 

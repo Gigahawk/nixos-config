@@ -222,12 +222,23 @@
       "/mnt/parity0/snapraid0.parity"
     ];
     stopServices = [
-      # Immich is constantly accessing postgres which will throw warnings
       # TODO: find out if the server will recover on it's own if we only shut
       # off postgres
       "postgresql.service"
+
+      # Immich
       "immich-server.service"
       "immich-machine-learning.service"
+
+      # Inventree
+      "inventree-cluster.service"
+      "inventree-server.service"
+
+      # Paperless
+      "paperless-consumer.service"
+      "paperless-scheduler.service"
+      "paperless-task-queue.service"
+      "paperless-web.service"
     ];
   };
 

@@ -241,6 +241,9 @@
       "paperless-task-queue.service"
       "paperless-web.service"
 
+      # Gitea
+      "gitea.service"
+
       # Inventree tends to fail for some reason, put it at the end
       "inventree-cluster.service"
       "inventree-server.service"

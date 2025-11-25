@@ -78,18 +78,21 @@ in
         })
         pkgs.snapraid
       ];
-      preStart = (
-        "xmpp-alert echo 'Starting snapraid sync' \n"
-        + concatStringsSep "\n" (
-          builtins.map (s: "xmpp-alert echo Stopping service '${s}'\nsystemctl stop ${s}") cfg.stopServices
-        )
-      );
+      preStart = ''
+        xmpp-alert echo 'Starting snapraid sync, stopping disk mutating services...'
+        ${concatStringsSep "\n" (builtins.map (s: ''
+          xmpp-alert echo "Stopping service '${s}'"
+          systemctl stop ${s} || true
+        '') cfg.stopServices)}
+      '';
       script = builtins.readFile ./snapraid_sync.sh;
-      postStart = (
-        concatStringsSep "\n" (
-          builtins.map (s: "xmpp-alert echo Starting service '${s}'\nsystemctl start ${s}") cfg.stopServices
-        )
-      );
+      postStart =  ''
+        xmpp-alert echo 'Sync phase complete, restarting previously stopped services...'
+        ${concatStringsSep "\n" (builtins.map (s: ''
+          xmpp-alert echo "Starting service '${s}'"
+          systemctl start ${s} || true
+        '') cfg.stopServices)}
+      '';
     };
     systemd.timers.snapraid_sync = {
       wantedBy = [ "timers.target" ];

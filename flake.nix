@@ -3,6 +3,7 @@
 
   inputs = {
     # Waiting for mayo to be merged https://github.com/NixOS/nixpkgs/pull/442185
+    # Waiting for this ceph build fix to be merged https://github.com/NixOS/nixpkgs/pull/462435
     #nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs.url = "github:Gigahawk/nixpkgs/personal";
     home-manager = {

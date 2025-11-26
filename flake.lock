@@ -725,11 +725,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1764061561,
-        "narHash": "sha256-BqtBqW5ePSYnZebqMN4FRtlwWNegeip5yIdiZAiUTic=",
+        "lastModified": 1764162493,
+        "narHash": "sha256-7Cv0/GT/slIerRly3qwMXJKFBlQz21Fb60Y8EOZJBqM=",
         "owner": "Gigahawk",
         "repo": "nixpkgs",
-        "rev": "d269e001d0133de4b8802922b595a6d20f7508d0",
+        "rev": "14baee15e7a04264ee873a4e59d5fc1ed943ffe8",
         "type": "github"
       },
       "original": {

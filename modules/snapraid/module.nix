@@ -92,6 +92,7 @@ in
           xmpp-alert echo "Starting service '${s}'"
           systemctl start ${s} || true
         '') cfg.stopServices)}
+        xmpp-alert echo 'Finished restarting services'
       '';
     };
     systemd.timers.snapraid_sync = {

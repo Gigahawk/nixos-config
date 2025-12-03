@@ -141,7 +141,7 @@
         OPTIONS = {
           # HACK: hopefully workaround database is locked errors
           # https://docs.djangoproject.com/en/dev/ref/databases/#database-is-locked-errors
-          "timeout" = 20;
+          "timeout" = 120;
         };
       };
       debug = true;

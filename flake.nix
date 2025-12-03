@@ -34,7 +34,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     inventree = {
-      url = "github:Gigahawk/nixos-inventree/plugins";
+      url = "github:Gigahawk/nixos-inventree";
       #inputs.nixpkgs.follows = "nixpkgs";
     };
     kvmd = {

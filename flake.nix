@@ -134,13 +134,10 @@
         # Main server
         ptolemy =
           let
-            system = "x86_64-linux";
           in
           lib.nixosSystem {
-            inherit system;
             specialArgs = {
               inherit inputs;
-              inherit system;
               # ptolemy runs a basic desktop env for easy pikvm
               # access but we don't really want anything too fancy
               # or shortcut heavy like the standard hyprland setup
@@ -173,13 +170,10 @@
         # WSL on JASPER-PC
         veda =
           let
-            system = "x86_64-linux";
           in
           lib.nixosSystem {
-            inherit system;
             specialArgs = {
               inherit inputs;
-              inherit system;
               desktop = false;
             };
             modules = [
@@ -198,13 +192,10 @@
         # Main server Pi KVM
         haro =
           let
-            system = "aarch64-linux";
           in
           lib.nixosSystem {
-            inherit system;
             specialArgs = {
               inherit inputs;
-              inherit system;
               desktop = false;
             };
             modules = [
@@ -224,13 +215,10 @@
         # Test server
         virtualbox =
           let
-            system = "x86_64-linux";
           in
           lib.nixosSystem {
-            inherit system;
             specialArgs = {
               inherit inputs;
-              inherit system;
               desktop = true;
             };
             modules = [
@@ -253,13 +241,10 @@
         # Thinkpad x250
         arios =
           let
-            system = "x86_64-linux";
           in
           lib.nixosSystem {
-            inherit system;
             specialArgs = {
               inherit inputs;
-              inherit system;
               desktop = true;
             };
             modules = [
@@ -274,20 +259,18 @@
             ];
           };
       };
-      packages.x86_64-linux = {
-        installer = nixos-generators.nixosGenerate {
-          system = "x86_64-linux";
-          specialArgs = {
-            system = "x86_64-linux";
-            inherit inputs;
-          };
-          modules = [
-            ./configuration.nix
-            ./hosts/installer/configuration.nix
-          ];
-          format = "install-iso";
-        };
-      };
+      #packages.x86_64-linux = {
+      #  installer = nixos-generators.nixosGenerate {
+      #    specialArgs = {
+      #      inherit inputs;
+      #    };
+      #    modules = [
+      #      ./configuration.nix
+      #      ./hosts/installer/configuration.nix
+      #    ];
+      #    format = "install-iso";
+      #  };
+      #};
     }
     // (flake-utils.lib.eachDefaultSystem (
       system:

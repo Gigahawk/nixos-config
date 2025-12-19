@@ -1,7 +1,7 @@
-{ inputs, system, ... }:
+{ inputs, ... }:
 {
   environment.systemPackages = [
-    inputs.self.packages.${system}.nvim
+    inputs.self.packages.${stdenv.hostPlatform.system}.nvim
   ];
   # Disable base neovim and use nvf config instead
   programs.neovim.enable = false;

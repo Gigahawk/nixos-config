@@ -465,14 +465,15 @@
         "nixpkgs": "nixpkgs",
         "pyproject-build-systems": "pyproject-build-systems",
         "pyproject-nix": "pyproject-nix",
+        "treefmt-nix": "treefmt-nix_3",
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1764743066,
-        "narHash": "sha256-TzOK5cFhwhLZr0t+s6tafIppq0VhEN7clTfiUDwLiB8=",
+        "lastModified": 1766132541,
+        "narHash": "sha256-WN0LkPyDz/DJhl2bROjykS9SQnAiZjuOOyn6VNxvxI0=",
         "owner": "Gigahawk",
         "repo": "nixos-inventree",
-        "rev": "a013212056813cf4374cae9da10d882b7d4ff2dc",
+        "rev": "5733819ee8807b39f2b2882027718d4a179ed940",
         "type": "github"
       },
       "original": {
@@ -847,7 +848,7 @@
           "nixpkgs"
         ],
         "systems": "systems_14",
-        "treefmt-nix": "treefmt-nix_3"
+        "treefmt-nix": "treefmt-nix_4"
       },
       "locked": {
         "lastModified": 1736884309,
@@ -872,7 +873,7 @@
           "nixpkgs"
         ],
         "systems": "systems_18",
-        "treefmt-nix": "treefmt-nix_5"
+        "treefmt-nix": "treefmt-nix_6"
       },
       "locked": {
         "lastModified": 1723512448,
@@ -981,7 +982,7 @@
         "nnn-plugins": "nnn-plugins",
         "nvf": "nvf",
         "smartp": "smartp",
-        "treefmt-nix": "treefmt-nix_4",
+        "treefmt-nix": "treefmt-nix_5",
         "vscode-remote-workaround": "vscode-remote-workaround",
         "xmpp-bridge": "xmpp-bridge"
       }
@@ -1321,6 +1322,27 @@
     "treefmt-nix_3": {
       "inputs": {
         "nixpkgs": [
+          "inventree",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1766000401,
+        "narHash": "sha256-+cqN4PJz9y0JQXfAK5J1drd0U05D5fcAGhzhfVrDlsI=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "42d96e75aa56a3f70cab7e7dc4a32868db28e8fd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "treefmt-nix_4": {
+      "inputs": {
+        "nixpkgs": [
           "smartp",
           "poetry2nix",
           "nixpkgs"
@@ -1340,7 +1362,7 @@
         "type": "github"
       }
     },
-    "treefmt-nix_4": {
+    "treefmt-nix_5": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -1360,7 +1382,7 @@
         "type": "github"
       }
     },
-    "treefmt-nix_5": {
+    "treefmt-nix_6": {
       "inputs": {
         "nixpkgs": [
           "xmpp-bridge",

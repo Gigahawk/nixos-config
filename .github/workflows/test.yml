@@ -9,6 +9,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: true
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
       - name: Install Nix
         uses: nixbuild/nix-quick-install-action@v34
         with:
@@ -19,4 +21,4 @@ jobs:
           primary-key: cache-test-${{ runner.os }}-nix-store-${{ hashFiles('**/*.nix') }}
           restore-prefixes-first-match: cache-test-${{ runner.os }}-nix-store-
       - name: Run tests
-        run: nix flake check
+        run: NIX_CONFIG='extra-platforms = aarch64-linux' nix flake check

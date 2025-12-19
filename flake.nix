@@ -77,6 +77,10 @@
       url = "github:jarun/nnn";
       flake = false;
     };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -98,6 +102,7 @@
       vscode-remote-workaround,
       nvf,
       declarative-jellyfin,
+      treefmt-nix,
       ...
     }:
     let
@@ -288,9 +293,13 @@
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
       in
       {
-        formatter = pkgs.nixfmt-tree;
+        formatter = treefmtEval.config.build.wrapper;
+        checks = {
+          formatting = treefmtEval.config.build.check self;
+        };
         packages = {
           nvim =
             (nvf.lib.neovimConfiguration {

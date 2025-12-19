@@ -872,7 +872,7 @@
           "nixpkgs"
         ],
         "systems": "systems_18",
-        "treefmt-nix": "treefmt-nix_4"
+        "treefmt-nix": "treefmt-nix_5"
       },
       "locked": {
         "lastModified": 1723512448,
@@ -981,6 +981,7 @@
         "nnn-plugins": "nnn-plugins",
         "nvf": "nvf",
         "smartp": "smartp",
+        "treefmt-nix": "treefmt-nix_4",
         "vscode-remote-workaround": "vscode-remote-workaround",
         "xmpp-bridge": "xmpp-bridge"
       }
@@ -1340,6 +1341,26 @@
       }
     },
     "treefmt-nix_4": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1766000401,
+        "narHash": "sha256-+cqN4PJz9y0JQXfAK5J1drd0U05D5fcAGhzhfVrDlsI=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "42d96e75aa56a3f70cab7e7dc4a32868db28e8fd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "treefmt-nix_5": {
       "inputs": {
         "nixpkgs": [
           "xmpp-bridge",

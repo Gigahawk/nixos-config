@@ -3,17 +3,17 @@
 # Why is there no home-manager module for this?
 
 if [[ -e "$HOME/.local/share/gopass/stores" ]]; then
-        echo "Existing gopass stores detected, these will be wiped!"
+  echo "Existing gopass stores detected, these will be wiped!"
 fi
 
 if [[ -e "$HOME/.config/gopass" ]]; then
-        echo "Existing gopass config detected, this will be wiped!"
+  echo "Existing gopass config detected, this will be wiped!"
 fi
 
-read -p "Starting gopass init, continue? (y/N): " answer
-if [[ "$answer" != "y" ]]; then
-        echo "Aborting."
-        exit 1
+read -r -p "Starting gopass init, continue? (y/N): " answer
+if [[ $answer != "y" ]]; then
+  echo "Aborting."
+  exit 1
 fi
 
 echo "Deleting old stores"

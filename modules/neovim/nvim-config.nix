@@ -120,7 +120,7 @@
         lsp.enable = true;
         format = {
           enable = true;
-          type = ["nixfmt"];
+          type = [ "nixfmt" ];
         };
       };
       markdown = {
@@ -145,7 +145,7 @@
         enable = true;
         format = {
           enable = true;
-          type = ["ruff"];
+          type = [ "ruff" ];
         };
       };
       typst.enable = true;

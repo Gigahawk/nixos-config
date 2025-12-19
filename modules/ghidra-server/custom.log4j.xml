@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<Configuration monitorInterval="0" xmlns:xi="http://www.w3.org/2001/XInclude" packages="log"> 
-    <Appenders>
-        <Console name="console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%-5p %m (%c{1}) %ex %n"/>
-        </Console>
-    </Appenders>
-
-    <Loggers>
-        <Logger name="db" level="DEBUG"/>
-        <Logger name="docking" level="DEBUG"/>
-        <Logger name="ghidra" level="DEBUG"/>
-        <Logger name="reverse" level="DEBUG"/>
-        <Logger name="util" level="DEBUG"/>
-
-        <Root level="ALL">
-            <AppenderRef ref="console" level="INFO"/>
-        </Root>
-    </Loggers>
+<Configuration xmlns:xi="http://www.w3.org/2001/XInclude" monitorInterval="0" packages="log">
+  <Appenders>
+    <Console name="console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%-5p %m (%c{1}) %ex %n"/>
+    </Console>
+  </Appenders>
+  <Loggers>
+    <Logger name="db" level="DEBUG"/>
+    <Logger name="docking" level="DEBUG"/>
+    <Logger name="ghidra" level="DEBUG"/>
+    <Logger name="reverse" level="DEBUG"/>
+    <Logger name="util" level="DEBUG"/>
+    <Root level="ALL">
+      <AppenderRef ref="console" level="INFO"/>
+    </Root>
+  </Loggers>
 </Configuration>

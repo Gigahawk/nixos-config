@@ -80,18 +80,22 @@ in
       ];
       preStart = ''
         xmpp-alert echo 'Starting snapraid sync, stopping disk mutating services...'
-        ${concatStringsSep "\n" (builtins.map (s: ''
-          xmpp-alert echo "Stopping service '${s}'"
-          systemctl stop ${s} || true
-        '') cfg.stopServices)}
+        ${concatStringsSep "\n" (
+          builtins.map (s: ''
+            xmpp-alert echo "Stopping service '${s}'"
+            systemctl stop ${s} || true
+          '') cfg.stopServices
+        )}
       '';
       script = builtins.readFile ./snapraid_sync.sh;
-      postStart =  ''
+      postStart = ''
         xmpp-alert echo 'Sync phase complete, restarting previously stopped services...'
-        ${concatStringsSep "\n" (builtins.map (s: ''
-          xmpp-alert echo "Starting service '${s}'"
-          systemctl start ${s} || true
-        '') cfg.stopServices)}
+        ${concatStringsSep "\n" (
+          builtins.map (s: ''
+            xmpp-alert echo "Starting service '${s}'"
+            systemctl start ${s} || true
+          '') cfg.stopServices
+        )}
         xmpp-alert echo 'Finished restarting services'
       '';
     };

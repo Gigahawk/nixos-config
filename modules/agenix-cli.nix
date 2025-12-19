@@ -3,12 +3,11 @@
   pkgs,
   lib,
   inputs,
-  system,
   ...
 }:
 
 {
   environment.systemPackages = [
-    inputs.agenix.packages."${system}".default
+    inputs.agenix.packages."${pkgs.stdenv.hostPlatform.system}".default
   ];
 }

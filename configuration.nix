@@ -3,7 +3,6 @@
   lib,
   pkgs,
   inputs,
-  system,
   ...
 }:
 {
@@ -79,13 +78,13 @@
       xplr
 
       # Custom packages
-      inputs.nix-top.packages.${system}.default
+      inputs.nix-top.packages.${stdenv.hostPlatform.system}.default
       (callPackage ./packages/nixos-update.nix { })
       (callPackage ./packages/nix-flake-init.nix { })
     ]
     ++ (
       if
-        builtins.elem system [
+        builtins.elem stdenv.hostPlatform.system [
           "i686-linux"
           "x86_64-linux"
           "x86_64-darwin"

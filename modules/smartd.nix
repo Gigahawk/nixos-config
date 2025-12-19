@@ -2,7 +2,6 @@
   config,
   pkgs,
   inputs,
-  system,
   ...
 }:
 let
@@ -12,7 +11,6 @@ let
         pkgs
         config
         inputs
-        system
         ;
     }
   );

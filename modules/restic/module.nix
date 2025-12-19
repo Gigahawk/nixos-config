@@ -3,7 +3,6 @@
   pkgs,
   config,
   inputs,
-  system,
   ...
 }:
 {
@@ -46,13 +45,12 @@
     description = "Notify restic backup was successful";
     serviceConfig.Type = "oneshot";
     path = [
-      inputs.xmpp-bridge.packages.${system}.default
+      inputs.xmpp-bridge.packages.${pkgs.stdenv.hostPlatform.system}.default
       (import ../xmpp-bridge/xmpp-alert.nix {
         inherit
           pkgs
           config
           inputs
-          system
           ;
       })
     ];
@@ -69,13 +67,12 @@
     description = "Notify restic backup failure";
     serviceConfig.Type = "oneshot";
     path = [
-      inputs.xmpp-bridge.packages.${system}.default
+      inputs.xmpp-bridge.packages.${pkgs.stdenv.hostPlatform.system}.default
       (import ../xmpp-bridge/xmpp-alert.nix {
         inherit
           pkgs
           config
           inputs
-          system
           ;
       })
     ];

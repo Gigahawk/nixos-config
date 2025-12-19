@@ -120,7 +120,7 @@
         lsp.enable = true;
         format = {
           enable = true;
-          type = "nixfmt";
+          type = ["nixfmt"];
         };
       };
       markdown = {
@@ -145,13 +145,15 @@
         enable = true;
         format = {
           enable = true;
-          type = "ruff";
+          type = ["ruff"];
         };
       };
       typst.enable = true;
       rust = {
         enable = true;
-        crates.enable = true;
+        extensions = {
+          crates-nvim.enable = true;
+        };
       };
       dart.enable = true;
       ruby.enable = true;

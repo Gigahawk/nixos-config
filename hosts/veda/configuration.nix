@@ -2,13 +2,14 @@
   config,
   pkgs,
   inputs,
-  system,
   ...
 }:
 {
   imports = [ ];
 
   networking.hostName = "veda";
+
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   wsl.enable = true;
   wsl.defaultUser = "jasper";

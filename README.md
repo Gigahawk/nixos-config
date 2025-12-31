@@ -436,3 +436,15 @@ You can import the config by doing the following:
 > TODO: figure out how installation works from toltec and service stuff
 
 Ensure the `type` attribute of the `remarkable_sync` folder is set to `sendonly`
+
+## Misc Troubleshooting
+
+### Fixing evaluation warnings
+
+When getting rid of evaluation warnings on system configs, use:
+```
+nix build .#nixosConfigurations.<host>.config.system.build.toplevel --no-eval-cache
+```
+Otherwise after the first successful build the config will not be evaluated again.
+
+To help narrow down on where warnings may be coming from, use `--abort-on-warn` and `--show-trace`.

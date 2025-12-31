@@ -5,7 +5,6 @@
   config,
   pkgs,
   inputs,
-  system,
   ...
 }:
 {
@@ -546,7 +545,6 @@
               pkgs
               config
               inputs
-              system
               ;
           })
         }/bin/xmpp-alert echo "$full_message"

@@ -53,11 +53,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1732598785,
-        "narHash": "sha256-QNRptwO3nDyfGbEq2ti16ocFMd5Ue9yPUb0zRYpgjEg=",
+        "lastModified": 1767215058,
+        "narHash": "sha256-/8q3yRDvDoVpbsU2CYm0/lAtC9rq7f8qB49OMcUACpI=",
         "owner": "Gigahawk",
         "repo": "cypress-ticket-scraper",
-        "rev": "d80f33e648fc4473b4a48a2578cf83b108d5ae7a",
+        "rev": "45c90918d613ab1049f3c2953b311a755ef05db8",
         "type": "github"
       },
       "original": {
@@ -492,11 +492,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1766132541,
-        "narHash": "sha256-WN0LkPyDz/DJhl2bROjykS9SQnAiZjuOOyn6VNxvxI0=",
+        "lastModified": 1767214633,
+        "narHash": "sha256-s+K7e1Rt5cx+8xLOyruqDCPX3sEgzkXIafH/oQ6Px1A=",
         "owner": "Gigahawk",
         "repo": "nixos-inventree",
-        "rev": "5733819ee8807b39f2b2882027718d4a179ed940",
+        "rev": "f039ec8cdf8b12a8439d48363a1ae7b1dcf534a6",
         "type": "github"
       },
       "original": {
@@ -511,11 +511,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1759459491,
-        "narHash": "sha256-WFMMjGEUOrdVucY7bUtvVJHPHWzlhDyqWym+fNB6W3Q=",
+        "lastModified": 1767215934,
+        "narHash": "sha256-mIZggdroBvmhOx8oweT090YQ9ChQhmgHSDorWpVTcZ8=",
         "owner": "Gigahawk",
         "repo": "nixos-kvmd",
-        "rev": "e9b2ae9a8ee7369404887bc611c05de7208f0adc",
+        "rev": "304d6780f2590b369dd1b3079f7dce1aefcccc17",
         "type": "github"
       },
       "original": {

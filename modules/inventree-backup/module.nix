@@ -3,7 +3,6 @@
   pkgs,
   config,
   options,
-  system,
   inputs,
   ...
 }:
@@ -62,16 +61,15 @@ in
       startLimitIntervalSec = 300;
       startLimitBurst = 5;
       path = [
-        inputs.xmpp-bridge.packages.${system}.default
+        inputs.xmpp-bridge.packages.${pkgs.stdenv.hostPlatform.system}.default
         (import ../xmpp-bridge/xmpp-alert.nix {
           inherit
             pkgs
             config
             inputs
-            system
             ;
         })
-        inputs.inventree.packages.${system}.invoke
+        inputs.inventree.packages.${pkgs.stdenv.hostPlatform.system}.invoke
         pkgs.git
         pkgs.hostname
       ];

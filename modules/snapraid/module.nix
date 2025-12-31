@@ -3,7 +3,6 @@
   pkgs,
   config,
   inputs,
-  system,
   ...
 }:
 with lib;
@@ -67,13 +66,12 @@ in
       startLimitIntervalSec = 300;
       startLimitBurst = 5;
       path = [
-        inputs.xmpp-bridge.packages.${system}.default
+        inputs.xmpp-bridge.packages.${pkgs.stdenv.hostPlatform.system}.default
         (import ../xmpp-bridge/xmpp-alert.nix {
           inherit
             pkgs
             config
             inputs
-            system
             ;
         })
         pkgs.snapraid

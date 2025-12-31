@@ -3,12 +3,11 @@
   pkgs,
   lib,
   inputs,
-  system,
   ...
 }:
 {
   environment.systemPackages = [
-    inputs.smartp.packages.${system}.default
+    inputs.smartp.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   systemd.services.run_smartp = {
@@ -19,14 +18,13 @@
     startLimitBurst = 5;
     path = [
       pkgs.util-linux
-      inputs.xmpp-bridge.packages.${system}.default
-      inputs.smartp.packages.${system}.default
+      inputs.xmpp-bridge.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.smartp.packages.${pkgs.stdenv.hostPlatform.system}.default
       (import ../xmpp-bridge/xmpp-alert.nix {
         inherit
           pkgs
           config
           inputs
-          system
           ;
       })
     ];
@@ -43,14 +41,13 @@
     serviceConfig.Type = "oneshot";
     path = [
       pkgs.util-linux
-      inputs.xmpp-bridge.packages.${system}.default
-      inputs.smartp.packages.${system}.default
+      inputs.xmpp-bridge.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.smartp.packages.${pkgs.stdenv.hostPlatform.system}.default
       (import ../xmpp-bridge/xmpp-alert.nix {
         inherit
           pkgs
           config
           inputs
-          system
           ;
       })
     ];

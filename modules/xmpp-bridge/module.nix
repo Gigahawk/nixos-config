@@ -3,18 +3,16 @@
   pkgs,
   lib,
   inputs,
-  system,
   ...
 }:
 {
   environment.systemPackages = [
-    inputs.xmpp-bridge.packages.${system}.default
+    inputs.xmpp-bridge.packages.${pkgs.stdenv.hostPlatform.system}.default
     (import ./xmpp-alert.nix {
       inherit
         pkgs
         config
         inputs
-        system
         ;
     })
   ];

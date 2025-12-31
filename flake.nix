@@ -215,6 +215,7 @@
               ./modules/agenix-cli.nix
               #./modules/xmpp-bridge/module.nix
               ./modules/raspi4/module.nix
+              ./modules/managed-wifi/module.nix
               nixos-hardware.nixosModules.raspberry-pi-4
               ./hosts/haro/configuration.nix
               ./hosts/haro/hw-config.nix

@@ -215,6 +215,51 @@ sudo systemctl restart tailscaled.service
 sudo tailscale up
 ```
 
+## Reclaiming Disk Space
+
+> Based on https://nix.dev/manual/nix/2.33/package-management/garbage-collection
+
+Over time, the nix store will become filled with entries that are no longer useful and can be deleted to reclaim disk space.
+
+To reclaim disk space, first delete old generations of the config:
+
+```
+$ nix-env --delete-generations old
+```
+
+> This deletes NixOS's local cache of old configurations, but since we store our config in git we can always roll back to any particular commit and rebuild it assuming the system still boots.
+> On WSL the old configurations aren't accessible anyways since we don't have a bootloader, so there's never harm in deleting them.
+
+Then remove dead items from the nix store:
+```
+$ nix-store --gc
+```
+
+> This will likely delete dev environments and other artifacts not directly required by the system, projevts may take some time to rebuild.
+
+### Reclaiming space from WSL Windows hosts
+
+> Based on https://superuser.com/a/1612289
+
+On WSL, Windows won't automatically reclaim free space inside of Linux.
+
+> There is apparently support for this if you enable "sparse" mode on the virtual disk but it doesn't seem to work
+
+First shutdown WSL:
+```
+> wsl --shutdown
+```
+
+Then use diskpart to reclaim unused space:
+```
+> diskpart
+> select vdisk file="C:\NixOS\ext4.vhdx"
+> attach vdisk readonly
+> compact vdisk
+> detach vdisk
+> exit
+```
+
 ## Hosts
 
 ### Servers (virtualbox, ptolemy)

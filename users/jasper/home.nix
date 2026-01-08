@@ -45,75 +45,125 @@ in
     };
   };
 
-  wayland.windowManager.hyprland = {
-    enable = desktop;
-    settings = {
-      "$mod" = "SUPER";
-      "$term" = "ghostty";
-      "$menu" = "walker";
-      "$bar" = "waybar";
+  wayland.windowManager.hyprland =
+    let
+      movewindow-float-pct = "0.1";
+      resize-amt-int-px = "100";
+      # TODO: this allows windows to be moved off screen
+      movewindow =
+        dir:
+        (pkgs.writeShellScript "hyprmove-${dir}.sh" ''
+          if hyprctl -j activewindow | jq -e '.floating'; then
+            # Relative percents are relative to window size
+            width=$(hyprctl -j monitors | jq '.[] | select(.focused) | .width')
+            height=$(hyprctl -j monitors | jq '.[] | select(.focused) | .height')
+            hmove=$(awk "BEGIN { print int($width * ${movewindow-float-pct}) }")
+            vmove=$(awk "BEGIN { print int($height * ${movewindow-float-pct}) }")
 
-      input.touchpad = {
-        natural_scroll = true;
+            if [[ "${dir}" == "l" ]]; then
+              hmove="-$hmove"
+              vmove="0"
+            elif [[ "${dir}" == "r" ]]; then
+              vmove="0"
+            elif [[ "${dir}" == "u" ]]; then
+              vmove="-$vmove"
+              hmove="0"
+            elif [[ "${dir}" == "d" ]]; then
+              hmove="0"
+            fi
+            hyprctl dispatch moveactive $hmove $vmove
+          else
+            hyprctl dispatch movewindow ${dir}
+          fi
+        '');
+      toggle-focus = pkgs.writeShellScript "hyprtogglefocus.sh" ''
+        if hyprctl -j activewindow | jq -e '.floating'; then
+          # Currently floating → focus tiled
+          hyprctl dispatch focuswindow tiled
+        else
+          # Currently tiled → focus floating
+          hyprctl dispatch focuswindow floating
+        fi
+      '';
+    in
+    {
+      enable = desktop;
+      settings = {
+        "$mod" = "SUPER";
+        "$term" = "ghostty";
+        "$menu" = "walker";
+        "$bar" = "waybar";
+
+        input.touchpad = {
+          natural_scroll = true;
+        };
+
+        exec-once = [
+          "waybar"
+        ];
+
+        bind = [
+          "$mod, Return, exec, $term"
+
+          "$mod, D, exec, $menu"
+
+          "$mod, Q, killactive"
+
+          "$mod, F, fullscreen"
+
+          "$mod, H, movefocus, l"
+          "$mod, J, movefocus, d"
+          "$mod, K, movefocus, u"
+          "$mod, L, movefocus, r"
+
+          "$mod, space, exec, ${toggle-focus}"
+
+          "$mod SHIFT, H, exec, ${movewindow "l"}"
+          "$mod SHIFT, J, exec, ${movewindow "d"}"
+          "$mod SHIFT, K, exec, ${movewindow "u"}"
+          "$mod SHIFT, L, exec, ${movewindow "r"}"
+
+          "$mod SHIFT, space, togglefloating"
+
+          "$mod SHIFT, Y, resizeactive, -${resize-amt-int-px} 0"
+          "$mod SHIFT, U, resizeactive, 0 ${resize-amt-int-px}"
+          "$mod SHIFT, I, resizeactive, 0 -${resize-amt-int-px}"
+          "$mod SHIFT, O, resizeactive, ${resize-amt-int-px} 0"
+
+          "$mod SHIFT, W, exec, iwmenu -l $menu"
+
+          "$mod, P, exec, wlogout"
+        ]
+        ++ (builtins.concatLists (
+          builtins.genList (
+            i:
+            let
+              ws = i + 1;
+              keycode = 10 + i;
+            in
+            [
+              "$mod, code:${toString keycode}, workspace, ${toString ws}"
+              "$mod SHIFT, code:${toString keycode}, movetoworkspace, ${toString ws}"
+            ]
+          ) 10
+        ));
+
+        bindel = [
+          ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+          ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+          "SHIFT, XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+"
+          "SHIFT, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-"
+
+          ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
+          ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+        ];
+
+        bindl = [
+          ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        ];
       };
-
-      exec-once = [
-        "waybar"
-      ];
-
-      bind = [
-        "$mod, Return, exec, $term"
-
-        "$mod, D, exec, $menu"
-
-        "$mod, Q, killactive"
-
-        "$mod, F, fullscreen"
-
-        "$mod, H, movefocus, l"
-        "$mod, J, movefocus, d"
-        "$mod, K, movefocus, u"
-        "$mod, L, movefocus, r"
-
-        "$mod SHIFT, H, movewindow, l"
-        "$mod SHIFT, J, movewindow, d"
-        "$mod SHIFT, K, movewindow, u"
-        "$mod SHIFT, L, movewindow, r"
-
-        "$mod SHIFT, W, exec, iwmenu -l $menu"
-
-        "$mod, P, exec, wlogout"
-      ]
-      ++ (builtins.concatLists (
-        builtins.genList (
-          i:
-          let
-            ws = i + 1;
-            keycode = 10 + i;
-          in
-          [
-            "$mod, code:${toString keycode}, workspace, ${toString ws}"
-            "$mod SHIFT, code:${toString keycode}, movetoworkspace, ${toString ws}"
-          ]
-        ) 10
-      ));
-
-      bindel = [
-        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        "SHIFT, XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+"
-        "SHIFT, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-"
-
-        ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
-        ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-      ];
-
-      bindl = [
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-      ];
     };
-  };
 
   services.walker = {
     enable = desktop;

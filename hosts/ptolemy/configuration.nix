@@ -151,6 +151,7 @@
       static_i18_root = "/mnt/pool/inventree-data/static_i18";
       media_root = "/mnt/pool/inventree-data/media";
       backup_dir = "/mnt/pool/inventree-data/backup";
+      plugins_enabled = true;
     };
     users = {
       jasper = {

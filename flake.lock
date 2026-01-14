@@ -53,11 +53,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1767215058,
-        "narHash": "sha256-/8q3yRDvDoVpbsU2CYm0/lAtC9rq7f8qB49OMcUACpI=",
+        "lastModified": 1768429994,
+        "narHash": "sha256-45Dt5Jcq/VZtGiVifDwGobEaMF/0TVyIZPKV3K/xdOk=",
         "owner": "Gigahawk",
         "repo": "cypress-ticket-scraper",
-        "rev": "45c90918d613ab1049f3c2953b311a755ef05db8",
+        "rev": "e45a15af116d34da160b691f53c6a188724947a8",
         "type": "github"
       },
       "original": {

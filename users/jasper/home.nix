@@ -85,6 +85,28 @@ in
           hyprctl dispatch focuswindow floating
         fi
       '';
+      restart-dropdown = pkgs.writeShellScript "restartdropdown.sh" ''
+        term=$1
+
+        start_tmux() {
+          sessions=$(tmux ls | cut -d':' -f1)
+          if [[ ! $sessions = *"dropdown"* ]]; then
+            # Session has been killed, restart
+            tmux new-session -d -s dropdown
+          fi
+        }
+
+        user=$(whoami)
+        pids=$(ps aux | grep "$term -name dropdown" | sed -e "/^$user/!d" -e "/grep/d" -r -e "s/$user[ \t]+([[:digit:]]{1,}).*/\1/g")
+
+        while read -r pid; do
+          kill $pid
+        done <<< "$pids"
+
+        start_tmux
+
+        nohup $term -name dropdown -e tmux attach -t dropdown &
+      '';
     in
     {
       enable = desktop;
@@ -100,6 +122,7 @@ in
 
         exec-once = [
           "waybar"
+          #restart-dropdown
         ];
 
         bind = [
@@ -131,6 +154,8 @@ in
           "$mod SHIFT, O, resizeactive, ${resize-amt-int-px} 0"
 
           "$mod SHIFT, W, exec, iwmenu -l $menu"
+
+          # "$mod, U,  " TODO: show scratchpad dropdown
 
           "$mod, P, exec, wlogout"
         ]

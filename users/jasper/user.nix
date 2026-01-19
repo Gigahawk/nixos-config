@@ -69,6 +69,7 @@
       with pkgs;
       [
         brightnessctl
+        freecad
         gparted
         wlogout
         kdePackages.itinerary

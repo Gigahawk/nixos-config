@@ -74,6 +74,7 @@
         wlogout
         kdePackages.itinerary
         localsend
+        piper
         prusa-slicer
         mayo
         yt-dlp
@@ -81,6 +82,8 @@
     else
       [ ]
   );
+
+  services.ratbagd.enable = desktop;
 
   services.displayManager.ly = {
     enable = lib.mkDefault desktop;

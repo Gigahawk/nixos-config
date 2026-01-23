@@ -73,6 +73,7 @@
         gparted
         wlogout
         kdePackages.itinerary
+        libreoffice
         localsend
         piper
         prusa-slicer

@@ -69,6 +69,7 @@
       smartmontools
       syncthing
       tailscale
+      tmux
       traceroute
       tree
       unzip

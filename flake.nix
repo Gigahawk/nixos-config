@@ -81,6 +81,10 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hydrasect = {
+      url = "github:blitz/hydrasect";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -103,6 +107,7 @@
       nvf,
       declarative-jellyfin,
       treefmt-nix,
+      hydrasect,
       ...
     }:
     let

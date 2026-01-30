@@ -64,7 +64,7 @@
       nethogs
       nix-output-monitor
       nix-tree
-      nixfmt-rfc-style
+      nixfmt
       p7zip
       smartmontools
       syncthing

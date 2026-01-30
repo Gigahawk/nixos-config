@@ -77,6 +77,7 @@
         localsend
         piper
         prusa-slicer
+        remmina
         mayo
         yt-dlp
       ]

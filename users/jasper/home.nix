@@ -45,6 +45,7 @@ in
     };
   };
 
+  services.hyprpolkitagent.enable = desktop;
   wayland.windowManager.hyprland =
     let
       movewindow-float-pct = "0.1";

@@ -134,6 +134,8 @@
 
   users.mutableUsers = false;
 
+  security.polkit.enable = true;
+
   # Gross
   programs.nano.enable = false;
   programs.neovim = {

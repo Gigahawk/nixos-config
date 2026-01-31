@@ -813,6 +813,21 @@
         "type": "github"
       }
     },
+    "nixpkgs-nvf": {
+      "locked": {
+        "lastModified": 1764081664,
+        "narHash": "sha256-sUoHmPr/EwXzRMpv1u/kH+dXuvJEyyF2Q7muE+t0EU4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "dc205f7b4fdb04c8b7877b43edb7b73be7730081",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "rev": "dc205f7b4fdb04c8b7877b43edb7b73be7730081",
+        "type": "indirect"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1685801374,
@@ -897,7 +912,7 @@
         "mnw": "mnw",
         "ndg": "ndg",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-nvf"
         ],
         "systems": "systems_12"
       },
@@ -1081,6 +1096,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_4",
+        "nixpkgs-nvf": "nixpkgs-nvf",
         "nnn-plugins": "nnn-plugins",
         "nvf": "nvf",
         "smartp": "smartp",

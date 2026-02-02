@@ -4,6 +4,7 @@
 {
   config,
   pkgs,
+  ports,
   ...
 }:
 {
@@ -18,7 +19,7 @@
     enable = true;
 
     bindIp = "0.0.0.0";
-    bindPort = 1337;
+    bindPort = ports.inventree;
     siteUrl = "http://virtualbox.neon-chameleon.ts.net:1337";
     allowedHosts = [ "*" ];
 
@@ -103,10 +104,10 @@
 
   services.samba-wsdd.enable = true;
   networking.firewall.allowedTCPPorts = [
-    5357 # wsdd
+    ports.wsdd-tcp # wsdd
   ];
   networking.firewall.allowedUDPPorts = [
-    3702 # wsdd
+    ports.wsdd-udp # wsdd
   ];
   services.samba = {
     enable = true;

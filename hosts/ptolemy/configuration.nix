@@ -5,6 +5,7 @@
   config,
   pkgs,
   inputs,
+  ports,
   ...
 }:
 {
@@ -46,7 +47,7 @@
     stateless = true;
     startWhenNeeded = false;
     logLevel = "debug";
-    listenAddresses = [ "*:631" ];
+    listenAddresses = [ "*:${toString ports.cups}" ];
     # TODO: is there a better way to secure this?
     allowFrom = [ "all" ];
     browsing = true;
@@ -78,46 +79,46 @@
 
   services.homepage-dashboard = {
     enable = true;
-    listenPort = 8082;
+    listenPort = ports.homepage-dashboard;
     openFirewall = true;
-    allowedHosts = "localhost:8082,ptolemy:8082";
+    allowedHosts = "localhost:${toString ports.homepage-dashboard},ptolemy:${toString ports.homepage-dashboard}";
     services = [
       {
         "Services" = [
           {
             "Inventree" = {
               description = "Parts database";
-              href = "http://ptolemy:1337/";
+              href = "http://ptolemy:${toString ports.inventree}/";
             };
           }
           {
             "Immich" = {
               description = "Photo gallery";
-              href = "http://ptolemy:2283/";
+              href = "http://ptolemy:${toString ports.immich}/";
             };
           }
           {
             "Netdata" = {
               description = "System performance metrics";
-              href = "http://ptolemy:19999/";
+              href = "http://ptolemy:${toString ports.netdata}/";
             };
           }
           {
             "Gitea" = {
               description = "Git server";
-              href = "http://ptolemy:3001/";
+              href = "http://ptolemy:${toString ports.gitea}/";
             };
           }
           {
             "Jellyfin" = {
               description = "Media server";
-              href = "http://ptolemy:8096/";
+              href = "http://ptolemy:${toString ports.jellyfin}/";
             };
           }
           {
             "Paperless" = {
               description = "Documents manager";
-              href = "http://ptolemy:28981/";
+              href = "http://ptolemy:${toString ports.paperless}/";
             };
           }
         ];
@@ -129,8 +130,8 @@
     enable = true;
 
     bindIp = "0.0.0.0";
-    bindPort = 1337;
-    siteUrl = "http://ptolemy.neon-chameleon.ts.net:1337";
+    bindPort = ports.inventree;
+    siteUrl = "http://ptolemy.neon-chameleon.ts.net:${toString ports.inventree}";
     allowedHosts = [ "*" ];
 
     config = {
@@ -189,12 +190,12 @@
 
   networking.hostName = "ptolemy";
   networking.firewall.allowedTCPPorts = [
-    5357 # wsdd (some samba thing)
-    19999 # netdata
-    8096 # jellyfin
+    ports.wsdd-tcp
+    ports.netdata
+    ports.jellyfin
   ];
   networking.firewall.allowedUDPPorts = [
-    3702 # wsdd (some samba thing)
+    ports.wsdd-udp
   ];
 
   # This is a server, disable sleep
@@ -327,6 +328,7 @@
   services.immich = {
     enable = true;
     host = "0.0.0.0";
+    port = ports.immich;
     mediaLocation = "/mnt/pool/immich/photos";
     accelerationDevices = null;
     machine-learning = {
@@ -399,7 +401,7 @@
         "update every" = 1;
       };
       web = {
-        "default port" = 19999;
+        "default port" = ports.netdata;
       };
       ml = {
         # enable machine learning
@@ -432,7 +434,7 @@
         ISSUE_INDEXER_TYPE = "db";
       };
       server = {
-        HTTP_PORT = 3001;
+        HTTP_PORT = ports.netdata;
         DOMAIN = "ptolemy";
       };
     };
@@ -440,6 +442,10 @@
 
   services.declarative-jellyfin = {
     serverId = "dfed9c03845d44d8bb2c74f7984d7761";
+
+    network = {
+      internalHttpPort = ports.jellyfin;
+    };
 
     # Putting datadir in pool causes files to be owned by root for some
     # reason
@@ -493,7 +499,7 @@
     # TODO: this apparently needs to be set but we don't
     # have a real domain, is hostname good enough?
     domain = "ptolemy";
-    port = 28981;
+    port = ports.paperless;
     dataDir = "/mnt/pool/paperless";
     passwordFile = config.age.secrets.paperless.path;
     consumptionDirIsPublic = true;
@@ -507,6 +513,11 @@
       };
     };
   };
+
+  #  services.dawarich = {
+  #    enable = true;
+  #webPort:
+  #  };
 
   power.ups = {
     enable = true;

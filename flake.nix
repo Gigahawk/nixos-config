@@ -112,6 +112,7 @@
       ...
     }:
     let
+      ports = import ./ports.nix;
       lib = nixpkgs.lib;
       mkSdImage = host: self.nixosConfigurations.${host}.config.system.build.sdImage;
       overlays =
@@ -140,7 +141,7 @@
         # Main server
         ptolemy = lib.nixosSystem {
           specialArgs = {
-            inherit inputs;
+            inherit inputs ports;
             # ptolemy runs a basic desktop env for easy pikvm
             # access but we don't really want anything too fancy
             # or shortcut heavy like the standard hyprland setup
@@ -173,7 +174,7 @@
         # WSL on JASPER-PC
         veda = lib.nixosSystem {
           specialArgs = {
-            inherit inputs;
+            inherit inputs ports;
             desktop = false;
           };
           modules = [
@@ -192,7 +193,7 @@
         # Main server Pi KVM
         haro = lib.nixosSystem {
           specialArgs = {
-            inherit inputs;
+            inherit inputs ports;
             desktop = false;
           };
           modules = [
@@ -213,7 +214,7 @@
         # Test server
         virtualbox = lib.nixosSystem {
           specialArgs = {
-            inherit inputs;
+            inherit inputs ports;
             desktop = true;
           };
           modules = [
@@ -236,7 +237,7 @@
         # Thinkpad x250
         arios = lib.nixosSystem {
           specialArgs = {
-            inherit inputs;
+            inherit inputs ports;
             desktop = true;
           };
           modules = [

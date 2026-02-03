@@ -8,15 +8,21 @@
 {
   imports = [ ];
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
 
-  nix.settings.trusted-users = [
-    "root"
-    "@wheel"
-  ];
+    trusted-users = [
+      "root"
+      "@wheel"
+    ];
+
+    download-buffer-size = 4194304000;
+  };
+
+
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [

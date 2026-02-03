@@ -33,6 +33,8 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILBoOvyE+sGI2jS1owqCXlHpqZcVOSrJwe6QPH5pnTpq jasper"
       # arios
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSsOe84SBbBKRQwWuU1rl3SUeHArkWymY4PMqtaPPI3 jasper"
+      # ptolemy
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJbLOr4BdW+2IilSgP3M8RVvZ3TErl0TmY42Bcffsb9 jasper"
     ];
   };
 

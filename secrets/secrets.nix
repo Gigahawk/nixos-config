@@ -3,11 +3,13 @@ let
   jasper-pc-wsl = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIjA/h30yvAJQkkfMBncAKo2aY1dzb+2m/eWw3MLfV76";
   jasper-veda = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFuW7/do+fI6PCEQdb+Ui0zBPlZvo/YKf5Nl6uujoPl2";
   jasper-arios = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSsOe84SBbBKRQwWuU1rl3SUeHArkWymY4PMqtaPPI3";
+  jasper-ptolemy = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJbLOr4BdW+2IilSgP3M8RVvZ3TErl0TmY42Bcffsb9";
   users = [
     jasper-pc-wsl
     jasper-virtualbox
     jasper-veda
     jasper-arios
+    jasper-ptolemy
   ];
 
   virtualbox = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFllWhwsgBivFqFcs7djQpb3qbf8EySKMLdGJC2rp0JK";

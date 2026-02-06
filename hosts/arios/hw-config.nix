@@ -39,7 +39,7 @@
 
   hardware.trackpoint = {
     enable = true;
-    sensitivity = 40;
+    sensitivity = 85;
     drift_time = 110;
   };
 

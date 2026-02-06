@@ -514,10 +514,27 @@
     };
   };
 
-  #  services.dawarich = {
-  #    enable = true;
-  #webPort:
-  #  };
+  services.dawarich = {
+    enable = true;
+    webPort = ports.dawarich;
+    localDomain = "ptolemy";
+    # TODO: create this
+    # secretKeyBaseFile =
+    environment = {
+      STORE_GEODATA = "true";
+      # What does this do?
+      # PHOTON_API_HOST =
+      # PHOTON_API_USE_HTTPS = "true";
+      ENABLE_TELEMETRY = "false";
+
+      ALLOW_EMAIL_PASSWORD_REGISTRATION = "true";
+    };
+
+    extraEnvFiles = [
+      # TODO: Create file with OIDC_CLIENT_SECRET
+
+    ];
+  };
 
   power.ups = {
     enable = true;

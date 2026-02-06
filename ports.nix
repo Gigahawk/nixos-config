@@ -2,6 +2,7 @@
   cups = 631;
   inventree = 1337;
   immich = 2283;
+  dawarich = 3000;
   gitea = 3001;
 
   # Some samba thing

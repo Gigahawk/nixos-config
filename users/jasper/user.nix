@@ -75,6 +75,7 @@
         gparted
         wlogout
         kdePackages.itinerary
+        kdePackages.okular
         libreoffice
         localsend
         piper
@@ -82,6 +83,7 @@
         remmina
         mayo
         yt-dlp
+        zathura
       ]
     else
       [ ]

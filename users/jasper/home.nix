@@ -86,6 +86,29 @@ in
           hyprctl dispatch focuswindow floating
         fi
       '';
+      passmenu = pkgs.writeShellScript "passmenu.sh" ''
+        selected=$(gopass ls --flat | walker --dmenu)
+
+        if [[ -z "$selected" ]]; then
+          exit 0
+        fi
+
+        if password=$(gopass cat "$selected" | head -n 1); then
+          echo -n "$password" | wl-copy
+
+          notify-send "Password Manager" "Password for '$selected' copied to clipboard (60s)"
+
+          # TODO: maybe detect if clipboard has been modified since?
+          (
+            sleep 60
+            wl-copy -c
+            notify-send "Password Manager" "Clipboard cleared"
+          ) &
+        else
+          notify-send "Password Manager" "Failed to retrieve password for '$selected'"
+          exit 1
+        fi
+      '';
     in
     {
       enable = desktop;
@@ -134,6 +157,7 @@ in
           "$mod SHIFT, W, exec, iwmenu -l $menu"
 
           "$mod, P, exec, wlogout"
+          "$mod SHIFT, P, exec, ${passmenu}"
         ]
         ++ (builtins.concatLists (
           builtins.genList (

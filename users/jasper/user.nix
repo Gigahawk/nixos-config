@@ -76,6 +76,7 @@
         wlogout
         kdePackages.itinerary
         kdePackages.okular
+        libnotify
         libreoffice
         localsend
         piper

@@ -82,6 +82,7 @@
         prusa-slicer
         remmina
         mayo
+        wl-clipboard
         yt-dlp
         zathura
       ]

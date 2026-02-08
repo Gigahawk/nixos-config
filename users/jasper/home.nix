@@ -61,12 +61,26 @@ in
     desktopEntries = {
       feh = {
         name = "feh";
-        exec = "${pkgs.feh}/bin/feh";
+        exec = "${pkgs.feh}/bin/feh --start-at";
       };
       zathura = {
         name = "Zathura";
         exec = "${pkgs.zathura}/bin/zathura";
       };
+    };
+  };
+
+  programs.feh = {
+    enable = desktop;
+    keybindings = {
+      zoom_in = "plus";
+      zoom_out = "minus";
+      zoom_fit = "equal";
+
+      scroll_left = "h";
+      scroll_down = "j";
+      scroll_up = "k";
+      scroll_right = "l";
     };
   };
 

@@ -71,19 +71,20 @@
       with pkgs;
       [
         brightnessctl
+        feh
         freecad
         gparted
-        wlogout
         kdePackages.itinerary
         kdePackages.okular
         libnotify
         libreoffice
         localsend
+        mayo
         piper
         prusa-slicer
         remmina
-        mayo
         wl-clipboard
+        wlogout
         yt-dlp
         zathura
       ]

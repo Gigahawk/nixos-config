@@ -50,12 +50,19 @@ in
 
   xdg = {
     mimeApps = {
-      enable = true;
+      enable = desktop;
       defaultApplications = {
         "application/pdf" = "zathura.desktop";
+
+        "image/jpeg" = "feh.desktop";
+        "image/png" = "feh.desktop";
       };
     };
     desktopEntries = {
+      feh = {
+        name = "feh";
+        exec = "${pkgs.feh}/bin/feh";
+      };
       zathura = {
         name = "Zathura";
         exec = "${pkgs.zathura}/bin/zathura";

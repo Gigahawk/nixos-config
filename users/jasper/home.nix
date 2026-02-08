@@ -10,6 +10,9 @@ let
     withNerdIcons = true;
     # Something about regex support?
     withPcre = true;
+    extraMakeFlags = [
+      "O_DEBUG=1"
+    ];
   };
 
 in

@@ -48,6 +48,21 @@ in
     };
   };
 
+  xdg = {
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "application/pdf" = "zathura.desktop";
+      };
+    };
+    desktopEntries = {
+      zathura = {
+        name = "Zathura";
+        exec = "${pkgs.zathura}/bin/zathura";
+      };
+    };
+  };
+
   services.hyprpolkitagent.enable = desktop;
   wayland.windowManager.hyprland =
     let

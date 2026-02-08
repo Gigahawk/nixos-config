@@ -22,8 +22,6 @@
     download-buffer-size = 4194304000;
   };
 
-
-
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
   ];

@@ -109,6 +109,54 @@ in
           exit 1
         fi
       '';
+      toggle-dropdown = pkgs.writeShellScript "toggledropdown.sh" ''
+        special_workspace="special:dropdown"
+        dropdown_props=$(hyprctl clients -j | jq -r '.[] | select(.initialTitle == "dropdown")')
+        #echo "$dropdown_props"
+
+        if [[ -z "$dropdown_props" ]]; then
+          echo "dropdown not running"
+          ${restart-dropdown} ghostty
+          exit 0
+        fi
+
+        addr=$(echo "$dropdown_props" | jq -r '.address')
+        workspace=$(echo "$dropdown_props" | jq -r '.workspace.name')
+        #echo "$addr"
+        #echo "$workspace"
+
+        if [[ "$workspace" == "$special_workspace" ]]; then
+          hyprctl dispatch pin address:$addr
+          hyprctl dispatch focuswindow address:$addr
+        else
+          hyprctl dispatch pin address:$addr
+          hyprctl dispatch movetoworkspacesilent $special_workspace,address:$addr
+        fi
+      '';
+      restart-dropdown = pkgs.writeShellScript "restartdropdown.sh" ''
+        term=$1
+
+        start_tmux() {
+          sessions=$(tmux ls | cut -d':' -f1)
+          if [[ ! $sessions = *"dropdown"* ]]; then
+            # Session has been killed, restart
+            tmux new-session -d -s dropdown
+          fi
+        }
+
+        user=$(whoami)
+        pids=$(ps aux | grep "$term --title=dropdown" | sed -e "/^$user/!d" -e "/grep/d" -r -e "s/$user[ \t]+([[:digit:]]{1,}).*/\1/g")
+
+        if [[ -n "$pids" ]]; then
+          while read -r pid; do
+            kill $pid
+          done <<< "$pids"
+        fi
+
+        start_tmux
+
+        nohup $term --title="dropdown" -e tmux attach -t dropdown &
+      '';
     in
     {
       enable = desktop;
@@ -124,6 +172,14 @@ in
 
         exec-once = [
           "waybar"
+        ];
+
+        windowrulev2 = [
+          # Why doesn't this work????
+          # "match:class ^(dropdown)$, window special:dropdown"
+          "float,title:^(dropdown)$"
+          # "workspace special:dropdown,title:^(dropdown)$"
+          # "workspace current, workspace:special:dropdown, class:^(?!dropdown$).*$"
         ];
 
         bind = [
@@ -149,12 +205,17 @@ in
 
           "$mod SHIFT, space, togglefloating"
 
+          "$mod, U, exec, ${toggle-dropdown}"
+          #"$mod CTRL, U, exec, ${restart-dropdown} $term"
+
           "$mod SHIFT, Y, resizeactive, -${resize-amt-int-px} 0"
           "$mod SHIFT, U, resizeactive, 0 ${resize-amt-int-px}"
           "$mod SHIFT, I, resizeactive, 0 -${resize-amt-int-px}"
           "$mod SHIFT, O, resizeactive, ${resize-amt-int-px} 0"
 
           "$mod SHIFT, W, exec, iwmenu -l $menu"
+
+          # "$mod, U,  " TODO: show scratchpad dropdown
 
           "$mod, P, exec, wlogout"
           "$mod SHIFT, P, exec, ${passmenu}"

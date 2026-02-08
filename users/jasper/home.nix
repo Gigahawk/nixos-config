@@ -50,12 +50,25 @@ in
 
   xdg = {
     mimeApps = {
-      enable = desktop;
+      enable = true;
       defaultApplications = {
         "application/pdf" = "zathura.desktop";
 
         "image/jpeg" = "feh.desktop";
         "image/png" = "feh.desktop";
+
+        "text/plain" = "vim.desktop";
+        "text/x-log" = "vim.desktop";
+        "text/x-devicetree-source" = "vim.desktop";
+        "text/x-c++src" = "vim.desktop";
+        "text/x-chdr" = "vim.desktop";
+        "text/x-csrc" = "vim.desktop";
+        "text/x-python" = "vim.desktop";
+        "text/x-rst" = "vim.desktop";
+        "text/markdown" = "vim.desktop";
+        "application/x-shellscript" = "vim.desktop";
+        "application/yaml" = "vim.desktop";
+        "application/json" = "vim.desktop";
       };
     };
     desktopEntries = {

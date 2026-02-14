@@ -46,6 +46,7 @@ in
     plugins = {
       src = inputs.nnn-plugins + "/plugins";
     };
+    quitcd = true;
   };
 
   xdg = {

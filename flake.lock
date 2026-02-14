@@ -501,16 +501,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1769813945,
-        "narHash": "sha256-9ABv9Lo9t6MrFjlnRnU8Zw1C6LVj2+R8PipQ/rxGLHk=",
-        "owner": "nix-community",
+        "lastModified": 1771034124,
+        "narHash": "sha256-3FrCisfvKWTBT8j3DfRXQefE/AKZCTz+VfvUqTgXKiQ=",
+        "owner": "Gigahawk",
         "repo": "home-manager",
-        "rev": "475921375def3eb930e1f8883f619ff8609accb6",
+        "rev": "fa878fd308fe7a818571b88dc8dcb6f6a4fa724e",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
-        "ref": "master",
+        "owner": "Gigahawk",
+        "ref": "nnn-cd-on-quit",
         "repo": "home-manager",
         "type": "github"
       }

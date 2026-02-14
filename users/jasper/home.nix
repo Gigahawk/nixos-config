@@ -175,14 +175,24 @@ in
 
         addr=$(echo "$dropdown_props" | jq -r '.address')
         workspace=$(echo "$dropdown_props" | jq -r '.workspace.name')
+        pinned=$(echo "$dropdown_props" | jq -r '.pinned')
         #echo "$addr"
         #echo "$workspace"
 
+        hyprctl dispatch setfloating address:$addr
+
         if [[ "$workspace" == "$special_workspace" ]]; then
-          hyprctl dispatch pin address:$addr
+          if [[ "$pinned" == "false" ]]; then
+            hyprctl dispatch pin address:$addr
+          fi
           hyprctl dispatch focuswindow address:$addr
+          hyprctl dispatch centerwindow
         else
-          hyprctl dispatch pin address:$addr
+          if [[ "$pinned" == "true" ]]; then
+            hyprctl dispatch pin address:$addr
+          fi
+          hyprctl dispatch focuswindow address:$addr
+          hyprctl dispatch fullscreen 0 unset
           hyprctl dispatch movetoworkspacesilent $special_workspace,address:$addr
         fi
       '';
@@ -227,10 +237,9 @@ in
           "waybar"
         ];
 
-        windowrulev2 = [
-          # Why doesn't this work????
-          # "match:class ^(dropdown)$, window special:dropdown"
-          "float,title:^(dropdown)$"
+        windowrule = [
+          "match:title ^(dropdown)$, float on"
+          # "float,title:^(dropdown)$"
           # "workspace special:dropdown,title:^(dropdown)$"
           # "workspace current, workspace:special:dropdown, class:^(?!dropdown$).*$"
         ];
@@ -259,7 +268,6 @@ in
           "$mod SHIFT, space, togglefloating"
 
           "$mod, U, exec, ${toggle-dropdown}"
-          #"$mod CTRL, U, exec, ${restart-dropdown} $term"
 
           "$mod SHIFT, Y, resizeactive, -${resize-amt-int-px} 0"
           "$mod SHIFT, U, resizeactive, 0 ${resize-amt-int-px}"

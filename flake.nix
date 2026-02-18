@@ -33,7 +33,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     inventree = {
-      url = "github:Gigahawk/nixos-inventree/inventree-kicad-plugin-update";
+      url = "github:Gigahawk/nixos-inventree/update_1.2.1";
       #inputs.nixpkgs.follows = "nixpkgs";
     };
     kvmd = {

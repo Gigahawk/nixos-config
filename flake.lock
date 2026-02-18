@@ -547,16 +547,16 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1771412566,
-        "narHash": "sha256-j3JcVGj+TySPISWY42hEAmxmGTgJ2X7boht9NztTGZ8=",
+        "lastModified": 1771413803,
+        "narHash": "sha256-3focr77++kv4qMfnYRSl59oNTL347t82W9c7p487awA=",
         "owner": "Gigahawk",
         "repo": "nixos-inventree",
-        "rev": "77386bedcc38cafc65f64788707f633fb1900aba",
+        "rev": "9ad83b878829a1e4733d2375ab756984f21c3e26",
         "type": "github"
       },
       "original": {
         "owner": "Gigahawk",
-        "ref": "inventree-kicad-plugin-update",
+        "ref": "update_1.2.1",
         "repo": "nixos-inventree",
         "type": "github"
       }

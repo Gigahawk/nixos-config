@@ -131,10 +131,10 @@
 
     bindIp = "0.0.0.0";
     bindPort = ports.inventree;
-    siteUrl = "http://ptolemy.neon-chameleon.ts.net:${toString ports.inventree}";
-    allowedHosts = [ "*" ];
 
     config = {
+      site_url = "http://ptolemy.neon-chameleon.ts.net:${toString ports.inventree}";
+      allowed_hosts = [ "*" ];
       database = {
         ENGINE = "sqlite";
         NAME = "/mnt/pool/inventree-data/database.sqlite";

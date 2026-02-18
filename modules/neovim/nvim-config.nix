@@ -16,6 +16,11 @@
       #programmingWordlist.enable = true;
     };
 
+    options = {
+      autoindent = true;
+      shiftwidth = 2;
+    };
+
     keymaps =
       let
         # Visual append similar to vscodevim
@@ -237,7 +242,9 @@
 
     minimap = {
       minimap-vim.enable = false;
-      codewindow.enable = true;
+      # codewindow.enable = true;
+      # https://github.com/NotAShelf/nvf/issues/1312#issuecomment-3719470693
+      codewindow.enable = false;
     };
 
     dashboard = {

@@ -64,11 +64,9 @@
       url = "github:Gigahawk/vscode-remote-workaround/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # https://github.com/NotAShelf/nvf/issues/1312
-    nixpkgs-nvf.url = "nixpkgs/dc205f7b4fdb04c8b7877b43edb7b73be7730081";
     nvf = {
       url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs-nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     declarative-jellyfin = {
       url = "github:Sveske-Juice/declarative-jellyfin";
@@ -109,7 +107,6 @@
       nixos-hardware,
       nixos-wsl,
       vscode-remote-workaround,
-      nixpkgs-nvf,
       nvf,
       declarative-jellyfin,
       treefmt-nix,
@@ -275,7 +272,6 @@
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        pkgs-nvf = nixpkgs-nvf.legacyPackages.${system};
         treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
       in
       {
@@ -286,7 +282,7 @@
         packages = {
           nvim =
             (nvf.lib.neovimConfiguration {
-              pkgs = pkgs-nvf;
+              pkgs = pkgs;
               modules = [
                 ./modules/neovim/nvim-config.nix
               ];

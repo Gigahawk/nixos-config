@@ -86,6 +86,10 @@
       url = "github:blitz/hydrasect";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -110,6 +114,7 @@
       declarative-jellyfin,
       treefmt-nix,
       hydrasect,
+      nix-index-database,
       ...
     }:
     let

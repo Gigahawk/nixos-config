@@ -6,7 +6,9 @@
   ...
 }:
 {
-  imports = [ ];
+  imports = [
+    inputs.nix-index-database.nixosModules.default
+  ];
 
   nix.settings = {
     experimental-features = [
@@ -66,7 +68,6 @@
       lm_sensors
       lshw
       nethogs
-      nix-index
       nix-output-monitor
       nix-tree
       nixfmt

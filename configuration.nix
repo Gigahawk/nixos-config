@@ -66,6 +66,7 @@
       lm_sensors
       lshw
       nethogs
+      nix-index
       nix-output-monitor
       nix-tree
       nixfmt

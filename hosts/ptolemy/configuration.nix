@@ -135,6 +135,7 @@
     config = {
       site_url = "http://ptolemy.neon-chameleon.ts.net:${toString ports.inventree}";
       allowed_hosts = [ "*" ];
+      auto_update = true;
       database = {
         ENGINE = "sqlite";
         NAME = "/mnt/pool/inventree-data/database.sqlite";
@@ -143,6 +144,10 @@
           # https://docs.djangoproject.com/en/dev/ref/databases/#database-is-locked-errors
           "timeout" = 120;
         };
+      };
+      global_settings = {
+        # Disable registration, we are managing users declaratively
+        LOGIN_ENABLE_REG = false;
       };
       debug = true;
       social_backends = [ ];

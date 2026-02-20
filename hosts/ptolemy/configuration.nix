@@ -159,6 +159,11 @@
       backup_dir = "/mnt/pool/inventree-data/backup";
       plugins_enabled = true;
     };
+
+    plugins = {
+      inventree-kicad-plugin = [ ];
+    };
+
     users = {
       jasper = {
         email = "jasperchan515@gmail.com";

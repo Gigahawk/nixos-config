@@ -20,13 +20,19 @@
 
     bindIp = "0.0.0.0";
     bindPort = ports.inventree;
-    siteUrl = "http://virtualbox.neon-chameleon.ts.net:1337";
-    allowedHosts = [ "*" ];
 
     config = {
+      site_url = "http://virtualbox.neon-chameleon.ts.net:1337";
+      allowed_hosts = [ "*" ];
+      auto_update = true;
       database = {
         ENGINE = "sqlite";
         NAME = "/mnt/pool/inventree-test/test.sqlite";
+      };
+      OPTIONS = {
+        # HACK: hopefully workaround database is locked errors
+        # https://docs.djangoproject.com/en/dev/ref/databases/#database-is-locked-errors
+        "timeout" = 600;
       };
       debug = true;
       log_level = "DEBUG";
@@ -40,6 +46,10 @@
       static_i18_root = "/mnt/pool/inventree-test/static_i18";
       media_root = "/mnt/pool/inventree-test/media";
       backup_dir = "/mnt/pool/inventree-test/backup";
+    };
+
+    plugins = {
+      inventree-kicad-plugin = [ ];
     };
 
     users = {

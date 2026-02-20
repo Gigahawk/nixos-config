@@ -33,7 +33,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     inventree = {
-      url = "github:Gigahawk/nixos-inventree/update_1.2.1";
+      url = "github:Gigahawk/nixos-inventree";
       #inputs.nixpkgs.follows = "nixpkgs";
     };
     kvmd = {
@@ -163,7 +163,7 @@
             ./modules/smartd.nix
             ./modules/syncthing.nix
             ./modules/jellyfin.nix
-            inventree.nixosModule
+            inventree.nixosModules.default
             cypress-ticket-scraper.nixosModule
             ./modules/inventree-backup/module.nix
             ./modules/restic/module.nix
@@ -228,7 +228,7 @@
             ./modules/agenix-cli.nix
             ./modules/snapraid/module.nix
             ./modules/xmpp-bridge/module.nix
-            inventree.nixosModule
+            inventree.nixosModules.default
             #./modules/inventree-backup/module.nix
             #./modules/ghidra-server/module.nix
             #./modules/restic/module.nix

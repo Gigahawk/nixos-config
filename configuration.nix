@@ -88,6 +88,7 @@
       inputs.nix-top.packages.${stdenv.hostPlatform.system}.default
       inputs.hydrasect.packages.${stdenv.hostPlatform.system}.default
       (callPackage ./packages/nixos-update.nix { })
+      (callPackage ./packages/nixos-update-local.nix { })
       (callPackage ./packages/nix-flake-init.nix { })
     ]
     ++ (

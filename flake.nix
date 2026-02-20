@@ -5,8 +5,7 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     #nixpkgs.url = "github:Gigahawk/nixpkgs/personal";
     home-manager = {
-      #url = "github:nix-community/home-manager/master";
-      url = "github:Gigahawk/home-manager/nnn-cd-on-quit";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix = {

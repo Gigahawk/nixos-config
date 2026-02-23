@@ -111,6 +111,19 @@
     xwayland.enable = true;
   };
 
+  programs.obs-studio = {
+    enable = lib.mkDefault desktop;
+    enableVirtualCamera = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+      obs-vaapi
+      obs-gstreamer
+      obs-vkcapture
+    ];
+  };
+
   home-manager.extraSpecialArgs = {
     inherit desktop;
     inherit inputs;

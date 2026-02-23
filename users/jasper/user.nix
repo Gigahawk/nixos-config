@@ -56,9 +56,6 @@
   ++ (
     if desktop then
       [
-        # KDE Itinerary uses this for matrix sync
-        # or something
-        "olm-3.2.16"
       ]
     else
       [ ]
@@ -74,7 +71,6 @@
         feh
         freecad
         gparted
-        kdePackages.itinerary
         kdePackages.okular
         libnotify
         libreoffice

@@ -76,6 +76,7 @@
         libreoffice
         localsend
         mayo
+        packet
         piper
         prusa-slicer
         remmina

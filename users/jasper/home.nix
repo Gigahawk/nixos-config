@@ -29,6 +29,11 @@ in
     enableCompletion = true;
   };
 
+  programs.tmux = {
+    enable = true;
+    mouse = true;
+  };
+
   services.gpg-agent = {
     enable = true;
     enableBashIntegration = true;

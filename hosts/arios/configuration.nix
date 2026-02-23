@@ -41,6 +41,7 @@
 
   environment.systemPackages = with pkgs; [
     iwmenu
+    bzmenu
   ];
 
   virtualisation.docker.enable = true;

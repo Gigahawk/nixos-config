@@ -275,6 +275,7 @@ in
           "$mod SHIFT, O, resizeactive, ${resize-amt-int-px} 0"
 
           "$mod SHIFT, W, exec, iwmenu -l $menu"
+          "$mod SHIFT, B, exec, bzmenu -l $menu"
 
           # "$mod, U,  " TODO: show scratchpad dropdown
 

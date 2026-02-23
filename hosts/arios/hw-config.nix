@@ -43,6 +43,10 @@
     drift_time = 110;
   };
 
+  hardware.bluetooth = {
+    enable = true;
+  };
+
   boot.initrd.luks = {
     reusePassphrases = true;
     devices = {

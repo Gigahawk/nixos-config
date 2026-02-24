@@ -32,6 +32,16 @@ in
   programs.tmux = {
     enable = true;
     mouse = true;
+    historyLimit = 100000;
+    plugins = with pkgs.tmuxPlugins; [
+      {
+        plugin = better-mouse-mode;
+        extraConfig = ''
+          set -g @scroll-speed-num-lines-per-scroll "1"
+          set -g @emulate-scroll-for-no-mouse-alternate-buffer "on"
+        '';
+      }
+    ];
   };
 
   services.gpg-agent = {

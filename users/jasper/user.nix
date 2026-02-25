@@ -78,6 +78,7 @@
         mayo
         packet
         piper
+        printrun
         prusa-slicer
         remmina
         wl-clipboard

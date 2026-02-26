@@ -15,6 +15,7 @@
   home-manager.useUserPackages = true;
 
   users.users.jasper = {
+    uid = 1000;
     isNormalUser = true;
     hashedPasswordFile = config.age.secrets.jasper.path;
     extraGroups = [

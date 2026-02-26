@@ -82,6 +82,7 @@
         printrun
         prusa-slicer
         remmina
+        spacenavd
         wl-clipboard
         wlogout
         yt-dlp

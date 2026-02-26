@@ -41,9 +41,11 @@
     [
       alejandra
       bat
+      bc
       binwalk
       btop
       bmon
+      cabextract
       cifs-utils
       cryptsetup
       dig
@@ -56,6 +58,7 @@
       ffmpeg
       file
       gdu
+      gettext
       git
       git-lfs
       gnupg
@@ -67,13 +70,15 @@
       imagemagick
       jq
       lm_sensors
+      lsb-release
       lshw
+      mokutil
       nethogs
       nix-output-monitor
       nix-tree
       nixfmt
       p7zip
-      samba
+      samba4Full
       smartmontools
       syncthing
       tailscale
@@ -82,6 +87,7 @@
       unzip
       usbutils
       vim
+      virtualgl
       wget
       xplr
 

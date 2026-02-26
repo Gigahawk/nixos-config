@@ -54,7 +54,7 @@
     };
 
     plugins = {
-      #inventree-kicad-plugin = [ ];
+      inventree-kicad-plugin = [ ];
     };
 
     users = {

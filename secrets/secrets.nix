@@ -31,6 +31,8 @@ in
 {
   #inherit systems;
 
+  "smb-secrets-ptolemy.age".publicKeys = users ++ (builtins.attrValues systems);
+
   "alert-outlook.age".publicKeys = users ++ [ virtualbox ];
 
   "jasper-virtualbox.age".publicKeys = users ++ [ virtualbox ];

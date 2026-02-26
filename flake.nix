@@ -32,7 +32,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     inventree = {
-      url = "github:Gigahawk/nixos-inventree";
+      url = "github:quentinmit/nixos-inventree/overlay";
       #inputs.nixpkgs.follows = "nixpkgs";
     };
     kvmd = {

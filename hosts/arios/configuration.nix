@@ -5,6 +5,7 @@
   config,
   lib,
   pkgs,
+  ports,
   ...
 }:
 {
@@ -16,6 +17,53 @@
   networking.networkmanager = {
     enable = true;
     wifi.backend = "iwd";
+  };
+
+  services.inventree = {
+    enable = true;
+
+    bindIp = "0.0.0.0";
+    bindPort = ports.inventree;
+
+    config = {
+      site_url = "http://arios.neon-chameleon.ts.net:${toString ports.inventree}";
+      allowed_hosts = [ "*" ];
+      auto_update = true;
+      database = {
+        ENGINE = "sqlite";
+        NAME = "/var/lib/inventree/database.sqlite";
+        OPTIONS = {
+          # HACK: hopefully workaround database is locked errors
+          # https://docs.djangoproject.com/en/dev/ref/databases/#database-is-locked-errors
+          "timeout" = 600;
+        };
+      };
+      global_settings = {
+        # Disable registration, we are managing users declaratively
+        LOGIN_ENABLE_REG = false;
+      };
+      debug = true;
+      social_backends = [ ];
+      social_providers = { };
+      secret_key_file = ./secret_key.txt;
+      static_root = "/var/lib/inventree/static";
+      static_i18_root = "/var/lib/inventree/static_i18";
+      media_root = "/var/lib/inventree/media";
+      backup_dir = "/var/lib/inventree/backup";
+      plugins_enabled = true;
+    };
+
+    plugins = {
+      inventree-kicad-plugin = [ ];
+    };
+
+    users = {
+      jasper = {
+        email = "jasperchan515@gmail.com";
+        is_superuser = true;
+        password_file = ./it_pw.txt;
+      };
+    };
   };
 
   # Should this be universal for desktop devices?

@@ -244,6 +244,7 @@
           };
           modules = [
             overlays
+            inventree.nixosModules.default
             ./configuration.nix
             ./modules/neovim/module.nix
             agenix.nixosModules.default

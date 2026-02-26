@@ -18,6 +18,8 @@
     wifi.backend = "iwd";
   };
 
+  fileSystems."/mnt/ptolemy".enable = true;
+
   # Should this be universal for desktop devices?
   services.kanata = {
     enable = true;
@@ -58,6 +60,9 @@
   age.secrets = {
     jasper = {
       file = ../../secrets/jasper-arios.age;
+    };
+    smb-secrets-ptolemy = {
+      file = ../../secrets/smb-secrets-ptolemy.age;
     };
     tailscale-key = {
       file = ../../secrets/tailscale-arios.age;

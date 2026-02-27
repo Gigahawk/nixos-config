@@ -82,6 +82,7 @@
         printrun
         prusa-slicer
         remmina
+        signal-desktop
         spacenavd
         wl-clipboard
         wlogout

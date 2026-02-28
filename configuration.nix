@@ -166,6 +166,15 @@
       ];
   };
 
+  programs.git = {
+    enable = true;
+    config = {
+      push = {
+        autoSetupRemote = true;
+      };
+    };
+  };
+
   # Gross
   programs.nano.enable = false;
   programs.neovim = {

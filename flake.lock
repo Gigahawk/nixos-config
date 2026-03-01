@@ -501,11 +501,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772220281,
-        "narHash": "sha256-brHNXSoiFeHyg+BcfstAZ45GY3wJG9j4JceGJI5TDSM=",
+        "lastModified": 1772325075,
+        "narHash": "sha256-ko07Lcdq8N/usGHKAA4gERho7bwZ1GBwlQOIphIs/fM=",
         "owner": "Gigahawk",
         "repo": "home-manager",
-        "rev": "bd0a894c2b0c0e968a13e61e06c9f08b2df291c2",
+        "rev": "4a59a1245bf9939c8f1035f054a353a50cccdafa",
         "type": "github"
       },
       "original": {

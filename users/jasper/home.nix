@@ -64,13 +64,13 @@ in
         p = "rsynccp";
       };
     };
-    cliArgs = [
-      "-A" # Don't automatically enter dir while searching
-      "-H" # Show hidden files
-      "-i" # Show current file info
-      "-d" # Show details in list (size, perms, etc)
-      "-U" # Show user/group of current file
-    ];
+    options = {
+      A = true; # Don't automatically enter dir while searching
+      H = true; # Show hidden files
+      i = true; # Show current file info
+      d = true; # Show details in list (size, perms, etc)
+      U = true; # Show user/group of current file
+    };
     quitcd = true;
   };
 

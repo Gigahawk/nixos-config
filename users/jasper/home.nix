@@ -60,6 +60,9 @@ in
     package = nnn;
     plugins = {
       src = inputs.nnn-plugins + "/plugins";
+      mappings = {
+        p = "rsynccp";
+      };
     };
     cliArgs = [
       "-A" # Don't automatically enter dir while searching

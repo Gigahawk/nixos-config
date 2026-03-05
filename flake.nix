@@ -155,7 +155,6 @@
             ./configuration.nix
             ./modules/neovim/module.nix
             agenix.nixosModules.default
-            ./modules/agenix-cli.nix
             ./modules/snapraid/module.nix
             ./modules/xmpp-bridge/module.nix
             ./modules/samba-users/module.nix
@@ -186,7 +185,6 @@
             ./configuration.nix
             agenix.nixosModules.default
             vscode-remote-workaround.nixosModules.default
-            ./modules/agenix-cli.nix
             ./hosts/veda/configuration.nix
             #./hosts/veda/hw-config.nix
             ./modules/neovim/module.nix
@@ -204,7 +202,6 @@
             ./configuration.nix
             agenix.nixosModules.default
             kvmd.nixosModule
-            ./modules/agenix-cli.nix
             #./modules/xmpp-bridge/module.nix
             ./modules/raspi4/module.nix
             ./modules/managed-wifi/module.nix
@@ -225,7 +222,6 @@
             ./configuration.nix
             ./modules/neovim/module.nix
             agenix.nixosModules.default
-            ./modules/agenix-cli.nix
             ./modules/snapraid/module.nix
             ./modules/xmpp-bridge/module.nix
             inventree.nixosModules.default
@@ -248,7 +244,6 @@
             ./configuration.nix
             ./modules/neovim/module.nix
             agenix.nixosModules.default
-            ./modules/agenix-cli.nix
             ./hosts/arios/configuration.nix
             ./hosts/arios/hw-config.nix
             ./users/jasper/user.nix

@@ -62,37 +62,6 @@
       [ ]
   );
 
-  environment.systemPackages = [
-  ]
-  ++ (
-    if desktop then
-      with pkgs;
-      [
-        brightnessctl
-        feh
-        freecad
-        gparted
-        kdePackages.okular
-        libnotify
-        libreoffice
-        localsend
-        mayo
-        packet
-        piper
-        printrun
-        prusa-slicer
-        remmina
-        signal-desktop
-        spacenavd
-        wl-clipboard
-        wlogout
-        yt-dlp
-        zathura
-      ]
-    else
-      [ ]
-  );
-
   services.ratbagd.enable = desktop;
 
   services.displayManager.ly = {

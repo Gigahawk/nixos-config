@@ -9,6 +9,10 @@
       url = "github:Gigahawk/home-manager/nnn-cli-args";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -95,6 +99,7 @@
       self,
       nixpkgs,
       home-manager,
+      nix-on-droid,
       agenix,
       flake-utils,
       nixos-generators,
@@ -247,6 +252,17 @@
             ./hosts/arios/configuration.nix
             ./hosts/arios/hw-config.nix
             ./users/jasper/user.nix
+          ];
+        };
+      };
+      nixOnDroidConfigurations = {
+        xperia = nix-on-droid.lib.nixOnDroidConfiguration {
+          extraSpecialArgs = {
+            inherit inputs ports;
+          };
+          pkgs = import nixpkgs { system = "aarch64-linux"; };
+          modules = [
+            ./nix-on-droid.nix
           ];
         };
       };

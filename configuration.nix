@@ -10,9 +10,8 @@
   imports = [
     inputs.nix-index-database.nixosModules.default
     ./packages-all.nix
-  ] ++ (
-    if desktop then [ ./packages-desktop.nix ] else [ ]
-  );
+  ]
+  ++ (if desktop then [ ./packages-desktop.nix ] else [ ]);
 
   nix.settings = {
     experimental-features = [

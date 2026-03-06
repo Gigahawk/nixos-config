@@ -3,28 +3,26 @@
   ...
 }:
 {
-  environment.systemPackages =
-    with pkgs;
-    [
-      brightnessctl
-      feh
-      freecad
-      gparted
-      kdePackages.okular
-      libnotify
-      libreoffice
-      localsend
-      mayo
-      packet
-      piper
-      printrun
-      prusa-slicer
-      remmina
-      signal-desktop
-      spacenavd
-      wl-clipboard
-      wlogout
-      yt-dlp
-      zathura
-    ]
+  environment.systemPackages = with pkgs; [
+    brightnessctl
+    feh
+    freecad
+    gparted
+    kdePackages.okular
+    libnotify
+    libreoffice
+    localsend
+    mayo
+    packet
+    piper
+    printrun
+    prusa-slicer
+    remmina
+    signal-desktop
+    spacenavd
+    wl-clipboard
+    wlogout
+    yt-dlp
+    zathura
+  ];
 }

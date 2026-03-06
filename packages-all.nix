@@ -36,6 +36,7 @@
       hwinfo
       i2c-tools
       imagemagick
+      iputils
       jq
       lm_sensors
       lsb-release

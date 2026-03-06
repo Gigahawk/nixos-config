@@ -9,9 +9,17 @@
       url = "github:Gigahawk/home-manager/nnn-cli-args";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-droid = {
+      # TODO: Pinned to specific nixpkgs commit as workaround for nix-community/nix-on-droid#495
+      # Issue: "getting pseudoterminal attributes: Permission denied" with nixpkgs after 2026-01-24
+      # pin to last working commit instead
+      # https://github.com/nix-community/nix-on-droid/issues/495
+      url = "github:nixos/nixpkgs/88d3861";
+    };
+
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/release-24.05";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-droid";
     };
     agenix = {
       url = "github:ryantm/agenix";
@@ -99,6 +107,7 @@
       self,
       nixpkgs,
       home-manager,
+      nixpkgs-droid,
       nix-on-droid,
       agenix,
       flake-utils,
@@ -260,7 +269,7 @@
           extraSpecialArgs = {
             inherit inputs ports;
           };
-          pkgs = import nixpkgs { system = "aarch64-linux"; };
+          pkgs = import nixpkgs-droid { system = "aarch64-linux"; };
           modules = [
             ./nix-on-droid.nix
           ];

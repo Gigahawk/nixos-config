@@ -46,6 +46,7 @@
       nix-output-monitor
       nix-tree
       nixfmt
+      openssh
       p7zip
       samba4Full
       smartmontools

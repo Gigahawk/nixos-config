@@ -1,5 +1,28 @@
 {
   "nodes": {
+    "advcpmv": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "import-tree": "import-tree",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": "treefmt-nix"
+      },
+      "locked": {
+        "lastModified": 1772911069,
+        "narHash": "sha256-4fCRb3+IcNBNcKKJlh+B1i2Uxi4q8F+/Ue0TWXfuqw4=",
+        "owner": "Gigahawk",
+        "repo": "advcpmv-flake",
+        "rev": "2b2d459577c9f01805c52b2f9ae706a26d0641b5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Gigahawk",
+        "repo": "advcpmv-flake",
+        "type": "github"
+      }
+    },
     "agenix": {
       "inputs": {
         "darwin": "darwin",
@@ -110,7 +133,7 @@
           "nixpkgs"
         ],
         "systems": "systems_6",
-        "treefmt-nix": "treefmt-nix_3"
+        "treefmt-nix": "treefmt-nix_4"
       },
       "locked": {
         "lastModified": 1769200831,
@@ -176,6 +199,24 @@
     },
     "flake-parts": {
       "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib"
+      },
+      "locked": {
+        "lastModified": 1772408722,
+        "narHash": "sha256-rHuJtdcOjK7rAHpHphUb1iCvgkU3GpfvicLMwwnfMT0=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "f20dc5d9b8027381c474144ecabc9034d6a839a3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_2": {
+      "inputs": {
         "nixpkgs-lib": [
           "declarative-jellyfin",
           "nix-fast-build",
@@ -196,9 +237,9 @@
         "type": "github"
       }
     },
-    "flake-parts_2": {
+    "flake-parts_3": {
       "inputs": {
-        "nixpkgs-lib": "nixpkgs-lib"
+        "nixpkgs-lib": "nixpkgs-lib_2"
       },
       "locked": {
         "lastModified": 1769996383,
@@ -214,7 +255,7 @@
         "type": "github"
       }
     },
-    "flake-parts_3": {
+    "flake-parts_4": {
       "inputs": {
         "nixpkgs-lib": [
           "nvf",
@@ -560,6 +601,21 @@
     },
     "import-tree": {
       "locked": {
+        "lastModified": 1772344373,
+        "narHash": "sha256-OQQ1MhB9t1J71b2wxRRTdH/Qd8UGG0p+dGspfCf5U1c=",
+        "owner": "vic",
+        "repo": "import-tree",
+        "rev": "10fda59eee7d7970ec443b925f32a1bc7526648c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vic",
+        "repo": "import-tree",
+        "type": "github"
+      }
+    },
+    "import-tree_2": {
+      "locked": {
         "lastModified": 1771045967,
         "narHash": "sha256-oYO4poyw0Sb/db2PigqugMlDwsvwLg6CSpFrMUWxA3Q=",
         "owner": "vic",
@@ -575,12 +631,12 @@
     },
     "inventree": {
       "inputs": {
-        "flake-parts": "flake-parts_2",
-        "import-tree": "import-tree",
+        "flake-parts": "flake-parts_3",
+        "import-tree": "import-tree_2",
         "nixpkgs": "nixpkgs_2",
         "pyproject-build-systems": "pyproject-build-systems",
         "pyproject-nix": "pyproject-nix",
-        "treefmt-nix": "treefmt-nix_4",
+        "treefmt-nix": "treefmt-nix_5",
         "uv2nix": "uv2nix"
       },
       "locked": {
@@ -655,9 +711,9 @@
     },
     "nix-fast-build": {
       "inputs": {
-        "flake-parts": "flake-parts",
+        "flake-parts": "flake-parts_2",
         "nixpkgs": "nixpkgs",
-        "treefmt-nix": "treefmt-nix_2"
+        "treefmt-nix": "treefmt-nix_3"
       },
       "locked": {
         "lastModified": 1766288678,
@@ -972,6 +1028,21 @@
     },
     "nixpkgs-lib": {
       "locked": {
+        "lastModified": 1772328832,
+        "narHash": "sha256-e+/T/pmEkLP6BHhYjx6GmwP5ivonQQn0bJdH9YrRB+Q=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "c185c7a5e5dd8f9add5b2f8ebeff00888b070742",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "nixpkgs-lib_2": {
+      "locked": {
         "lastModified": 1769909678,
         "narHash": "sha256-cBEymOf4/o3FD5AZnzC3J9hLbiZ+QDT/KDuyHXVJOpM=",
         "owner": "nix-community",
@@ -1103,7 +1174,7 @@
     "nvf": {
       "inputs": {
         "flake-compat": "flake-compat_2",
-        "flake-parts": "flake-parts_3",
+        "flake-parts": "flake-parts_4",
         "mnw": "mnw",
         "ndg": "ndg",
         "nixpkgs": [
@@ -1134,7 +1205,7 @@
           "nixpkgs"
         ],
         "systems": "systems_5",
-        "treefmt-nix": "treefmt-nix"
+        "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
         "lastModified": 1731205797,
@@ -1159,7 +1230,7 @@
           "nixpkgs"
         ],
         "systems": "systems_14",
-        "treefmt-nix": "treefmt-nix_5"
+        "treefmt-nix": "treefmt-nix_6"
       },
       "locked": {
         "lastModified": 1736884309,
@@ -1184,7 +1255,7 @@
           "nixpkgs"
         ],
         "systems": "systems_18",
-        "treefmt-nix": "treefmt-nix_7"
+        "treefmt-nix": "treefmt-nix_8"
       },
       "locked": {
         "lastModified": 1723512448,
@@ -1277,6 +1348,7 @@
     },
     "root": {
       "inputs": {
+        "advcpmv": "advcpmv",
         "agenix": "agenix",
         "bcrypt-tool": "bcrypt-tool",
         "cypress-ticket-scraper": "cypress-ticket-scraper",
@@ -1297,7 +1369,7 @@
         "nnn-plugins": "nnn-plugins",
         "nvf": "nvf",
         "smartp": "smartp",
-        "treefmt-nix": "treefmt-nix_6",
+        "treefmt-nix": "treefmt-nix_7",
         "vscode-remote-workaround": "vscode-remote-workaround",
         "xmpp-bridge": "xmpp-bridge"
       }
@@ -1610,6 +1682,27 @@
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
+          "advcpmv",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772660329,
+        "narHash": "sha256-IjU1FxYqm+VDe5qIOxoW+pISBlGvVApRjiw/Y/ttJzY=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "3710e0e1218041bbad640352a0440114b1e10428",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "treefmt-nix_2": {
+      "inputs": {
+        "nixpkgs": [
           "cypress-ticket-scraper",
           "poetry2nix",
           "nixpkgs"
@@ -1629,7 +1722,7 @@
         "type": "github"
       }
     },
-    "treefmt-nix_2": {
+    "treefmt-nix_3": {
       "inputs": {
         "nixpkgs": [
           "declarative-jellyfin",
@@ -1651,7 +1744,7 @@
         "type": "github"
       }
     },
-    "treefmt-nix_3": {
+    "treefmt-nix_4": {
       "inputs": {
         "nixpkgs": [
           "declarative-jellyfin",
@@ -1672,7 +1765,7 @@
         "type": "github"
       }
     },
-    "treefmt-nix_4": {
+    "treefmt-nix_5": {
       "inputs": {
         "nixpkgs": [
           "inventree",
@@ -1693,7 +1786,7 @@
         "type": "github"
       }
     },
-    "treefmt-nix_5": {
+    "treefmt-nix_6": {
       "inputs": {
         "nixpkgs": [
           "smartp",
@@ -1715,7 +1808,7 @@
         "type": "github"
       }
     },
-    "treefmt-nix_6": {
+    "treefmt-nix_7": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -1735,7 +1828,7 @@
         "type": "github"
       }
     },
-    "treefmt-nix_7": {
+    "treefmt-nix_8": {
       "inputs": {
         "nixpkgs": [
           "xmpp-bridge",

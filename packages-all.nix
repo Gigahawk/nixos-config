@@ -62,6 +62,7 @@
       xplr
 
       # Custom packages
+      inputs.advcpmv.packages.${stdenv.hostPlatform.system}.default
       inputs.nix-top.packages.${stdenv.hostPlatform.system}.default
       inputs.hydrasect.packages.${stdenv.hostPlatform.system}.default
       inputs.agenix.packages."${pkgs.stdenv.hostPlatform.system}".default

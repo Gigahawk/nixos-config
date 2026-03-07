@@ -63,6 +63,10 @@
       url = "github:Gigahawk/nix-top";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    advcpmv = {
+      url = "github:Gigahawk/advcpmv-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-hardware = {
       # HACK: prevent skipped overlays https://github.com/NixOS/nixos-hardware/issues/1529
       # HACK: support 4 lane CSI https://github.com/NixOS/nixos-hardware/pull/1530
@@ -118,6 +122,7 @@
       inventree,
       kvmd,
       cypress-ticket-scraper,
+      advcpmv,
       nix-top,
       nixos-hardware,
       nixos-wsl,

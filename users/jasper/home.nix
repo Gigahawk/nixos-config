@@ -64,12 +64,16 @@ in
         p = "rsynccp";
       };
     };
+    extraPackages = [
+      inputs.advcpmv.packages.${pkgs.stdenv.hostPlatform.system}.default
+    ];
     options = {
       A = true; # Don't automatically enter dir while searching
       H = true; # Show hidden files
       i = true; # Show current file info
       d = true; # Show details in list (size, perms, etc)
       U = true; # Show user/group of current file
+      r = true; # Use advcpmv
     };
     quitcd = true;
   };

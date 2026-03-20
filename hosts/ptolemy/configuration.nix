@@ -283,6 +283,7 @@
         "server string" = "Samba %v on (%h)";
         "server role" = "standalone server";
         "security" = "user";
+        "unix extensions" = "yes";
 
         # idk if this needs to be set
         # netbios name = ptolemy
@@ -301,7 +302,7 @@
         # hosts deny = 0.0.0.0/0
 
         # guest account = jasper
-        # map to guest = bad user
+        "map to guest" = "never";
       };
 
       pool = {
@@ -309,10 +310,13 @@
         browseable = "yes";
         "read only" = "no";
         #"guest ok" = "yes";
+
         "create mask" = "0644";
         "directory mask" = "0755";
-        #"force user" = "username";
-        #"force group" = "groupname";
+
+        "valid users" = "jasper";
+        "force user" = "jasper";
+        "force group" = "users";
       };
       printers = {
         comment = "All Printers";

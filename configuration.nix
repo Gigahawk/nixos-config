@@ -85,12 +85,13 @@
     options =
       let
         automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+        smb_opts = "vers=3.0,sec=ntlmssp";
         uid = toString config.users.users.jasper.uid;
         gid = toString config.users.groups.users.gid;
         creds = config.age.secrets.smb-secrets-ptolemy.path;
       in
       [
-        "${automount_opts},credentials=${creds},uid=${uid},gid=${gid}"
+        "${automount_opts},${smb_opts},credentials=${creds},uid=${uid},gid=${gid}"
       ];
   };
 

@@ -33,6 +33,8 @@
 
   boot.crashDump.enable = true;
 
+  environment.enableAllTerminfo = true;
+
   hardware = {
     enableAllFirmware = true;
     # TODO: do we need this?

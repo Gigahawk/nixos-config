@@ -80,6 +80,11 @@
 
   security.polkit.enable = true;
 
+  hardware.keyboard.qmk = {
+    enable = true;
+    keychronSupport = true;
+  };
+
   fileSystems."/mnt/ptolemy" = {
     enable = lib.mkDefault false;
     device = "//ptolemy/pool";

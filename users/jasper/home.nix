@@ -44,6 +44,14 @@ in
     ];
   };
 
+  programs.pay-respects = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+    enableNushellIntegration = true;
+    enableZshIntegration = true;
+  };
+
   services.gpg-agent = {
     enable = true;
     enableBashIntegration = true;

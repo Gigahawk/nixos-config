@@ -44,7 +44,7 @@
     fanConfig = "v3-hdmi.ini";
     # HACK: BliKVM PCIe fan doesn't seem to start until pwm=820 for some reason
     # TODO: figure out if this pwm range even results in different RPM
-    fanArgs = "--debug --pwm-low=819 --pwm-high=1024";
+    fanArgs = "--debug --pwm-low=1 --pwm-high=1024";
     edidConfig = "v4mini.hex";
     htPasswordFile = config.age.secrets.kvmd-htpasswd.path;
     totpSecretFile = config.age.secrets.kvmd-totp-secret.path;

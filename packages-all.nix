@@ -41,6 +41,7 @@
       lm_sensors
       lsb-release
       lshw
+      mame.tools
       mokutil
       nethogs
       nix-output-monitor

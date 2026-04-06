@@ -49,8 +49,10 @@
       nixfmt
       openssh
       p7zip
+      s-tui
       samba4Full
       smartmontools
+      stress
       syncthing
       tailscale
       traceroute
@@ -79,7 +81,7 @@
           "x86_64-darwin"
         ]
       then
-        [ mprime ]
+        [ ]
       else
         [ ]
     );

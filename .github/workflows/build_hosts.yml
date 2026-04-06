@@ -52,8 +52,8 @@ jobs:
           primary-key: cache-build-hosts-${{ runner.os }}-nix-store-${{ hashFiles('**/*.nix') }}
           restore-prefixes-first-match: cache-build-hosts-${{ runner.os }}-nix-store-
       - name: Build host ${{ matrix.host }}
-        continue-on-error: true
+        # continue-on-error: true
         run: nix develop .#gh-actions --command nixos-rebuild --flake .#${{ matrix.host }} --log-format bar-with-logs build
       - name: Debug with tmate (failure only)
-        if: ${{ failure() }}
+        if: failure()
         uses: mxschmitt/action-tmate@v3

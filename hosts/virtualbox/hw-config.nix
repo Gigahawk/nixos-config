@@ -33,7 +33,7 @@
   };
 
   boot.initrd.luks = {
-    reusePassphrases = true;
+    # reusePassphrases = true;
     devices = {
       nixos_decrypted = {
         device = "/dev/disk/by-label/nixos_encrypted";

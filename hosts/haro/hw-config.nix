@@ -7,6 +7,11 @@
   ...
 }:
 {
+  boot.kernel.sysctl = {
+    # Workaround for
+    # https://github.com/NixOS/nixpkgs/issues/513512
+    "vm.mmap_rnd_bits" = 24;
+  };
 
   raspi4.config = options.raspi4.config.default // {
     cm4 = {
@@ -28,7 +33,7 @@
 
   hardware.deviceTree = {
     enable = true;
-    filter = "bcm2711-rpi-cm4.dtb";
+    filter = lib.mkForce "bcm2711-rpi-cm4.dtb";
     overlays = [
       rec {
         name = "dwc2";

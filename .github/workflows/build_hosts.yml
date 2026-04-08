@@ -21,7 +21,7 @@ jobs:
           primary-key: cache-prepare-${{ runner.os }}-nix-store-${{ hashFiles('**/*.nix') }}
           restore-prefixes-first-match: cache-prepare-${{ runner.os }}-nix-store-
       - name: Export manifest
-        run: nix flake show --json | jq -c -r '.nixosConfigurations | keys' > manifest.json
+        run: nix eval .#githubActions.matrix --json | jq -c -r > manifest.json
       - run: cat manifest.json
       - name: Save manifest to output
         id: manifest
@@ -29,24 +29,25 @@ jobs:
           echo "manifest=$(cat manifest.json)" >> "$GITHUB_OUTPUT"
   build-hosts:
     needs: prepare
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.host.runner }}
     strategy:
       fail-fast: false
       matrix:
         host: ${{ fromJSON(needs.prepare.outputs.manifest) }}
-    env:
-      NIX_CONFIG: extra-platforms = aarch64-linux
+    #env:
+    #  NIX_CONFIG: extra-platforms = aarch64-linux
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: true
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+      #- name: Set up QEMU
+      #  uses: docker/setup-qemu-action@v3
       - uses: wimpysworld/nothing-but-nix@v10
       - uses: DeterminateSystems/nix-installer-action@main
-      - name: Build host ${{ matrix.host }}
+      - name: Build host ${{ matrix.host.name }}
         # continue-on-error: true
-        run: nix develop .#gh-actions --command nixos-rebuild --flake .#${{ matrix.host }} --log-format bar-with-logs build
+        run: nix develop .#gh-actions --command nixos-rebuild --flake .#${{ matrix.host.name }} --log-format bar-with-logs --show-trace build
       - name: Debug with tmate (failure only)
         if: failure()
         uses: mxschmitt/action-tmate@v3
+        timeout-minutes: 10

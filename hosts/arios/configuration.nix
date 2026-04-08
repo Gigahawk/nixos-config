@@ -53,9 +53,9 @@
     "aarch64-linux"
   ];
 
-  systemd.sleep.extraConfig = ''
-    HibernateMode=shutdown
-  '';
+  systemd.sleep.settings.Sleep = {
+    HibernateMode = "shutdown";
+  };
 
   age.secrets = {
     jasper = {

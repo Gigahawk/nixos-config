@@ -9,6 +9,7 @@ let
   cfg = config.services.samba-users;
   usersFile = pkgs.writeText "users.json" (builtins.toJSON cfg.users);
   settingsFormat = pkgs.formats.json { };
+  samba = pkgs.samba4Full;
 in
 {
   options.services.samba-users = {
@@ -66,14 +67,14 @@ in
         ExecStartPre = "+${pkgs.writers.writeBash "samba-users" ''
           echo "Deleting existing samba users"
 
-          old_users=$(${pkgs.samba4Full}/bin/pdbedit -L)
+          old_users=$(${samba}/bin/pdbedit -L)
           while IFS= read -r line; do
             username=$(echo "$line" | cut -d: -f1)
             if [[ -z "$username" ]]; then
               continue
             fi
             echo "Deleting samba user $username"
-            ${pkgs.samba4Full}/bin/smbpasswd -x "$username"
+            ${samba}/bin/smbpasswd -x "$username"
           done <<<"$old_users"
 
 
@@ -90,7 +91,7 @@ in
               continue
             fi
             echo "Creating user $username from password file $password_file"
-            echo "$password_input" | ${pkgs.samba4Full}/bin/smbpasswd -s -a "$username"
+            echo "$password_input" | ${samba}/bin/smbpasswd -s -a "$username"
           done <<<"$new_users"
         ''}";
 

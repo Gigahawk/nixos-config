@@ -314,23 +314,30 @@
               ];
             }).neovim;
         };
-        devShell = pkgs.mkShell {
-          nativeBuildInputs = [
-            pkgs.apacheHttpd # Generate htpasswd files for kvmd
-            pkgs.nix-output-monitor # Better nix build output
-            pkgs.openssh
-            pkgs.rsync
-            pkgs.jq
-            pkgs.systemd # Read journalctl logs locally
-            pkgs.mkpasswd # Generate password hashes
-            pkgs.syncthing # Generate syncthing keys
-            agenix.packages.${system}.agenix
-            bcrypt-tool.packages.${system}.default
-            pkgs.nixos-rebuild # Build test systems locally
-            inventree.packages.${system}.gen-secret # Generate secret_key.txt
-            pkgs.zstd # Compress/decompress Pi images
-            pkgs.unixtools.fdisk
-          ];
+        devShells = {
+          default = pkgs.mkShell {
+            nativeBuildInputs = [
+              pkgs.apacheHttpd # Generate htpasswd files for kvmd
+              pkgs.nix-output-monitor # Better nix build output
+              pkgs.openssh
+              pkgs.rsync
+              pkgs.jq
+              pkgs.systemd # Read journalctl logs locally
+              pkgs.mkpasswd # Generate password hashes
+              pkgs.syncthing # Generate syncthing keys
+              agenix.packages.${system}.agenix
+              bcrypt-tool.packages.${system}.default
+              pkgs.nixos-rebuild # Build test systems locally
+              inventree.packages.${system}.gen-secret # Generate secret_key.txt
+              pkgs.zstd # Compress/decompress Pi images
+              pkgs.unixtools.fdisk
+            ];
+          };
+          gh-actions = pkgs.mkShell {
+            packages = [
+              pkgs.nixos-rebuild
+            ];
+          };
         };
       }
     ));

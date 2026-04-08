@@ -10,11 +10,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1775023071,
-        "narHash": "sha256-oqVfV4wWR1MC2XJRZVXT4BCM4PqVBNzQZ15gvkmT9rc=",
+        "lastModified": 1775516224,
+        "narHash": "sha256-rZOyMiyxpZtRxz3qIR/P6LsuhxT0J8dOPJfnsyEEtxs=",
         "owner": "Gigahawk",
         "repo": "advcpmv-flake",
-        "rev": "cb3c68c43a6093726f22ca4ffe5d878d69f15f24",
+        "rev": "08b5629ca61745111693167a0165f8acf561e77d",
         "type": "github"
       },
       "original": {

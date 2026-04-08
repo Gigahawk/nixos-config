@@ -1,0 +1,59 @@
+name: build-hosts
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      manifest: ${{ steps.manifest.outputs.manifest }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Install Nix
+        uses: nixbuild/nix-quick-install-action@v34
+        with:
+          nix_version: "2.31.2"
+      - name: Restore and cache Nix store
+        uses: nix-community/cache-nix-action@v6
+        with:
+          primary-key: cache-prepare-${{ runner.os }}-nix-store-${{ hashFiles('**/*.nix') }}
+          restore-prefixes-first-match: cache-prepare-${{ runner.os }}-nix-store-
+      - name: Export manifest
+        run: nix flake show --json | jq -c -r '.nixosConfigurations | keys' > manifest.json
+      - run: cat manifest.json
+      - name: Save manifest to output
+        id: manifest
+        run: |
+          echo "manifest=$(cat manifest.json)" >> "$GITHUB_OUTPUT"
+  build-hosts:
+    needs: prepare
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        host: ${{ fromJSON(needs.prepare.outputs.manifest) }}
+    env:
+      NIX_CONFIG: extra-platforms = aarch64-linux
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Install Nix
+        uses: nixbuild/nix-quick-install-action@v34
+        with:
+          nix_version: "2.31.2"
+      - name: Restore and cache Nix store
+        uses: nix-community/cache-nix-action@v6
+        with:
+          primary-key: cache-build-hosts-${{ runner.os }}-nix-store-${{ hashFiles('**/*.nix') }}
+          restore-prefixes-first-match: cache-build-hosts-${{ runner.os }}-nix-store-
+      - name: Build host ${{ matrix.host }}
+        # continue-on-error: true
+        run: nix develop .#gh-actions --command nixos-rebuild --flake .#${{ matrix.host }} --log-format bar-with-logs build
+      - name: Debug with tmate (failure only)
+        if: failure()
+        uses: mxschmitt/action-tmate@v3

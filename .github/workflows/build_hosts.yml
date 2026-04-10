@@ -42,15 +42,8 @@ jobs:
           submodules: true
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
-      - name: Install Nix
-        uses: nixbuild/nix-quick-install-action@v34
-        with:
-          nix_version: "2.31.2"
-      - name: Restore and cache Nix store
-        uses: nix-community/cache-nix-action@v6
-        with:
-          primary-key: cache-build-hosts-${{ runner.os }}-nix-store-${{ hashFiles('**/*.nix') }}
-          restore-prefixes-first-match: cache-build-hosts-${{ runner.os }}-nix-store-
+      - uses: wimpysworld/nothing-but-nix@v10
+      - uses: DeterminateSystems/nix-installer-action@main
       - name: Build host ${{ matrix.host }}
         # continue-on-error: true
         run: nix develop .#gh-actions --command nixos-rebuild --flake .#${{ matrix.host }} --log-format bar-with-logs build

@@ -367,7 +367,7 @@ in
     };
   };
 
-  services.fnott = {
+  services.dunst = {
     enable = desktop;
   };
 

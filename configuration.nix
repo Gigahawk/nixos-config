@@ -13,6 +13,8 @@
   ]
   ++ (if desktop then [ ./packages-desktop.nix ] else [ ]);
 
+  programs.nix-index-database.comma.enable = true;
+
   nix.settings = {
     experimental-features = [
       "nix-command"

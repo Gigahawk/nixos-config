@@ -47,6 +47,7 @@
       nix-output-monitor
       nix-tree
       nixfmt
+      nixpkgs-track
       openssh
       p7zip
       s-tui

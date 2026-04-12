@@ -184,7 +184,7 @@ in
         fi
 
         if password=$(gopass cat "$selected" | head -n 1); then
-          ydotool type "$password"
+          ydotool type --escape=false "$password"
 
           notify-send "Password Manager" "Password for '$selected' written to textbox"
         else

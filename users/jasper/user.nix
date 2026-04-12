@@ -23,6 +23,7 @@
       "docker"
       "input"
       "video" # Allow vcgencmd to work on rpi
+      config.programs.ydotool.group
     ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [

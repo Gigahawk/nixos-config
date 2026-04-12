@@ -184,16 +184,9 @@ in
         fi
 
         if password=$(gopass cat "$selected" | head -n 1); then
-          echo -n "$password" | wl-copy
+          ydotool type "$password"
 
-          notify-send "Password Manager" "Password for '$selected' copied to clipboard (60s)"
-
-          # TODO: maybe detect if clipboard has been modified since?
-          (
-            sleep 60
-            wl-copy -c
-            notify-send "Password Manager" "Clipboard cleared"
-          ) &
+          notify-send "Password Manager" "Password for '$selected' written to textbox"
         else
           notify-send "Password Manager" "Failed to retrieve password for '$selected'"
           exit 1

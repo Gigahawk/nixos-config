@@ -15,6 +15,7 @@
       bmon
       cabextract
       cifs-utils
+      comma
       cryptsetup
       dig
       dua

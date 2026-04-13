@@ -259,8 +259,12 @@ in
         "$menu" = "walker";
         "$bar" = "waybar";
 
-        input.touchpad = {
-          natural_scroll = true;
+        input = {
+          touchpad = {
+            natural_scroll = true;
+          };
+          # Only change focus on click
+          follow_mouse = 2;
         };
 
         exec-once = [

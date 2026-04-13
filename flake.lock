@@ -640,16 +640,16 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1776031479,
-        "narHash": "sha256-L3t3FhUjx8cYRJUnUm2D84ZOqxPf9o5jCXOx22MGQno=",
+        "lastModified": 1776050339,
+        "narHash": "sha256-iaX6B0BWwP/8sjDlRTWQEmYNx9VBuX8DtDFEhwhHcGI=",
         "owner": "Gigahawk",
         "repo": "nixos-inventree",
-        "rev": "048c5b38e727738c7236a968edbeb053397510a4",
+        "rev": "ccef6bae20a3acd73b8b1df66204d9f0d3d27893",
         "type": "github"
       },
       "original": {
         "owner": "Gigahawk",
-        "ref": "update-kicad-2.0.4",
+        "ref": "dev-server",
         "repo": "nixos-inventree",
         "type": "github"
       }

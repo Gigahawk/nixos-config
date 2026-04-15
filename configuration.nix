@@ -108,7 +108,7 @@
   };
 
   programs.ydotool = {
-    enable = true;
+    enable = desktop;
   };
 
   programs.git = {

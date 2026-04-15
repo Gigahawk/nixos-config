@@ -111,6 +111,8 @@
     enable = desktop;
   };
 
+  programs.nix-ld.enable = true;
+
   programs.git = {
     enable = true;
     config = {

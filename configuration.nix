@@ -43,7 +43,48 @@
     graphics.enable32Bit = true;
   };
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    enableBashCompletion = true;
+    enableLsColors = true;
+    histSize = 1000000;
+    vteIntegration = true;
+
+    syntaxHighlighting = {
+      enable = true;
+      highlighters = [
+        "main"
+        "brackets"
+        "pattern"
+        "cursor"
+        "regexp"
+        "root"
+        "line"
+      ];
+    };
+
+    autosuggestions = {
+      enable = true;
+      async = true;
+      strategy = [
+        "match_prev_cmd"
+        "completion"
+      ];
+    };
+
+    ohMyZsh = {
+      enable = true;
+      plugins = [
+        "git"
+        "pip"
+        "node"
+        "npm"
+        "command-not-found"
+      ];
+      theme = "fox";
+    };
+  };
 
   networking.firewall = {
     enable = true;

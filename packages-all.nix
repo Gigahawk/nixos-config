@@ -8,6 +8,7 @@
     with pkgs;
     [
       alejandra
+      android-tools
       bat
       bc
       binwalk

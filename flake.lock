@@ -660,11 +660,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1767215934,
-        "narHash": "sha256-mIZggdroBvmhOx8oweT090YQ9ChQhmgHSDorWpVTcZ8=",
+        "lastModified": 1777012734,
+        "narHash": "sha256-wKv2lnbTYQmFKFHvZsg7peXSCnsYTRCU2PRAOBax1Ww=",
         "owner": "Gigahawk",
         "repo": "nixos-kvmd",
-        "rev": "304d6780f2590b369dd1b3079f7dce1aefcccc17",
+        "rev": "cf07a185649192847c3df9bb43288a8e26756d12",
         "type": "github"
       },
       "original": {

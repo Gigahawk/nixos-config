@@ -46,7 +46,7 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - name: Build host ${{ matrix.host }}
         # continue-on-error: true
-        run: nix develop .#gh-actions --command nixos-rebuild --flake .#${{ matrix.host }} --log-format bar-with-logs build
+        run: nix develop .#gh-actions --command nixos-rebuild --flake .#${{ matrix.host }} --log-format bar-with-logs --show-trace build
       - name: Debug with tmate (failure only)
         if: failure()
         uses: mxschmitt/action-tmate@v3

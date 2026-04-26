@@ -28,7 +28,7 @@
 
   hardware.deviceTree = {
     enable = true;
-    filter = "bcm2711-rpi-cm4.dtb";
+    filter = lib.mkForce "bcm2711-rpi-cm4.dtb";
     overlays = [
       rec {
         name = "dwc2";

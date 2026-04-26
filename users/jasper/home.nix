@@ -189,7 +189,7 @@ in
         fi
       '';
       passmenu = pkgs.writeShellScript "passmenu.sh" ''
-        selected=$(gopass ls --flat | walker --dmenu)
+        selected=$(gopass ls --flat | fuzzel --dmenu)
 
         if [[ -z "$selected" ]]; then
           exit 0
@@ -268,7 +268,7 @@ in
       settings = {
         "$mod" = "SUPER";
         "$term" = "ghostty";
-        "$menu" = "walker";
+        "$menu" = "fuzzel";
         "$bar" = "waybar";
 
         input = {
@@ -359,20 +359,19 @@ in
       };
     };
 
-  services.walker = {
+  programs.fuzzel = {
     enable = desktop;
     settings = {
-      app_launch_prefix = "";
-      as_window = false;
-      close_when_open = false;
-      disable_click_to_close = false;
-      force_keyboard_focus = false;
-      hotreload_theme = false;
-      locale = " ";
-      monitor = "";
-      terminal_title_flag = "";
-      theme = "default";
-      timeout = 0;
+      # https://github.com/kuripa/oxocarbon-fuzzel
+      colors = {
+        background = "161616ff";
+        text = "ffffffff";
+        match = "ee5396ff";
+        selection-match = "ee5396ff";
+        selection = "262626ff";
+        selection-text = "33b1ffff";
+        border = "525252ff";
+      };
     };
   };
 

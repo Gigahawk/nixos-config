@@ -276,6 +276,7 @@
   services.samba = {
     enable = true;
     openFirewall = true;
+    package = pkgs.samba4Full;
     settings = {
       global = {
         "workgroup" = "WORKGROUP";

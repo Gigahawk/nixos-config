@@ -42,7 +42,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     smartp = {
-      url = "github:Gigahawk/smartp";
+      url = "github:Gigahawk/smartp/migrate-to-uv";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     inventree = {
@@ -160,6 +160,17 @@
       images = {
         haro = mkSdImage "haro";
       };
+      githubActions.matrix = builtins.map (name: rec {
+        inherit name;
+        inherit (self.nixosConfigurations.${name}.pkgs.stdenv.hostPlatform) system;
+        runner =
+          if system == "x86_64-linux" then
+            "ubuntu-latest"
+          else if system == "aarch64-linux" then
+            "ubuntu-24.04-arm"
+          else
+            "UNSUPPORTED-${system}";
+      }) (builtins.attrNames self.nixosConfigurations);
       nixosConfigurations = {
         # Main server
         ptolemy = lib.nixosSystem {

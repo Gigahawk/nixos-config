@@ -142,7 +142,7 @@
       sql.enable = true;
       java.enable = true;
       kotlin.enable = true;
-      ts.enable = true;
+      typescript.enable = true;
       go.enable = true;
       lua.enable = true;
       zig.enable = true;
@@ -179,14 +179,14 @@
     statusline = {
       lualine = {
         enable = true;
-        theme = "catppuccin";
+        theme = "dracula";
       };
     };
 
     theme = {
       enable = true;
-      name = "catppuccin";
-      style = "mocha";
+      name = "dracula";
+      style = "dark";
       transparent = false;
     };
 

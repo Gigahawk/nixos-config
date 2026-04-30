@@ -3,3 +3,4 @@ result
 *.img.zst
 **ssh_*
 **.iso
+**.pem

@@ -199,6 +199,7 @@
             ./modules/restic/module.nix
             ./modules/notify-startup-shutdown/module.nix
             ./modules/ghidra-server/module.nix
+            ./modules/nix-serve/module.nix
             ./hosts/ptolemy/configuration.nix
             ./hosts/ptolemy/hw-config.nix
             ./users/jasper/user.nix

@@ -275,6 +275,7 @@
   services.samba-wsdd.enable = true;
   services.samba = {
     enable = true;
+    package = pkgs.samba4Full;
     openFirewall = true;
     settings = {
       global = {

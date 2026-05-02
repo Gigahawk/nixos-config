@@ -64,7 +64,6 @@ in
   "upsmon-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "jellyfin-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "nix-serve-private-key-ptolemy.age".publicKeys = users ++ [ ptolemy ];
-  "nix-serve-public-key-ptolemy.age".publicKeys = users ++ (builtins.attrValues systems);
 
   "jasper-haro.age".publicKeys = users ++ [ haro ];
   "kvmd-ipmipasswd-haro.age".publicKeys = users ++ [ haro ];

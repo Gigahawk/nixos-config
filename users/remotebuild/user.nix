@@ -18,5 +18,11 @@
 
   users.groups.remotebuild = { };
 
-  nix.settings.trusted-users = [ "remotebuild" ];
+  nix = {
+    nrBuildUsers = 64;
+
+    settings = {
+      trusted-users = [ "remotebuild" ];
+    };
+  };
 }

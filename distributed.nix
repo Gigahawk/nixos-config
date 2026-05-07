@@ -31,6 +31,9 @@ in
           "benchmark"
           "big-parallel"
         ];
+
+        maxJobs = 6;
+        speedFactor = 10;
       }
     ];
   };

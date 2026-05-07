@@ -17,6 +17,9 @@
   programs.nix-index-database.comma.enable = true;
 
   nix = {
+    optimise = {
+      automatic = true;
+    };
     settings = {
       experimental-features = [
         "nix-command"
@@ -29,6 +32,12 @@
       ];
 
       download-buffer-size = 4194304000;
+      max-jobs = "auto";
+
+      # Trigger garbage collection when boot disk is less than 100M
+      min-free = 100 * 1024 * 1024;
+      # Free until 1G is free
+      max-free = 1 * 1024 * 1024 * 1024;
 
       trusted-public-keys = [
         (builtins.readFile ./secrets/nix-serve-public-key-ptolemy.pem.pub)
@@ -50,6 +59,13 @@
       # https://github.com/NixOS/nix/issues/15419
       fallback = true;
     };
+  };
+
+  systemd.services.nix-daemon.serviceConfig = {
+    MemoryAccounting = true;
+    MemoryHigh = "75%";
+    MemoryMax = "90%";
+    OOMScoreAdjust = 500;
   };
 
   nixpkgs.config.allowUnfree = true;

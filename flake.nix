@@ -203,6 +203,7 @@
             ./hosts/ptolemy/configuration.nix
             ./hosts/ptolemy/hw-config.nix
             ./users/jasper/user.nix
+            ./users/remotebuild/user.nix
           ];
         };
         # WSL on JASPER-PC

@@ -6,55 +6,50 @@
   desktop ? false,
   ...
 }:
-let
-  ports = import ./ports.nix;
-in
 {
   imports = [
     inputs.nix-index-database.nixosModules.default
     ./packages-all.nix
+    ./distributed.nix
   ]
   ++ (if desktop then [ ./packages-desktop.nix ] else [ ]);
 
   programs.nix-index-database.comma.enable = true;
 
-  nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+  nix = {
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
 
-    trusted-users = [
-      "root"
-      "@wheel"
-    ];
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
 
-    download-buffer-size = 4194304000;
+      download-buffer-size = 4194304000;
 
-    substituters = lib.mkIf (config.networking.hostName != "ptolemy") [
-      # Default nixpkgs cache has a priority of 40 (lower value is queried first)
-      # Use default nixpkgs cache where possible
-      "http://ptolemy.neon-chameleon.ts.net:${toString ports.nix-serve-external}?priority=50"
-    ];
-    trusted-public-keys = [
-      (builtins.readFile ./secrets/nix-serve-public-key-ptolemy.pem.pub)
-      (builtins.readFile ./secrets/nix-serve-public-key-builders.pem.pub)
-    ];
-    secret-key-files = [
-      config.age.secrets.nix-serve-builder-private-key.path
-    ];
-    # Default behavior seems to be a timeout after 15s and 5 reconnect attempts?
-    # Takes forever
-    download-attempts = 3;
-    connect-timeout = 3;
-    # If this is not true the build will completely fail
-    # if any substituter is unavailable.
-    # Even with this true the behavior is kind of jank
-    # since the first failure will invoke a fallback to building
-    # Relevant discussions:
-    # https://github.com/NixOS/nix/pull/13301
-    # https://github.com/NixOS/nix/issues/15419
-    fallback = true;
+      trusted-public-keys = [
+        (builtins.readFile ./secrets/nix-serve-public-key-ptolemy.pem.pub)
+        (builtins.readFile ./secrets/nix-serve-public-key-builders.pem.pub)
+      ];
+      secret-key-files = [
+        config.age.secrets.nix-serve-builder-private-key.path
+      ];
+      # Default behavior seems to be a timeout after 15s and 5 reconnect attempts?
+      # Takes forever
+      download-attempts = 3;
+      connect-timeout = 3;
+      # If this is not true the build will completely fail
+      # if any substituter is unavailable.
+      # Even with this true the behavior is kind of jank
+      # since the first failure will invoke a fallback to building
+      # Relevant discussions:
+      # https://github.com/NixOS/nix/pull/13301
+      # https://github.com/NixOS/nix/issues/15419
+      fallback = true;
+    };
   };
 
   nixpkgs.config.allowUnfree = true;

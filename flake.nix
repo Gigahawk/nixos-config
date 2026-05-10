@@ -105,6 +105,10 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-auto-push = {
+      url = "github:Gigahawk/nix-auto-push";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -132,6 +136,7 @@
       treefmt-nix,
       hydrasect,
       nix-index-database,
+      nix-auto-push,
       ...
     }:
     let
@@ -277,9 +282,11 @@
             ./configuration.nix
             ./modules/neovim/module.nix
             agenix.nixosModules.default
+            nix-auto-push.nixosModules.default
             ./hosts/arios/configuration.nix
             ./hosts/arios/hw-config.nix
             ./users/jasper/user.nix
+
           ];
         };
       };

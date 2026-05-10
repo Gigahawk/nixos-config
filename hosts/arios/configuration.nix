@@ -57,6 +57,17 @@
     HibernateMode = "shutdown";
   };
 
+  services.nix-auto-push = {
+    enable = true;
+    target = "ptolemy";
+    targetUser = "nix-auto-push-recv";
+    retryAttempts = 2;
+    sshOpts = [
+      "-oStrictHostKeyChecking=accept-new"
+      "-i ${config.age.secrets.nix-auto-push-private-key.path}"
+    ];
+  };
+
   age.secrets = {
     jasper = {
       file = ../../secrets/jasper-arios.age;
@@ -66,6 +77,11 @@
     };
     tailscale-key = {
       file = ../../secrets/tailscale-arios.age;
+    };
+    nix-auto-push-private-key = {
+      file = ../../secrets/nix-auto-push-private-key.age;
+      owner = config.services.nix-auto-push.serviceUser;
+      group = config.services.nix-auto-push.serviceUser;
     };
     wifi-env = {
       file = ../../secrets/wifi-env.age;

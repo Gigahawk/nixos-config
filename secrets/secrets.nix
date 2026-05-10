@@ -84,4 +84,5 @@ in
   "wifi-env.age".publicKeys = users ++ (builtins.attrValues systems);
   "xmpp-target-jid.age".publicKeys = users ++ (builtins.attrValues systems);
   "nix-serve-private-key-builders.age".publicKeys = users ++ (builtins.attrValues systems);
+  "nix-auto-push-private-key.age".publicKeys = users ++ (builtins.attrValues systems);
 }

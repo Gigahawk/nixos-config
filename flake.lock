@@ -218,6 +218,34 @@
         "type": "github"
       }
     },
+    "flake-parts-python": {
+      "inputs": {
+        "flake-parts": "flake-parts_5",
+        "import-tree": "import-tree_3",
+        "nixpkgs": [
+          "nix-auto-push",
+          "nixpkgs"
+        ],
+        "nixpkgs-lib": "nixpkgs-lib_5",
+        "pyproject-build-systems": "pyproject-build-systems_3",
+        "pyproject-nix": "pyproject-nix_3",
+        "treefmt-nix": "treefmt-nix_6",
+        "uv2nix": "uv2nix_3"
+      },
+      "locked": {
+        "lastModified": 1778274345,
+        "narHash": "sha256-CISzWWiZJgLLzpQ223tYNBNywD1O/Rbp1KwmTVVQhJM=",
+        "owner": "Gigahawk",
+        "repo": "flake-parts-python",
+        "rev": "6bbedcd0640bdba642b63b6537aa93c7136a2247",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Gigahawk",
+        "repo": "flake-parts-python",
+        "type": "github"
+      }
+    },
     "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
@@ -259,6 +287,42 @@
       }
     },
     "flake-parts_4": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib_3"
+      },
+      "locked": {
+        "lastModified": 1777988971,
+        "narHash": "sha256-qIoWPDs+0/8JecyYgE3gpKQxW/4bLW/gp45vow9ioCQ=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "0678d8986be1661af6bb555f3489f2fdfc31f6ff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_5": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib_4"
+      },
+      "locked": {
+        "lastModified": 1777988971,
+        "narHash": "sha256-qIoWPDs+0/8JecyYgE3gpKQxW/4bLW/gp45vow9ioCQ=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "0678d8986be1661af6bb555f3489f2fdfc31f6ff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_6": {
       "inputs": {
         "nixpkgs-lib": [
           "nvf",
@@ -578,6 +642,36 @@
         "type": "github"
       }
     },
+    "import-tree_3": {
+      "locked": {
+        "lastModified": 1773693634,
+        "narHash": "sha256-BtZ2dtkBdSUnFPPFc+n0kcMbgaTxzFNPv2iaO326Ffg=",
+        "owner": "vic",
+        "repo": "import-tree",
+        "rev": "c41e7d58045f9057880b0d85e1152d6a4430dbf1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vic",
+        "repo": "import-tree",
+        "type": "github"
+      }
+    },
+    "import-tree_4": {
+      "locked": {
+        "lastModified": 1773693634,
+        "narHash": "sha256-BtZ2dtkBdSUnFPPFc+n0kcMbgaTxzFNPv2iaO326Ffg=",
+        "owner": "vic",
+        "repo": "import-tree",
+        "rev": "c41e7d58045f9057880b0d85e1152d6a4430dbf1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vic",
+        "repo": "import-tree",
+        "type": "github"
+      }
+    },
     "inventree": {
       "inputs": {
         "flake-parts": "flake-parts_3",
@@ -656,6 +750,30 @@
         "owner": "feel-co",
         "ref": "refs/tags/v2.6.0",
         "repo": "ndg",
+        "type": "github"
+      }
+    },
+    "nix-auto-push": {
+      "inputs": {
+        "flake-parts": "flake-parts_4",
+        "flake-parts-python": "flake-parts-python",
+        "import-tree": "import-tree_4",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": "treefmt-nix_7"
+      },
+      "locked": {
+        "lastModified": 1778452547,
+        "narHash": "sha256-QNXmqVFoNGwggnNH0Vdt+/LMq9CSFrWWRkwcBs+JgQg=",
+        "owner": "Gigahawk",
+        "repo": "nix-auto-push",
+        "rev": "cc3297c68991538a2c242fc0436b1e9efc721550",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Gigahawk",
+        "repo": "nix-auto-push",
         "type": "github"
       }
     },
@@ -942,6 +1060,54 @@
         "type": "github"
       }
     },
+    "nixpkgs-lib_3": {
+      "locked": {
+        "lastModified": 1777168982,
+        "narHash": "sha256-GOkGPcboWE9BmGCRMLX3worL4EMnsnG8MyKmXNeYuhQ=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "f5901329dade4a6ea039af1433fb087bd9c1fe14",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "nixpkgs-lib_4": {
+      "locked": {
+        "lastModified": 1777168982,
+        "narHash": "sha256-GOkGPcboWE9BmGCRMLX3worL4EMnsnG8MyKmXNeYuhQ=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "f5901329dade4a6ea039af1433fb087bd9c1fe14",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "nixpkgs-lib_5": {
+      "locked": {
+        "dir": "lib",
+        "lastModified": 1777954456,
+        "narHash": "sha256-hGdgeU2Nk87RAuZyYjyDjFL6LK7dAZN5RE9+hrDTkDU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "549bd84d6279f9852cae6225e372cc67fb91a4c1",
+        "type": "github"
+      },
+      "original": {
+        "dir": "lib",
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1685801374,
@@ -1045,7 +1211,7 @@
     "nvf": {
       "inputs": {
         "flake-compat": "flake-compat_2",
-        "flake-parts": "flake-parts_4",
+        "flake-parts": "flake-parts_6",
         "mnw": "mnw",
         "ndg": "ndg",
         "nixpkgs": [
@@ -1153,6 +1319,38 @@
     "pyproject-build-systems_3": {
       "inputs": {
         "nixpkgs": [
+          "nix-auto-push",
+          "flake-parts-python",
+          "nixpkgs"
+        ],
+        "pyproject-nix": [
+          "nix-auto-push",
+          "flake-parts-python",
+          "pyproject-nix"
+        ],
+        "uv2nix": [
+          "nix-auto-push",
+          "flake-parts-python",
+          "uv2nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1776659114,
+        "narHash": "sha256-qapCOQmR++yZSY43dzrp3wCrkOTLpod+ONtJWBk6iKU=",
+        "owner": "pyproject-nix",
+        "repo": "build-system-pkgs",
+        "rev": "ffaa2161dd5d63e0e94591f86b54fc239660fb2e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pyproject-nix",
+        "repo": "build-system-pkgs",
+        "type": "github"
+      }
+    },
+    "pyproject-build-systems_4": {
+      "inputs": {
+        "nixpkgs": [
           "smartp",
           "nixpkgs"
         ],
@@ -1179,7 +1377,7 @@
         "type": "github"
       }
     },
-    "pyproject-build-systems_4": {
+    "pyproject-build-systems_5": {
       "inputs": {
         "nixpkgs": [
           "xmpp-bridge",
@@ -1253,7 +1451,8 @@
     "pyproject-nix_3": {
       "inputs": {
         "nixpkgs": [
-          "smartp",
+          "nix-auto-push",
+          "flake-parts-python",
           "nixpkgs"
         ]
       },
@@ -1272,6 +1471,27 @@
       }
     },
     "pyproject-nix_4": {
+      "inputs": {
+        "nixpkgs": [
+          "smartp",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1776715674,
+        "narHash": "sha256-Gs1VnEkCkkRZxJQAC/Dhz0Jbfi22mFXChbtNg9w/Ybg=",
+        "owner": "pyproject-nix",
+        "repo": "pyproject.nix",
+        "rev": "69f57f27e52a87c54e28138a75ec741cd46663c9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pyproject-nix",
+        "repo": "pyproject.nix",
+        "type": "github"
+      }
+    },
+    "pyproject-nix_5": {
       "inputs": {
         "nixpkgs": [
           "xmpp-bridge",
@@ -1304,6 +1524,7 @@
         "hydrasect": "hydrasect",
         "inventree": "inventree",
         "kvmd": "kvmd",
+        "nix-auto-push": "nix-auto-push",
         "nix-index-database": "nix-index-database",
         "nix-on-droid": "nix-on-droid",
         "nix-top": "nix-top",
@@ -1315,7 +1536,7 @@
         "nnn-plugins": "nnn-plugins",
         "nvf": "nvf",
         "smartp": "smartp",
-        "treefmt-nix": "treefmt-nix_7",
+        "treefmt-nix": "treefmt-nix_9",
         "vscode-remote-workaround": "vscode-remote-workaround",
         "xmpp-bridge": "xmpp-bridge"
       }
@@ -1342,10 +1563,10 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "pyproject-build-systems": "pyproject-build-systems_3",
-        "pyproject-nix": "pyproject-nix_3",
-        "treefmt-nix": "treefmt-nix_6",
-        "uv2nix": "uv2nix_3"
+        "pyproject-build-systems": "pyproject-build-systems_4",
+        "pyproject-nix": "pyproject-nix_4",
+        "treefmt-nix": "treefmt-nix_8",
+        "uv2nix": "uv2nix_4"
       },
       "locked": {
         "lastModified": 1777057381,
@@ -1562,6 +1783,27 @@
         "type": "github"
       }
     },
+    "treefmt-nix_10": {
+      "inputs": {
+        "nixpkgs": [
+          "xmpp-bridge",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775636079,
+        "narHash": "sha256-pc20NRoMdiar8oPQceQT47UUZMBTiMdUuWrYu2obUP0=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "790751ff7fd3801feeaf96d7dc416a8d581265ba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
     "treefmt-nix_2": {
       "inputs": {
         "nixpkgs": [
@@ -1650,7 +1892,8 @@
     "treefmt-nix_6": {
       "inputs": {
         "nixpkgs": [
-          "smartp",
+          "nix-auto-push",
+          "flake-parts-python",
           "nixpkgs"
         ]
       },
@@ -1671,6 +1914,7 @@
     "treefmt-nix_7": {
       "inputs": {
         "nixpkgs": [
+          "nix-auto-push",
           "nixpkgs"
         ]
       },
@@ -1691,7 +1935,27 @@
     "treefmt-nix_8": {
       "inputs": {
         "nixpkgs": [
-          "xmpp-bridge",
+          "smartp",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775636079,
+        "narHash": "sha256-pc20NRoMdiar8oPQceQT47UUZMBTiMdUuWrYu2obUP0=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "790751ff7fd3801feeaf96d7dc416a8d581265ba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "treefmt-nix_9": {
+      "inputs": {
+        "nixpkgs": [
           "nixpkgs"
         ]
       },
@@ -1762,6 +2026,33 @@
     "uv2nix_3": {
       "inputs": {
         "nixpkgs": [
+          "nix-auto-push",
+          "flake-parts-python",
+          "nixpkgs"
+        ],
+        "pyproject-nix": [
+          "nix-auto-push",
+          "flake-parts-python",
+          "pyproject-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777895960,
+        "narHash": "sha256-KebDsQd+A7pm++Tp0744EjULttHvz1wbKqNKkMA/088=",
+        "owner": "pyproject-nix",
+        "repo": "uv2nix",
+        "rev": "5ad90d48b80ecc920ca2247d53f46beba302e186",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pyproject-nix",
+        "repo": "uv2nix",
+        "type": "github"
+      }
+    },
+    "uv2nix_4": {
+      "inputs": {
+        "nixpkgs": [
           "smartp",
           "nixpkgs"
         ],
@@ -1784,7 +2075,7 @@
         "type": "github"
       }
     },
-    "uv2nix_4": {
+    "uv2nix_5": {
       "inputs": {
         "nixpkgs": [
           "xmpp-bridge",
@@ -1837,10 +2128,10 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "pyproject-build-systems": "pyproject-build-systems_4",
-        "pyproject-nix": "pyproject-nix_4",
-        "treefmt-nix": "treefmt-nix_8",
-        "uv2nix": "uv2nix_4"
+        "pyproject-build-systems": "pyproject-build-systems_5",
+        "pyproject-nix": "pyproject-nix_5",
+        "treefmt-nix": "treefmt-nix_10",
+        "uv2nix": "uv2nix_5"
       },
       "locked": {
         "lastModified": 1775675241,

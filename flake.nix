@@ -208,6 +208,7 @@
             ./hosts/ptolemy/hw-config.nix
             ./users/jasper/user.nix
             ./users/remotebuild/user.nix
+            ./users/nix-auto-push-recv/user.nix
           ];
         };
         # WSL on JASPER-PC
@@ -280,7 +281,7 @@
             ./hosts/arios/configuration.nix
             ./hosts/arios/hw-config.nix
             ./users/jasper/user.nix
-
+            ./users/remotebuild/user.nix
           ];
         };
       };

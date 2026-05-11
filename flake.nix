@@ -190,7 +190,6 @@
             overlays
             ./configuration.nix
             ./modules/neovim/module.nix
-            agenix.nixosModules.default
             ./modules/snapraid/module.nix
             ./modules/xmpp-bridge/module.nix
             ./modules/samba-users/module.nix
@@ -221,7 +220,6 @@
             overlays
             nixos-wsl.nixosModules.default
             ./configuration.nix
-            agenix.nixosModules.default
             vscode-remote-workaround.nixosModules.default
             ./hosts/veda/configuration.nix
             #./hosts/veda/hw-config.nix
@@ -238,7 +236,6 @@
           modules = [
             overlays
             ./configuration.nix
-            agenix.nixosModules.default
             kvmd.nixosModule
             #./modules/xmpp-bridge/module.nix
             ./modules/raspi4/module.nix
@@ -259,7 +256,6 @@
             overlays
             ./configuration.nix
             ./modules/neovim/module.nix
-            agenix.nixosModules.default
             ./modules/snapraid/module.nix
             ./modules/xmpp-bridge/module.nix
             inventree.nixosModules.default
@@ -281,8 +277,6 @@
             overlays
             ./configuration.nix
             ./modules/neovim/module.nix
-            agenix.nixosModules.default
-            nix-auto-push.nixosModules.default
             ./hosts/arios/configuration.nix
             ./hosts/arios/hw-config.nix
             ./users/jasper/user.nix

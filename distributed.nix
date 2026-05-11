@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
@@ -8,6 +9,10 @@ let
   ports = import ./ports.nix;
 in
 {
+  imports = [
+    inputs.nix-auto-push.nixosModules.default
+  ];
+
   nix = lib.mkIf (config.networking.hostName != "ptolemy") {
     distributedBuilds = true;
     settings = {
@@ -36,5 +41,24 @@ in
         speedFactor = 10;
       }
     ];
+  };
+
+  services.nix-auto-push = lib.mkIf (config.networking.hostName != "ptolemy") {
+    enable = true;
+    target = "ptolemy";
+    targetUser = "nix-auto-push-recv";
+    retryAttempts = 2;
+    sshOpts = [
+      "-oStrictHostKeyChecking=accept-new"
+      "-i ${config.age.secrets.nix-auto-push-private-key.path}"
+    ];
+  };
+
+  age.secrets = lib.mkIf (config.networking.hostName != "ptolemy") {
+    nix-auto-push-private-key = {
+      file = ./secrets/nix-auto-push-private-key.age;
+      owner = config.services.nix-auto-push.serviceUser;
+      group = config.services.nix-auto-push.serviceUser;
+    };
   };
 }

@@ -764,11 +764,11 @@
         "treefmt-nix": "treefmt-nix_7"
       },
       "locked": {
-        "lastModified": 1778452547,
-        "narHash": "sha256-QNXmqVFoNGwggnNH0Vdt+/LMq9CSFrWWRkwcBs+JgQg=",
+        "lastModified": 1778459710,
+        "narHash": "sha256-cOZWGrVzc4wd+3y1WVXZxM8zQso7Xhc5PGThVyK+C5k=",
         "owner": "Gigahawk",
         "repo": "nix-auto-push",
-        "rev": "cc3297c68991538a2c242fc0436b1e9efc721550",
+        "rev": "802ae6bfaa37e35224228e8af44c7327c3e6bcf0",
         "type": "github"
       },
       "original": {

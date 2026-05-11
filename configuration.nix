@@ -9,6 +9,7 @@
 {
   imports = [
     inputs.nix-index-database.nixosModules.default
+    inputs.agenix.nixosModules.default
     ./packages-all.nix
     ./distributed.nix
   ]

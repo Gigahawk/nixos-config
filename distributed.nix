@@ -7,6 +7,19 @@
 }:
 let
   ports = import ./ports.nix;
+  # Selectively enable distributed builds on machines
+  # Nix's handling of distributed builds is... poor
+  # https://github.com/NixOS/nix/issues/2589
+  distributedBuildBlacklist = [
+    # Don't enable remote building on build server
+    "ptolemy"
+    # Main PC is faster than ptolemy
+    # TODO: high CPU usage in WSL seems to cause bluescreens
+    # on this system, might be worth just offloading builds
+    # where we can
+    "veda"
+  ];
+  distributedBuilds = !builtins.elem config.networking.hostName distributedBuildBlacklist;
 in
 {
   imports = [
@@ -14,7 +27,7 @@ in
   ];
 
   nix = lib.mkIf (config.networking.hostName != "ptolemy") {
-    distributedBuilds = true;
+    inherit distributedBuilds;
     settings = {
       builders-use-substitutes = true;
       substituters = [

@@ -63,6 +63,7 @@ in
   "paperless-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "upsmon-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "jellyfin-ptolemy.age".publicKeys = users ++ [ ptolemy ];
+  "nix-serve-private-key-ptolemy.age".publicKeys = users ++ [ ptolemy ];
 
   "jasper-haro.age".publicKeys = users ++ [ haro ];
   "kvmd-ipmipasswd-haro.age".publicKeys = users ++ [ haro ];
@@ -82,4 +83,6 @@ in
 
   "wifi-env.age".publicKeys = users ++ (builtins.attrValues systems);
   "xmpp-target-jid.age".publicKeys = users ++ (builtins.attrValues systems);
+  "nix-serve-private-key-builders.age".publicKeys = users ++ (builtins.attrValues systems);
+  "nix-auto-push-private-key.age".publicKeys = users ++ (builtins.attrValues systems);
 }

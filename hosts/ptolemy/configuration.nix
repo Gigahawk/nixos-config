@@ -737,6 +737,9 @@
     paperless = {
       file = ../../secrets/paperless-ptolemy.age;
     };
+    nix-serve-private-key = {
+      file = ../../secrets/nix-serve-private-key-ptolemy.age;
+    };
     wifi-env = {
       file = ../../secrets/wifi-env.age;
     };

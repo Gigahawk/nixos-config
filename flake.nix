@@ -105,6 +105,10 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-auto-push = {
+      url = "github:Gigahawk/nix-auto-push";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -132,6 +136,7 @@
       treefmt-nix,
       hydrasect,
       nix-index-database,
+      nix-auto-push,
       ...
     }:
     let
@@ -185,7 +190,6 @@
             overlays
             ./configuration.nix
             ./modules/neovim/module.nix
-            agenix.nixosModules.default
             ./modules/snapraid/module.nix
             ./modules/xmpp-bridge/module.nix
             ./modules/samba-users/module.nix
@@ -199,9 +203,12 @@
             ./modules/restic/module.nix
             ./modules/notify-startup-shutdown/module.nix
             ./modules/ghidra-server/module.nix
+            ./modules/nix-serve/module.nix
             ./hosts/ptolemy/configuration.nix
             ./hosts/ptolemy/hw-config.nix
             ./users/jasper/user.nix
+            ./users/remotebuild/user.nix
+            ./users/nix-auto-push-recv/user.nix
           ];
         };
         # WSL on JASPER-PC
@@ -214,7 +221,6 @@
             overlays
             nixos-wsl.nixosModules.default
             ./configuration.nix
-            agenix.nixosModules.default
             vscode-remote-workaround.nixosModules.default
             ./hosts/veda/configuration.nix
             #./hosts/veda/hw-config.nix
@@ -231,7 +237,6 @@
           modules = [
             overlays
             ./configuration.nix
-            agenix.nixosModules.default
             kvmd.nixosModule
             #./modules/xmpp-bridge/module.nix
             ./modules/raspi4/module.nix
@@ -252,7 +257,6 @@
             overlays
             ./configuration.nix
             ./modules/neovim/module.nix
-            agenix.nixosModules.default
             ./modules/snapraid/module.nix
             ./modules/xmpp-bridge/module.nix
             inventree.nixosModules.default
@@ -274,10 +278,10 @@
             overlays
             ./configuration.nix
             ./modules/neovim/module.nix
-            agenix.nixosModules.default
             ./hosts/arios/configuration.nix
             ./hosts/arios/hw-config.nix
             ./users/jasper/user.nix
+            ./users/remotebuild/user.nix
           ];
         };
       };

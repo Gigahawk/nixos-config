@@ -68,10 +68,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware = {
-      # HACK: prevent skipped overlays https://github.com/NixOS/nixos-hardware/issues/1529
-      # HACK: support 4 lane CSI https://github.com/NixOS/nixos-hardware/pull/1530
-      url = "github:Gigahawk/nixos-hardware/personal";
-      #url = "github:nixos/nixos-hardware";
+      url = "github:nixos/nixos-hardware";
     };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";

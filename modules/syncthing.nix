@@ -9,6 +9,7 @@ let
   cfg = config.syncthingSettings;
   # What does this do?
   settingsFormat = pkgs.formats.json { };
+  ports = import ../ports.nix;
 in
 {
   options.syncthingSettings = {
@@ -57,13 +58,20 @@ in
       configDir = "/etc/syncthing";
       user = "jasper";
       group = "users";
-      guiAddress = "0.0.0.0:8384";
+      guiAddress = "0.0.0.0:${builtins.toString ports.syncthing}";
       key = config.age.secrets.syncthing-key.path;
       cert = config.age.secrets.syncthing-cert.path;
       overrideDevices = true;
       overrideFolders = true;
       settings = {
         devices = {
+          arios = {
+            id = "53W7CGR-T26ZSLR-24VDJKE-VTZZVTJ-PP64OGV-SMXMQOS-CABLEOT-ZCBPJQM";
+          };
+          ptolemy = {
+            id = "DVSWOT3-6RE3PRD-OB3IVQI-VELDUFR-EMHZZCR-MPGNVW3-EIHW4LK-REFXVAJ";
+          };
+
           JASPER-PC = {
             # Windows
             id = "F424O47-RWTQQSG-L7TZ7CP-OM77COG-QVB4WZW-XVOA2DU-5CJPTYQ-KKYHHQQ";
@@ -71,12 +79,6 @@ in
           jasper-void = {
             # Void Linux
             id = "2M3W4TM-4BJQSNJ-BTUNFTU-PJ4TK7E-B7C37VA-BMOSV7X-UFHVNJE-UDBPQQ7";
-          };
-          ptolemy = {
-            id = "DVSWOT3-6RE3PRD-OB3IVQI-VELDUFR-EMHZZCR-MPGNVW3-EIHW4LK-REFXVAJ";
-          };
-          arios = {
-            id = "53W7CGR-T26ZSLR-24VDJKE-VTZZVTJ-PP64OGV-SMXMQOS-CABLEOT-ZCBPJQM";
           };
           remarkable = {
             # reMarkable
@@ -96,9 +98,11 @@ in
             id = "Music";
             path = cfg.folders.Music.path;
             devices = [
+              "arios"
+              "ptolemy"
+
               "JASPER-PC"
               "jasper-void"
-              "ptolemy"
               "zenfone-9"
               "xperia-1-vii"
             ];
@@ -114,9 +118,11 @@ in
             id = "Documents";
             path = cfg.folders.Documents.path;
             devices = [
+              "arios"
+              "ptolemy"
+
               "JASPER-PC"
               "jasper-void"
-              "ptolemy"
               "zenfone-9"
               "xperia-1-vii"
             ];
@@ -132,9 +138,11 @@ in
             id = "Homework";
             path = cfg.folders.Homework.path;
             devices = [
+              "arios"
+              "ptolemy"
+
               "JASPER-PC"
               "jasper-void"
-              "ptolemy"
             ];
             versioning = {
               type = "staggered";
@@ -149,9 +157,11 @@ in
             id = "remarkable_sync";
             path = cfg.folders.remarkable_sync.path;
             devices = [
+              "arios"
+              "ptolemy"
+
               "JASPER-PC"
               "jasper-void"
-              "ptolemy"
               "remarkable"
               "zenfone-9"
               "xperia-1-vii"
@@ -168,9 +178,11 @@ in
             id = "pdf2remarkable";
             path = cfg.folders.pdf2remarkable.path;
             devices = [
+              "arios"
+              "ptolemy"
+
               "JASPER-PC"
               "jasper-void"
-              "ptolemy"
               "remarkable"
               "zenfone-9"
               "xperia-1-vii"

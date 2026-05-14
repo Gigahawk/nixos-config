@@ -14,6 +14,7 @@
 
   homepage-dashboard = 8082;
   jellyfin = 8096;
+  syncthing = 8384;
   netdata = 19999;
   dawarich = 23002;
   paperless = 28981;

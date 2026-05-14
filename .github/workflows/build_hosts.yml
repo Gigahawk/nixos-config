@@ -51,3 +51,16 @@ jobs:
         if: failure()
         uses: mxschmitt/action-tmate@v3
         timeout-minutes: 10
+      - name: Export closure for ${{ matrix.host.name }}
+        run: |
+          root_path=$(nix build .#nixosConfigurations.${{ matrix.host.name }}.config.system.build.toplevel --no-link --print-out-paths)
+          nix path-info -r "$root_path" | \
+            xargs nix-store --export | \
+            zstd -T0 -19 -o "${{ matrix.host.name }}-${{ github.sha }}.closure.zst"
+      - name: Upload closure for ${{ matrix.host.name }}
+        uses: actions/upload-artifact@v7
+        with:
+          path: ${{ matrix.host.name }}-${{ github.sha }}.closure.zst
+          if-no-files-found: error
+          retention-days: 3
+          archive: false

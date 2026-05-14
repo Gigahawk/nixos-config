@@ -43,6 +43,9 @@ jobs:
       #- name: Set up QEMU
       #  uses: docker/setup-qemu-action@v3
       - uses: wimpysworld/nothing-but-nix@v10
+        with:
+          hatchet-protocol: rampage
+          witness-carnage: true
       - uses: DeterminateSystems/nix-installer-action@main
       - name: Build host ${{ matrix.host.name }}
         # continue-on-error: true

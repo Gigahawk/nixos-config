@@ -280,6 +280,7 @@
             ./modules/neovim/module.nix
             ./hosts/arios/configuration.nix
             ./hosts/arios/hw-config.nix
+            ./modules/syncthing.nix
             ./users/jasper/user.nix
             ./users/remotebuild/user.nix
           ];

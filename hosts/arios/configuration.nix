@@ -57,9 +57,26 @@
     HibernateMode = "shutdown";
   };
 
+  syncthingSettings = {
+    guiPassword = "$2a$10$eTxUOucXaa8PJomSm0C3UO4XO3m.qCvShrqU.8GVOZRczh8W/WS7K";
+    folders = {
+      Music.path = "/home/jasper/Music";
+      Documents.path = "/home/jasper/Documents";
+      Homework.path = "/home/jasper/Homework";
+      remarkable_sync.path = "/home/jasper/remarkable_sync";
+      pdf2remarkable.path = "/home/jasper/pdf2remarkable";
+    };
+  };
+
   age.secrets = {
     jasper = {
       file = ../../secrets/jasper-arios.age;
+    };
+    syncthing-key = {
+      file = ../../secrets/syncthing-key-arios.age;
+    };
+    syncthing-cert = {
+      file = ../../secrets/syncthing-cert-arios.age;
     };
     smb-secrets-ptolemy = {
       file = ../../secrets/smb-secrets-ptolemy.age;

@@ -61,6 +61,7 @@ in
   "restic-repository-storj-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "restic-password-storj-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "paperless-ptolemy.age".publicKeys = users ++ [ ptolemy ];
+  "dawarich-secret-key-base-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "upsmon-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "jellyfin-ptolemy.age".publicKeys = users ++ [ ptolemy ];
   "nix-serve-private-key-ptolemy.age".publicKeys = users ++ [ ptolemy ];

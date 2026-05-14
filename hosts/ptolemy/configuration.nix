@@ -203,6 +203,7 @@
     ports.wsdd-tcp
     ports.netdata
     ports.jellyfin
+    ports.dawarich
   ];
   networking.firewall.allowedUDPPorts = [
     ports.wsdd-udp
@@ -527,11 +528,32 @@
       };
     };
   };
+  # Enabled by services.paperless.configureTika = true,
+  # Explicitly define/set the default port to avoid conflicts
+  services.gotenberg = {
+    port = ports.gotenberg;
+  };
 
-  #  services.dawarich = {
-  #    enable = true;
-  #webPort:
-  #  };
+  services.dawarich = {
+    enable = true;
+    webPort = ports.dawarich;
+    localDomain = "ptolemy";
+    secretKeyBaseFile = config.age.secrets.dawarich.path;
+    environment = {
+      STORE_GEODATA = "true";
+      # What does this do?
+      # PHOTON_API_HOST =
+      # PHOTON_API_USE_HTTPS = "true";
+      ENABLE_TELEMETRY = "false";
+
+      ALLOW_EMAIL_PASSWORD_REGISTRATION = "true";
+    };
+
+    extraEnvFiles = [
+      # TODO: Create file with OIDC_CLIENT_SECRET
+
+    ];
+  };
 
   power.ups = {
     enable = true;
@@ -736,6 +758,9 @@
     };
     paperless = {
       file = ../../secrets/paperless-ptolemy.age;
+    };
+    dawarich = {
+      file = ../../secrets/dawarich-secret-key-base-ptolemy.age;
     };
     nix-serve-private-key = {
       file = ../../secrets/nix-serve-private-key-ptolemy.age;

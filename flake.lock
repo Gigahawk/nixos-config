@@ -931,15 +931,16 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1778593042,
-        "narHash": "sha256-xYGrSg6354UK2K4WSQd4+TfyvfqmvFbSY+ZtGQUXK0c=",
-        "owner": "nixos",
+        "lastModified": 1779256869,
+        "narHash": "sha256-McZ3bbI7TjnP3FaKPK4eG/6xcldEvM3ZkWZL5l0B2Mk=",
+        "owner": "Gigahawk",
         "repo": "nixos-hardware",
-        "rev": "9bd7c80d43e258aaa607d83b43661df11444d808",
+        "rev": "7b4a09c0c029dd975693378668e9ceb95bc8e5aa",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
+        "owner": "Gigahawk",
+        "ref": "update-rpi-kernel",
         "repo": "nixos-hardware",
         "type": "github"
       }

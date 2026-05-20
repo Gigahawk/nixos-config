@@ -68,7 +68,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware = {
-      url = "github:nixos/nixos-hardware";
+      url = "github:Gigahawk/nixos-hardware/update-rpi-kernel";
     };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";

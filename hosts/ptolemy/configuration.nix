@@ -256,6 +256,11 @@
       # Gitea
       "gitea.service"
 
+      # Dawarich
+      # "dawarich-init-db.service" # Surely this is not needed
+      "dawarich-sidekiq-all.service"
+      "dawarich-web.service"
+
       # Inventree tends to fail for some reason, put it at the end
       "inventree-cluster.service"
       "inventree-server.service"

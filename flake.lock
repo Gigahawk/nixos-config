@@ -1569,16 +1569,15 @@
         "uv2nix": "uv2nix_4"
       },
       "locked": {
-        "lastModified": 1777057381,
-        "narHash": "sha256-AJSi7AWTJNdsVKq/QvnctSdscQ1Kibd08eo1KwEmDGc=",
+        "lastModified": 1779867514,
+        "narHash": "sha256-O132mJnBoXj7iNfkkfyInS+gcbEzK1r4+ReQSpnHJpg=",
         "owner": "Gigahawk",
         "repo": "smartp",
-        "rev": "e42f96b40051e2cecee96e32d55d231e90be4e6f",
+        "rev": "136561408d85efba30bb1cda1187edf7daeb68bd",
         "type": "github"
       },
       "original": {
         "owner": "Gigahawk",
-        "ref": "migrate-to-uv",
         "repo": "smartp",
         "type": "github"
       }

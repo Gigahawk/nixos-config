@@ -42,7 +42,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     smartp = {
-      url = "github:Gigahawk/smartp/migrate-to-uv";
+      url = "github:Gigahawk/smartp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     inventree = {

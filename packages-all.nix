@@ -35,6 +35,7 @@
       gosu
       hddtemp
       hwinfo
+      hydra-check
       i2c-tools
       imagemagick
       iputils

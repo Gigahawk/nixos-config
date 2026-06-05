@@ -15,6 +15,7 @@
     localsend
     mayo
     packet
+    picard
     piper
     printrun
     prusa-slicer

@@ -14,6 +14,7 @@
     libreoffice
     localsend
     mayo
+    nautilus
     packet
     picard
     piper

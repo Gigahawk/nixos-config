@@ -48,9 +48,8 @@
       backup_dir = "/mnt/pool/inventree-test/backup";
     };
 
-    plugins = {
-      inventree-kicad-plugin = [ ];
-    };
+    pluginWorkspace = ./inventree-ws;
+    pluginOverrides = ./inventree-ws/plugin-overrides.nix;
 
     users = {
       jasper = {

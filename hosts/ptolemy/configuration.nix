@@ -160,9 +160,8 @@
       plugins_enabled = true;
     };
 
-    plugins = {
-      inventree-kicad-plugin = [ ];
-    };
+    pluginWorkspace = ./inventree-ws;
+    pluginOverrides = ./inventree-ws/plugin-overrides.nix;
 
     users = {
       jasper = {

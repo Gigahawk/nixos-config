@@ -201,6 +201,7 @@
             ./modules/jellyfin.nix
             inventree.nixosModules.default
             cypress-ticket-scraper.nixosModule
+            rewheel.nixosModules.default
             ./modules/inventree-backup/module.nix
             ./modules/restic/module.nix
             ./modules/notify-startup-shutdown/module.nix

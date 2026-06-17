@@ -559,6 +559,14 @@
     ];
   };
 
+  services.rewheel-web = {
+    enable = true;
+    port = ports.rewheel;
+    extraOptions = {
+      log-level = "debug";
+    };
+  };
+
   power.ups = {
     enable = true;
     ups."apc-back-ups" = {

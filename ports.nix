@@ -7,6 +7,8 @@
 
   # Some samba thing
   wsdd-udp = 3702;
+  rewheel = 5174;
+  # Some samba thing
   wsdd-tcp = 5357;
 
   nix-serve-internal = 6000;

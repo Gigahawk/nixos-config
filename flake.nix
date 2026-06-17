@@ -106,6 +106,10 @@
       url = "github:Gigahawk/nix-auto-push";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    rewheel = {
+      url = "github:Gigahawk/rewheel-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -134,6 +138,7 @@
       hydrasect,
       nix-index-database,
       nix-auto-push,
+      rewheel,
       ...
     }:
     let
@@ -196,6 +201,7 @@
             ./modules/jellyfin.nix
             inventree.nixosModules.default
             cypress-ticket-scraper.nixosModule
+            rewheel.nixosModules.default
             ./modules/inventree-backup/module.nix
             ./modules/restic/module.nix
             ./modules/notify-startup-shutdown/module.nix
@@ -257,6 +263,7 @@
             ./modules/snapraid/module.nix
             ./modules/xmpp-bridge/module.nix
             inventree.nixosModules.default
+            rewheel.nixosModules.default
             #./modules/inventree-backup/module.nix
             #./modules/ghidra-server/module.nix
             #./modules/restic/module.nix

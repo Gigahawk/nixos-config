@@ -343,6 +343,24 @@
         "type": "github"
       }
     },
+    "flake-parts_7": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib_6"
+      },
+      "locked": {
+        "lastModified": 1778716662,
+        "narHash": "sha256-m1Yf0wZ8j1OHjTc2UwHwyQRSnNeSgLJOd7q5Y45hzi4=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "f7c1a2d347e4c52d5fb8d10cb4d94b5884e546fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems_2"
@@ -664,6 +682,21 @@
         "owner": "vic",
         "repo": "import-tree",
         "rev": "c41e7d58045f9057880b0d85e1152d6a4430dbf1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vic",
+        "repo": "import-tree",
+        "type": "github"
+      }
+    },
+    "import-tree_5": {
+      "locked": {
+        "lastModified": 1778781969,
+        "narHash": "sha256-Jjuz5CmSkur8KvLDoGa+vylEp+RkQtv4mt/qcMznpH0=",
+        "owner": "vic",
+        "repo": "import-tree",
+        "rev": "d321337efd0f23a9eb14a42adb7b2c29313ab274",
         "type": "github"
       },
       "original": {
@@ -1108,6 +1141,21 @@
         "type": "github"
       }
     },
+    "nixpkgs-lib_6": {
+      "locked": {
+        "lastModified": 1777168982,
+        "narHash": "sha256-GOkGPcboWE9BmGCRMLX3worL4EMnsnG8MyKmXNeYuhQ=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "f5901329dade4a6ea039af1433fb087bd9c1fe14",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1685801374,
@@ -1512,6 +1560,29 @@
         "type": "github"
       }
     },
+    "rewheel": {
+      "inputs": {
+        "flake-parts": "flake-parts_7",
+        "import-tree": "import-tree_5",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": "treefmt-nix_8"
+      },
+      "locked": {
+        "lastModified": 1781688571,
+        "narHash": "sha256-axf6gtlfYHGDs0awwwFBmlB/eZw3dNRRNrqjJaoJVY4=",
+        "owner": "Gigahawk",
+        "repo": "rewheel-nix",
+        "rev": "0db8579b37152aaaf2eef8b5d0312905d8fd9766",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Gigahawk",
+        "repo": "rewheel-nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "advcpmv": "advcpmv",
@@ -1535,8 +1606,9 @@
         "nixpkgs-droid": "nixpkgs-droid",
         "nnn-plugins": "nnn-plugins",
         "nvf": "nvf",
+        "rewheel": "rewheel",
         "smartp": "smartp",
-        "treefmt-nix": "treefmt-nix_9",
+        "treefmt-nix": "treefmt-nix_10",
         "vscode-remote-workaround": "vscode-remote-workaround",
         "xmpp-bridge": "xmpp-bridge"
       }
@@ -1565,7 +1637,7 @@
         ],
         "pyproject-build-systems": "pyproject-build-systems_4",
         "pyproject-nix": "pyproject-nix_4",
-        "treefmt-nix": "treefmt-nix_8",
+        "treefmt-nix": "treefmt-nix_9",
         "uv2nix": "uv2nix_4"
       },
       "locked": {
@@ -1785,6 +1857,26 @@
     "treefmt-nix_10": {
       "inputs": {
         "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775636079,
+        "narHash": "sha256-pc20NRoMdiar8oPQceQT47UUZMBTiMdUuWrYu2obUP0=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "790751ff7fd3801feeaf96d7dc416a8d581265ba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "treefmt-nix_11": {
+      "inputs": {
+        "nixpkgs": [
           "xmpp-bridge",
           "nixpkgs"
         ]
@@ -1934,16 +2026,16 @@
     "treefmt-nix_8": {
       "inputs": {
         "nixpkgs": [
-          "smartp",
+          "rewheel",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1775636079,
-        "narHash": "sha256-pc20NRoMdiar8oPQceQT47UUZMBTiMdUuWrYu2obUP0=",
+        "lastModified": 1780220602,
+        "narHash": "sha256-eynAfOmbmxJnkp7YewvCEbShNnnYJ9gLLqkzsYtBPeM=",
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "790751ff7fd3801feeaf96d7dc416a8d581265ba",
+        "rev": "db947814a175b7ca6ded66e21383d938df01c227",
         "type": "github"
       },
       "original": {
@@ -1955,6 +2047,7 @@
     "treefmt-nix_9": {
       "inputs": {
         "nixpkgs": [
+          "smartp",
           "nixpkgs"
         ]
       },
@@ -2129,7 +2222,7 @@
         ],
         "pyproject-build-systems": "pyproject-build-systems_5",
         "pyproject-nix": "pyproject-nix_5",
-        "treefmt-nix": "treefmt-nix_10",
+        "treefmt-nix": "treefmt-nix_11",
         "uv2nix": "uv2nix_5"
       },
       "locked": {

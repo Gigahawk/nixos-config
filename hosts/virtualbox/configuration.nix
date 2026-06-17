@@ -194,6 +194,14 @@
   #  };
   #};
 
+  services.rewheel-web = {
+    enable = true;
+    port = ports.rewheel;
+    extraOptions = {
+      log-level = "debug";
+    };
+  };
+
   age.secrets = {
     alert-outlook = {
       file = ../../secrets/alert-outlook.age;

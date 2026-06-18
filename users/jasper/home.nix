@@ -22,6 +22,10 @@ in
 
   home.stateVersion = "23.05";
 
+  home.shellAliases = {
+    gopass-sync = "ssh-agent bash -c 'ssh-add ~/.ssh/id_ed25519 && gopass sync'";
+  };
+
   programs.home-manager.enable = true;
 
   programs.zsh = {

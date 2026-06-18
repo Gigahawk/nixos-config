@@ -121,6 +121,12 @@
               href = "http://ptolemy:${toString ports.paperless}/";
             };
           }
+          {
+            "FFMWheel (ReWheel)" = {
+              description = "OneWheel firmware modification tools";
+              href = "http://ptolemy:${toString ports.rewheel}/";
+            };
+          }
         ];
       }
     ];

@@ -1570,11 +1570,11 @@
         "treefmt-nix": "treefmt-nix_8"
       },
       "locked": {
-        "lastModified": 1781688571,
-        "narHash": "sha256-axf6gtlfYHGDs0awwwFBmlB/eZw3dNRRNrqjJaoJVY4=",
+        "lastModified": 1781734527,
+        "narHash": "sha256-JyZQFKOPzJsX3rDijwBbusU9XuVm1fEqjWzjJGpe1fs=",
         "owner": "Gigahawk",
         "repo": "rewheel-nix",
-        "rev": "0db8579b37152aaaf2eef8b5d0312905d8fd9766",
+        "rev": "1d62879465eba4953f5115936f6d41057af9288b",
         "type": "github"
       },
       "original": {

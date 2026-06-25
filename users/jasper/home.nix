@@ -268,6 +268,10 @@ in
     in
     {
       enable = desktop;
+      extraConfig = ''
+        source = ~/.config/hypr/monitors.conf
+        source = ~/.config/hypr/workspaces.conf
+      '';
       settings = {
         "$mod" = "SUPER";
         "$term" = "ghostty";

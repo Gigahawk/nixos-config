@@ -15,6 +15,7 @@
     localsend
     mayo
     nautilus
+    nwg-displays
     packet
     picard
     piper

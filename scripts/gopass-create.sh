@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 MAX_LEN=9999
+MAX_REUSE=9999
 UNKNOWN_ARGS=0
 SEP="-"
 NUMS=3
@@ -11,6 +12,11 @@ while [[ $# -gt 0 ]]; do
   case $1 in
   --max-len)
     MAX_LEN="$2"
+    shift
+    shift
+    ;;
+  --max-reuse)
+    MAX_REUSE="$2"
     shift
     shift
     ;;
@@ -69,6 +75,22 @@ function has_capital() {
 
 }
 
+function has_too_many_repeats() {
+  declare -A _counts
+
+  for ((i = 0; i < ${#password}; i++)); do
+    _c="${password:i:1}"
+    ((_counts["$_c"]++))
+  done
+
+  for _k in "${!_counts[@]}"; do
+    if [[ "${_counts[$_k]}" -gt "$MAX_REUSE" ]]; then
+      return 0
+    fi
+  done
+  return 1
+}
+
 function generate_password() {
   words=$(gopass pwgen -x -xs " " -1 1)
 
@@ -102,6 +124,11 @@ function generate_password() {
   for ((i = 1; i <= $NUMS; i++)); do
     password+=$(($RANDOM % 10))
   done
+
+  if has_too_many_repeats; then
+    generate_password
+    return
+  fi
   echo "$password"
 }
 

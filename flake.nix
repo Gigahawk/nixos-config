@@ -160,6 +160,7 @@
               makeModulesClosure = x: super.makeModulesClosure (x // { allowMissing = true; });
             })
             (import ./overlays/python.nix)
+            (import ./overlays/yt-dlp.nix)
           ];
         };
     in

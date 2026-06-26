@@ -66,6 +66,7 @@
       virtualgl
       wget
       xplr
+      yt-dlp
 
       # Custom packages
       inputs.advcpmv.packages.${stdenv.hostPlatform.system}.default

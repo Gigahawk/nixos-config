@@ -25,7 +25,6 @@
     spacenavd
     wl-clipboard
     wlogout
-    yt-dlp
     zathura
   ];
 }

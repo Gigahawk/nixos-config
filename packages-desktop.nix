@@ -14,6 +14,7 @@
     libreoffice
     localsend
     mayo
+    mpv
     nautilus
     packet
     picard
@@ -23,6 +24,7 @@
     remmina
     signal-desktop
     spacenavd
+    vlc
     wl-clipboard
     wlogout
     zathura

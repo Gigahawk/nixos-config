@@ -314,6 +314,11 @@ in
           "$mod SHIFT, K, exec, ${movewindow "u"}"
           "$mod SHIFT, L, exec, ${movewindow "r"}"
 
+          "$mod CTRL, H, movecurrentworkspacetomonitor, l"
+          "$mod CTRL, J, movecurrentworkspacetomonitor, d"
+          "$mod CTRL, K, movecurrentworkspacetomonitor, u"
+          "$mod CTRL, L, movecurrentworkspacetomonitor, r"
+
           "$mod SHIFT, space, togglefloating"
 
           "$mod, U, exec, ${toggle-dropdown}"

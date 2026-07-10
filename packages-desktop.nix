@@ -6,6 +6,7 @@
   environment.systemPackages = with pkgs; [
     brightnessctl
     element-desktop
+    evince
     feh
     freecad
     gparted

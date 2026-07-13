@@ -52,6 +52,9 @@
       [
         roboto
         nerd-fonts.symbols-only
+        noto-fonts
+        noto-fonts-cjk-sans
+        noto-fonts-color-emoji
       ]
     else
       [ ]

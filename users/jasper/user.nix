@@ -23,6 +23,8 @@
       "docker"
       "input"
       "video" # Allow vcgencmd to work on rpi
+      "dialout"
+      "tty"
       config.programs.ydotool.group
     ];
     shell = pkgs.zsh;

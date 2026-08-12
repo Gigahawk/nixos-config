@@ -7,7 +7,9 @@ requires-python = ">=3.12"
 dependencies = [
     "inventree-digikey-supplier",
     "inventree-kicad-plugin>=2.0.4",
+    "inventree-smart-parts",
 ]
 
 [tool.uv.sources]
 inventree-digikey-supplier = { git = "https://github.com/Gigahawk/inventree-digikey-supplier.git" }
+inventree-smart-parts = { git = "https://github.com/0neShot/SmartParts.git" }

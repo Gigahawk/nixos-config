@@ -14,4 +14,9 @@ final: prev: {
       prev.uv-build
     ];
   });
+  inventree-smart-parts = prev.inventree-smart-parts.overrideAttrs (old: {
+    buildInputs = (old.buildInputs or [ ]) ++ [
+      prev.setuptools
+    ];
+  });
 }

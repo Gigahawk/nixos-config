@@ -231,6 +231,16 @@
     };
   };
 
+  services.upower = {
+    enable = true;
+    criticalPowerAction = "Hibernate";
+    percentageLow = 20;
+    percentageCritical = 5;
+    percentageAction = 3;
+    usePercentageForPolicy = true;
+    ignoreLid = true;
+  };
+
   # Gross
   programs.nano.enable = false;
   programs.neovim = {

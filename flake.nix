@@ -5,8 +5,7 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     #nixpkgs.url = "github:Gigahawk/nixpkgs/personal";
     home-manager = {
-      #url = "github:nix-community/home-manager/master";
-      url = "github:Gigahawk/home-manager/nnn-cli-args";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-droid = {
@@ -46,7 +45,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     inventree = {
-      url = "github:Gigahawk/nixos-inventree";
+      # Inventree is now part of nixpkgs but doesn't seem
+      # to support declarative plugin management. Keep
+      # for now
+      url = "github:Gigahawk/nixos-inventree/change-namespace";
       #inputs.nixpkgs.follows = "nixpkgs";
     };
     kvmd = {
@@ -68,7 +70,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware = {
-      url = "github:Gigahawk/nixos-hardware/update-rpi-kernel";
+      url = "github:NixOS/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";
@@ -161,6 +164,33 @@
             })
             (import ./overlays/python.nix)
             (import ./overlays/yt-dlp.nix)
+            # TODO: migrate to jellarr
+            # https://github.com/Sveske-Juice/declarative-jellyfin/issues/32#issuecomment-5742666757
+            (
+              final: prev:
+              let
+                src = prev.fetchFromGitHub {
+                  owner = "NixOS";
+                  repo = "nixpkgs";
+                  rev = "36ad827548eeb6c254289a3d427c17f78a139da7";
+                  sha256 = "sha256-AN+Jdi2y1yI6FRp6bFcWV2VAdlgJdehAmLSouxsreHA=";
+                };
+              in
+              {
+                jellyfin = final.callPackage (import "${src}/pkgs/by-name/je/jellyfin/package.nix") { };
+
+                jellyfin-web = final.callPackage (import "${src}/pkgs/by-name/je/jellyfin-web/package.nix") { };
+
+                jellyfin-ffmpeg = final.callPackage (import "${
+                  prev.fetchFromGitHub {
+                    owner = "NixOS";
+                    repo = "nixpkgs";
+                    rev = "f0bbf6065ee0779a042acebaa18b361a496af9f9";
+                    sha256 = "sha256-jY5K98BLpTMkqoMAcqa8hRwkyYmC7zd+wV1k5PPrXsk=";
+                  }
+                }/pkgs/by-name/je/jellyfin-ffmpeg/package.nix") { };
+              }
+            )
           ];
         };
     in

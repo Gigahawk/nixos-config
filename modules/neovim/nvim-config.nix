@@ -142,7 +142,8 @@
       sql.enable = true;
       java.enable = true;
       kotlin.enable = true;
-      typescript.enable = true;
+      # https://github.com/NotAShelf/nvf/issues/1844
+      #typescript.enable = true;
       go.enable = true;
       lua.enable = true;
       zig.enable = true;
@@ -179,7 +180,7 @@
     statusline = {
       lualine = {
         enable = true;
-        theme = "dracula";
+        setupOpts.options.theme = "dracula";
       };
     };
 
@@ -242,9 +243,9 @@
 
     minimap = {
       minimap-vim.enable = false;
-      # codewindow.enable = true;
+      # Seems not supported anymore
       # https://github.com/NotAShelf/nvf/issues/1312#issuecomment-3719470693
-      codewindow.enable = false;
+      # codewindow.enable = true;
     };
 
     dashboard = {

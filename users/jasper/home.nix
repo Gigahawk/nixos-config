@@ -268,6 +268,10 @@ in
     in
     {
       enable = desktop;
+      # TODO: Seems broken for now, migrate to lua config
+      #configType = "lua";
+      configType = "hyprlang";
+
       settings = {
         "$mod" = "SUPER";
         "$term" = "ghostty";
@@ -908,6 +912,7 @@ in
 
   programs.firefox = {
     enable = desktop;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     policies = {
       AppAutoUpdate = false;
       # Ideally this would be off but apparently it's

@@ -132,7 +132,7 @@
     ];
   };
 
-  services.inventree = {
+  services.inventree-flake = {
     enable = true;
 
     bindIp = "0.0.0.0";
@@ -460,7 +460,7 @@
       };
       server = {
         HTTP_PORT = ports.netdata;
-        DOMAIN = "ptolemy";
+        ROOT_URL = "http://ptolemy";
       };
     };
   };

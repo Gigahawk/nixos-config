@@ -15,7 +15,7 @@
   #virtualisation.docker.enable = true;
 
   # For now all paths need to be strings?
-  services.inventree = {
+  services.inventree-flake = {
     enable = true;
 
     bindIp = "0.0.0.0";

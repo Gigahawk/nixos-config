@@ -8,7 +8,7 @@
 }:
 with lib;
 let
-  ivCfg = config.services.inventree;
+  ivCfg = config.services.inventree-flake;
   cfg = config.services.inventreeBackup;
   settingsFormat = pkgs.formats.json { };
   defaultUser = "inventree";

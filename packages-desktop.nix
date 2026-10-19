@@ -5,6 +5,7 @@
 {
   environment.systemPackages = with pkgs; [
     brightnessctl
+    dragon-drop
     element-desktop
     evince
     feh

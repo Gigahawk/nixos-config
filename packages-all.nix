@@ -30,6 +30,7 @@
       gettext
       git
       git-lfs
+      github-cli
       gnupg
       gopass
       gosu

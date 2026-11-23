@@ -20,6 +20,7 @@
     nautilus
     packet
     picard
+    pinta
     piper
     printrun
     prusa-slicer
